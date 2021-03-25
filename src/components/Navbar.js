@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Contact from "./Contact";
 
 const Navbar = () => {
@@ -364,7 +364,7 @@ const Navbar = () => {
                           </div>
                         </li>
                         <li>
-                          <a href='fakeNav'>Home</a>
+                          <NavLink to='/'>HOME</NavLink>
                         </li>
                         <li>{<Link to='/contact'>Contact</Link>}</li>
                         <li>{<Link to='/about'>About</Link>}</li>
@@ -432,28 +432,13 @@ const Navbar = () => {
                             <i className='ti-settings' />
                           </div>
                           <div className='show-div setting'>
-                            <h6>language</h6>
+                            <h6>User</h6>
                             <ul>
                               <li>
-                                <a href='fakeNav'>english</a>
+                                <Link to='/user/profile'>Profile</Link>
                               </li>
                               <li>
-                                <a href='fakeNav'>french</a>
-                              </li>
-                            </ul>
-                            <h6>currency</h6>
-                            <ul className='list-inline'>
-                              <li>
-                                <a href='fakeNav'>euro</a>
-                              </li>
-                              <li>
-                                <a href='fakeNav'>rupees</a>
-                              </li>
-                              <li>
-                                <a href='fakeNav'>pound</a>
-                              </li>
-                              <li>
-                                <a href='fakeNav'>doller</a>
+                                <a href='fakeNav'>Settings</a>
                               </li>
                             </ul>
                           </div>
