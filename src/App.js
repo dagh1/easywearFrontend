@@ -18,7 +18,7 @@ import Events from "./components/BackOffice/Events";
 function App() {
   return (
     <>
-      {/*<Navbar />
+      <Navbar />
       <Switch>
         <Route path='/about' component={About} />
         <Route path='/contact' component={Contact} />
@@ -26,8 +26,8 @@ function App() {
         <Route exact to='/' component={Home} />
       </Switch>
       <Footer />
-      */}
-      <NavbarBack></NavbarBack>
+
+      {/*<NavbarBack></NavbarBack>
       <SideBar></SideBar>
       <Switch>
         <Route path='/ClaimsBack' component={ClaimBack} />
@@ -35,7 +35,7 @@ function App() {
         <Route path='/Events' component={Events} />
         <Route exact to='/' component={DashBoard} />
       </Switch>
-      <FooterBack></FooterBack>
+      <FooterBack></FooterBack>*/}
     </>
   );
 }
