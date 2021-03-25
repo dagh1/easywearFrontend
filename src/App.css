@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.AddPostForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea.form-control {
+  min-height: calc(1.5em + 0.75rem + 2px);
+  border-color: #eaeaea;
+  font-size: 12px;
+  padding: 17px 25px;
+  margin-bottom: 30px;
+  height: inherit;
+}

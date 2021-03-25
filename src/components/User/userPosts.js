@@ -24,6 +24,11 @@ const UserPosts = () => {
               <div className='product-wrapper-grid'>
                 <div className='row'>
                   {/* HERE POSTS*/}
+                  {err && (
+                    <span className='alert alert-info'>
+                      No posts to display
+                    </span>
+                  )}
                   {posts?.map((post, index) => {
                     return <Posts post={post} key={index} />;
                   })}

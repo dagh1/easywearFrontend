@@ -17,6 +17,10 @@ const postSlice = createSlice({
     setErrors(state, action) {
       state.errors = action.payload;
     },
+    addPost: (state, action) => {
+      const payload = action.payload;
+      state.posts.push(payload);
+    },
   },
 });
 
@@ -33,6 +37,6 @@ export const fetchPosts = () => async (dispatch) => {
 export const selectPosts = (state) => {
   return [state.postSlice.posts, state.postSlice.errors];
 };
-export const { populatePost, setErrors } = postSlice.actions;
+export const { populatePost, addPost, setErrors } = postSlice.actions;
 
 export default postSlice.reducer;
