@@ -1,5 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectClaims, addClaim } from "../../redux/slices/claimSlice";
+import { useHistory } from "react-router-dom";
+import { queryApi } from "../../utils/queryApi";
+import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import styled from "styled-components";
+
 const ClaimBack = () => {
+  const yupSchema = Yup.object({
+    description: Yup.string()
+      .min(3, "Minimum 3 caractéres")
+      .max(80, "Maximum 80 caractéres"),
+  });
+  const [posts, err] = useSelector(selectClaims);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [showLoader, setShowLoader] = useState(false);
+  const [error, setError] = useState({ visible: false, message: "" });
+  const formik = useFormik({
+    initialValues: {
+      type: "",
+      description: "",
+      date_claim: "2021-02-01T23:00:00.000+00:00",
+      image_url: "",
+      state: 0,
+      user_id: "6042082f471163107c3ca589",
+    },
+    validationSchema: yupSchema,
+    onSubmit: async (values) => {
+      values.type = "aaaa";
+      console.log(values);
+      setShowLoader(true);
+      const [res, err] = await queryApi("claim/addClaim", values, "POST");
+      if (err) {
+        setShowLoader(false);
+        setError({
+          visible: true,
+          message: JSON.stringify(err.errors, null, 2),
+        });
+      } else {
+        dispatch(addClaim(res));
+        history.push("/claims");
+      }
+    },
+  });
+
   return (
     <>
       <div style={{ marginLeft: 250 }} className="page-wrapper">
@@ -45,6 +92,153 @@ const ClaimBack = () => {
                 </div>
               </div>
             </div>
+            <div className="card-body">
+              <ul className="nav nav-tabs tab-coupon" id="myTab" role="tablist">
+                <li className="nav-item">
+                  <a
+                    className="nav-link show active"
+                    id="account-tab"
+                    data-bs-toggle="tab"
+                    href="#account"
+                    role="tab"
+                    aria-controls="account"
+                    aria-selected="true"
+                    data-original-title
+                    title
+                  >
+                    Account
+                  </a>
+                </li>
+              </ul>
+              <div className="tab-content" id="myTabContent">
+                <h4>Account Details</h4>
+                <form onSubmit={formik.handleSubmit}>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom0"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> Type Claim
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        name="type"
+                        id="type"
+                        type="text"
+                        value={formik.values.type}
+                        onChange={formik.handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom1"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> Description
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        name="description"
+                        id="description"
+                        type="text"
+                        required
+                        value={formik.values.description}
+                        onChange={formik.handleChange}
+                      />
+                      {formik.errors.description &&
+                        formik.touched.description && (
+                          <FormError>{formik.errors.description}</FormError>
+                        )}
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom2"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> image url
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        type="text"
+                        required
+                        name="image_url"
+                        id="image_url"
+                        value={formik.values.image_url}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom3"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> State
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        type="text"
+                        required
+                        name="state"
+                        id="state"
+                        value={formik.values.state}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom4"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> User
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        type="text"
+                        required
+                        name="user_id"
+                        id="user_id"
+                        value={formik.values.user_id}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="validationCustom4"
+                      className="col-xl-3 col-md-4"
+                    >
+                      <span>*</span> Date
+                    </label>
+                    <div className="col-xl-8 col-md-7">
+                      <input
+                        className="form-control"
+                        name="date_claim"
+                        id="date_claim"
+                        required
+                        value={formik.values.date_claim}
+                        onChange={formik.handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pull-right">
+                    <button type="submit" className="btn btn-primary">
+                      Save
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
             {/* Container-fluid Ends*/}
             {/* Container-fluid starts*/}
             <div className="container-fluid">
@@ -54,6 +248,7 @@ const ClaimBack = () => {
                     <div className="card-header">
                       <h5>Manage Claims</h5>
                     </div>
+
                     <div className="card-body order-datatable">
                       <div
                         id="basic-1_wrapper"
@@ -185,164 +380,80 @@ const ClaimBack = () => {
                               </th>
                             </tr>
                           </thead>
+
                           <tbody>
-                            <tr role="row" className="odd">
-                              <td className="sorting_1">#51240</td>
-                              <td>
-                                <div className="d-flex">
-                                  <img
-                                    src="../assetsBack/images/electronics/product/25.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                  <img
-                                    src="../assetsBack/images/electronics/product/13.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                  <img
-                                    src="../assetsBack/images/electronics/product/16.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 blur-up lazyloaded"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <span className="badge badge-secondary">
-                                  Cash On Delivery
-                                </span>
-                              </td>
-                              <td>Paypal</td>
-                              <td>
-                                <span className="badge badge-success">
-                                  Delivered
-                                </span>
-                              </td>
-                              <td>Dec 10,18</td>
-                              <td>$54671</td>
-                              <td
-                                class="jsgrid-cell jsgrid-align-center"
-                                style={{ width: 50 }}
-                              >
-                                <input
-                                  style={{ width: 90 }}
-                                  type="checkbox"
-                                ></input>
-                              </td>
-                            </tr>
-                            <tr role="row" className="even">
-                              <td className="sorting_1">#51241</td>
-                              <td>
-                                <div className="d-flex">
-                                  <img
-                                    src="../assetsBack/images/electronics/product/12.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                  <img
-                                    src="../assetsBack/images/electronics/product/3.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 blur-up lazyloaded"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <span className="badge badge-success">
-                                  Paid
-                                </span>
-                              </td>
-                              <td>Master Card</td>
-                              <td>
-                                <span className="badge badge-primary">
-                                  Shipped
-                                </span>
-                              </td>
-                              <td>Feb 15,18</td>
-                              <td>$2136</td>
-                            </tr>
-                            <tr role="row" className="odd">
-                              <td className="sorting_1">#51242</td>
-                              <td>
-                                <img
-                                  src="../assetsBack/images/electronics/product/14.jpg"
-                                  alt="img"
-                                  className="img-fluid img-30 blur-up lazyloaded"
-                                />
-                              </td>
-                              <td>
-                                <span className="badge badge-warning">
-                                  Awaiting Authentication
-                                </span>
-                              </td>
-                              <td>Debit Card</td>
-                              <td>
-                                <span className="badge badge-warning">
-                                  Processing
-                                </span>
-                              </td>
-                              <td>Mar 27,18</td>
-                              <td>$8791</td>
-                            </tr>
-                            <tr role="row" className="even">
-                              <td className="sorting_1">#51243</td>
-                              <td>
-                                <div className="d-flex">
-                                  <img
-                                    src="../assetsBack/images/electronics/product/6.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                  <img
-                                    src="../assetsBack/images/furniture/8.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 blur-up lazyloaded"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <span className="badge badge-danger">
-                                  Payment Failed
-                                </span>
-                              </td>
-                              <td>Master Card</td>
-                              <td>
-                                <span className="badge badge-danger">
-                                  Cancelled
-                                </span>
-                              </td>
-                              <td>Sep 1,18</td>
-                              <td>$139</td>
-                            </tr>
-                            <tr role="row" className="odd">
-                              <td className="sorting_1">#51244</td>
-                              <td>
-                                <div className="d-flex">
-                                  <img
-                                    src="../assetsBack/images/jewellery/pro/18.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                  <img
-                                    src="../assetsBack/images/fashion/pro/06.jpg"
-                                    alt="img"
-                                    className="img-fluid img-30 blur-up lazyloaded"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <span className="badge badge-success">
-                                  Paid
-                                </span>
-                              </td>
-                              <td>Paypal</td>
-                              <td>
-                                <span className="badge badge-primary">
-                                  Shipped
-                                </span>
-                              </td>
-                              <td>May 18,18</td>
-                              <td>$4678</td>
-                            </tr>
+                            {posts.map((prod) => (
+                              <tr role="row" className="odd">
+                                <td className="sorting_1">{prod._id}</td>
+                                <td>
+                                  <div className="d-flex">
+                                    <img
+                                      src={prod.image_url}
+                                      alt="img"
+                                      className="img-fluid img-30 me-2 blur-up lazyloaded"
+                                    />
+                                  </div>
+                                </td>
+                                <td>
+                                  {(() => {
+                                    if (prod.state === 0) {
+                                      return (
+                                        <span className="badge badge-primary">
+                                          Not Treated Yet
+                                        </span>
+                                      );
+                                    } else if (prod.state === 1) {
+                                      return (
+                                        <span className="badge badge-warning">
+                                          Processing
+                                        </span>
+                                      );
+                                    } else {
+                                      return (
+                                        <span className="badge badge-success">
+                                          Treated
+                                        </span>
+                                      );
+                                    }
+                                  })()}
+                                </td>
+                                <td>{prod.user_id}</td>
+                                <td>
+                                  {(() => {
+                                    if (prod.type === "Post") {
+                                      return (
+                                        <span className="badge badge-primary">
+                                          Post Claim
+                                        </span>
+                                      );
+                                    } else if (prod.type === "Event") {
+                                      return (
+                                        <span className="badge badge-danger">
+                                          Event claim
+                                        </span>
+                                      );
+                                    } else {
+                                      return (
+                                        <span className="badge badge-secondary">
+                                          Product Claim
+                                        </span>
+                                      );
+                                    }
+                                  })()}
+                                </td>
+                                <td>{prod.date_claim}</td>
+                                <td>{prod.description}</td>
+                                <td
+                                  class="jsgrid-cell jsgrid-align-center"
+                                  style={{ width: 50 }}
+                                >
+                                  <input
+                                    style={{ width: 90 }}
+                                    type="checkbox"
+                                  ></input>
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                         <div
@@ -416,3 +527,6 @@ const ClaimBack = () => {
   );
 };
 export default ClaimBack;
+const FormError = styled.p`
+  color: #f74b1b;
+`;

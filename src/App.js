@@ -20,15 +20,16 @@ import Events from "./components/BackOffice/Events";
 function App() {
   return (
     <>
-      {/*<Navbar />
+      {/*
+      <Navbar />
       <Switch>
-        <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
-        <Route path='/user/profile' component={Profile}></Route>
-        <Route exact to='/' component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/user/profile" component={Profile}></Route>
+        <Route exact to="/" component={Home} />
       </Switch>
       <Footer />
-      */}
+     */}
       <NavbarBack></NavbarBack>
       <SideBar></SideBar>
       <Switch>
