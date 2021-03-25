@@ -6,7 +6,9 @@ import Home from "./components/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
+
 import Profile from "./components/User/profile";
+
 import NavbarBack from "./components/BackOffice/NavBarBack";
 import FooterBack from "./components/BackOffice/FooterBack";
 import DashBoard from "./components/BackOffice/DashBoard";
