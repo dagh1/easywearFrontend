@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectClaims, addClaim } from "../../redux/slices/claimSlice";
-import { useHistory } from "react-router-dom";
+import * as Icon from "react-feather";
+import {
+  selectClaims,
+  addClaim,
+  deleteClaim,
+  setErrors,
+  selectClaim,
+  fetchClaims,
+  selectSelectedClaim,
+  updateStateClaim,
+  unselectClaim,
+} from "../../redux/slices/claimSlice";
+import { useHistory, useParams } from "react-router-dom";
 import { queryApi } from "../../utils/queryApi";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
@@ -9,48 +20,195 @@ import * as Yup from "yup";
 import styled from "styled-components";
 
 const ClaimBack = () => {
+  const { id } = useParams();
+  const history = useHistory();
+  const [showLoader, setShowLoader] = useState(false);
+  const [error, setError] = useState({ visible: false, message: "" });
+  const selectedClaim = useSelector(selectSelectedClaim);
+
   const yupSchema = Yup.object({
     description: Yup.string()
       .min(3, "Minimum 3 caractéres")
       .max(80, "Maximum 80 caractéres"),
   });
   const [posts, err] = useSelector(selectClaims);
+
   const dispatch = useDispatch();
-  const history = useHistory();
-  const [showLoader, setShowLoader] = useState(false);
-  const [error, setError] = useState({ visible: false, message: "" });
+
   const formik = useFormik({
     initialValues: {
       type: "",
       description: "",
       date_claim: "2021-02-01T23:00:00.000+00:00",
       image_url: "",
-      state: 0,
+      state: 1,
       user_id: "6042082f471163107c3ca589",
     },
     validationSchema: yupSchema,
-    onSubmit: async (values) => {
-      values.type = "aaaa";
-      console.log(values);
-      setShowLoader(true);
-      const [res, err] = await queryApi("claim/addClaim", values, "POST");
-      if (err) {
-        setShowLoader(false);
-        setError({
-          visible: true,
-          message: JSON.stringify(err.errors, null, 2),
-        });
-      } else {
-        dispatch(addClaim(res));
-        history.push("/claims");
-      }
-    },
   });
+  const deleteClaimEvent = async (id) => {
+    const [res, err] = await queryApi("claim/delete/" + id, {}, "DELETE");
+    if (err) {
+      dispatch(setErrors(err));
+      console.log(err);
+    } else {
+      dispatch(deleteClaim(id));
+      dispatch(fetchClaims());
+    }
+  };
+
+  const FindOneClaimEvent = async (prod) => {
+    dispatch(selectClaim(prod));
+  };
+  const [claimState, setclaimState] = useState(selectedClaim);
+
+  const handleSubmit1 = async (evt) => {
+    evt.preventDefault();
+    console.log(selectedClaim._id);
+    const [res, err] = await queryApi(
+      "claim/validateClaim/" + selectedClaim._id,
+      { state: Number(claimState) },
+      "PUT"
+    );
+    if (err) {
+      dispatch(setErrors(err));
+      console.log(err);
+    } else {
+      dispatch(updateStateClaim(res));
+      dispatch(unselectClaim());
+      dispatch(fetchClaims());
+    }
+  };
 
   return (
     <>
+      <div className="btn-popup pull-right">
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex={-1}
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title f-w-600" id="exampleModalLabel">
+                  Treat Claims
+                </h5>
+                <button
+                  id="closeurself"
+                  className="btn-close"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <form className="needs-validation" onSubmit={handleSubmit1}>
+                <div className="modal-body">
+                  <div className="form">
+                    <div className="form-group">
+                      <label htmlFor="validationCustom01" className="mb-1">
+                        Claim Image :
+                      </label>
+                      <div className="form-control">
+                        {selectedClaim?.image_url}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="validationCustom01" className="mb-1">
+                        Claim Type :
+                      </label>
+                      <div className="form-control">{selectedClaim?.type}</div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="validationCustom01" className="mb-1">
+                        Claim Details :
+                      </label>
+                      <div className="form-control">
+                        {selectedClaim?.description}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="validationCustom01" className="mb-1">
+                        Claim State :
+                      </label>
+
+                      {(() => {
+                        if (selectedClaim?.state === 1) {
+                          return (
+                            <>
+                              <div className="form-control">
+                                Not Treated Yet
+                              </div>
+                            </>
+                          );
+                        } else if (selectedClaim?.state === 2) {
+                          return (
+                            <>
+                              <div className="form-control">Processing</div>
+                            </>
+                          );
+                        } else {
+                          return (
+                            <>
+                              <div className="form-control">Closed Claim</div>
+                            </>
+                          );
+                        }
+                      })()}
+                    </div>
+
+                    {(() => {
+                      if (selectedClaim?.state === 1) {
+                        return (
+                          <>
+                            <select
+                              onChange={(e) => setclaimState(e.target.value)}
+                            >
+                              <option value={selectedClaim?.state}>
+                                Not Treated Yet
+                              </option>
+                              <option value="2">Processing</option>
+                              <option value="3">Close Claim</option>
+                            </select>
+                          </>
+                        );
+                      } else if (selectedClaim?.state === 2) {
+                        return (
+                          <>
+                            <select
+                              onChange={(e) => setclaimState(e.target.value)}
+                            >
+                              <option value={selectedClaim?.state}>
+                                Processing
+                              </option>
+                              <option value="2">Processing</option>
+                              <option value="3">Close Claim</option>
+                            </select>
+                          </>
+                        );
+                      } else {
+                        return <></>;
+                      }
+                    })()}
+                  </div>
+                </div>
+                <div data-bs-target="#closeurself" className="modal-footer">
+                  <button type="submit" className="btn btn-primary">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div style={{ marginLeft: 250 }} className="page-wrapper">
-        <div class="page-body-wrapper">
+        <div className="page-body-wrapper">
           <div className="page-body">
             {/* Container-fluid starts*/}
             <div className="container-fluid">
@@ -64,6 +222,7 @@ const ClaimBack = () => {
                       </h3>
                     </div>
                   </div>
+
                   <div className="col-lg-6">
                     <ol className="breadcrumb pull-right">
                       <li className="breadcrumb-item">
@@ -254,33 +413,6 @@ const ClaimBack = () => {
                         id="basic-1_wrapper"
                         className="dataTables_wrapper no-footer"
                       >
-                        <div className="dataTables_length" id="basic-1_length">
-                          <label>
-                            Show{" "}
-                            <select
-                              name="basic-1_length"
-                              aria-controls="basic-1"
-                              className
-                            >
-                              <option value={10}>10</option>
-                              <option value={25}>25</option>
-                              <option value={50}>50</option>
-                              <option value={100}>100</option>
-                            </select>{" "}
-                            entries
-                          </label>
-                        </div>
-                        <div id="basic-1_filter" className="dataTables_filter">
-                          <label>
-                            Search:
-                            <input
-                              type="search"
-                              className
-                              placeholder
-                              aria-controls="basic-1"
-                            />
-                          </label>
-                        </div>
                         <table
                           className="display dataTable no-footer"
                           id="basic-1"
@@ -368,22 +500,22 @@ const ClaimBack = () => {
                                 Details
                               </th>
                               <th
-                                style={{ width: 87 }}
-                                class="jsgrid-header-cell jsgrid-align-center"
+                                className="sorting"
+                                tabIndex={0}
+                                aria-controls="basic-1"
+                                rowSpan={1}
+                                colSpan={1}
+                                aria-label="Total: activate to sort column ascending"
+                                style={{ width: 107 }}
                               >
-                                <button
-                                  type="button"
-                                  class="btn btn-danger btn-sm btn-delete mb-0 b-r-4"
-                                >
-                                  Delete
-                                </button>
+                                treat
                               </th>
                             </tr>
                           </thead>
 
                           <tbody>
-                            {posts.map((prod) => (
-                              <tr role="row" className="odd">
+                            {posts?.map((prod, index) => (
+                              <tr key={index} role="row" className="odd">
                                 <td className="sorting_1">{prod._id}</td>
                                 <td>
                                   <div className="d-flex">
@@ -396,13 +528,13 @@ const ClaimBack = () => {
                                 </td>
                                 <td>
                                   {(() => {
-                                    if (prod.state === 0) {
+                                    if (prod.state === 1) {
                                       return (
                                         <span className="badge badge-primary">
                                           Not Treated Yet
                                         </span>
                                       );
-                                    } else if (prod.state === 1) {
+                                    } else if (prod.state === 2) {
                                       return (
                                         <span className="badge badge-warning">
                                           Processing
@@ -444,75 +576,37 @@ const ClaimBack = () => {
                                 <td>{prod.date_claim}</td>
                                 <td>{prod.description}</td>
                                 <td
-                                  class="jsgrid-cell jsgrid-align-center"
+                                  className="jsgrid-cell jsgrid-align-center"
                                   style={{ width: 50 }}
                                 >
-                                  <input
-                                    style={{ width: 90 }}
-                                    type="checkbox"
-                                  ></input>
+                                  <a
+                                    className="btn btn-secondary"
+                                    onClick={() => deleteClaimEvent(prod._id)}
+                                  >
+                                    <Icon.Delete />
+                                  </a>
+                                  <br></br>
+
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    data-bs-toggle="modal"
+                                    data-original-title="test"
+                                    data-bs-target="#exampleModal"
+                                    onClick={() => FindOneClaimEvent(prod)}
+                                  >
+                                    <Icon.Edit3 />
+                                  </button>
                                 </td>
                               </tr>
                             ))}
                           </tbody>
                         </table>
-                        <div
-                          className="dataTables_info"
-                          id="basic-1_info"
-                          role="status"
-                          aria-live="polite"
-                        >
-                          Showing 1 to 25 of 57 entries
-                        </div>
+
                         <div
                           className="dataTables_paginate paging_simple_numbers"
                           id="basic-1_paginate"
-                        >
-                          <a
-                            className="paginate_button previous disabled"
-                            aria-controls="basic-1"
-                            data-dt-idx={0}
-                            tabIndex={0}
-                            id="basic-1_previous"
-                          >
-                            Previous
-                          </a>
-                          <span>
-                            <a
-                              className="paginate_button current"
-                              aria-controls="basic-1"
-                              data-dt-idx={1}
-                              tabIndex={0}
-                            >
-                              1
-                            </a>
-                            <a
-                              className="paginate_button "
-                              aria-controls="basic-1"
-                              data-dt-idx={2}
-                              tabIndex={0}
-                            >
-                              2
-                            </a>
-                            <a
-                              className="paginate_button "
-                              aria-controls="basic-1"
-                              data-dt-idx={3}
-                              tabIndex={0}
-                            >
-                              3
-                            </a>
-                          </span>
-                          <a
-                            className="paginate_button next"
-                            aria-controls="basic-1"
-                            data-dt-idx={4}
-                            tabIndex={0}
-                            id="basic-1_next"
-                          >
-                            Next
-                          </a>
-                        </div>
+                        ></div>
                       </div>
                     </div>
                   </div>

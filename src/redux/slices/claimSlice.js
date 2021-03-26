@@ -3,7 +3,7 @@ import { queryApi } from "../../utils/queryApi";
 
 let initialState = {
   claims: [],
-  selectedPosts: {},
+  selectedClaim: {},
   errors: "",
 };
 
@@ -21,6 +21,26 @@ const claimSlice = createSlice({
       const payload = action.payload;
       state.claims.push(payload);
     },
+    selectClaim: (state, action) => {
+      state.selectedClaim = action.payload;
+    },
+    deleteClaim: (state, action) => {
+      const payload = action.payload;
+      const index = state.claims.findIndex((item) => item._id === payload);
+      if (index !== -1) {
+        state.claims.splice(index, 1);
+      }
+    },
+    unselectClaim(state) {
+      state.selectedClaim = null;
+    },
+    updateStateClaim: (state, action) => {
+      const payload = action.payload;
+      const index = state.claims.findIndex((item) => item._id === payload._id);
+      if (index !== -1) {
+        state.claims[index] = payload;
+      }
+    },
   },
 });
 
@@ -33,10 +53,21 @@ export const fetchClaims = () => async (dispatch) => {
     dispatch(populateclaim(res));
   }
 };
+export const selectSelectedClaim = (state) => {
+  return state.claimSlice.selectedClaim;
+};
 
 export const selectClaims = (state) => {
   return [state.claimSlice.claims, state.claimSlice.errors];
 };
-export const { populateclaim, setErrors, addClaim } = claimSlice.actions;
+export const {
+  populateclaim,
+  setErrors,
+  addClaim,
+  deleteClaim,
+  selectClaim,
+  updateStateClaim,
+  unselectClaim,
+} = claimSlice.actions;
 
 export default claimSlice.reducer;
