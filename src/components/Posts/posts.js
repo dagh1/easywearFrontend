@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { formatDate } from "../../helpers/dateConvert";
+import {
+  deletePost,
+  setErrors,
+  selectPosts,
+  selectPost,
+} from "../../redux/slices/postSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { queryApi } from "../../utils/queryApi";
 
 const Posts = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const updatePost = (post) => {
+    dispatch(selectPost(post));
+    history.replace("/event/updatePost/" + post._id);
+  };
+
+  const deletePostEvent = async (id) => {
+    const [res, err] = await queryApi("post/" + id, {}, "DELETE");
+    if (err) {
+      dispatch(setErrors(err));
+      console.log(err);
+    } else {
+      dispatch(deletePost(id));
+      history.push("/user/profile/posts");
+    }
+  };
+
   return (
     <>
       <div className='col-xl-3 col-md-6 col-grid-box'>
@@ -28,26 +55,20 @@ const Posts = (props) => {
               </a>
             </div>
             <div className='cart-info cart-wrap'>
-              <button
-                data-toggle='modal'
-                data-target='#addtocart'
-                title='Add to cart'
-              >
-                <i className='ti-shopping-cart' />
-              </button>
-              <a href title='Add to Wishlist'>
-                <i className='ti-heart' aria-hidden='true' />
+              <a title='See more info'>
+                <i className='fa fa-info' aria-hidden='true' />
               </a>
               <a
-                href='#'
-                data-toggle='modal'
-                data-target='#quick-view'
-                title='Quick View'
+                title='Delete Post From event'
+                onClick={() => deletePostEvent(props.post._id)}
               >
-                <i className='ti-search' aria-hidden='true' />
+                <i className='fa fa-trash' aria-hidden='true' />
               </a>
-              <a href='compare.html' title='Compare'>
-                <i className='ti-reload' aria-hidden='true' />
+              <a
+                title='Update Post From event'
+                onClick={() => updatePost(props.post)}
+              >
+                <i className='fa fa-edit' aria-hidden='true' />
               </a>
             </div>
           </div>

@@ -24,8 +24,9 @@ const UserPosts = () => {
               <div className='product-wrapper-grid'>
                 <div className='row'>
                   {/* HERE POSTS*/}
-                  {err && (
-                    <span className='alert alert-info'>
+
+                  {posts.length === 0 && (
+                    <span className='alert alert-danger'>
                       No posts to display
                     </span>
                   )}
