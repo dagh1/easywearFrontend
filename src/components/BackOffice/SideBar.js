@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as Icon from "react-feather";
+import { fetchClaims } from "../../redux/slices/claimSlice";
+import { useDispatch } from "react-redux";
 const SideBar = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchClaims());
+  }, [dispatch]);
   return (
     <>
       {/* page-wrapper Start*/}
