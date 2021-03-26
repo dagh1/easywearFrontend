@@ -29,18 +29,17 @@ function App() {
   });
   return (
     <>
-
       <UserContext.Provider value={[connectedUser, setConnectedUser]}>
         <Navbar />
         <Switch>
-          <Route path='/about' component={About} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/user/profile' component={Profile}>
-          <Route path='/event/addPost' component={AddPostForm} />
-          <Route path='/event/post' component={PostDetails} />
-          <Route path='/event/updatePost/:id' component={UpdatePostForm} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/user/profile" component={Profile} />
+          <Route path="/event/addPost" component={AddPostForm} />
+          <Route path="/event/post" component={PostDetails} />
+          <Route path="/event/updatePost/:id" component={UpdatePostForm} />
 
-          <Route exact to='/' component={Home} />
+          <Route exact to="/" component={Home} />
         </Switch>
         <Footer />
       </UserContext.Provider>
