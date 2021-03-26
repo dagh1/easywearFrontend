@@ -18,6 +18,7 @@ import Products from "./components/BackOffice/Products";
 import Events from "./components/BackOffice/Events";
 import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
+import PostDetails from "./components/Posts/postDetails";
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
         <Route path='/contact' component={Contact} />
         <Route path='/user/profile' component={Profile}></Route>
         <Route path='/event/addPost' component={AddPostForm} />
+        <Route path='/event/post' component={PostDetails} />
         <Route path='/event/updatePost/:id' component={UpdatePostForm} />
+
         <Route exact to='/' component={Home} />
       </Switch>
       <Footer />

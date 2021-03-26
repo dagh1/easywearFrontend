@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { formatDate } from "../../helpers/dateConvert";
 import {
@@ -29,6 +30,10 @@ const Posts = (props) => {
     }
   };
 
+  const getPostEvent = (post) => {
+    dispatch(selectPost(post));
+    history.replace("/event/post");
+  };
   return (
     <>
       <div className='col-xl-3 col-md-6 col-grid-box'>
@@ -55,7 +60,7 @@ const Posts = (props) => {
               </a>
             </div>
             <div className='cart-info cart-wrap'>
-              <a title='See more info'>
+              <a title='See more info' onClick={() => getPostEvent(props.post)}>
                 <i className='fa fa-info' aria-hidden='true' />
               </a>
               <a
