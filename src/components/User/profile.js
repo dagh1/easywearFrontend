@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Route, Switch } from "react-router";
 import userProfileDetails from "./userProfileDetails";
 import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
 import { useDispatch } from "react-redux";
 import { fetchPosts } from "../../redux/slices/postSlice";
+import { UserContext } from "../../contexts/userContext";
 const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
+  const [user, setUser] = useContext(UserContext);
   return (
     <>
       <div className="vendor-cover">
@@ -40,15 +42,16 @@ const Profile = () => {
                       src="../assets/images/logos/17.png"
                       className="img-fluid"
                     />
-                    <h3>Fashion Store</h3>
-                    <div className="rating">
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
+
+                    <h3>{user?.username}</h3>
+                    <div className='rating'>
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
                     </div>
-                    <h6>750 followers | 10 review</h6>
+                    <h6>750M followers | 10M review</h6>
                   </div>
                 </div>
                 <div className="profile-detail">
