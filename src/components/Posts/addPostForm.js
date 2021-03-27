@@ -13,6 +13,7 @@ const AddPostForm = () => {
   const history = useHistory();
   const [error, setError] = useState({ visible: false, message: "" });
   const [previewSource, setPreviewSource] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
@@ -31,7 +32,9 @@ const AddPostForm = () => {
       values.image_url = previewSource;
       values.user_id = "6041f2fe9dbc16c1758d7a9a";
       values.event_id = "6041f2fe9dbc16c1758d7a9b";
+      setLoader(true);
       const [res, err] = await queryApi("post", values, "POST");
+      setLoader(false);
       if (err) {
         setError({
           visible: true,
@@ -109,7 +112,11 @@ const AddPostForm = () => {
                 type='submit'
                 className='btn btn-solid'
               >
-                Share Post
+                {!loader ? (
+                  "Share Post"
+                ) : (
+                  <div class='spinner-border text-dark' role='status'></div>
+                )}
               </button>
             </form>
           </div>
