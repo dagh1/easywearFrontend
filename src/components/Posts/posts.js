@@ -32,7 +32,7 @@ const Posts = (props) => {
 
   const getPostEvent = (post) => {
     dispatch(selectPost(post));
-    history.replace("/event/post");
+    history.replace("/event/post/" + post._id);
   };
   return (
     <>

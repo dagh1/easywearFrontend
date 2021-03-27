@@ -36,7 +36,7 @@ function App() {
           <Route path='/contact' component={Contact} />
           <Route path='/user/profile' component={Profile}></Route>
           <Route path='/event/addPost' component={AddPostForm} />
-          <Route path='/event/post' component={PostDetails} />
+          <Route path='/event/post/:id' component={PostDetails} />
           <Route path='/event/updatePost/:id' component={UpdatePostForm} />
 
           <Route exact to='/' component={Home} />
