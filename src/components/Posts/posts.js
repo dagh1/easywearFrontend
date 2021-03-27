@@ -14,13 +14,17 @@ import { queryApi } from "../../utils/queryApi";
 const Posts = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [loader, setLoader] = useState(false);
+
   const updatePost = (post) => {
     dispatch(selectPost(post));
     history.replace("/event/updatePost/" + post._id);
   };
 
   const deletePostEvent = async (id) => {
+    setLoader(true);
     const [res, err] = await queryApi("post/" + id, {}, "DELETE");
+    setLoader(false);
     if (err) {
       dispatch(setErrors(err));
       console.log(err);
@@ -63,12 +67,21 @@ const Posts = (props) => {
               <a title='See more info' onClick={() => getPostEvent(props.post)}>
                 <i className='fa fa-info' aria-hidden='true' />
               </a>
-              <a
-                title='Delete Post From event'
-                onClick={() => deletePostEvent(props.post._id)}
-              >
-                <i className='fa fa-trash' aria-hidden='true' />
-              </a>
+              {!loader ? (
+                <a
+                  title='Delete Post From event'
+                  onClick={() => deletePostEvent(props.post._id)}
+                >
+                  <i className='fa fa-trash' aria-hidden='true' />
+                </a>
+              ) : (
+                <i
+                  className='spinner-border spinner-border-sm'
+                  role='status'
+                  aria-hidden='true'
+                />
+              )}
+
               <a
                 title='Update Post From event'
                 onClick={() => updatePost(props.post)}

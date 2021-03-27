@@ -115,7 +115,13 @@ const AddPostForm = () => {
                 {!loader ? (
                   "Share Post"
                 ) : (
-                  <div class='spinner-border text-dark' role='status'></div>
+                  <div>
+                    <span
+                      className='spinner-border spinner-border-sm'
+                      role='status'
+                      aria-hidden='true'
+                    />
+                  </div>
                 )}
               </button>
             </form>

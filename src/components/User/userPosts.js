@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import { selectPosts } from "../../redux/slices/postSlice";
 import Posts from "../Posts/posts";
 
 const UserPosts = () => {
   const [posts, err] = useSelector(selectPosts);
+  //pagination variables
+  const [pageNumber, setPageNumber] = useState(0);
+  const postsPerPage = 8;
+  const pageVisited = pageNumber * postsPerPage;
+  const displayedPosts = posts.slice(pageVisited, pageVisited + postsPerPage);
+  const pageCount = Math.ceil(posts.length / postsPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
     <>
@@ -30,9 +40,21 @@ const UserPosts = () => {
                       No posts to display
                     </span>
                   )}
-                  {posts?.map((post, index) => {
+                  {displayedPosts?.map((post, index) => {
                     return <Posts post={post} key={index} />;
                   })}
+
+                  <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                  ></ReactPaginate>
                 </div>
               </div>
             </div>

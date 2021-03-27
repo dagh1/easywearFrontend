@@ -14,6 +14,7 @@ const UpdatePostForm = () => {
   const [error, setError] = useState({ visible: false, message: "" });
   const selectedPost = useSelector(selectSelectedPosts);
   const [previewSource, setPreviewSource] = useState(selectedPost.image_url);
+  const [loader, setLoader] = useState(false);
 
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
@@ -27,7 +28,10 @@ const UpdatePostForm = () => {
     validationSchema: yupObject,
     onSubmit: async (values) => {
       values.image_url = previewSource;
+      setLoader(true);
       const [res, err] = await queryApi("post/" + id, values, "PUT");
+      setLoader(false);
+
       if (err) {
         setError({
           visible: true,
@@ -114,7 +118,15 @@ const UpdatePostForm = () => {
                 type='submit'
                 className='btn btn-solid'
               >
-                Update Post
+                {!loader ? (
+                  "Update"
+                ) : (
+                  <span
+                    className='spinner-border spinner-border-sm'
+                    role='status'
+                    aria-hidden='true'
+                  />
+                )}
               </button>
             </form>
           </div>
