@@ -66,14 +66,14 @@ const PostDetails = (props) => {
               <div
                 className='bg-size blur-up lazyloaded'
                 style={{
-                  backgroundImage: 'url("https://picsum.photos/200")',
+                  backgroundImage: `url(${post.image_url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   display: "block",
                 }}
               >
                 <img
-                  src='https://picsum.photos/200'
+                  src={post.image_url}
                   className='img-fluid blur-up lazyload bg-img'
                   style={{ display: "none" }}
                 />
@@ -85,10 +85,7 @@ const PostDetails = (props) => {
               <ul className='comment-section'>
                 <li>
                   <div className='media'>
-                    <img
-                      src='https://picsum.photos/200'
-                      alt='Generic placeholder image'
-                    />
+                    <img src={post.image_url} alt='Generic placeholder image' />
                     <div className='media-body'>
                       <h6>
                         Mark Jecno <span>( 12 Jannuary 2018 at 1:30AM )</span>
