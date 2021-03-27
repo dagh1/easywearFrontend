@@ -6,6 +6,7 @@ import UserPosts from "./userPosts";
 import { useDispatch } from "react-redux";
 import { fetchPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
+import UserClaims from "./userClaims";
 const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,12 +45,12 @@ const Profile = () => {
                     />
 
                     <h3>{user?.username}</h3>
-                    <div className='rating'>
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
+                    <div className="rating">
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
                     </div>
                     <h6>750M followers | 10M review</h6>
                   </div>
@@ -148,6 +149,15 @@ const Profile = () => {
                       </NavLink>
                     </li>
                     <li>
+                      <NavLink
+                        className="active"
+                        activeStyle={{ color: "#ff4c3b" }}
+                        to="/user/profile/claims"
+                      >
+                        My Claims
+                      </NavLink>
+                    </li>
+                    <li>
                       <a href="#">My Events</a>
                     </li>
                     <li>
@@ -177,6 +187,10 @@ const Profile = () => {
                   path="/user/profile/ProfileDetails"
                   component={userProfileDetails}
                 />
+                <Route
+                  path="/user/profile/claims"
+                  component={UserClaims}
+                ></Route>
                 <Route
                   path="/user/profile/posts"
                   render={(props) => <UserPosts {...props} />}

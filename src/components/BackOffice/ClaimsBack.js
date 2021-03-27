@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import * as Icon from "react-feather";
+import { formatDate } from "../../helpers/dateConvert";
 import {
   selectClaims,
   addClaim,
@@ -22,30 +23,13 @@ import styled from "styled-components";
 const ClaimBack = () => {
   const { id } = useParams();
   const history = useHistory();
-  const [showLoader, setShowLoader] = useState(false);
-  const [error, setError] = useState({ visible: false, message: "" });
+
   const selectedClaim = useSelector(selectSelectedClaim);
 
-  const yupSchema = Yup.object({
-    description: Yup.string()
-      .min(3, "Minimum 3 caractéres")
-      .max(80, "Maximum 80 caractéres"),
-  });
   const [posts, err] = useSelector(selectClaims);
 
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      type: "",
-      description: "",
-      date_claim: "2021-02-01T23:00:00.000+00:00",
-      image_url: "",
-      state: 1,
-      user_id: "6042082f471163107c3ca589",
-    },
-    validationSchema: yupSchema,
-  });
   const deleteClaimEvent = async (id) => {
     const [res, err] = await queryApi("claim/delete/" + id, {}, "DELETE");
     if (err) {
@@ -271,131 +255,6 @@ const ClaimBack = () => {
               </ul>
               <div className="tab-content" id="myTabContent">
                 <h4>Account Details</h4>
-                <form onSubmit={formik.handleSubmit}>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom0"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> Type Claim
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        name="type"
-                        id="type"
-                        type="text"
-                        value={formik.values.type}
-                        onChange={formik.handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom1"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> Description
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        name="description"
-                        id="description"
-                        type="text"
-                        required
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                      />
-                      {formik.errors.description &&
-                        formik.touched.description && (
-                          <FormError>{formik.errors.description}</FormError>
-                        )}
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom2"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> image url
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        type="text"
-                        required
-                        name="image_url"
-                        id="image_url"
-                        value={formik.values.image_url}
-                        onChange={formik.handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom3"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> State
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        type="text"
-                        required
-                        name="state"
-                        id="state"
-                        value={formik.values.state}
-                        onChange={formik.handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom4"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> User
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        type="text"
-                        required
-                        name="user_id"
-                        id="user_id"
-                        value={formik.values.user_id}
-                        onChange={formik.handleChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label
-                      htmlFor="validationCustom4"
-                      className="col-xl-3 col-md-4"
-                    >
-                      <span>*</span> Date
-                    </label>
-                    <div className="col-xl-8 col-md-7">
-                      <input
-                        className="form-control"
-                        name="date_claim"
-                        id="date_claim"
-                        required
-                        value={formik.values.date_claim}
-                        onChange={formik.handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="pull-right">
-                    <button type="submit" className="btn btn-primary">
-                      Save
-                    </button>
-                  </div>
-                </form>
               </div>
             </div>
             {/* Container-fluid Ends*/}
@@ -573,7 +432,7 @@ const ClaimBack = () => {
                                     }
                                   })()}
                                 </td>
-                                <td>{prod.date_claim}</td>
+                                <td>{formatDate(prod.date_claim)}</td>
                                 <td>{prod.description}</td>
                                 <td
                                   className="jsgrid-cell jsgrid-align-center"
@@ -621,6 +480,3 @@ const ClaimBack = () => {
   );
 };
 export default ClaimBack;
-const FormError = styled.p`
-  color: #f74b1b;
-`;

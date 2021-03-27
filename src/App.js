@@ -26,33 +26,49 @@ function App() {
     _id: "605cb3aefb9ba3244878f644",
     username: "Rana",
     password: "yayaya",
+    role: "aa",
   });
   return (
     <>
-      <UserContext.Provider value={[connectedUser, setConnectedUser]}>
-        <Navbar />
-        <Switch>
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/user/profile" component={Profile} />
-          <Route path="/event/addPost" component={AddPostForm} />
-          <Route path="/event/post" component={PostDetails} />
-          <Route path="/event/updatePost/:id" component={UpdatePostForm} />
+      {(() => {
+        if (connectedUser.role === "admin") {
+          return (
+            <>
+              <NavbarBack></NavbarBack>
+              <SideBar></SideBar>
+              <Switch>
+                <Route path="/ClaimsBack" component={ClaimBack} />
+                <Route path="/Products" component={Products} />
+                <Route path="/Events" component={Events} />
+                <Route exact to="/" component={DashBoard} />
+              </Switch>
+              <FooterBack></FooterBack>
+            </>
+          );
+        } else {
+          return (
+            <>
+              <UserContext.Provider value={[connectedUser, setConnectedUser]}>
+                <Navbar></Navbar>
+                <Switch>
+                  <Route path="/about" component={About} />
+                  <Route path="/contact" component={Contact} />
+                  <Route path="/user/profile" component={Profile} />
+                  <Route path="/event/addPost" component={AddPostForm} />
+                  <Route path="/event/post/:id" component={PostDetails} />
+                  <Route
+                    path="/event/updatePost/:id"
+                    component={UpdatePostForm}
+                  />
 
-          <Route exact to="/" component={Home} />
-        </Switch>
-        <Footer />
-      </UserContext.Provider>
-
-      {/*<NavbarBack></NavbarBack>
-      <SideBar></SideBar>
-      <Switch>
-        <Route path='/ClaimsBack' component={ClaimBack} />
-        <Route path='/Products' component={Products} />
-        <Route path='/Events' component={Events} />
-        <Route exact to='/' component={DashBoard} />
-      </Switch>
-      <FooterBack></FooterBack>*/}
+                  <Route exact to="/" component={Home} />
+                </Switch>
+                <Footer />
+              </UserContext.Provider>
+            </>
+          );
+        }
+      })()}
     </>
   );
 }

@@ -53,6 +53,17 @@ export const fetchClaims = () => async (dispatch) => {
     dispatch(populateclaim(res));
   }
 };
+
+export const fetchClaimByType = (type) => async (dispatch) => {
+  const [res, error] = await queryApi("claim/findAllByType?type=" + type);
+
+  if (error) {
+    dispatch(setErrors(error));
+  } else {
+    dispatch(populateclaim(res));
+  }
+};
+
 export const selectSelectedClaim = (state) => {
   return state.claimSlice.selectedClaim;
 };
