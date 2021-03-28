@@ -41,6 +41,14 @@ const claimSlice = createSlice({
         state.claims[index] = payload;
       }
     },
+
+    updateClaim: (state, action) => {
+      const payload = action.payload;
+      const index = state.claims.findIndex((item) => item._id === payload._id);
+      if (index !== -1) {
+        state.claims[index] = payload;
+      }
+    },
   },
 });
 
@@ -53,6 +61,17 @@ export const fetchClaims = () => async (dispatch) => {
     dispatch(populateclaim(res));
   }
 };
+
+export const fetchClaimByType = (type) => async (dispatch) => {
+  const [res, error] = await queryApi("claim/findAllByType?type=" + type);
+
+  if (error) {
+    dispatch(setErrors(error));
+  } else {
+    dispatch(populateclaim(res));
+  }
+};
+
 export const selectSelectedClaim = (state) => {
   return state.claimSlice.selectedClaim;
 };
@@ -68,6 +87,7 @@ export const {
   selectClaim,
   updateStateClaim,
   unselectClaim,
+  updateClaim,
 } = claimSlice.actions;
 
 export default claimSlice.reducer;

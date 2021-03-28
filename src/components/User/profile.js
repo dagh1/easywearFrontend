@@ -6,6 +6,7 @@ import UserPosts from "./userPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
+import UserClaims from "./userClaims";
 const Profile = () => {
   const [user, setUser] = useContext(UserContext);
 
@@ -151,6 +152,15 @@ const Profile = () => {
                       </NavLink>
                     </li>
                     <li>
+                      <NavLink
+                        className='active'
+                        activeStyle={{ color: "#ff4c3b" }}
+                        to='/user/profile/claims'
+                      >
+                        My Claims
+                      </NavLink>
+                    </li>
+                    <li>
                       <a href='#'>My Events</a>
                     </li>
                     <li>
@@ -180,6 +190,10 @@ const Profile = () => {
                   path='/user/profile/ProfileDetails'
                   component={userProfileDetails}
                 />
+                <Route
+                  path='/user/profile/claims'
+                  component={UserClaims}
+                ></Route>
                 <Route
                   path='/user/profile/posts'
                   render={(props) => <UserPosts {...props} />}
