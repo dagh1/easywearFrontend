@@ -29,6 +29,7 @@ function App() {
   });
   return (
     <>
+
       <UserContext.Provider value={[connectedUser, setConnectedUser]}>
         <Navbar />
         <Switch>

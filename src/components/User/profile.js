@@ -45,6 +45,7 @@ const Profile = () => {
                       src='/assets/images/logos/17.png'
                       className='img-fluid'
                     />
+
                     <h3>{user?.username}</h3>
                     <div className='rating'>
                       <i className='fa fa-star' />
@@ -84,10 +85,7 @@ const Profile = () => {
                       <ul>
                         <li>
                           <a href='#'>
-                            <i
-                              className='fa fa-facebook-official'
-                              aria-hidden='true'
-                            />
+                            <i className='fa fa-facebook' aria-hidden='true' />
                           </a>
                         </li>
                         <li>
