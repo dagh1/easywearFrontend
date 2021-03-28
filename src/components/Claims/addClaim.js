@@ -15,7 +15,9 @@ const AddClaim = () => {
       .min(3, "Minimum 3 caractéres")
       .max(80, "Maximum 80 caractéres"),
   });
+  const [loader, setLoader] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const [previewSource, setPreviewSource] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
   const [error, setError] = useState({ visible: false, message: "" });
@@ -24,16 +26,17 @@ const AddClaim = () => {
       type: "",
       description: "",
 
-      image_url: "",
       state: 1,
       user_id: "6042082f471163107c3ca589",
     },
     validationSchema: yupSchema,
     onSubmit: async (values) => {
-      setShowLoader(true);
+      console.log(values.type);
+      values.image_url = previewSource;
+      setLoader(true);
       const [res, err] = await queryApi("claim/addClaim", values, "POST");
       if (err) {
-        setShowLoader(false);
+        setLoader(false);
         setError({
           visible: true,
           message: JSON.stringify(err.errors, null, 2),
@@ -45,6 +48,13 @@ const AddClaim = () => {
       }
     },
   });
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setPreviewSource(reader.result);
+    };
+  };
   return (
     <>
       <section className="collection section-b-space ratio_square ">
@@ -82,17 +92,19 @@ const AddClaim = () => {
                   htmlFor="validationCustom2"
                   className="col-xl-3 col-md-4"
                 >
-                  <span>*</span> image url
+                  <span>*</span> image
                 </label>
                 <div className="col-xl-8 col-md-7">
                   <input
                     className="form-control"
-                    type="text"
-                    required
+                    type="file"
                     name="image_url"
                     id="image_url"
-                    value={formik.values.image_url}
-                    onChange={formik.handleChange}
+                    placeholder="Image"
+                    onChange={(event) => {
+                      formik.setFieldValue("image_url", event.target.files[0]);
+                      previewFile(event.target.files[0]);
+                    }}
                   />
                 </div>
               </div>
@@ -119,7 +131,17 @@ const AddClaim = () => {
 
               <div className="pull-right">
                 <button type="submit" className="btn btn-primary">
-                  Save
+                  {!loader ? (
+                    "Add Claim"
+                  ) : (
+                    <div>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  )}
                 </button>
               </div>
             </form>

@@ -93,7 +93,7 @@ const ProductClaims = () => {
           <Form onSubmit={formik.handleSubmit}>
             <Container>
               <Row>
-                <Image src="https://picsum.photos/200" fluid />
+                <Image src={selectedClaim?.image_url} fluid />
               </Row>
             </Container>
 
@@ -196,28 +196,28 @@ const ProductClaims = () => {
                   <div
                     className="bg-size blur-up lazyloaded"
                     style={{
-                      backgroundImage: 'url("https://picsum.photos/200")',
+                      backgroundImage: `url(${selectedClaim?.image_url})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                       display: "block",
                     }}
                   >
                     <img
-                      src="https://picsum.photos/200"
+                      src={selectedClaim?.image_url}
                       className="img-fluid blur-up lazyload bg-img"
                       style={{ display: "none" }}
                     />
                   </div>
                   <div className="collection-content">
-                    <h4>Added In : {formatDate(claim.date_claim)}</h4>
+                    <h4>Added In : {formatDate(claim?.date_claim)}</h4>
                     {(() => {
-                      if (claim.state === 1) {
+                      if (claim?.state === 1) {
                         return (
                           <span className="badge badge-primary">
                             Not Treated Yet
                           </span>
                         );
-                      } else if (claim.state === 2) {
+                      } else if (claim?.state === 2) {
                         return (
                           <span className="badge badge-warning">
                             Processing
@@ -230,7 +230,7 @@ const ProductClaims = () => {
                       }
                     })()}
 
-                    <p>{claim.description}</p>
+                    <p>{claim?.description}</p>
                     <a
                       onClick={() => FindOneClaimEvent(claim)}
                       className="btn btn-outline"

@@ -191,14 +191,14 @@ const CommentClaims = () => {
                   <div
                     className="bg-size blur-up lazyloaded"
                     style={{
-                      backgroundImage: 'url("https://picsum.photos/200")',
+                      backgroundImage: `url(${selectedClaim?.image_url})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                       display: "block",
                     }}
                   >
                     <img
-                      src="https://picsum.photos/200"
+                      src={selectedClaim?.image_url}
                       className="img-fluid blur-up lazyload bg-img"
                       style={{ display: "none" }}
                     />

@@ -26,11 +26,10 @@ function App() {
     _id: "6041f2fe9dbc16c1758d7a9a",
     username: "Rana",
     password: "yayaya",
-    role: "admin",
+    role: "aa",
   });
   return (
     <>
-
       {(() => {
         if (connectedUser.role === "admin") {
           return (
@@ -61,7 +60,6 @@ function App() {
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
-
 
                   <Route exact to="/" component={Home} />
                 </Switch>
