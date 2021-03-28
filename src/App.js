@@ -26,7 +26,7 @@ function App() {
     _id: "605cb3aefb9ba3244878f644",
     username: "Rana",
     password: "yayaya",
-    role: "aa",
+    role: "admin",
   });
   return (
     <>
