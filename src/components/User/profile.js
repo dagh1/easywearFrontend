@@ -7,11 +7,12 @@ import { useDispatch } from "react-redux";
 import { fetchPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 const Profile = () => {
+  const [user, setUser] = useContext(UserContext);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(user._id));
   }, [dispatch]);
-  const [user, setUser] = useContext(UserContext);
   return (
     <>
       <div className='vendor-cover'>

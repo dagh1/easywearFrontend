@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
 
 import { addPost } from "../../redux/slices/postSlice";
+import { UserContext } from "../../contexts/userContext";
 
 const AddPostForm = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const AddPostForm = () => {
   const [error, setError] = useState({ visible: false, message: "" });
   const [previewSource, setPreviewSource] = useState("");
   const [loader, setLoader] = useState(false);
+
+  const [user, setUser] = useContext(UserContext);
 
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
@@ -30,7 +33,7 @@ const AddPostForm = () => {
     validationSchema: yupObject,
     onSubmit: async (values) => {
       values.image_url = previewSource;
-      values.user_id = "6041f2fe9dbc16c1758d7a9a";
+      values.user_id = user._id;
       values.event_id = "6041f2fe9dbc16c1758d7a9b";
       setLoader(true);
       const [res, err] = await queryApi("post", values, "POST");
