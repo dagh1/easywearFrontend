@@ -38,7 +38,7 @@ const Contact = () => {
                   <li>
                     <div className='contact-icon'>
                       <img
-                        src='../assets/images/icon/phone.png'
+                        src='/assets/images/icon/phone.png'
                         alt='Generic placeholder image'
                       />
                       <h6>Contact Us</h6>
@@ -61,7 +61,7 @@ const Contact = () => {
                   <li>
                     <div className='contact-icon'>
                       <img
-                        src='../assets/images/icon/email.png'
+                        src='/assets/images/icon/email.png'
                         alt='Generic placeholder image'
                       />
                       <h6>Address</h6>

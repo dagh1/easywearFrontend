@@ -32,7 +32,7 @@ const About = () => {
             <div className='col-lg-12'>
               <div className='banner-section'>
                 <img
-                  src='../assets/images/about/about%20us.jpg'
+                  src='/assets/images/about/about%20us.jpg'
                   className='img-fluid blur-up lazyloaded'
                   alt
                 />
@@ -75,7 +75,7 @@ const About = () => {
           <div className='row'>
             <div className='col-sm-12'>
               <h2>Our Team</h2>
-              <div className='team-4 slick-initialized slick-slider'>
+              <div className='team-4 slick-initialized slick-slider '>
                 <button
                   className='slick-prev slick-arrow'
                   aria-label='Previous'
@@ -106,14 +106,14 @@ const About = () => {
                             className='bg-size blur-up lazyload'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/2.jpg")',
+                                'url("/assets/images/team/2.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/2.jpg'
+                              src='/assets/images/team/2.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -137,14 +137,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/3.jpg")',
+                                'url("/assets/images/team/3.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/3.jpg'
+                              src='/assets/images/team/3.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -168,14 +168,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/4.jpg")',
+                                'url("/assets/images/team/4.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/4.jpg'
+                              src='/assets/images/team/4.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -199,14 +199,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/1.jpg")',
+                                'url("/assets/images/team/1.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/1.jpg'
+                              src='/assets/images/team/1.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -230,14 +230,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/1.jpg")',
+                                'url("/assets/images/team/1.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/1.jpg'
+                              src='/assets/images/team/1.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -261,14 +261,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/2.jpg")',
+                                'url("/assets/images/team/2.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/2.jpg'
+                              src='/assets/images/team/2.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -292,14 +292,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/3.jpg")',
+                                'url("/assets/images/team/3.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/3.jpg'
+                              src='/assets/images/team/3.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -323,14 +323,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/4.jpg")',
+                                'url("/assets/images/team/4.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/4.jpg'
+                              src='/assets/images/team/4.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -353,14 +353,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/1.jpg")',
+                                'url("/assets/images/team/1.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/1.jpg'
+                              src='/assets/images/team/1.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -384,14 +384,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/1.jpg")',
+                                'url("/assets/images/team/1.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/1.jpg'
+                              src='/assets/images/team/1.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -415,14 +415,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/2.jpg")',
+                                'url("/assets/images/team/2.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/2.jpg'
+                              src='/assets/images/team/2.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -446,14 +446,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/3.jpg")',
+                                'url("/assets/images/team/3.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/3.jpg'
+                              src='/assets/images/team/3.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -477,14 +477,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/4.jpg")',
+                                'url("/assets/images/team/4.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/4.jpg'
+                              src='/assets/images/team/4.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}
@@ -508,14 +508,14 @@ const About = () => {
                             className='bg-size blur-up lazyloaded'
                             style={{
                               backgroundImage:
-                                'url("../assets/images/team/1.jpg")',
+                                'url("/assets/images/team/1.jpg")',
                               backgroundSize: "cover",
                               backgroundPosition: "center center",
                               display: "block",
                             }}
                           >
                             <img
-                              src='../assets/images/team/1.jpg'
+                              src='/assets/images/team/1.jpg'
                               className='img-fluid blur-up lazyload bg-img'
                               alt
                               style={{ display: "none" }}

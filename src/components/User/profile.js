@@ -18,14 +18,14 @@ const Profile = () => {
         <div
           className='bg-size blur-up lazyloaded'
           style={{
-            backgroundImage: 'url("../assets/images/vendor/profile.jpg")',
+            backgroundImage: 'url("/assets/images/vendor/profile.jpg")',
             backgroundSize: "cover",
             backgroundPosition: "center center",
             display: "block",
           }}
         >
           <img
-            src='../assets/images/vendor/profile.jpg'
+            src='/assets/images/vendor/profile.jpg'
             className='bg-img lazyload blur-up'
             style={{ display: "none" }}
           />
@@ -39,7 +39,7 @@ const Profile = () => {
                 <div className='profile-image'>
                   <div>
                     <img
-                      src='../assets/images/logos/17.png'
+                      src='/assets/images/logos/17.png'
                       className='img-fluid'
                     />
                     <h3>{user?.username}</h3>
@@ -162,7 +162,7 @@ const Profile = () => {
               <div className='collection-sidebar-banner'>
                 <a href='#'>
                   <img
-                    src='../assets/images/side-banner.png'
+                    src='/assets/images/side-banner.png'
                     className='img-fluid blur-up lazyloaded'
                   />
                 </a>
