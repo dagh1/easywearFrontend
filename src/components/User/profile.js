@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router";
 import userProfileDetails from "./userProfileDetails";
 import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
-import { useDispatch } from "react-redux";
-import { fetchPosts } from "../../redux/slices/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 const Profile = () => {
   const [user, setUser] = useContext(UserContext);
@@ -13,6 +13,8 @@ const Profile = () => {
   useEffect(() => {
     dispatch(fetchPosts(user._id));
   }, [dispatch]);
+  const [posts, err] = useSelector(selectPosts);
+
   return (
     <>
       <div className='vendor-cover'>
@@ -82,7 +84,10 @@ const Profile = () => {
                       <ul>
                         <li>
                           <a href='#'>
-                            <i className='fa fa-facebook' aria-hidden='true' />
+                            <i
+                              className='fa fa-facebook-official'
+                              aria-hidden='true'
+                            />
                           </a>
                         </li>
                         <li>
@@ -144,7 +149,7 @@ const Profile = () => {
                         activeStyle={{ color: "#ff4c3b" }}
                         to='/user/profile/posts'
                       >
-                        My Posts
+                        My Posts ({posts.length})
                       </NavLink>
                     </li>
                     <li>
