@@ -45,8 +45,8 @@ const postSlice = createSlice({
   },
 });
 
-export const fetchPosts = () => async (dispatch) => {
-  const [res, error] = await queryApi("post");
+export const fetchPosts = (userid) => async (dispatch) => {
+  const [res, error] = await queryApi("post/userPosts/" + userid, {}, "GET");
 
   if (error) {
     dispatch(setErrors(error));

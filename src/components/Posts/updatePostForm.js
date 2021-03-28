@@ -13,6 +13,9 @@ const UpdatePostForm = () => {
   const { id } = useParams();
   const [error, setError] = useState({ visible: false, message: "" });
   const selectedPost = useSelector(selectSelectedPosts);
+  const [previewSource, setPreviewSource] = useState(selectedPost.image_url);
+  const [loader, setLoader] = useState(false);
+
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
     description: Yup.string().required().max(255),
@@ -21,13 +24,14 @@ const UpdatePostForm = () => {
     initialValues: {
       title: selectedPost.title,
       description: selectedPost.description,
-      image_url: selectedPost.image_url,
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {
-      console.log(values);
-      values.image_url = "https://picsum.photos/200";
+      values.image_url = previewSource;
+      setLoader(true);
       const [res, err] = await queryApi("post/" + id, values, "PUT");
+      setLoader(false);
+
       if (err) {
         setError({
           visible: true,
@@ -42,6 +46,14 @@ const UpdatePostForm = () => {
   useEffect(() => {
     if (!selectedPost) history.replace("/user/profile");
   }, [selectedPost, history]);
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setPreviewSource(reader.result);
+    };
+  };
   return (
     <>
       <div className='AddPostForm login-page section-b-space mt-5'>
@@ -88,6 +100,16 @@ const UpdatePostForm = () => {
                   name='image_url'
                   id='image_url'
                   placeholder='Image'
+                  onChange={(event) => {
+                    formik.setFieldValue("image_url", event.target.files[0]);
+                    previewFile(event.target.files[0]);
+                  }}
+                />
+                <img
+                  src={previewSource}
+                  width='150'
+                  height='150'
+                  style={{ "border-radius": "50%" }}
                 />
               </div>
 
@@ -96,7 +118,15 @@ const UpdatePostForm = () => {
                 type='submit'
                 className='btn btn-solid'
               >
-                Update Post
+                {!loader ? (
+                  "Update"
+                ) : (
+                  <span
+                    className='spinner-border spinner-border-sm'
+                    role='status'
+                    aria-hidden='true'
+                  />
+                )}
               </button>
             </form>
           </div>

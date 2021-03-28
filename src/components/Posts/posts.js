@@ -17,6 +17,9 @@ import { addClaim } from "../../redux/slices/claimSlice";
 const Posts = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [loader, setLoader] = useState(false);
+
+
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
   const updatePost = (post) => {
@@ -25,7 +28,9 @@ const Posts = (props) => {
   };
 
   const deletePostEvent = async (id) => {
+    setLoader(true);
     const [res, err] = await queryApi("post/" + id, {}, "DELETE");
+    setLoader(false);
     if (err) {
       dispatch(setErrors(err));
       console.log(err);
@@ -85,7 +90,6 @@ const Posts = (props) => {
                   className="bg-size blur-up lazyloaded"
                   style={{
                     backgroundImage: `url(${props.post.image_url})`,
-
                     backgroundSize: "cover",
                     backgroundPosition: "center center",
                     display: "block",
@@ -126,6 +130,7 @@ const Posts = (props) => {
                   <i className="fa fa-cog fa-fw" aria-hidden="true" />
                 </a>
               </div>
+
             </div>
             <div className="product-detail">
               <div>

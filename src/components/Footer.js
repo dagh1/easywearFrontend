@@ -1,5 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from "react";
 
 const Footer = () => {
@@ -62,7 +63,7 @@ const Footer = () => {
                 </div>
                 <div className='footer-contant'>
                   <div className='footer-logo'>
-                    <img src='../assets/images/icon/logo.png' alt />
+                    <img src='/assets/images/icon/logo.png' />
                   </div>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -198,30 +199,27 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a href='#'>
-                        <img src='../assets/images/icon/visa.png' alt />
+                        <img src='/assets/images/icon/visa.png' />
                       </a>
                     </li>
                     <li>
                       <a href='#'>
-                        <img src='../assets/images/icon/mastercard.png' alt />
+                        <img src='/assets/images/icon/mastercard.png' />
                       </a>
                     </li>
                     <li>
                       <a href='#'>
-                        <img src='../assets/images/icon/paypal.png' alt />
+                        <img src='/assets/images/icon/paypal.png' />
                       </a>
                     </li>
                     <li>
                       <a href='#'>
-                        <img
-                          src='../assets/images/icon/american-express.png'
-                          alt
-                        />
+                        <img src='/assets/images/icon/american-express.png' />
                       </a>
                     </li>
                     <li>
                       <a href='#'>
-                        <img src='../assets/images/icon/discover.png' alt />
+                        <img src='/assets/images/icon/discover.png' />
                       </a>
                     </li>
                   </ul>

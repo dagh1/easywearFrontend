@@ -3,31 +3,35 @@ import { Route, Switch } from "react-router";
 import userProfileDetails from "./userProfileDetails";
 import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
-import { useDispatch } from "react-redux";
-import { fetchPosts } from "../../redux/slices/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
 const Profile = () => {
+  const [user, setUser] = useContext(UserContext);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(user._id));
   }, [dispatch]);
-  const [user, setUser] = useContext(UserContext);
+  const [posts, err] = useSelector(selectPosts);
+
   return (
     <>
       <div className="vendor-cover">
         <div
           className="bg-size blur-up lazyloaded"
           style={{
-            backgroundImage: 'url("../assets/images/vendor/profile.jpg")',
+            backgroundImage: 'url("/assets/images/vendor/profile.jpg")',
             backgroundSize: "cover",
             backgroundPosition: "center center",
             display: "block",
           }}
         >
           <img
-            src="../assets/images/vendor/profile.jpg"
-            className="bg-img lazyload blur-up"
+            src='/assets/images/vendor/profile.jpg'
+            className='bg-img lazyload blur-up'
+
             style={{ display: "none" }}
           />
         </div>
@@ -40,8 +44,9 @@ const Profile = () => {
                 <div className="profile-image">
                   <div>
                     <img
-                      src="../assets/images/logos/17.png"
-                      className="img-fluid"
+                      src='/assets/images/logos/17.png'
+                      className='img-fluid'
+
                     />
 
                     <h3>{user?.username}</h3>
@@ -82,6 +87,7 @@ const Profile = () => {
                     <div className="footer-social">
                       <ul>
                         <li>
+
                           <a href="#">
                             <i className="fa fa-facebook" aria-hidden="true" />
                           </a>
@@ -145,7 +151,7 @@ const Profile = () => {
                         activeStyle={{ color: "#ff4c3b" }}
                         to="/user/profile/posts"
                       >
-                        My Posts
+                        My Posts ({posts.length})
                       </NavLink>
                     </li>
                     <li>
@@ -173,8 +179,9 @@ const Profile = () => {
               <div className="collection-sidebar-banner">
                 <a href="#">
                   <img
-                    src="../assets/images/side-banner.png"
-                    className="img-fluid blur-up lazyloaded"
+                    src='/assets/images/side-banner.png'
+                    className='img-fluid blur-up lazyloaded'
+
                   />
                 </a>
               </div>
