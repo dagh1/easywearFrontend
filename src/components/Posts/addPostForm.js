@@ -1,33 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
-import { addPost } from "../../redux/slices/postSlice";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
+
+import { addPost } from "../../redux/slices/postSlice";
+import { UserContext } from "../../contexts/userContext";
+
 const AddPostForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [error, setError] = useState({ visible: false, message: "" });
+  const [previewSource, setPreviewSource] = useState("");
+  const [loader, setLoader] = useState(false);
+
+  const [user, setUser] = useContext(UserContext);
+
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
     description: Yup.string().required().max(255),
   });
+
   const formik = useFormik({
     initialValues: {
       title: "",
       description: "",
-      image_url: "",
       user_id: "",
       event_id: "",
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {
-      values.image_url = "https://picsum.photos/200";
-      values.user_id = "6041f2fe9dbc16c1758d7a9a";
+      values.image_url = previewSource;
+      values.user_id = user._id;
       values.event_id = "6041f2fe9dbc16c1758d7a9b";
+      setLoader(true);
       const [res, err] = await queryApi("post", values, "POST");
+      setLoader(false);
       if (err) {
         setError({
           visible: true,
@@ -39,6 +49,14 @@ const AddPostForm = () => {
       }
     },
   });
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setPreviewSource(reader.result);
+    };
+  };
   return (
     <>
       <div className='AddPostForm login-page section-b-space mt-5'>
@@ -85,6 +103,10 @@ const AddPostForm = () => {
                   name='image_url'
                   id='image_url'
                   placeholder='Image'
+                  onChange={(event) => {
+                    formik.setFieldValue("image_url", event.target.files[0]);
+                    previewFile(event.target.files[0]);
+                  }}
                 />
               </div>
 
@@ -93,7 +115,17 @@ const AddPostForm = () => {
                 type='submit'
                 className='btn btn-solid'
               >
-                Share Post
+                {!loader ? (
+                  "Share Post"
+                ) : (
+                  <div>
+                    <span
+                      className='spinner-border spinner-border-sm'
+                      role='status'
+                      aria-hidden='true'
+                    />
+                  </div>
+                )}
               </button>
             </form>
           </div>

@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectSelectedPosts } from "./../../redux/slices/postSlice";
 import { formatDate } from "../../helpers/dateConvert";
+import { useHistory } from "react-router";
+import { queryApi } from "../../utils/queryApi";
 
-const PostDetails = () => {
+const PostDetails = (props) => {
   const selectedPost = useSelector(selectSelectedPosts);
+  const [post, setPost] = useState({});
+  const history = useHistory();
+  useEffect(() => {
+    async function fetchPost() {
+      const [res, err] = await queryApi(
+        "post/" + props.match.params.id,
+        {},
+        "GET"
+      );
+      setPost(res);
+    }
+    fetchPost();
+  });
   return (
     <>
       <div className='breadcrumb-section'>
@@ -32,9 +47,9 @@ const PostDetails = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-sm-12 blog-detail'>
-              <h3>{selectedPost.title}</h3>
+              <h3>{post.title}</h3>
               <ul className='post-social'>
-                <li>{formatDate(selectedPost.date_creation)}</li>
+                <li>{formatDate(post.date_creation)}</li>
                 <li>Posted By : Admin Admin</li>
                 <li>
                   <i className='fa fa-heart' /> 5 Hits
@@ -43,7 +58,7 @@ const PostDetails = () => {
                   <i className='fa fa-comments' /> 10 Comment
                 </li>
               </ul>
-              <p>{selectedPost.description}</p>
+              <p>{post.description}</p>
             </div>
           </div>
           <div className='row section-b-space blog-advance'>
@@ -51,14 +66,14 @@ const PostDetails = () => {
               <div
                 className='bg-size blur-up lazyloaded'
                 style={{
-                  backgroundImage: 'url("https://picsum.photos/200")',
+                  backgroundImage: `url(${post.image_url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   display: "block",
                 }}
               >
                 <img
-                  src='https://picsum.photos/200'
+                  src={post.image_url}
                   className='img-fluid blur-up lazyload bg-img'
                   style={{ display: "none" }}
                 />
@@ -70,10 +85,7 @@ const PostDetails = () => {
               <ul className='comment-section'>
                 <li>
                   <div className='media'>
-                    <img
-                      src='https://picsum.photos/200'
-                      alt='Generic placeholder image'
-                    />
+                    <img src={post.image_url} alt='Generic placeholder image' />
                     <div className='media-body'>
                       <h6>
                         Mark Jecno <span>( 12 Jannuary 2018 at 1:30AM )</span>

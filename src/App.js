@@ -23,13 +23,14 @@ import { UserContext } from "./contexts/userContext";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState({
-    _id: "605cb3aefb9ba3244878f644",
+    _id: "6041f2fe9dbc16c1758d7a9a",
     username: "Rana",
     password: "yayaya",
     role: "admin",
   });
   return (
     <>
+
       {(() => {
         if (connectedUser.role === "admin") {
           return (
@@ -60,6 +61,7 @@ function App() {
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
+
 
                   <Route exact to="/" component={Home} />
                 </Switch>

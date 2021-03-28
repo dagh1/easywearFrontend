@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /*-----------------------------------------------------------------------------------
 
  Template Name:Multikart
@@ -34,8 +35,6 @@
 // 25.Tooltip
 
 (function ($) {
-  "use strict";
-
   /*=====================
      01.Pre loader
      ==========================*/
@@ -113,7 +112,7 @@
   $(".bg-img").parent().addClass("bg-size");
   $(".bg-img.blur-up").parent().addClass("blur-up lazyload");
 
-  jQuery(".bg-img").each(function () {
+  $(".bg-img").each(function () {
     var el = $(this),
       src = el.attr("src"),
       parent = el.parent();
@@ -134,7 +133,7 @@
   $(".filter-button").click(function () {
     $(this).addClass("active").siblings(".active").removeClass("active");
     var value = $(this).attr("data-filter");
-    if (value == "all") {
+    if (value === "all") {
       $(".filter").show("1000");
     } else {
       $(".filter")
@@ -146,7 +145,7 @@
     }
   });
 
-  $("#formButton").click(function () {
+  $("#formButton").on("click", function () {
     $("#form1").toggle();
   });
 
@@ -170,35 +169,35 @@
   /*=====================
      09. footer according
      ==========================*/
-  var contentwidth = jQuery(window).width();
+  var contentwidth = $(window).width();
   if (contentwidth < "750") {
-    jQuery(".footer-title h4").append('<span class="according-menu"></span>');
-    jQuery(".footer-title").on("click", function () {
-      jQuery(".footer-title").removeClass("active");
-      jQuery(".footer-contant").slideUp("normal");
-      if (jQuery(this).next().is(":hidden") == true) {
-        jQuery(this).addClass("active");
-        jQuery(this).next().slideDown("normal");
+    $(".footer-title h4").append('<span class="according-menu"></span>');
+    $(".footer-title").on("click", function () {
+      $(".footer-title").removeClass("active");
+      $(".footer-contant").slideUp("normal");
+      if ($(this).next().is(":hidden") === true) {
+        $(this).addClass("active");
+        $(this).next().slideDown("normal");
       }
     });
-    jQuery(".footer-contant").hide();
+    $(".footer-contant").hide();
   } else {
-    jQuery(".footer-contant").show();
+    $(".footer-contant").show();
   }
 
   if ($(window).width() < "1183") {
-    jQuery(".menu-title h5").append('<span class="according-menu"></span>');
-    jQuery(".menu-title").on("click", function () {
-      jQuery(".menu-title").removeClass("active");
-      jQuery(".menu-content").slideUp("normal");
-      if (jQuery(this).next().is(":hidden") == true) {
-        jQuery(this).addClass("active");
-        jQuery(this).next().slideDown("normal");
+    $(".menu-title h5").append('<span class="according-menu"></span>');
+    $(".menu-title").on("click", function () {
+      $(".menu-title").removeClass("active");
+      $(".menu-content").slideUp("normal");
+      if ($(this).next().is(":hidden") === true) {
+        $(this).addClass("active");
+        $(this).next().slideDown("normal");
       }
     });
-    jQuery(".menu-content").hide();
+    $(".menu-content").hide();
   } else {
-    jQuery(".menu-content").show();
+    $(".menu-content").show();
   }
 
   /*=====================
@@ -218,7 +217,7 @@
   $(".quantity-left-minus").on("click", function () {
     var $qty = $(this).siblings(".qty-input");
     var _val = $($qty).val();
-    if (_val == "1") {
+    if (_val === "1") {
       var _removeCls = $(this).parents(".cart_qty");
       $(_removeCls).removeClass("open");
     }
@@ -251,12 +250,13 @@
       }
     }
   );
-
   /*=====================
      12. Full slider
      ==========================*/
+
   if ($(window).width() > 767) {
     var $slider = $(".full-slider");
+
     $slider
       .on("init", function () {
         mouseWheel($slider);
@@ -289,7 +289,8 @@
       }
     }
   } else {
-    var $slider = $(".full-slider");
+    $slider = $(".full-slider");
+
     $slider
       .on("init", function () {
         mouseWheel($slider);
@@ -327,8 +328,10 @@
      13. slick slider
      ==========================*/
   $(".slide-1").slick({
-    // autoplay: true,
-    // autoplaySpeed: 5000
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
   });
 
   $(".slide-2").slick({
@@ -904,7 +907,7 @@
      ==========================*/
   $("#tab-1").css("display", "Block");
   $(".default").css("display", "Block");
-  $(".tabs li a").on("click", function () {
+  $(".tabs li a").on("click", function (event) {
     event.preventDefault();
     $(".tab_product_slider").slick("unslick");
     $(".product-4").slick("unslick");
@@ -951,7 +954,7 @@
       ],
     });
   });
-  $(".tabs li a").on("click", function () {
+  $(".tabs li a").on("click", function (event) {
     event.preventDefault();
     $(".tab_product_slider").slick("unslick");
     $(".product-5").slick("unslick");
@@ -1010,7 +1013,7 @@
 
   $("#tab-1").css("display", "Block");
   $(".default").css("display", "Block");
-  $(".tabs li a").on("click", function () {
+  $(".tabs li a").on("click", function (event) {
     event.preventDefault();
     $(".tab_product_slider").slick("unslick");
     $(".product-3").slick("unslick");
@@ -1049,7 +1052,7 @@
      16 .category page
      ==========================*/
   $(".collapse-block-title").on("click", function (e) {
-    e.preventDefault;
+    e.preventDefault();
     var speed = 300;
     var thisItem = $(this).parent(),
       nextLevel = $(this).next(".collection-collapse-block-content");
@@ -1239,123 +1242,4 @@
       );
     }
   );
-
-  /*=====================
-     20. Color Picker
-     ==========================*/
-  var color_picker1 = document.getElementById("ColorPicker1").value;
-  document.getElementById("ColorPicker1").onchange = function () {
-    color_picker1 = this.value;
-    document.documentElement.style.setProperty(
-      "--theme-deafult",
-      color_picker1
-    );
-  };
-})(jQuery);
-
-/*------------------------------
- 21. RTL & Dark Light
- -------------------------------*/
-$("#ltr_btn").click(function () {
-  $("body").addClass("ltr");
-  $("body").removeClass("rtl");
-});
-$("#rtl_btn").click(function () {
-  $("body").addClass("rtl");
-  $("body").removeClass("ltr");
-});
-$(".setting_buttons li").click(function () {
-  $(this).addClass("active").siblings().removeClass("active");
-});
-$(".color-box li").click(function () {
-  $(this).addClass("active").siblings().removeClass("active");
-});
-
-// dark & light
-(function () {
-  $(
-    '<div class="sidebar-btn dark-light-btn">' +
-      '<div class="dark-light">' +
-      '<div class="theme-layout-version">Dark' +
-      "</div>" +
-      "</div>" +
-      "</div>"
-  ).appendTo($("body"));
-})();
-
-var body_event = $("body");
-body_event.on("click", ".theme-layout-version", function () {
-  $(this).toggleClass("dark");
-  $("body").removeClass("dark");
-  if ($(".theme-layout-version").hasClass("dark")) {
-    $(".theme-layout-version").text("Light");
-    $("body").addClass("dark");
-  } else {
-    $("#theme-dark").remove();
-    $(".theme-layout-version").text("Dark");
-  }
-
-  return false;
-});
-
-/*=====================
- 22. Menu js
- ==========================*/
-function openNav() {
-  document.getElementById("mySidenav").classList.add("open-side");
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").classList.remove("open-side");
-}
-$(function () {
-  $("#main-menu").smartmenus({
-    subMenusSubOffsetX: 1,
-    subMenusSubOffsetY: -8,
-  });
-  $("#sub-menu").smartmenus({
-    subMenusSubOffsetX: 1,
-    subMenusSubOffsetY: -8,
-  });
-});
-
-/*=====================
- 23. theme-setting
- ==========================*/
-function openSetting() {
-  document.getElementById("setting_box").classList.add("open-setting");
-  document.getElementById("setting-icon").classList.add("open-icon");
-}
-
-function closeSetting() {
-  document.getElementById("setting_box").classList.remove("open-setting");
-  document.getElementById("setting-icon").classList.remove("open-icon");
-}
-jQuery(".setting-title h4").append('<span class="according-menu"></span>');
-jQuery(".setting-title").on("click", function () {
-  jQuery(".setting-title").removeClass("active");
-  jQuery(".setting-contant").slideUp("normal");
-  if (jQuery(this).next().is(":hidden") == true) {
-    jQuery(this).addClass("active");
-    jQuery(this).next().slideDown("normal");
-  }
-});
-jQuery(".setting-contant").hide();
-
-/*=====================
- 24. add to cart sidebar js
- ==========================*/
-function openCart() {
-  document.getElementById("cart_side").classList.add("open-side");
-}
-
-function closeCart() {
-  document.getElementById("cart_side").classList.remove("open-side");
-}
-
-/*=====================
- 25.Tooltip
- ==========================*/
-$(window).on("load", function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
+})($);

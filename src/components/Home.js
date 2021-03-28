@@ -1,258 +1,59 @@
 import React from "react";
+import Slider from "react-slick";
 
 const Home = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    className: "home-slider",
+  };
   return (
     <>
       <section className='p-0'>
-        <div className='slide-1 home-slider slick-initialized slick-slider'>
-          <button
-            className='slick-prev slick-arrow'
-            aria-label='Previous'
-            type='button'
-            style={{}}
-          >
-            Previous
-          </button>
-          <div className='slick-list draggable'>
+        <Slider {...settings}>
+          <div>
             <div
-              className='slick-track'
-              style={{
-                opacity: 1,
-                width: 7115,
-                transform: "translate3d(-1423px, 0px, 0px)",
-              }}
+              className='slick-slide slick-current slick-active'
+              data-slick-index={0}
+              aria-hidden='false'
+              style={{ width: 1349 }}
             >
-              <div
-                className='slick-slide slick-cloned'
-                data-slick-index={-1}
-                aria-hidden='true'
-                tabIndex={-1}
-                style={{ width: 1423 }}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div
-                      className='home text-center bg-size blur-up lazyloaded'
-                      style={{
-                        backgroundImage:
-                          'url("../assets/images/home-banner/2.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        display: "block",
-                      }}
-                    >
-                      <img
-                        src='../assets/images/home-banner/2.jpg'
-                        alt='true'
-                        className='bg-img blur-up lazyload'
-                        style={{ display: "none" }}
-                      />
-                      <div className='container'>
-                        <div className='row'>
-                          <div className='col'>
-                            <div className='slider-contain'>
-                              <div>
-                                <h4>welcome to fashion</h4>
-                                <h1>women fashion</h1>
-                                <a
-                                  href='fake'
-                                  className='btn btn-solid'
-                                  tabIndex={-1}
-                                >
-                                  shop now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='slick-slide slick-current slick-active'
-                data-slick-index={0}
-                aria-hidden='false'
-                style={{ width: 1423 }}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div
-                      className='home text-center bg-size blur-up lazyloaded'
-                      style={{
-                        backgroundImage:
-                          'url("../assets/images/home-banner/1.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        display: "block",
-                      }}
-                    >
-                      <img
-                        src='../assets/images/home-banner/1.jpg'
-                        alt='true'
-                        className='bg-img blur-up lazyload'
-                        style={{ display: "none" }}
-                      />
-                      <div className='container'>
-                        <div className='row'>
-                          <div className='col'>
-                            <div className='slider-contain'>
-                              <div>
-                                <h4>welcome to fashion</h4>
-                                <h1>men fashion</h1>
-                                <a
-                                  href='fake'
-                                  className='btn btn-solid'
-                                  tabIndex={0}
-                                >
-                                  shop now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='slick-slide'
-                data-slick-index={1}
-                aria-hidden='true'
-                tabIndex={-1}
-                style={{ width: 1423 }}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div
-                      className='home text-center bg-size blur-up lazyloaded'
-                      style={{
-                        backgroundImage:
-                          'url("../assets/images/home-banner/2.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        display: "block",
-                      }}
-                    >
-                      <img
-                        src='../assets/images/home-banner/2.jpg'
-                        alt='true'
-                        className='bg-img blur-up lazyload'
-                        style={{ display: "none" }}
-                      />
-                      <div className='container'>
-                        <div className='row'>
-                          <div className='col'>
-                            <div className='slider-contain'>
-                              <div>
-                                <h4>welcome to fashion</h4>
-                                <h1>women fashion</h1>
-                                <a
-                                  href='fake'
-                                  className='btn btn-solid'
-                                  tabIndex={-1}
-                                >
-                                  shop now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='slick-slide slick-cloned'
-                data-slick-index={2}
-                aria-hidden='true'
-                tabIndex={-1}
-                style={{ width: 1423 }}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div
-                      className='home text-center bg-size blur-up lazyload'
-                      style={{
-                        backgroundImage:
-                          'url("../assets/images/home-banner/1.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        display: "block",
-                      }}
-                    >
-                      <img
-                        src='../assets/images/home-banner/1.jpg'
-                        alt='true'
-                        className='bg-img blur-up lazyload'
-                        style={{ display: "none" }}
-                      />
-                      <div className='container'>
-                        <div className='row'>
-                          <div className='col'>
-                            <div className='slider-contain'>
-                              <div>
-                                <h4>welcome to fashion</h4>
-                                <h1>men fashion</h1>
-                                <a
-                                  href='fake'
-                                  className='btn btn-solid'
-                                  tabIndex={-1}
-                                >
-                                  shop now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='slick-slide slick-cloned'
-                data-slick-index={3}
-                aria-hidden='true'
-                tabIndex={-1}
-                style={{ width: 1423 }}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div
-                      className='home text-center bg-size blur-up lazyload'
-                      style={{
-                        backgroundImage:
-                          'url("../assets/images/home-banner/2.jpg")',
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        display: "block",
-                      }}
-                    >
-                      <img
-                        src='../assets/images/home-banner/2.jpg'
-                        alt='true'
-                        className='bg-img blur-up lazyload'
-                        style={{ display: "none" }}
-                      />
-                      <div className='container'>
-                        <div className='row'>
-                          <div className='col'>
-                            <div className='slider-contain'>
-                              <div>
-                                <h4>welcome to fashion</h4>
-                                <h1>women fashion</h1>
-                                <a
-                                  href='fake'
-                                  className='btn btn-solid'
-                                  tabIndex={-1}
-                                >
-                                  shop now
-                                </a>
-                              </div>
+              <div>
+                <div style={{ width: "100%", display: "inline-block" }}>
+                  <div
+                    className='home text-center bg-size blur-up lazyloaded'
+                    style={{
+                      backgroundImage:
+                        'url("/assets/images/home-banner/1.jpg")',
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                      display: "block",
+                    }}
+                  >
+                    <img
+                      src='/assets/images/home-banner/1.jpg'
+                      alt
+                      className='bg-img blur-up lazyload'
+                      style={{ display: "none" }}
+                    />
+                    <div className='container'>
+                      <div className='row'>
+                        <div className='col'>
+                          <div className='slider-contain'>
+                            <div>
+                              <h4>welcome to fashion</h4>
+                              <h1>men fashion</h1>
+                              <a
+                                href='#'
+                                className='btn btn-solid'
+                                tabIndex={0}
+                              >
+                                shop now
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -263,15 +64,157 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <button
-            className='slick-next slick-arrow'
-            aria-label='Next'
-            type='button'
-            style={{}}
-          >
-            Next
-          </button>
-        </div>
+          <div>
+            <div
+              className='slick-slide'
+              data-slick-index={1}
+              aria-hidden='true'
+              style={{ width: 1349 }}
+              tabIndex={-1}
+            >
+              <div>
+                <div style={{ width: "100%", display: "inline-block" }}>
+                  <div
+                    className='home text-center bg-size blur-up lazyloaded'
+                    style={{
+                      backgroundImage:
+                        'url("/assets/images/home-banner/2.jpg")',
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                      display: "block",
+                    }}
+                  >
+                    <img
+                      src='/assets/images/home-banner/2.jpg'
+                      alt
+                      className='bg-img blur-up lazyload'
+                      style={{ display: "none" }}
+                    />
+                    <div className='container'>
+                      <div className='row'>
+                        <div className='col'>
+                          <div className='slider-contain'>
+                            <div>
+                              <h4>welcome to fashion</h4>
+                              <h1>women fashion</h1>
+                              <a
+                                href='#'
+                                className='btn btn-solid'
+                                tabIndex={-1}
+                              >
+                                shop now
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className='slick-slide slick-cloned'
+              data-slick-index={2}
+              aria-hidden='true'
+              tabIndex={-1}
+              style={{ width: 1349 }}
+            >
+              <div>
+                <div style={{ width: "100%", display: "inline-block" }}>
+                  <div
+                    className='home text-center bg-size blur-up lazyloaded'
+                    style={{
+                      backgroundImage:
+                        'url("/assets/images/home-banner/3.jpg")',
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                      display: "block",
+                    }}
+                  >
+                    <img
+                      src='/assets/images/home-banner/3.jpg'
+                      alt
+                      className='bg-img blur-up lazyload'
+                      style={{ display: "none" }}
+                    />
+                    <div className='container'>
+                      <div className='row'>
+                        <div className='col'>
+                          <div className='slider-contain'>
+                            <div>
+                              <h4>welcome to fashion</h4>
+                              <h1>men fashion</h1>
+                              <a
+                                href='#'
+                                className='btn btn-solid'
+                                tabIndex={-1}
+                              >
+                                shop now
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className='slick-slide slick-cloned'
+              data-slick-index={3}
+              aria-hidden='true'
+              tabIndex={-1}
+              style={{ width: 1349 }}
+            >
+              <div>
+                <div style={{ width: "100%", display: "inline-block" }}>
+                  <div
+                    className='home text-center bg-size blur-up lazyloaded'
+                    style={{
+                      backgroundImage:
+                        'url("/assets/images/home-banner/6.jpg")',
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                      display: "block",
+                    }}
+                  >
+                    <img
+                      src='/assets/images/home-banner/6.jpg'
+                      alt
+                      className='bg-img blur-up lazyload'
+                      style={{ display: "none" }}
+                    />
+                    <div className='container'>
+                      <div className='row'>
+                        <div className='col'>
+                          <div className='slider-contain'>
+                            <div>
+                              <h4>welcome to fashion</h4>
+                              <h1>women fashion</h1>
+                              <a
+                                href='#'
+                                className='btn btn-solid'
+                                tabIndex={-1}
+                              >
+                                shop now
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slider>
       </section>
       <section className='pb-0 ratio2_1'>
         <div className='container'>
@@ -282,15 +225,14 @@ const Home = () => {
                   <div
                     className='img-part bg-size blur-up lazyloaded'
                     style={{
-                      backgroundImage:
-                        'url("../assets/images/sub-banner1.jpg")',
+                      backgroundImage: 'url("/assets/images/sub-banner1.jpg")',
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                       display: "block",
                     }}
                   >
                     <img
-                      src='../assets/images/sub-banner1.jpg'
+                      src='/assets/images/sub-banner1.jpg'
                       className='img-fluid blur-up lazyload bg-img'
                       alt='true'
                       style={{ display: "none" }}
@@ -311,15 +253,14 @@ const Home = () => {
                   <div
                     className='img-part bg-size blur-up lazyloaded'
                     style={{
-                      backgroundImage:
-                        'url("../assets/images/sub-banner2.jpg")',
+                      backgroundImage: 'url("/assets/images/sub-banner2.jpg")',
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                       display: "block",
                     }}
                   >
                     <img
-                      src='../assets/images/sub-banner2.jpg'
+                      src='/assets/images/sub-banner2.jpg'
                       className='img-fluid blur-up lazyload bg-img'
                       alt='true'
                       style={{ display: "none" }}
@@ -362,7 +303,7 @@ const Home = () => {
             <div className='col'>
               <div className='product-4 product-m no-arrow slick-initialized slick-slider'>
                 <button
-                  className='slick-prev slick-arrow'
+                  className='slick-prev '
                   aria-label='Previous'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -392,7 +333,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -401,7 +342,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/1.jpg")',
+                                    'url("/assets/images/pro3/1.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -409,7 +350,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/1.jpg'
+                                  src='/assets/images/pro3/1.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -422,7 +363,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/2.jpg")',
+                                    'url("/assets/images/pro3/2.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -430,7 +371,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/2.jpg'
+                                  src='/assets/images/pro3/2.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -445,14 +386,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -461,7 +402,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -473,10 +414,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -511,7 +452,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -520,7 +461,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -528,7 +469,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -541,7 +482,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -549,7 +490,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -564,14 +505,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -580,7 +521,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -592,10 +533,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -633,7 +574,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/35.jpg")',
+                                    'url("/assets/images/pro3/35.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -641,7 +582,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/35.jpg'
+                                  src='/assets/images/pro3/35.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -654,7 +595,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/36.jpg")',
+                                    'url("/assets/images/pro3/36.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -662,7 +603,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/36.jpg'
+                                  src='/assets/images/pro3/36.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -677,14 +618,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -693,7 +634,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -705,10 +646,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -741,7 +682,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -750,7 +691,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -758,7 +699,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -771,7 +712,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -779,7 +720,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -794,14 +735,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -810,7 +751,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -822,10 +763,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -863,7 +804,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/27.jpg")',
+                                    'url("/assets/images/pro3/27.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -871,7 +812,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/27.jpg'
+                                  src='/assets/images/pro3/27.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -884,7 +825,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/28.jpg")',
+                                    'url("/assets/images/pro3/28.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -892,7 +833,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/28.jpg'
+                                  src='/assets/images/pro3/28.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -935,10 +876,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -971,7 +912,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -980,7 +921,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/1.jpg")',
+                                    'url("/assets/images/pro3/1.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -988,7 +929,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/1.jpg'
+                                  src='/assets/images/pro3/1.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1001,7 +942,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/2.jpg")',
+                                    'url("/assets/images/pro3/2.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1009,7 +950,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/2.jpg'
+                                  src='/assets/images/pro3/2.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1024,14 +965,14 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={0}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1040,7 +981,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1052,10 +993,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1090,7 +1031,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -1099,7 +1040,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1107,7 +1048,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1120,7 +1061,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1128,7 +1069,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1143,14 +1084,14 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={0}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1159,7 +1100,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1171,10 +1112,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1212,7 +1153,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/35.jpg")',
+                                    'url("/assets/images/pro3/35.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1220,7 +1161,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/35.jpg'
+                                  src='/assets/images/pro3/35.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1233,7 +1174,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/36.jpg")',
+                                    'url("/assets/images/pro3/36.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1241,7 +1182,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/36.jpg'
+                                  src='/assets/images/pro3/36.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1256,14 +1197,14 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={0}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1272,7 +1213,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1284,10 +1225,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1319,7 +1260,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -1328,7 +1269,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1336,7 +1277,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1349,7 +1290,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1357,7 +1298,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1372,14 +1313,14 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={0}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1388,7 +1329,7 @@ const Home = () => {
                                 tabIndex={0}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1400,10 +1341,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1441,7 +1382,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/27.jpg")',
+                                    'url("/assets/images/pro3/27.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1449,7 +1390,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/27.jpg'
+                                  src='/assets/images/pro3/27.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1462,7 +1403,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/28.jpg")',
+                                    'url("/assets/images/pro3/28.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1470,7 +1411,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/28.jpg'
+                                  src='/assets/images/pro3/28.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1513,10 +1454,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1549,7 +1490,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -1558,7 +1499,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/1.jpg")',
+                                    'url("/assets/images/pro3/1.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1566,7 +1507,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/1.jpg'
+                                  src='/assets/images/pro3/1.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1579,7 +1520,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/2.jpg")',
+                                    'url("/assets/images/pro3/2.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1587,7 +1528,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/2.jpg'
+                                  src='/assets/images/pro3/2.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1602,14 +1543,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1618,7 +1559,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1630,10 +1571,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1668,7 +1609,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -1677,7 +1618,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1685,7 +1626,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1698,7 +1639,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1706,7 +1647,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1721,14 +1662,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1737,7 +1678,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1749,10 +1690,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1790,7 +1731,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/35.jpg")',
+                                    'url("/assets/images/pro3/35.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1798,7 +1739,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/35.jpg'
+                                  src='/assets/images/pro3/35.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1811,7 +1752,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/36.jpg")',
+                                    'url("/assets/images/pro3/36.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1819,7 +1760,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/36.jpg'
+                                  src='/assets/images/pro3/36.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1834,14 +1775,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1850,7 +1791,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1862,10 +1803,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -1898,7 +1839,7 @@ const Home = () => {
                         >
                           <div className='img-wrapper'>
                             <div className='lable-block'>
-                              <span className='lable3'>new</span>{" "}
+                              <span className='lable3'>new</span>
                               <span className='lable4'>on sale</span>
                             </div>
                             <div className='front'>
@@ -1907,7 +1848,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/33.jpg")',
+                                    'url("/assets/images/pro3/33.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1915,7 +1856,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/33.jpg'
+                                  src='/assets/images/pro3/33.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1928,7 +1869,7 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/pro3/34.jpg")',
+                                    'url("/assets/images/pro3/34.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -1936,7 +1877,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src='../assets/images/pro3/34.jpg'
+                                  src='/assets/images/pro3/34.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -1951,14 +1892,14 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-shopping-cart' />
-                              </button>{" "}
+                              </button>
                               <a
                                 href='fake'
                                 title='Add to Wishlist'
                                 tabIndex={-1}
                               >
                                 <i className='ti-heart' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='fake'
                                 data-toggle='modal'
@@ -1967,7 +1908,7 @@ const Home = () => {
                                 tabIndex={-1}
                               >
                                 <i className='ti-search' aria-hidden='true' />
-                              </a>{" "}
+                              </a>
                               <a
                                 href='compare.html'
                                 title='Compare'
@@ -1979,10 +1920,10 @@ const Home = () => {
                           </div>
                           <div className='product-detail'>
                             <div className='rating'>
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
-                              <i className='fa fa-star' />{" "}
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
                               <i className='fa fa-star' />
                             </div>
                             <a
@@ -2004,7 +1945,7 @@ const Home = () => {
                   </div>
                 </div>
                 <button
-                  className='slick-next slick-arrow'
+                  className='slick-next '
                   aria-label='Next'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -2020,14 +1961,14 @@ const Home = () => {
         <div
           className='full-banner parallax text-center p-left bg-size blur-up lazyloaded'
           style={{
-            backgroundImage: 'url("../assets/images/parallax/1.jpg")',
+            backgroundImage: 'url("/assets/images/parallax/1.jpg")',
             backgroundSize: "cover",
             backgroundPosition: "center center",
             display: "block",
           }}
         >
           <img
-            src='../assets/images/parallax/1.jpg'
+            src='/assets/images/parallax/1.jpg'
             alt='true'
             className='bg-img blur-up lazyload'
             style={{ display: "none" }}
@@ -2082,14 +2023,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2102,14 +2043,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2123,10 +2064,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2134,7 +2075,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2142,10 +2083,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2162,7 +2103,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2171,14 +2112,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2191,14 +2132,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2212,10 +2153,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2223,7 +2164,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2231,10 +2172,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2256,14 +2197,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2276,14 +2217,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2297,10 +2238,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2308,7 +2249,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2316,10 +2257,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2336,7 +2277,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2345,14 +2286,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2365,14 +2306,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2386,10 +2327,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2397,7 +2338,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2405,10 +2346,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2425,7 +2366,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2434,14 +2375,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2454,14 +2395,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2475,10 +2416,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2486,7 +2427,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2494,10 +2435,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2519,14 +2460,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2539,14 +2480,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2560,10 +2501,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2571,7 +2512,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2579,10 +2520,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2599,7 +2540,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2608,14 +2549,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2628,14 +2569,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2649,10 +2590,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2660,7 +2601,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2668,10 +2609,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2693,14 +2634,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2713,14 +2654,14 @@ const Home = () => {
                               className='bg-size blur-up lazyloaded'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2734,10 +2675,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2745,7 +2686,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2753,10 +2694,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2777,7 +2718,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2786,14 +2727,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2806,14 +2747,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2827,10 +2768,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2838,7 +2779,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2846,10 +2787,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2871,14 +2812,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2891,14 +2832,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2912,10 +2853,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -2923,7 +2864,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -2931,10 +2872,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -2951,7 +2892,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -2960,14 +2901,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -2980,14 +2921,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3001,10 +2942,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3012,7 +2953,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3020,10 +2961,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3045,14 +2986,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3065,14 +3006,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3086,10 +3027,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3097,7 +3038,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3105,10 +3046,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3130,14 +3071,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3150,14 +3091,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3171,10 +3112,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3182,7 +3123,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3190,10 +3131,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3210,7 +3151,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -3219,14 +3160,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3239,14 +3180,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3260,10 +3201,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3271,7 +3212,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3279,10 +3220,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3304,14 +3245,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3324,14 +3265,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3345,10 +3286,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3356,7 +3297,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3364,10 +3305,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3384,7 +3325,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -3393,14 +3334,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3413,14 +3354,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3434,10 +3375,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3445,7 +3386,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3453,10 +3394,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3477,7 +3418,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -3486,14 +3427,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3506,14 +3447,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3527,10 +3468,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3538,7 +3479,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3546,10 +3487,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3571,14 +3512,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3591,14 +3532,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3612,10 +3553,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3623,7 +3564,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3631,10 +3572,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3656,14 +3597,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/33.jpg")',
+                                  'url("/assets/images/pro3/33.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/33.jpg'
+                                src='/assets/images/pro3/33.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3676,14 +3617,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/34.jpg")',
+                                  'url("/assets/images/pro3/34.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/34.jpg'
+                                src='/assets/images/pro3/34.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3697,10 +3638,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3708,7 +3649,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3716,10 +3657,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3736,7 +3677,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -3745,14 +3686,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3765,14 +3706,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3786,10 +3727,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3797,7 +3738,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3805,10 +3746,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3825,7 +3766,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -3834,14 +3775,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3854,14 +3795,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3875,10 +3816,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3886,7 +3827,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3894,10 +3835,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3919,14 +3860,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/35.jpg")',
+                                  'url("/assets/images/pro3/35.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/35.jpg'
+                                src='/assets/images/pro3/35.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3939,14 +3880,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/36.jpg")',
+                                  'url("/assets/images/pro3/36.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/36.jpg'
+                                src='/assets/images/pro3/36.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -3960,10 +3901,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -3971,7 +3912,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -3979,10 +3920,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -3999,7 +3940,7 @@ const Home = () => {
                       <div className='product-box'>
                         <div className='img-wrapper'>
                           <div className='lable-block'>
-                            <span className='lable3'>new</span>{" "}
+                            <span className='lable3'>new</span>
                             <span className='lable4'>on sale</span>
                           </div>
                           <div className='front'>
@@ -4008,14 +3949,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/1.jpg")',
+                                  'url("/assets/images/pro3/1.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/1.jpg'
+                                src='/assets/images/pro3/1.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -4028,14 +3969,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/2.jpg")',
+                                  'url("/assets/images/pro3/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/2.jpg'
+                                src='/assets/images/pro3/2.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -4049,10 +3990,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -4060,7 +4001,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -4068,10 +4009,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -4093,14 +4034,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/27.jpg")',
+                                  'url("/assets/images/pro3/27.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/27.jpg'
+                                src='/assets/images/pro3/27.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -4113,14 +4054,14 @@ const Home = () => {
                               className='bg-size blur-up lazyload'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/pro3/28.jpg")',
+                                  'url("/assets/images/pro3/28.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
                               <img
-                                src='../assets/images/pro3/28.jpg'
+                                src='/assets/images/pro3/28.jpg'
                                 className='img-fluid blur-up lazyload bg-img'
                                 alt='true'
                                 style={{ display: "none" }}
@@ -4134,10 +4075,10 @@ const Home = () => {
                               title='Add to cart'
                             >
                               <i className='ti-shopping-cart' />
-                            </button>{" "}
+                            </button>
                             <a href='fake' title='Add to Wishlist'>
                               <i className='ti-heart' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a
                               href='fake'
                               data-toggle='modal'
@@ -4145,7 +4086,7 @@ const Home = () => {
                               title='Quick View'
                             >
                               <i className='ti-search' aria-hidden='true' />
-                            </a>{" "}
+                            </a>
                             <a href='compare.html' title='Compare'>
                               <i className='ti-reload' aria-hidden='true' />
                             </a>
@@ -4153,10 +4094,10 @@ const Home = () => {
                         </div>
                         <div className='product-detail'>
                           <div className='rating'>
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
-                            <i className='fa fa-star' />{" "}
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
+                            <i className='fa fa-star' />
                             <i className='fa fa-star' />
                           </div>
                           <a href='product-page(no-sidebar).html'>
@@ -4298,7 +4239,7 @@ const Home = () => {
             <div className='col-md-12'>
               <div className='slide-3 no-arrow slick-initialized slick-slider'>
                 <button
-                  className='slick-prev slick-arrow'
+                  className='slick-prev '
                   aria-label='Previous'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -4332,14 +4273,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/3.jpg")',
+                                    'url("/assets/images/blog/3.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/3.jpg'
+                                  src='/assets/images/blog/3.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4380,14 +4321,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/4.jpg")',
+                                    'url("/assets/images/blog/4.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/4.jpg'
+                                  src='/assets/images/blog/4.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4428,14 +4369,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/5.jpg")',
+                                    'url("/assets/images/blog/5.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/5.jpg'
+                                  src='/assets/images/blog/5.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4476,14 +4417,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/1.jpg")',
+                                    'url("/assets/images/blog/1.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/1.jpg'
+                                  src='/assets/images/blog/1.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4523,14 +4464,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/2.jpg")',
+                                    'url("/assets/images/blog/2.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/2.jpg'
+                                  src='/assets/images/blog/2.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4570,14 +4511,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/3.jpg")',
+                                    'url("/assets/images/blog/3.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/3.jpg'
+                                  src='/assets/images/blog/3.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4617,14 +4558,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/4.jpg")',
+                                    'url("/assets/images/blog/4.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/4.jpg'
+                                  src='/assets/images/blog/4.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4665,14 +4606,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/5.jpg")',
+                                    'url("/assets/images/blog/5.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/5.jpg'
+                                  src='/assets/images/blog/5.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4713,14 +4654,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/1.jpg")',
+                                    'url("/assets/images/blog/1.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/1.jpg'
+                                  src='/assets/images/blog/1.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4761,14 +4702,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/2.jpg")',
+                                    'url("/assets/images/blog/2.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/2.jpg'
+                                  src='/assets/images/blog/2.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4809,14 +4750,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/3.jpg")',
+                                    'url("/assets/images/blog/3.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/3.jpg'
+                                  src='/assets/images/blog/3.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4857,14 +4798,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyloaded'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/4.jpg")',
+                                    'url("/assets/images/blog/4.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/4.jpg'
+                                  src='/assets/images/blog/4.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4905,14 +4846,14 @@ const Home = () => {
                                 className='bg-size blur-up lazyload'
                                 style={{
                                   backgroundImage:
-                                    'url("../assets/images/blog/5.jpg")',
+                                    'url("/assets/images/blog/5.jpg")',
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
                                 }}
                               >
                                 <img
-                                  src='../assets/images/blog/5.jpg'
+                                  src='/assets/images/blog/5.jpg'
                                   className='img-fluid blur-up lazyload bg-img'
                                   alt='true'
                                   style={{ display: "none" }}
@@ -4938,7 +4879,7 @@ const Home = () => {
                   </div>
                 </div>
                 <button
-                  className='slick-next slick-arrow'
+                  className='slick-next '
                   aria-label='Next'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -4957,7 +4898,7 @@ const Home = () => {
               <h2 className='title-borderless'># instagram</h2>
               <div className='slide-7 no-arrow slick-instagram slick-initialized slick-slider'>
                 <button
-                  className='slick-prev slick-arrow'
+                  className='slick-prev '
                   aria-label='Previous'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -4987,15 +4928,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/4.jpg")',
+                                  'url("/assets/images/slider/4.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/4.jpg'
+                                src='/assets/images/slider/4.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5025,15 +4965,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5063,15 +5002,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/6.jpg")',
+                                  'url("/assets/images/slider/6.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/6.jpg'
+                                src='/assets/images/slider/6.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5101,15 +5039,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/7.jpg")',
+                                  'url("/assets/images/slider/7.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/7.jpg'
+                                src='/assets/images/slider/7.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5139,15 +5076,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/8.jpg")',
+                                  'url("/assets/images/slider/8.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/8.jpg'
+                                src='/assets/images/slider/8.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5177,15 +5113,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5215,15 +5150,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/2.jpg")',
+                                  'url("/assets/images/slider/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/2.jpg'
+                                src='/assets/images/slider/2.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5252,15 +5186,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/2.jpg")',
+                                  'url("/assets/images/slider/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/2.jpg'
+                                src='/assets/images/slider/2.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5289,15 +5222,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/3.jpg")',
+                                  'url("/assets/images/slider/3.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/3.jpg'
+                                src='/assets/images/slider/3.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5326,15 +5258,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/4.jpg")',
+                                  'url("/assets/images/slider/4.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/4.jpg'
+                                src='/assets/images/slider/4.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5363,15 +5294,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5400,15 +5330,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/6.jpg")',
+                                  'url("/assets/images/slider/6.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/6.jpg'
+                                src='/assets/images/slider/6.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5437,15 +5366,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/7.jpg")',
+                                  'url("/assets/images/slider/7.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/7.jpg'
+                                src='/assets/images/slider/7.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5474,15 +5402,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/8.jpg")',
+                                  'url("/assets/images/slider/8.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/8.jpg'
+                                src='/assets/images/slider/8.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5512,15 +5439,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5550,15 +5476,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/2.jpg")',
+                                  'url("/assets/images/slider/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/2.jpg'
+                                src='/assets/images/slider/2.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5588,15 +5513,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/2.jpg")',
+                                  'url("/assets/images/slider/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/2.jpg'
+                                src='/assets/images/slider/2.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5626,15 +5550,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/3.jpg")',
+                                  'url("/assets/images/slider/3.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/3.jpg'
+                                src='/assets/images/slider/3.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5664,15 +5587,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/4.jpg")',
+                                  'url("/assets/images/slider/4.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/4.jpg'
+                                src='/assets/images/slider/4.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5702,15 +5624,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5740,15 +5661,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/6.jpg")',
+                                  'url("/assets/images/slider/6.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/6.jpg'
+                                src='/assets/images/slider/6.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5778,15 +5698,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/7.jpg")',
+                                  'url("/assets/images/slider/7.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/7.jpg'
+                                src='/assets/images/slider/7.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5816,15 +5735,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/8.jpg")',
+                                  'url("/assets/images/slider/8.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/8.jpg'
+                                src='/assets/images/slider/8.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5854,15 +5772,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/9.jpg")',
+                                  'url("/assets/images/slider/9.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/9.jpg'
+                                src='/assets/images/slider/9.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5892,15 +5809,14 @@ const Home = () => {
                               className='instagram-box bg-size'
                               style={{
                                 backgroundImage:
-                                  'url("../assets/images/slider/2.jpg")',
+                                  'url("/assets/images/slider/2.jpg")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center center",
                                 display: "block",
                               }}
                             >
-                              {" "}
                               <img
-                                src='../assets/images/slider/2.jpg'
+                                src='/assets/images/slider/2.jpg'
                                 className='bg-img'
                                 alt='true'
                                 style={{ width: "100%", display: "none" }}
@@ -5919,7 +5835,7 @@ const Home = () => {
                   </div>
                 </div>
                 <button
-                  className='slick-next slick-arrow'
+                  className='slick-next '
                   aria-label='Next'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -5937,7 +5853,7 @@ const Home = () => {
             <div className='col-md-12'>
               <div className='slide-6 no-arrow slick-initialized slick-slider'>
                 <button
-                  className='slick-prev slick-arrow'
+                  className='slick-prev '
                   aria-label='Previous'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -5965,7 +5881,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/3.png'
+                                src='/assets/images/logos/3.png'
                                 alt='true'
                               />
                             </a>
@@ -5985,7 +5901,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/4.png'
+                                src='/assets/images/logos/4.png'
                                 alt='true'
                               />
                             </a>
@@ -6005,7 +5921,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/5.png'
+                                src='/assets/images/logos/5.png'
                                 alt='true'
                               />
                             </a>
@@ -6025,7 +5941,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/6.png'
+                                src='/assets/images/logos/6.png'
                                 alt='true'
                               />
                             </a>
@@ -6045,7 +5961,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/7.png'
+                                src='/assets/images/logos/7.png'
                                 alt='true'
                               />
                             </a>
@@ -6065,7 +5981,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/8.png'
+                                src='/assets/images/logos/8.png'
                                 alt='true'
                               />
                             </a>
@@ -6084,7 +6000,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/1.png'
+                                src='/assets/images/logos/1.png'
                                 alt='true'
                               />
                             </a>
@@ -6103,7 +6019,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/2.png'
+                                src='/assets/images/logos/2.png'
                                 alt='true'
                               />
                             </a>
@@ -6122,7 +6038,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/3.png'
+                                src='/assets/images/logos/3.png'
                                 alt='true'
                               />
                             </a>
@@ -6141,7 +6057,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/4.png'
+                                src='/assets/images/logos/4.png'
                                 alt='true'
                               />
                             </a>
@@ -6160,7 +6076,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/5.png'
+                                src='/assets/images/logos/5.png'
                                 alt='true'
                               />
                             </a>
@@ -6179,7 +6095,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={0}>
                               <img
-                                src='../assets/images/logos/6.png'
+                                src='/assets/images/logos/6.png'
                                 alt='true'
                               />
                             </a>
@@ -6199,7 +6115,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/7.png'
+                                src='/assets/images/logos/7.png'
                                 alt='true'
                               />
                             </a>
@@ -6219,7 +6135,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/8.png'
+                                src='/assets/images/logos/8.png'
                                 alt='true'
                               />
                             </a>
@@ -6239,7 +6155,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/1.png'
+                                src='/assets/images/logos/1.png'
                                 alt='true'
                               />
                             </a>
@@ -6259,7 +6175,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/2.png'
+                                src='/assets/images/logos/2.png'
                                 alt='true'
                               />
                             </a>
@@ -6279,7 +6195,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/3.png'
+                                src='/assets/images/logos/3.png'
                                 alt='true'
                               />
                             </a>
@@ -6299,7 +6215,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/4.png'
+                                src='/assets/images/logos/4.png'
                                 alt='true'
                               />
                             </a>
@@ -6319,7 +6235,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/5.png'
+                                src='/assets/images/logos/5.png'
                                 alt='true'
                               />
                             </a>
@@ -6339,7 +6255,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/6.png'
+                                src='/assets/images/logos/6.png'
                                 alt='true'
                               />
                             </a>
@@ -6359,7 +6275,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/7.png'
+                                src='/assets/images/logos/7.png'
                                 alt='true'
                               />
                             </a>
@@ -6379,7 +6295,7 @@ const Home = () => {
                           <div className='logo-block'>
                             <a href='fake' tabIndex={-1}>
                               <img
-                                src='../assets/images/logos/8.png'
+                                src='/assets/images/logos/8.png'
                                 alt='true'
                               />
                             </a>
@@ -6390,7 +6306,7 @@ const Home = () => {
                   </div>
                 </div>
                 <button
-                  className='slick-next slick-arrow'
+                  className='slick-next '
                   aria-label='Next'
                   type='button'
                   style={{ display: "inline-block" }}
@@ -6402,6 +6318,117 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <div
+        className='modal fade bd-example-modal-lg theme-modal'
+        id='quick-view'
+        tabIndex={-1}
+        role='dialog'
+        aria-hidden='true'
+      >
+        <div
+          className='modal-dialog modal-lg modal-dialog-centered'
+          role='document'
+        >
+          <div className='modal-content quick-view-modal'>
+            <div className='modal-body'>
+              <button
+                type='button'
+                className='close'
+                data-dismiss='modal'
+                aria-label='Close'
+              >
+                <span aria-hidden='true'>×</span>
+              </button>
+              <div className='row'>
+                <div className='col-lg-6 col-xs-12'>
+                  <div className='quick-view-img'>
+                    <img
+                      src='/assets/images/pro3/1.jpg'
+                      alt
+                      className='img-fluid blur-up lazyload'
+                    />
+                  </div>
+                </div>
+                <div className='col-lg-6 rtl-text'>
+                  <div className='product-right'>
+                    <h2>Women Pink Shirt</h2>
+                    <h3>$32.96</h3>
+                    <ul className='color-variant'>
+                      <li className='bg-light0' />
+                      <li className='bg-light1' />
+                      <li className='bg-light2' />
+                    </ul>
+                    <div className='border-product'>
+                      <h6 className='product-title'>product details</h6>
+                      <p>
+                        Sed ut perspiciatis, unde omnis iste natus error sit
+                        voluptatem accusantium doloremque laudantium
+                      </p>
+                    </div>
+                    <div className='product-description border-product'>
+                      <div className='size-box'>
+                        <ul>
+                          <li className='active'>
+                            <a href='#'>s</a>
+                          </li>
+                          <li>
+                            <a href='#'>m</a>
+                          </li>
+                          <li>
+                            <a href='#'>l</a>
+                          </li>
+                          <li>
+                            <a href='#'>xl</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <h6 className='product-title'>quantity</h6>
+                      <div className='qty-box'>
+                        <div className='input-group'>
+                          <span className='input-group-prepend'>
+                            <button
+                              type='button'
+                              className='btn quantity-left-minus'
+                              data-type='minus'
+                              data-field
+                            >
+                              <i className='ti-angle-left' />
+                            </button>{" "}
+                          </span>
+                          <input
+                            type='text'
+                            name='quantity'
+                            className='form-control input-number'
+                            defaultValue={1}
+                          />{" "}
+                          <span className='input-group-prepend'>
+                            <button
+                              type='button'
+                              className='btn quantity-right-plus'
+                              data-type='plus'
+                              data-field
+                            >
+                              <i className='ti-angle-right' />
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='product-buttons'>
+                      <a href='#' className='btn btn-solid'>
+                        add to cart
+                      </a>{" "}
+                      <a href='#' className='btn btn-solid'>
+                        view detail
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

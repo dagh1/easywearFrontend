@@ -160,7 +160,7 @@ const Navbar = () => {
                                       className='mega-menu-banner'
                                     >
                                       <img
-                                        src='../public/assets/images/mega-menu/fashion.jpg'
+                                        src='/assets/images/mega-menu/fashion.jpg'
                                         className='img-fluid blur-up lazyload'
                                         alt='Fashion'
                                       />
@@ -337,7 +337,7 @@ const Navbar = () => {
                   <div className='brand-logo'>
                     <a href='index.html'>
                       <img
-                        src='../assets/images/icon/logo.png'
+                        src='/assets/images/icon/logo.png'
                         className='img-fluid blur-up lazyload'
                         alt='logo'
                       />
@@ -386,7 +386,7 @@ const Navbar = () => {
                         <li className='onhover-div mobile-search'>
                           <div>
                             <img
-                              src='../assets/images/icon/search.png'
+                              src='/assets/images/icon/search.png'
                               className='img-fluid blur-up lazyload'
                             />
                             <i className='ti-search' />
@@ -426,7 +426,7 @@ const Navbar = () => {
                         <li className='onhover-div mobile-setting'>
                           <div>
                             <img
-                              src='../assets/images/icon/setting.png'
+                              src='/assets/images/icon/setting.png'
                               className='img-fluid blur-up lazyload'
                             />
                             <i className='ti-settings' />
@@ -446,7 +446,7 @@ const Navbar = () => {
                         <li className='onhover-div mobile-cart'>
                           <div>
                             <img
-                              src='../assets/images/icon/cart.png'
+                              src='/assets/images/icon/cart.png'
                               className='img-fluid blur-up lazyload'
                             />
                             <i className='ti-shopping-cart' />
@@ -457,7 +457,7 @@ const Navbar = () => {
                                 <a href='fakeNav'>
                                   <img
                                     className='mr-3'
-                                    src='../assets/images/fashion/product/1.jpg'
+                                    src='/assets/images/fashion/product/1.jpg'
                                   />
                                 </a>
                                 <div className='media-body'>
@@ -483,7 +483,7 @@ const Navbar = () => {
                                 <a href='fakeNav'>
                                   <img
                                     className='mr-3'
-                                    src='../assets/images/fashion/product/2.jpg'
+                                    src='/assets/images/fashion/product/2.jpg'
                                   />
                                 </a>
                                 <div className='media-body'>
