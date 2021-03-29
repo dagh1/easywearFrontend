@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import * as Icon from "react-feather";
 
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
+import { UserContext } from "../../contexts/userContext";
 const AddClaim = () => {
   const yupSchema = Yup.object({
     description: Yup.string()
@@ -21,13 +22,14 @@ const AddClaim = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [error, setError] = useState({ visible: false, message: "" });
+  const [user, setUser] = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
       type: "",
       description: "",
 
       state: 1,
-      user_id: "6042082f471163107c3ca589",
+      user_id: user._id,
     },
     validationSchema: yupSchema,
     onSubmit: async (values) => {

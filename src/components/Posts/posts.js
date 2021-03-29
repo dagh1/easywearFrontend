@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { formatDate } from "../../helpers/dateConvert";
 import {
   deletePost,
@@ -13,12 +13,12 @@ import { queryApi } from "../../utils/queryApi";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addClaim } from "../../redux/slices/claimSlice";
+import { UserContext } from "../../contexts/userContext";
 
 const Posts = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loader, setLoader] = useState(false);
-
 
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
@@ -54,6 +54,7 @@ const Posts = (props) => {
       history.push("/user/profile/claims");
     }
   };
+  const [user, setUser] = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {},
@@ -64,7 +65,7 @@ const Posts = (props) => {
       values.description = "I didn't like the post !!";
       values.image_url = props.post.image_url;
       values.state = 1;
-      values.user_id = "6042082f471163107c3ca589";
+      values.user_id = user._id;
       const [res, err] = await queryApi("claim/addClaim", values, "POST");
       if (err) {
         setShowLoader(false);
@@ -130,7 +131,6 @@ const Posts = (props) => {
                   <i className="fa fa-cog fa-fw" aria-hidden="true" />
                 </a>
               </div>
-
             </div>
             <div className="product-detail">
               <div>
