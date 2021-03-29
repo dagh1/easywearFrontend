@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
+import { selectClaims } from "../../redux/slices/claimSlice";
 const Profile = () => {
   const [user, setUser] = useContext(UserContext);
 
@@ -15,6 +16,7 @@ const Profile = () => {
     dispatch(fetchPosts(user._id));
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
+  const [claims, error] = useSelector(selectClaims);
 
   return (
     <>
@@ -29,9 +31,8 @@ const Profile = () => {
           }}
         >
           <img
-            src='/assets/images/vendor/profile.jpg'
-            className='bg-img lazyload blur-up'
-
+            src="/assets/images/vendor/profile.jpg"
+            className="bg-img lazyload blur-up"
             style={{ display: "none" }}
           />
         </div>
@@ -44,9 +45,8 @@ const Profile = () => {
                 <div className="profile-image">
                   <div>
                     <img
-                      src='/assets/images/logos/17.png'
-                      className='img-fluid'
-
+                      src="/assets/images/logos/17.png"
+                      className="img-fluid"
                     />
 
                     <h3>{user?.username}</h3>
@@ -87,7 +87,6 @@ const Profile = () => {
                     <div className="footer-social">
                       <ul>
                         <li>
-
                           <a href="#">
                             <i className="fa fa-facebook" aria-hidden="true" />
                           </a>
@@ -159,8 +158,9 @@ const Profile = () => {
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
                         to="/user/profile/claims"
+                        or
                       >
-                        My Claims
+                        My Claims ({claims.length})
                       </NavLink>
                     </li>
                     <li>
@@ -179,9 +179,8 @@ const Profile = () => {
               <div className="collection-sidebar-banner">
                 <a href="#">
                   <img
-                    src='/assets/images/side-banner.png'
-                    className='img-fluid blur-up lazyloaded'
-
+                    src="/assets/images/side-banner.png"
+                    className="img-fluid blur-up lazyloaded"
                   />
                 </a>
               </div>
@@ -196,6 +195,7 @@ const Profile = () => {
                 />
                 <Route
                   path="/user/profile/claims"
+                  or
                   component={UserClaims}
                 ></Route>
                 <Route
