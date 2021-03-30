@@ -34,15 +34,18 @@ function App() {
         if (connectedUser.role === "admin") {
           return (
             <>
-              <NavbarBack></NavbarBack>
-              <SideBar></SideBar>
-              <Switch>
-                <Route path='/ClaimsBack' component={ClaimBack} />
-                <Route path='/Products' component={Products} />
-                <Route path='/Events' component={Events} />
-                <Route exact to='/' component={DashBoard} />
-              </Switch>
-              <FooterBack></FooterBack>
+
+              <UserContext.Provider value={[connectedUser, setConnectedUser]}>
+                <NavbarBack></NavbarBack>
+                <SideBar></SideBar>
+                <Switch>
+                  <Route path="/ClaimsBack" component={ClaimBack} />
+                  <Route path="/Products" component={Products} />
+                  <Route path="/Events" component={Events} />
+                  <Route exact to="/" component={DashBoard} />
+                </Switch>
+                <FooterBack></FooterBack>
+              </UserContext.Provider>
             </>
           );
         } else {
@@ -62,6 +65,7 @@ function App() {
                   />
 
                   <Route exact to='/' component={Home} />
+
                 </Switch>
                 <Footer />
               </UserContext.Provider>
