@@ -7,12 +7,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
-const Profile = () => {
-  const [user, setUser] = useContext(UserContext);
+import jwtDecode from "jwt-decode";
 
+const Profile = () => {
+  /*  const user = useContext(UserContext);
+   */
   const dispatch = useDispatch();
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
+  console.log(user);
+
   useEffect(() => {
-    dispatch(fetchPosts(user._id));
+    if (user) dispatch(fetchPosts(user._id));
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
 
@@ -29,9 +40,8 @@ const Profile = () => {
           }}
         >
           <img
-            src='/assets/images/vendor/profile.jpg'
-            className='bg-img lazyload blur-up'
-
+            src="/assets/images/vendor/profile.jpg"
+            className="bg-img lazyload blur-up"
             style={{ display: "none" }}
           />
         </div>
@@ -44,12 +54,11 @@ const Profile = () => {
                 <div className="profile-image">
                   <div>
                     <img
-                      src='/assets/images/logos/17.png'
-                      className='img-fluid'
-
+                      src="/assets/images/logos/17.png"
+                      className="img-fluid"
                     />
 
-                    <h3>{user?.username}</h3>
+                    {/* <h3>{user?.username}</h3> */}
                     <div className="rating">
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
@@ -87,7 +96,6 @@ const Profile = () => {
                     <div className="footer-social">
                       <ul>
                         <li>
-
                           <a href="#">
                             <i className="fa fa-facebook" aria-hidden="true" />
                           </a>
@@ -179,9 +187,8 @@ const Profile = () => {
               <div className="collection-sidebar-banner">
                 <a href="#">
                   <img
-                    src='/assets/images/side-banner.png'
-                    className='img-fluid blur-up lazyloaded'
-
+                    src="/assets/images/side-banner.png"
+                    className="img-fluid blur-up lazyloaded"
                   />
                 </a>
               </div>
