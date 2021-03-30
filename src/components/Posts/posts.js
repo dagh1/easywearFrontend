@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { formatDate } from "../../helpers/dateConvert";
 import {
   deletePost,
@@ -7,18 +7,23 @@ import {
   selectPosts,
   selectPost,
 } from "../../redux/slices/postSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addClaim } from "../../redux/slices/claimSlice";
+import {
+  addClaim,
+  fetchClaimByClaimUrl,
+  selectClaims,
+} from "../../redux/slices/claimSlice";
 import { UserContext } from "../../contexts/userContext";
 
 const Posts = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loader, setLoader] = useState(false);
+  const [claims, err] = useSelector(selectClaims);
 
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
@@ -44,14 +49,32 @@ const Posts = (props) => {
     dispatch(selectPost(post));
     history.replace("/event/post/" + post._id);
   };
+
   const yupSchema = Yup.object({
     description: Yup.string(),
   });
-  const openConfirmation = async () => {
+
+  const fetchClaimByClaimUrl = async (claim_url) => {
+    const [res, error] = await queryApi(
+      "claim/findAllByClaimUrl/test/" + claim_url,
+      {},
+      "GET"
+    );
+    return res;
+  };
+
+  const openConfirmation = async (post) => {
+    const res = await fetchClaimByClaimUrl(post._id);
+
     if (window.confirm("Are you sure of Your claim ?") === true) {
-      formik.handleSubmit();
-      alert("Claim added with success .. wait for adminstrator confirmation");
-      history.push("/user/profile/claims");
+      if (res.length !== 0) {
+        alert("You already claimed this Post !! check Your Claims");
+        history.push("/user/profile/claims");
+      } else {
+        formik.handleSubmit();
+        alert("Claim added with success .. wait for adminstrator confirmation");
+        history.push("/user/profile/claims");
+      }
     }
   };
   const [user, setUser] = useContext(UserContext);
@@ -66,6 +89,8 @@ const Posts = (props) => {
       values.image_url = props.post.image_url;
       values.state = 1;
       values.user_id = user._id;
+      values.claim_url = props.post._id;
+      console.log(values);
       const [res, err] = await queryApi("claim/addClaim", values, "POST");
       if (err) {
         setShowLoader(false);
@@ -126,7 +151,9 @@ const Posts = (props) => {
 
                 <a
                   title="Claim about a Post"
-                  onClick={() => openConfirmation()}
+                  onClick={() => {
+                    openConfirmation(props.post);
+                  }}
                 >
                   <i className="fa fa-cog fa-fw" aria-hidden="true" />
                 </a>

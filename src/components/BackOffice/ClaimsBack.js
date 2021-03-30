@@ -84,6 +84,7 @@ const ClaimBack = () => {
   const pageVisited = pageNumber * claimsperPage;
   const displayedClaims = posts.slice(pageVisited, pageVisited + claimsperPage);
   const pageCount = Math.ceil(posts.length / claimsperPage);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
