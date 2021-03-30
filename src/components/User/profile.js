@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
+import { selectClaims } from "../../redux/slices/claimSlice";
 const Profile = () => {
   const [user, setUser] = useContext(UserContext);
 
@@ -15,6 +16,7 @@ const Profile = () => {
     dispatch(fetchPosts(user._id));
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
+  const [claims, error] = useSelector(selectClaims);
 
   return (
     <>
@@ -156,8 +158,9 @@ const Profile = () => {
                         className='active'
                         activeStyle={{ color: "#ff4c3b" }}
                         to='/user/profile/claims'
+                        or
                       >
-                        My Claims
+                        My Claims ({claims.length})
                       </NavLink>
                     </li>
                     <li>
@@ -192,6 +195,7 @@ const Profile = () => {
                 />
                 <Route
                   path='/user/profile/claims'
+                  or
                   component={UserClaims}
                 ></Route>
                 <Route
