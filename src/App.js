@@ -27,24 +27,28 @@ function App() {
     _id: "6041f2fe9dbc16c1758d7a9a",
     username: "Rana",
     password: "yayaya",
-    role: "admin",
+    role: "aa",
   });
   return (
     <>
-
       {(() => {
         if (connectedUser.role === "admin") {
           return (
             <>
-              <NavbarBack></NavbarBack>
-              <SideBar></SideBar>
-              <Switch>
-                <Route path="/ClaimsBack" component={ClaimBack} />
-                <Route path="/Products" component={ProductLists} />
-                <Route path="/Events" component={Events} />
-                <Route exact to="/" component={DashBoard} />
-              </Switch>
-              <FooterBack></FooterBack>
+
+
+              <UserContext.Provider value={[connectedUser, setConnectedUser]}>
+                <NavbarBack></NavbarBack>
+                <SideBar></SideBar>
+                <Switch>
+                  <Route path="/ClaimsBack" component={ClaimBack} />
+                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/Events" component={Events} />
+                  <Route exact to="/" component={DashBoard} />
+                </Switch>
+                <FooterBack></FooterBack>
+              </UserContext.Provider>
+
             </>
           );
         } else {
@@ -53,19 +57,21 @@ function App() {
               <UserContext.Provider value={[connectedUser, setConnectedUser]}>
                 <Navbar></Navbar>
                 <Switch>
-                  <Route path="/about" component={About} />
-                  <Route path="/contact" component={Contact} />
-                  <Route path="/user/profile" component={Profile} />
+
+                  <Route path='/about' component={About} />
+                  <Route path='/contact' component={Contact} />
+                  <Route path='/user/profile' component={Profile} />
                   <Route path="/Products" component={ProductLists} />
-                  <Route path="/event/addPost" component={AddPostForm} />
-                  <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path='/event/addPost' component={AddPostForm} />
+                  <Route path='/event/post/:id' component={PostDetails} />
+
                   <Route
-                    path="/event/updatePost/:id"
+                    path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
 
+                  <Route exact to='/' component={Home} />
 
-                  <Route exact to="/" component={Home} />
                 </Switch>
                 <Footer />
               </UserContext.Provider>

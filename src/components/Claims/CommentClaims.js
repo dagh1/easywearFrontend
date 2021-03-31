@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 import {
   deleteClaim,
   fetchClaimByType,
@@ -81,6 +82,34 @@ const CommentClaims = () => {
       fetchClaimByType(claims.type);
     }
   };
+  //pagination variables
+  const [pageNumber, setPageNumber] = useState(0);
+  const claimsperPage = 4;
+  const pageVisited = pageNumber * claimsperPage;
+  const displayedClaims = claims.slice(
+    pageVisited,
+    pageVisited + claimsperPage
+  );
+  const pageCount = Math.ceil(claims.length / claimsperPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+  const [search, setsearch] = useState(null);
+
+  const searchSpace = async (event) => {
+    let keyword = event.target.value;
+    setsearch(keyword);
+  };
+  const items = displayedClaims.filter((data) => {
+    if (search == null) return data;
+    else if (
+      data.type.toLowerCase().includes(search.toLowerCase()) ||
+      data.description.toLowerCase().includes(search.toLowerCase())
+    ) {
+      return data;
+    }
+  });
+
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={false}>
@@ -138,7 +167,10 @@ const CommentClaims = () => {
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Claim State</Form.Label>{" "}
                 {(() => {
-                  if (selectedClaim.state === 1 || selectedClaim.state === 2) {
+                  if (
+                    selectedClaim?.state === 1 ||
+                    selectedClaim?.state === 2
+                  ) {
                     return (
                       <Form.Control
                         as="select"
@@ -181,38 +213,53 @@ const CommentClaims = () => {
         </Modal.Footer>
       </Modal>
       <section className="collection section-b-space ratio_square ">
-        <h3>Your Comments Claims..</h3>
+        <ul>
+          <li>
+            <h3>Your Comment Claims ..</h3>
+          </li>
+          <li>
+            {" "}
+            <input
+              style={{ marginLeft: 300, width: 400, height: 40 }}
+              type="text"
+              placeholder="Search.."
+              onChange={(e) => searchSpace(e)}
+              className="form-control"
+            />
+          </li>
+        </ul>
         <br></br>
+        <br></br> <br></br>
         <div className="container">
           <div className="row partition-collection">
-            {claims?.map((claim, index) => (
-              <div className="col-lg-3 col-md-6">
+            {items.map((data, index) => (
+              <div key={index} className="col-lg-3 col-md-6">
                 <div className="collection-block">
                   <div
                     className="bg-size blur-up lazyloaded"
                     style={{
-                      backgroundImage: 'url("https://picsum.photos/200")',
+                      backgroundImage: `url(${data?.image_url})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                       display: "block",
                     }}
                   >
                     <img
-                      src="https://picsum.photos/200"
+                      src={data?.image_url}
                       className="img-fluid blur-up lazyload bg-img"
                       style={{ display: "none" }}
                     />
                   </div>
                   <div className="collection-content">
-                    <h4>Added In : {formatDate(claim.date_claim)}</h4>
+                    <h4>Added In : {formatDate(data?.date_claim)}</h4>
                     {(() => {
-                      if (claim.state === 1) {
+                      if (data?.state === 1) {
                         return (
                           <span className="badge badge-primary">
                             Not Treated Yet
                           </span>
                         );
-                      } else if (claim.state === 2) {
+                      } else if (data?.state === 2) {
                         return (
                           <span className="badge badge-warning">
                             Processing
@@ -225,16 +272,16 @@ const CommentClaims = () => {
                       }
                     })()}
 
-                    <p>{claim.description}</p>
+                    <p>{data?.description}</p>
                     <a
-                      onClick={() => FindOneClaimEvent(claim)}
+                      onClick={() => FindOneClaimEvent(data)}
                       className="btn btn-outline"
                     >
                       Modify Claim !
                     </a>
 
                     <br></br>
-                    <a onClick={() => openConfirmation(claim)} className="btn ">
+                    <a onClick={() => openConfirmation(data)} className="btn ">
                       <Icon.XCircle></Icon.XCircle>
                     </a>
                   </div>
@@ -242,6 +289,17 @@ const CommentClaims = () => {
               </div>
             ))}
           </div>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination"}
+            previousLinkClassName={"pagination__link"}
+            nextLinkClassName={"pagination__link"}
+            disabledClassName={"pagination__link--disabled"}
+            activeClassName={"pagination__link--active"}
+          ></ReactPaginate>
         </div>
       </section>
     </>
