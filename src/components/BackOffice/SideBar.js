@@ -4,6 +4,7 @@ import * as Icon from "react-feather";
 import { fetchClaims } from "../../redux/slices/claimSlice";
 import { useDispatch } from "react-redux";
 const SideBar = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
