@@ -369,7 +369,7 @@ const Navbar = () => {
                         <li>{<Link to='/contact'>Contact</Link>}</li>
                         <li>{<Link to='/about'>About</Link>}</li>
                         <li>
-                          <a href='fakeNav'>Products</a>
+                          {<Link to='/Products'>Products</Link>}
                         </li>
                         <li>
                           <a href='fakeNav'>Events</a>
