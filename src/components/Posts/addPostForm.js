@@ -128,6 +128,7 @@ const AddPostForm = () => {
                 )}
               </button>
             </form>
+            {error.message}
           </div>
         </div>
       </div>
