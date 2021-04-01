@@ -16,8 +16,29 @@ const UserPosts = () => {
     setPageNumber(selected);
   };
 
+  //Search
+  const [search, setsearch] = useState(null);
+
+  const searchSpace = async (event) => {
+    let keyword = event.target.value;
+    setsearch(keyword);
+  };
+  const items = displayedPosts.filter((data) => {
+    if (search === null) return data;
+    else if (data.title.toLowerCase().includes(search.toLowerCase())) {
+      return data;
+    }
+  });
+
   return (
     <>
+      <input
+        style={{ width: 400, height: 40 }}
+        type='text'
+        placeholder='Search..'
+        onChange={(e) => searchSpace(e)}
+        className='form-control'
+      />
       <div className='collection-wrapper'>
         <div className='collection-content ratio_asos'>
           <div className='page-main-content'>
@@ -40,7 +61,7 @@ const UserPosts = () => {
                       No posts to display
                     </span>
                   )}
-                  {displayedPosts?.map((post, index) => {
+                  {items?.map((post, index) => {
                     return <Posts post={post} key={index} />;
                   })}
 
