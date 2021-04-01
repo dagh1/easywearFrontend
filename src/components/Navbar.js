@@ -372,7 +372,7 @@ const Navbar = () => {
                           <a href='fakeNav'>Products</a>
                         </li>
                         <li>
-                          <a href='fakeNav'>Events</a>
+                          { <Link to='/event'>Events</Link>}
                         </li>
                         <li>
                           <a href='fakeNav'>Claims</a>

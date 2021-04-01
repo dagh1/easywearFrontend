@@ -20,6 +20,7 @@ import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
+import HomeEvent from "./components/Events/homeEvent";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState({
@@ -61,7 +62,7 @@ function App() {
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
-
+                  <Route path="/event" component={HomeEvent} />
 
                   <Route exact to="/" component={Home} />
                 </Switch>
