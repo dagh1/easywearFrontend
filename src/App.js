@@ -70,7 +70,7 @@ function App() {
                     path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
-                  
+                  <Route path='/event' component={HomeEvent}/>
                   <Route exact to='/' component={Home} />
 
                 </Switch>
