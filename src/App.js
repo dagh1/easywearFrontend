@@ -77,6 +77,7 @@ function App() {
                   <Route path='/user/profile' component={Profile} />
                   <Route path='/event/addPost' component={AddPostForm} />
                   <Route path='/event/post/:id' component={PostDetails} />
+                  <Route path='/products' component={ProductLists} />
 
                   <Route
                     path='/event/updatePost/:id'

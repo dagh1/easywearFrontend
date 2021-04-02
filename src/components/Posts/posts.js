@@ -17,8 +17,8 @@ import {
   fetchClaimByClaimUrl,
   selectClaims,
 } from "../../redux/slices/claimSlice";
-import { UserContext } from "../../contexts/userContext";
-import { fetchPostReaction } from "../../redux/slices/reactionSlice";
+
+import jwtDecode from "jwt-decode";
 
 const Posts = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +28,14 @@ const Posts = (props) => {
 
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+    console.log(user);
+  }
 
   const updatePost = (post) => {
     dispatch(selectPost(post));
@@ -78,7 +86,6 @@ const Posts = (props) => {
       }
     }
   };
-  const [user, setUser] = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {},
