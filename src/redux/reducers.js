@@ -3,6 +3,7 @@ import postSlice from "./slices/postSlice";
 import claimSlice from "./slices/claimSlice";
 
 import userSlice from "./slices/userSlice";
+import products from "./reducers/productsReducer";
 
 import products from "./reducers/productsReducer";
 
