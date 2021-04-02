@@ -9,6 +9,7 @@ import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
+import { selectClaims } from "../../redux/slices/claimSlice";
 
 const Profile = () => {
   /*  const user = useContext(UserContext);
@@ -31,6 +32,7 @@ const Profile = () => {
     }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
+  const [claims, error] = useSelector(selectClaims);
 
   return (
     <>
@@ -172,8 +174,9 @@ const Profile = () => {
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
                         to="/user/profile/claims"
+                        or
                       >
-                        My Claims
+                        My Claims ({claims.length})
                       </NavLink>
                     </li>
                     <li>
@@ -182,6 +185,7 @@ const Profile = () => {
                     <li>
                       <a href="#">My Settings</a>
                     </li>
+
                     <li className="last">
                       <a
                         href="#"
@@ -216,6 +220,7 @@ const Profile = () => {
                 />
                 <Route
                   path="/user/profile/claims"
+                  or
                   component={UserClaims}
                 ></Route>
                 <Route
