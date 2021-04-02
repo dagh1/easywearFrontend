@@ -20,19 +20,23 @@ import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
-import ProductLists from "./components/Products/ProductsLists";
 
+import LoginForm from "./components/auth/loginForm";
+import RegisterForm from "./components/auth/registerForm";
+import EditProfileForm from "./components/User/editProfileForm";
+import ProductLists from "./components/Products/ProductsLists";
 function App() {
-  const [connectedUser, setConnectedUser] = useState({
-    _id: "6041f2fe9dbc16c1758d7a9a",
-    username: "Rana",
-    password: "yayaya",
-    role: "fe",
-  });
+  const [connectedUser, setConnectedUser] = useState(null);
+  function handleLoggedIn(user) {
+    console.log("handlelogin");
+    console.log(user);
+    setConnectedUser(user);
+  }
+
   return (
     <>
       {(() => {
-        if (connectedUser.role === "admin") {
+        if (connectedUser && connectedUser.role === "admin") {
           return (
             <>
 
@@ -54,23 +58,35 @@ function App() {
         } else {
           return (
             <>
-              <UserContext.Provider value={[connectedUser, setConnectedUser]}>
+              <UserContext.Provider
+                value={
+                  ([connectedUser, setConnectedUser],
+                  {
+                    connectedUser: connectedUser,
+                    onLoggedIn: handleLoggedIn,
+                  })
+                }
+              >
                 <Navbar></Navbar>
                 <Switch>
-
-                  <Route path='/about' component={About} />
-                  <Route path='/contact' component={Contact} />
-                  <Route path='/user/profile' component={Profile} />
-                  <Route path="/Products" component={ProductLists} />
-                  <Route path='/event/addPost' component={AddPostForm} />
-                  <Route path='/event/post/:id' component={PostDetails} />
+                  <Route path="/auth/login" component={LoginForm} />
+                  <Route path="/auth/register" component={RegisterForm} />
+                  <Route
+                    path="/user/editprofile/:id"
+                    component={EditProfileForm}
+                  />
+                  <Route path="/about" component={About} />
+                  <Route path="/contact" component={Contact} />
+                  <Route path="/user/profile" component={Profile} />
+                  <Route path="/event/addPost" component={AddPostForm} />
+                  <Route path="/event/post/:id" component={PostDetails} />
 
                   <Route
                     path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
 
-                  <Route exact to='/' component={Home} />
+                  <Route exact to="/" component={Home} />
 
                 </Switch>
                 <Footer />
