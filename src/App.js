@@ -26,12 +26,14 @@ import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
 function App() {
+
   const [connectedUser, setConnectedUser] = useState(null);
   function handleLoggedIn(user) {
     console.log("handlelogin");
     console.log(user);
     setConnectedUser(user);
   }
+
 
   return (
     <>
@@ -41,14 +43,18 @@ function App() {
             <>
 
 
+
+
               <UserContext.Provider value={[connectedUser, setConnectedUser]}>
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
+
                   <Route path="/ClaimsBack" component={ClaimBack} />
                   <Route path="/Products" component={ProductLists} />
                   <Route path="/Events" component={Events} />
                   <Route exact to="/" component={DashBoard} />
+
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
@@ -86,7 +92,9 @@ function App() {
                     component={UpdatePostForm}
                   />
 
+
                   <Route exact to="/" component={Home} />
+
 
                 </Switch>
                 <Footer />
