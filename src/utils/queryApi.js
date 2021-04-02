@@ -61,9 +61,9 @@ export async function queryApi(
     // Setting authorization token if available with each request
     // This example uses localStorage, feel free to change it to cookie storage or something else.
 
-    // const token = localStorage.getItem("token");
-    // if (token)
-    //   config.headers = { ...config.headers, Authorization: `Bearer ${token}` };
+    const token = localStorage.getItem("jwt");
+    if (token)
+      config.headers = { ...config.headers, Authorization: ` ${token}` };
 
     // console.log(`Requesting : ${config.url}`)
     // console.log(config)
