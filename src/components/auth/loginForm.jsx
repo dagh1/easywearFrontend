@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
 import { addUser } from "../../redux/slices/userSlice";
 import { UserContext } from "../../contexts/userContext";
+import { Helmet } from "react-helmet";
 
 const LoginForm = () => {
   const [error, setError] = useState({ visible: false, message: "" });
@@ -64,10 +65,11 @@ const LoginForm = () => {
     console.log(info.data);
     const userData = info.data;
     const [res, err] = await queryApi("user/login", userData, "POST");
-    if (err) {
+    if (res.hasOwnProperty("error")) {
+      console.log("errrrror");
       setError({
         visible: true,
-        message: JSON.stringify(err.errors, null, 2),
+        message: res["error"],
       });
     } else {
       currentUser.onLoggedIn(jwtDecode(res));
@@ -89,6 +91,10 @@ const LoginForm = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+      </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
           <div className="row">
@@ -152,6 +158,12 @@ const LoginForm = () => {
                       <strong>{info.errors["password"]}</strong>
                     </div>
                   )}
+
+                  {error.visible && (
+                    <div className="alert alert-danger">
+                      <strong>{error.message}</strong>
+                    </div>
+                  )}
                   <button
                     type="submit"
                     disabled={validate()}
@@ -171,9 +183,13 @@ const LoginForm = () => {
                   and easy. It allows you to be able to order from our shop. To
                   start shopping click register.
                 </p>
-                <a href="#" className="btn btn-solid">
+                <button
+                  type="button"
+                  onClick={() => history.push("/auth/register")}
+                  className="btn btn-solid"
+                >
                   Create an Account
-                </a>
+                </button>
               </div>
             </div>
           </div>

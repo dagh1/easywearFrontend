@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
+import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 
 const Profile = () => {
@@ -20,10 +21,14 @@ const Profile = () => {
     // Set auth token header auth
     user = jwtDecode(jwtToken); // Decode token and get user info and exp
   }
+
   console.log(user);
 
   useEffect(() => {
-    if (user) dispatch(fetchPosts(user._id));
+    if (user) {
+      dispatch(addUser(user));
+      dispatch(fetchPosts(user._id));
+    }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
 
@@ -178,7 +183,15 @@ const Profile = () => {
                       <a href="#">My Settings</a>
                     </li>
                     <li className="last">
-                      <a href="#">Log Out</a>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          localStorage.removeItem("jwt");
+                          window.location = "/auth/login";
+                        }}
+                      >
+                        Log Out
+                      </a>
                     </li>
                   </ul>
                 </div>

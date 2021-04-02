@@ -21,6 +21,8 @@ import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
 import LoginForm from "./components/auth/loginForm";
+import RegisterForm from "./components/auth/registerForm";
+import EditProfileForm from "./components/User/editProfileForm";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -61,6 +63,11 @@ function App() {
                 <Navbar></Navbar>
                 <Switch>
                   <Route path="/auth/login" component={LoginForm} />
+                  <Route path="/auth/register" component={RegisterForm} />
+                  <Route
+                    path="/user/editprofile/:id"
+                    component={EditProfileForm}
+                  />
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
