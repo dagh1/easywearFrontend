@@ -7,13 +7,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
+
+import { addUser } from "../../redux/slices/userSlice";
+import jwtDecode from "jwt-decode";
+
 import { selectClaims } from "../../redux/slices/claimSlice";
 const Profile = () => {
   const [user, setUser] = useContext(UserContext);
 
+
+const Profile = () => {
+  /*  const user = useContext(UserContext);
+   */
   const dispatch = useDispatch();
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
+
+  console.log(user);
+
   useEffect(() => {
-    dispatch(fetchPosts(user._id));
+    if (user) {
+      dispatch(addUser(user));
+      dispatch(fetchPosts(user._id));
+    }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
   const [claims, error] = useSelector(selectClaims);
@@ -51,13 +72,15 @@ const Profile = () => {
                       className="img-fluid"
                     />
 
-                    <h3>{user?.username}</h3>
-                    <div className='rating'>
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
-                      <i className='fa fa-star' />
+
+                    {/* <h3>{user?.username}</h3> */}
+                    <div className="rating">
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+
                     </div>
                     <h6>750M followers | 10M review</h6>
                   </div>
@@ -89,7 +112,6 @@ const Profile = () => {
                     <div className='footer-social'>
                       <ul>
                         <li>
-
                           <a href="#">
                             <i className="fa fa-facebook" aria-hidden="true" />
                           </a>
@@ -174,8 +196,18 @@ const Profile = () => {
                     <li>
                       <a href='#'>My Settings</a>
                     </li>
-                    <li className='last'>
-                      <a href='#'>Log Out</a>
+
+                    <li className="last">
+                      <a
+                        href="#"
+                        onClick={() => {
+                          localStorage.removeItem("jwt");
+                          window.location = "/auth/login";
+                        }}
+                      >
+                        Log Out
+                      </a>
+
                     </li>
                   </ul>
                 </div>
