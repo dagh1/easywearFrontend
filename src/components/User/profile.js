@@ -5,16 +5,12 @@ import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
-import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
 
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 
 import { selectClaims } from "../../redux/slices/claimSlice";
-const Profile = () => {
-  const [user, setUser] = useContext(UserContext);
-
 
 const Profile = () => {
   /*  const user = useContext(UserContext);
@@ -70,15 +66,13 @@ const Profile = () => {
                       className='img-fluid'
                     />
 
-
                     {/* <h3>{user?.username}</h3> */}
-                    <div className="rating">
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-
+                    <div className='rating'>
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
+                      <i className='fa fa-star' />
                     </div>
                     <h6>750M followers | 10M review</h6>
                   </div>
@@ -110,10 +104,8 @@ const Profile = () => {
                     <div className='footer-social'>
                       <ul>
                         <li>
-
-                          <a href="#">
-                            <i className="fa fa-facebook" aria-hidden="true" />
-
+                          <a href='#'>
+                            <i className='fa fa-facebook' aria-hidden='true' />
                           </a>
                         </li>
                         <li>
@@ -195,9 +187,9 @@ const Profile = () => {
                       <a href='#'>My Settings</a>
                     </li>
 
-                    <li className="last">
+                    <li className='last'>
                       <a
-                        href="#"
+                        href='#'
                         onClick={() => {
                           localStorage.removeItem("jwt");
                           window.location = "/auth/login";
@@ -205,7 +197,6 @@ const Profile = () => {
                       >
                         Log Out
                       </a>
-
                     </li>
                   </ul>
                 </div>
