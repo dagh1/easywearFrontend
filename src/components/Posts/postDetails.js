@@ -17,16 +17,25 @@ import {
   selectReactions,
 } from "../../redux/slices/reactionSlice";
 import Reactions from "../Reactions/reactions";
+import jwtDecode from "jwt-decode";
+import UserToReact from "../Reactions/userToReact";
 
 const PostDetails = (props) => {
   const selectedPost = useSelector(selectSelectedPosts);
   const [post, setPost] = useState({});
   const [comments, err] = useSelector(selectComments);
   const [reactions, errors] = useSelector(selectReactions);
+  const [connectedUSer, setConnectedUser] = useState();
+  const [hideReaction, setHideReaction] = useState();
 
+  const jwtToken = localStorage.getItem("jwt");
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
+    if (jwtToken) {
+      // Set auth token header auth
+      setConnectedUser(jwtDecode(jwtToken)); // Decode token and get user info and exp
+    }
     async function fetchPost() {
       const [res, err] = await queryApi(
         "post/" + props.match.params.id,
@@ -40,24 +49,6 @@ const PostDetails = (props) => {
     dispatch(fetchPostComments(props.match.params.id));
     dispatch(fetchPostReaction(props.match.params.id));
   }, [dispatch]);
-
-  const handleEmojiClick = async (label) => {
-    console.log(label);
-    const values = {
-      reactiontype: label,
-      user_id: "7041f2fe9dbc16c1758d7a9a",
-      post_id: post._id,
-    };
-    const [res, err] = await queryApi("reaction", values, "POST");
-    if (err) {
-      setErrors({
-        visible: true,
-        message: JSON.stringify(err.errors, null, 2),
-      });
-    } else {
-      dispatch(addReaction(res));
-    }
-  };
 
   return (
     <>
@@ -147,10 +138,7 @@ const PostDetails = (props) => {
               </p>
               <Reactions />
             </div>
-            <ReactionBarSelector
-              iconSize={20}
-              onSelect={(label) => handleEmojiClick(label)}
-            />
+            <UserToReact post={post} />
           </div>
 
           <div className='row section-b-space'>

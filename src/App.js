@@ -28,8 +28,6 @@ import ProductLists from "./components/Products/ProductsLists";
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   function handleLoggedIn(user) {
-    console.log("handlelogin");
-    console.log(user);
     setConnectedUser(user);
   }
 
