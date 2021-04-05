@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import {Card , CardImg, CardImgOverlay, CardTitle , Breadcrumb , BreadcrumbItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import { fetchEvents } from '../../redux/slices/eventSlice';
+import { fetchEvents , fetchRecentEvents } from '../../redux/slices/eventSlice';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
 
 const mapStateToProps = state => ({
-    events: state.eventSlice.events
+    events: state.eventSlice.events,
+    recent_events: state.eventSlice.recentEvents
 });
 
 const mapDispatchToProps = dispatch => ({
 
-    fetchEvents: () => dispatch(fetchEvents())
+    fetchEvents: () => dispatch(fetchEvents()),
+    fetchRecentEvents: () => dispatch(fetchRecentEvents())
 });
 
 
@@ -27,6 +29,7 @@ class HomeEvent extends Component {
 
     componentDidMount(){
         this.props.fetchEvents();
+        this.props.fetchRecentEvents();
     }
     
 
@@ -64,22 +67,23 @@ class HomeEvent extends Component {
         }
 
 
-        const RenderEventRecent = () => {
-            return(
-            <ul class="recent-blog">
-                <li>
-                     <div class="media"><img class="img-fluid blur-up lazyload" 
-                                        src="../assets/images/blog/1.jpg" 
-                                        alt="Generic placeholder image"/>
-                        <div class="media-body align-self-center">
-                                            <h6>25 Dec 2018</h6>
-                                            <p>0 hits</p>
+
+            const list_recent_events = this.props.recent_events.map( (event) => {
+                return (
+                    <ul class="recent-blog">
+                        <li>
+                        <div class="media"><img class="img-fluid blur-up lazyload" 
+                                            src="../assets/images/blog/1.jpg" 
+                                            alt="Generic placeholder image"/>
+                            <div class="media-body align-self-center">
+                                                <h6>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(event.date_fin)))}</h6>
+                                                <p>{event.eventName}</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-            );
-        }
+                        </li>
+                    </ul>
+                );
+            });
 
         const RenderEvent = (props) =>{
 
@@ -104,7 +108,7 @@ class HomeEvent extends Component {
                             <div class="blog-sidebar">
                                 <div class="theme-card">
                                     <h4>Recent Events</h4>
-                                    <RenderEventRecent></RenderEventRecent>
+                                    {list_recent_events}
                                 </div>
                                 <div class="theme-card">
                                     <h4>Popular Events</h4>
