@@ -9,11 +9,15 @@ let initialState = {
 };
 
 const eventSlice = createSlice({
-    name: "event",
+    name: "events",
     initialState,
     reducers:{
+        listEvents(state ,action){
+            state.events = action.payload;
+        },
         addEvent: (state , action) => {
-            // action
+            const payload = action.payload;
+            state.events.push(payload);
         },
         updateEvent: (state , action) => {
             //
@@ -21,13 +25,24 @@ const eventSlice = createSlice({
         deleteEvent: (state , action) => {
             //
         },
-        setErrors: (state,action) => {
-
+        setErrors(state,action){
+            state.errors = action.payload;
         }
     }
 });
 
+export const fetchEvents = () => async (dispatch)  => {
+    const [res, error] = await queryApi("event/getAllEvents");
 
-export const { addEvent , updateEvent , deleteEvent , setErrors } = eventSlice.actions;
+    if(error){
+        dispatch(setErrors(error));
+    } else{
+        dispatch(listEvents(res));
+        console.log("im here");
+    }
+}
+
+
+export const { listEvents, addEvent , updateEvent , deleteEvent , setErrors } = eventSlice.actions;
 
 export default eventSlice.reducer;
