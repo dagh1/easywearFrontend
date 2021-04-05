@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 
 
-
 const mapStateToProps = state => ({
     events: state.eventSlice.events
 });
@@ -36,33 +35,54 @@ class HomeEvent extends Component {
         const RenderEventDetails = ({ event }) => {
             return (
                 
-                        <div class="row blog-media">
-                              <div class="col-xl-6">
-                                  <div class="blog-left">
-                                      <a href="#"><img src="../assets/images/blog/1.jpg"
-                                              class="img-fluid blur-up lazyload bg-img" alt=""/>
-                                          </a>
-                                  </div>
-                              </div>
-                              <div class="col-xl-6">
-                      <div class="blog-right">
-                          <div>
-                              <h6> opening date : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(event.date_debut)))}</h6><a href="#">
-                                  <h4>{event.eventName}</h4>
-                              </a>
-                              <ul class="post-social">
-                                  <li>Posted By : {event.user_id}</li>
-                                  <li><i class="fa fa-comments"></i> 10 Posts</li>
-                              </ul>
-                              <p>{event.description}</p>
-                          </div>
+                <div class="row blog-media">
+                    <div class="col-xl-6">
+                        <div class="blog-left">
+                            <a href="#"><img src="../assets/images/blog/1.jpg"
+                                              class="img-fluid blur-up lazyload bg-img" 
+                                              alt=""/>
+                            </a>
                         </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="blog-right">
+                            <div>
+                                <h6> opening date : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(event.date_debut)))}</h6>
+                                    <a href="#">
+                                        <h4>{event.eventName}</h4>
+                                    </a>
+                                <ul class="post-social">
+                                    <li>Posted By : {event.user_id}</li>
+                                    <li><i class="fa fa-comments"></i> 10 Posts</li>
+                                </ul>
+                                <p>{event.description}</p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            );
+        }
+
+
+        const RenderEventRecent = () => {
+            return(
+            <ul class="recent-blog">
+                <li>
+                     <div class="media"><img class="img-fluid blur-up lazyload" 
+                                        src="../assets/images/blog/1.jpg" 
+                                        alt="Generic placeholder image"/>
+                        <div class="media-body align-self-center">
+                                            <h6>25 Dec 2018</h6>
+                                            <p>0 hits</p>
                         </div>
+                    </div>
+                </li>
+            </ul>
             );
         }
 
         const RenderEvent = (props) =>{
+
             const list_events = this.props.events.map((event) => {
                 console.log(event);
                 return(
@@ -72,6 +92,8 @@ class HomeEvent extends Component {
                 </div>
                 );
             });
+
+           
     
             return(
                 <section class="section-b-space blog-page ratio2_3">
@@ -82,9 +104,11 @@ class HomeEvent extends Component {
                             <div class="blog-sidebar">
                                 <div class="theme-card">
                                     <h4>Recent Events</h4>
+                                    <RenderEventRecent></RenderEventRecent>
                                 </div>
                                 <div class="theme-card">
                                     <h4>Popular Events</h4>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -32,7 +32,7 @@ const eventSlice = createSlice({
 });
 
 export const fetchEvents = () => async (dispatch)  => {
-    const [res, error] = await queryApi("event/getAllEvents");
+    const [res, error] = await queryApi("event/getRecentEvents");
 
     if(error){
         dispatch(setErrors(error));
