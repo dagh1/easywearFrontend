@@ -5,15 +5,32 @@ import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
-import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
-import { selectClaims } from "../../redux/slices/claimSlice";
-const Profile = () => {
-  const [user, setUser] = useContext(UserContext);
 
+import { addUser } from "../../redux/slices/userSlice";
+import jwtDecode from "jwt-decode";
+
+import { selectClaims } from "../../redux/slices/claimSlice";
+
+const Profile = () => {
+  /*  const user = useContext(UserContext);
+   */
   const dispatch = useDispatch();
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
+
+  console.log(user);
+
   useEffect(() => {
-    dispatch(fetchPosts(user._id));
+    if (user) {
+      dispatch(addUser(user));
+      dispatch(fetchPosts(user._id));
+    }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
   const [claims, error] = useSelector(selectClaims);
@@ -31,9 +48,8 @@ const Profile = () => {
           }}
         >
           <img
-
-            src="/assets/images/vendor/profile.jpg"
-            className="bg-img lazyload blur-up"
+            src='/assets/images/vendor/profile.jpg'
+            className='bg-img lazyload blur-up'
             style={{ display: "none" }}
           />
         </div>
@@ -46,12 +62,11 @@ const Profile = () => {
                 <div className='profile-image'>
                   <div>
                     <img
-
-                      src="/assets/images/logos/17.png"
-                      className="img-fluid"
+                      src='/assets/images/logos/17.png'
+                      className='img-fluid'
                     />
 
-                    <h3>{user?.username}</h3>
+                    {/* <h3>{user?.username}</h3> */}
                     <div className='rating'>
                       <i className='fa fa-star' />
                       <i className='fa fa-star' />
@@ -89,9 +104,8 @@ const Profile = () => {
                     <div className='footer-social'>
                       <ul>
                         <li>
-
-                          <a href="#">
-                            <i className="fa fa-facebook" aria-hidden="true" />
+                          <a href='#'>
+                            <i className='fa fa-facebook' aria-hidden='true' />
                           </a>
                         </li>
                         <li>
@@ -160,10 +174,8 @@ const Profile = () => {
                       <NavLink
                         className='active'
                         activeStyle={{ color: "#ff4c3b" }}
-
-                        to="/user/profile/claims"
+                        to='/user/profile/claims'
                         or
-
                       >
                         My Claims ({claims.length})
                       </NavLink>
@@ -174,8 +186,17 @@ const Profile = () => {
                     <li>
                       <a href='#'>My Settings</a>
                     </li>
+
                     <li className='last'>
-                      <a href='#'>Log Out</a>
+                      <a
+                        href='#'
+                        onClick={() => {
+                          localStorage.removeItem("jwt");
+                          window.location = "/auth/login";
+                        }}
+                      >
+                        Log Out
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -184,9 +205,8 @@ const Profile = () => {
               <div className='collection-sidebar-banner'>
                 <a href='#'>
                   <img
-
-                    src="/assets/images/side-banner.png"
-                    className="img-fluid blur-up lazyloaded"
+                    src='/assets/images/side-banner.png'
+                    className='img-fluid blur-up lazyloaded'
                   />
                 </a>
               </div>
@@ -200,8 +220,7 @@ const Profile = () => {
                   component={userProfileDetails}
                 />
                 <Route
-
-                  path="/user/profile/claims"
+                  path='/user/profile/claims'
                   or
                   component={UserClaims}
                 ></Route>
