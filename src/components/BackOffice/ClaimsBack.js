@@ -231,6 +231,7 @@ const ClaimBack = () => {
       <div style={{ marginLeft: 250 }} className='page-wrapper'>
         <div className='page-body-wrapper'>
 
+
           {/* Container-fluid starts*/}
           <div className='container-fluid'>
             <div className='page-header'>

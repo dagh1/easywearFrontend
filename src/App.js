@@ -85,11 +85,11 @@ function App() {
                   <Route path='/event/post/:id' component={PostDetails} />
                   <Route path='/products' component={ProductLists} />
 
-
                   <Route
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
+
                   <Route exact to='/' component={Home} />
 
                 </Switch>

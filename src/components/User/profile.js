@@ -49,8 +49,9 @@ const Profile = () => {
         >
           <img
 
-            src='/assets/images/vendor/profile.jpg'
-            className='bg-img lazyload blur-up'
+            src="/assets/images/vendor/profile.jpg"
+            className="bg-img lazyload blur-up"
+
 
             style={{ display: "none" }}
           />
@@ -109,8 +110,10 @@ const Profile = () => {
                       <ul>
                         <li>
 
+
                           <a href='#'>
                             <i className='fa fa-facebook' aria-hidden='true' />
+
 
                           </a>
                         </li>
@@ -181,7 +184,9 @@ const Profile = () => {
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
 
+
                         to='/user/profile/claims'
+
 
                         or
                       >
@@ -206,7 +211,10 @@ const Profile = () => {
                       >
                         Log Out
                       </a>
-      </li>
+
+
+                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -214,6 +222,7 @@ const Profile = () => {
               <div className="collection-sidebar-banner">
                 <a href="#">
                   <img
+
                     src='/assets/images/side-banner.png'
                     className='img-fluid blur-up lazyloaded'
 
