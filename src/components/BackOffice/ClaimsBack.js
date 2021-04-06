@@ -119,12 +119,12 @@ const ClaimBack = () => {
               </Row>
             </Container>
 
-            <Form.Group controlId='formGridAddress1'>
+            <Form.Group controlId="formGridAddress1">
               <Form.Label>Claim Type :</Form.Label>
               <Form.Control placeholder={selectedClaim?.type} readOnly />
             </Form.Group>
 
-            <Form.Group controlId='formGridAddress2'>
+            <Form.Group controlId="formGridAddress2">
               <Form.Label>Claim Date :</Form.Label>
               <Form.Control
                 placeholder={formatDate(selectedClaim?.date_claim)}
@@ -132,39 +132,39 @@ const ClaimBack = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId='formGriddescription'>
+            <Form.Group controlId="formGriddescription">
               <Form.Label>Description :</Form.Label>
 
               <Form.Control
-                type='text'
-                name='description'
-                id='description'
+                type="text"
+                name="description"
+                id="description"
                 required
-                minLength='5'
+                minLength="5"
                 defaultValue={selectedClaim?.description}
                 readOnly
               />
             </Form.Group>
 
-            <Form.Group controlId='formGridstate'>
+            <Form.Group controlId="formGridstate">
               <Form.Label>Claim State :</Form.Label>
               {(() => {
                 if (selectedClaim?.state === 1) {
                   return (
                     <>
-                      <div className='form-control'>Not Treated Yet</div>
+                      <div className="form-control">Not Treated Yet</div>
                     </>
                   );
                 } else if (selectedClaim?.state === 2) {
                   return (
                     <>
-                      <div className='form-control'>Processing</div>
+                      <div className="form-control">Processing</div>
                     </>
                   );
                 } else {
                   return (
                     <>
-                      <div className='form-control'>Closed Claim</div>
+                      <div className="form-control">Closed Claim</div>
                     </>
                   );
                 }
@@ -172,7 +172,7 @@ const ClaimBack = () => {
             </Form.Group>
 
             <Form.Row>
-              <Form.Group as={Col} controlId='formGridStateee'>
+              <Form.Group as={Col} controlId="formGridStateee">
                 {(() => {
                   if (selectedClaim?.state === 1) {
                     return (
@@ -181,8 +181,8 @@ const ClaimBack = () => {
                           <option value={selectedClaim?.state}>
                             Not Treated Yet
                           </option>
-                          <option value='2'>Processing</option>
-                          <option value='3'>Close Claim</option>
+                          <option value="2">Processing</option>
+                          <option value="3">Close Claim</option>
                         </select>
                       </>
                     );
@@ -193,8 +193,8 @@ const ClaimBack = () => {
                           <option value={selectedClaim?.state}>
                             Processing
                           </option>
-                          <option value='2'>Processing</option>
-                          <option value='3'>Close Claim</option>
+                          <option value="2">Processing</option>
+                          <option value="3">Close Claim</option>
                         </select>
                       </>
                     );
@@ -205,13 +205,13 @@ const ClaimBack = () => {
               </Form.Group>
             </Form.Row>
 
-            <Form.Group id='formGridCheckbox'>
-              <Form.Check type='checkbox' label='Check me out' />
+            <Form.Group id="formGridCheckbox">
+              <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
             {(() => {
               if (selectedClaim?.state === 1 || selectedClaim?.state === 2) {
                 return (
-                  <Button variant='primary' type='submit'>
+                  <Button variant="primary" type="submit">
                     Save Changes
                   </Button>
                 );
@@ -222,14 +222,15 @@ const ClaimBack = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
 
-      <div style={{ marginLeft: 250 }} className='page-wrapper'>
-        <div className='page-body-wrapper'>
+      <div style={{ marginLeft: 250 }} className="page-wrapper">
+        <div className="page-body-wrapper">
+
           {/* Container-fluid starts*/}
           <div className='container-fluid'>
             <div className='page-header'>
