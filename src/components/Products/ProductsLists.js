@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 
 const ProductList = (props) => (
   <>
-     <div style={{ marginLeft: 250 }} className="page-wrapper">
+     <div className="page-wrapper">
     <div className="page-body-wrapper">
    <div className="page-body">
      <div className="container-fluid">
@@ -23,10 +23,7 @@ const ProductList = (props) => (
                  </div></div></div></div>
                  <div className="container-fluid">
             <div className="row products-admin ratio_asos">
-              
-           
-             { props.Prods.map(Prods => <Productcard key={Prods.id} {...Prods} />)}
-           
+           {props.Prods? props.Prods.map(Prods => <Productcard key={Prods.id} {...Prods} />):[]}
               </div></div></div></div></div>
   </>
 );
@@ -39,7 +36,7 @@ class Productcard extends React.Component {
     const product = this.props;
     return (
       <div className="col-xl-3 col-sm-6">
-        <div className="card" style={{ height: '500px',width:'370px'}}><div className="products-admin">
+        <div className="card" style={{ height: '500px'}}><div className="products-admin">
         <div className="card-body product-box">
           <div className="img-wrapper">
             <div className="lable-block">
