@@ -64,7 +64,8 @@ const UserPosts = () => {
                   {items?.map((post, index) => {
                     return <Posts post={post} key={index} />;
                   })}
-
+                </div>
+                {pageCount > 1 ? (
                   <ReactPaginate
                     previousLabel={"Previous"}
                     nextLabel={"next"}
@@ -76,7 +77,9 @@ const UserPosts = () => {
                     disabledClassName={"pagination__link--disabled"}
                     activeClassName={"pagination__link--active"}
                   ></ReactPaginate>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
