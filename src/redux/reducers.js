@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import postSlice from "./slices/postSlice";
 import claimSlice from "./slices/claimSlice";
+import contactSlice from "./slices/contactSlice";
 
 import commentSlice from "./slices/commentSlice";
 import ReactionSlice from "./slices/reactionSlice";
@@ -13,9 +14,13 @@ const reducers = combineReducers({
   postSlice,
   claimSlice,
 
+  contactSlice,
+
+
   commentSlice,
   ReactionSlice,
   userSlice,
+
 });
 
 export default reducers;
