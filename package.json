@@ -24,7 +24,6 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-
     "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
@@ -54,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0"
+    "@svgr/webpack": "^5.5.0",
+    "emailjs-com": "^2.6.4"
   }
 }

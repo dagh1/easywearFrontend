@@ -1,89 +1,72 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+
 import * as Icon from "react-feather";
 import { formatDate } from "../../helpers/dateConvert";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import {
-  selectClaims,
-  addClaim,
-  deleteClaim,
+  deleteContact,
+  fetchContacts,
+  selectContact,
+  selectContacts,
+  selectedContact,
+  selectSelectedContact,
   setErrors,
-  selectClaim,
-  fetchClaims,
-  selectSelectedClaim,
-  updateStateClaim,
-  unselectClaim,
-} from "../../redux/slices/claimSlice";
+} from "../../redux/slices/contactSlice";
+
+import * as emailjs from "emailjs-com";
 import { useHistory, useParams } from "react-router-dom";
 import { queryApi } from "../../utils/queryApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
-
-const ClaimBack = () => {
+const Contacts = () => {
+  //
   const { id } = useParams();
   const history = useHistory();
   const [show, setShow] = useState(false);
 
-  const selectedClaim = useSelector(selectSelectedClaim);
-
-  const [posts, err] = useSelector(selectClaims);
-
-  const dispatch = useDispatch();
-
+  const [contacts, err] = useSelector(selectContacts);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const deleteClaimEvent = async (id) => {
-    const [res, err] = await queryApi("claim/delete/" + id, {}, "DELETE");
-    if (err) {
-      dispatch(setErrors(err));
-      console.log(err);
-    } else {
-      dispatch(deleteClaim(id));
-      dispatch(fetchClaims());
-    }
-  };
+  const dispatch = useDispatch();
 
-  const FindOneClaimEvent = async (prod) => {
-    handleShow();
-    dispatch(selectClaim(prod));
-  };
-  const [claimState, setclaimState] = useState(selectedClaim);
-
-  const handleSubmit1 = async (evt) => {
-    evt.preventDefault();
-
+  const deleteContactEvent = async (id) => {
     const [res, err] = await queryApi(
-      "claim/validateClaim/" + selectedClaim._id,
-      { state: Number(claimState) },
-      "PUT"
+      "contact/deleteContact/" + id,
+      {},
+      "DELETE"
     );
     if (err) {
       dispatch(setErrors(err));
       console.log(err);
     } else {
-      dispatch(updateStateClaim(res));
-      dispatch(unselectClaim());
-
-      dispatch(fetchClaims());
-      handleClose();
+      dispatch(deleteContact(id));
+      dispatch(fetchContacts());
     }
   };
+  const [error, setError] = useState({ visible: false, message: "" });
+  const [loader, setLoader] = useState(false);
+
   const openConfirmation = async (claim) => {
-    if (window.confirm("are you sure you want to delete?") === true) {
-      deleteClaimEvent(claim._id);
+    if (
+      window.confirm("are you sure you want to delete this Message?") === true
+    ) {
+      deleteContactEvent(claim._id);
     }
   };
   //pagination variables
   const [pageNumber, setPageNumber] = useState(0);
   const claimsperPage = 4;
   const pageVisited = pageNumber * claimsperPage;
-  const displayedClaims = posts.slice(pageVisited, pageVisited + claimsperPage);
-  const pageCount = Math.ceil(posts.length / claimsperPage);
+  const displayContacts = contacts.slice(
+    pageVisited,
+    pageVisited + claimsperPage
+  );
+  const pageCount = Math.ceil(contacts.length / claimsperPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -95,45 +78,54 @@ const ClaimBack = () => {
     let keyword = event.target.value;
     setsearch(keyword);
   };
-  const items = displayedClaims.filter((data) => {
+  const items = displayContacts.filter((data) => {
     if (search == null) return data;
     else if (
-      data.type.toLowerCase().includes(search.toLowerCase()) ||
+      data.firstName.toLowerCase().includes(search.toLowerCase()) ||
+      data.lastName.toLowerCase().includes(search.toLowerCase()) ||
+      data.Email.toLowerCase().includes(search.toLowerCase()) ||
       data.description.toLowerCase().includes(search.toLowerCase())
     ) {
       return data;
     }
   });
+  const FindOneClaimEvent = async (prod) => {
+    handleShow();
+    dispatch(selectContact(prod));
+  };
 
+  const contact = useSelector(selectSelectedContact);
+
+  const [contactContent, setcontactContent] = useState();
+  const handleSubmit1 = async (evt) => {
+    evt.preventDefault();
+    console.log(contact.Email);
+    const [res, err] = await queryApi(
+      "contact/sendMail/",
+      {
+        Email: contact.Email,
+        Subject: "Good Morning Sir/Madam" + contact.firstName,
+        Text: contactContent,
+      },
+      "POST"
+    );
+    if (err) {
+      dispatch(setErrors(err));
+      console.log(err);
+    } else {
+      handleClose();
+    }
+  };
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modify Claim..</Modal.Title>
+          <Modal.Title>Send Mail</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit1}>
-            <Container>
-              <Row>
-                <Image src={selectedClaim?.image_url} fluid />
-              </Row>
-            </Container>
-
-            <Form.Group controlId="formGridAddress1">
-              <Form.Label>Claim Type :</Form.Label>
-              <Form.Control placeholder={selectedClaim?.type} readOnly />
-            </Form.Group>
-
-            <Form.Group controlId="formGridAddress2">
-              <Form.Label>Claim Date :</Form.Label>
-              <Form.Control
-                placeholder={formatDate(selectedClaim?.date_claim)}
-                readOnly
-              />
-            </Form.Group>
-
             <Form.Group controlId="formGriddescription">
-              <Form.Label>Description :</Form.Label>
+              <Form.Label>Write Your Text ..</Form.Label>
 
               <Form.Control
                 type="text"
@@ -141,84 +133,13 @@ const ClaimBack = () => {
                 id="description"
                 required
                 minLength="5"
-                defaultValue={selectedClaim?.description}
-                readOnly
+                onChange={(e) => setcontactContent(e.target.value)}
               />
             </Form.Group>
 
-            <Form.Group controlId="formGridstate">
-              <Form.Label>Claim State :</Form.Label>
-              {(() => {
-                if (selectedClaim?.state === 1) {
-                  return (
-                    <>
-                      <div className="form-control">Not Treated Yet</div>
-                    </>
-                  );
-                } else if (selectedClaim?.state === 2) {
-                  return (
-                    <>
-                      <div className="form-control">Processing</div>
-                    </>
-                  );
-                } else {
-                  return (
-                    <>
-                      <div className="form-control">Closed Claim</div>
-                    </>
-                  );
-                }
-              })()}
-            </Form.Group>
-
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridStateee">
-                {(() => {
-                  if (selectedClaim?.state === 1) {
-                    return (
-                      <>
-                        <select onChange={(e) => setclaimState(e.target.value)}>
-                          <option value={selectedClaim?.state}>
-                            Not Treated Yet
-                          </option>
-                          <option value="2">Processing</option>
-                          <option value="3">Close Claim</option>
-                        </select>
-                      </>
-                    );
-                  } else if (selectedClaim?.state === 2) {
-                    return (
-                      <>
-                        <select onChange={(e) => setclaimState(e.target.value)}>
-                          <option value={selectedClaim?.state}>
-                            Processing
-                          </option>
-                          <option value="2">Processing</option>
-                          <option value="3">Close Claim</option>
-                        </select>
-                      </>
-                    );
-                  } else {
-                    return <></>;
-                  }
-                })()}
-              </Form.Group>
-            </Form.Row>
-
-            <Form.Group id="formGridCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            {(() => {
-              if (selectedClaim?.state === 1 || selectedClaim?.state === 2) {
-                return (
-                  <Button variant="primary" type="submit">
-                    Save Changes
-                  </Button>
-                );
-              } else {
-                return <></>;
-              }
-            })()}
+            <Button variant="primary" type="submit">
+              Send
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -227,7 +148,6 @@ const ClaimBack = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
       <div style={{ marginLeft: 250 }} className="page-wrapper">
         <div className="page-body-wrapper">
           {/* Container-fluid starts*/}
@@ -237,8 +157,8 @@ const ClaimBack = () => {
                 <div className="col-lg-6">
                   <div className="page-header-left">
                     <h3>
-                      Claims
-                      <small>Manage Claims</small>
+                      Contacts
+                      <small>Manage Contacts</small>
                     </h3>
                   </div>
                 </div>
@@ -265,7 +185,7 @@ const ClaimBack = () => {
                       </a>
                     </li>
                     <li className="breadcrumb-item">DashBoard</li>
-                    <li className="breadcrumb-item active">Claims</li>
+                    <li className="breadcrumb-item active">Contacts</li>
                   </ol>
                 </div>
               </div>
@@ -305,18 +225,6 @@ const ClaimBack = () => {
                         <thead>
                           <tr role="row">
                             <th
-                              className="sorting_asc"
-                              tabIndex={0}
-                              aria-controls="basic-1"
-                              rowSpan={1}
-                              colSpan={1}
-                              aria-sort="ascending"
-                              aria-label="Order Id: activate to sort column descending"
-                              style={{ width: 93 }}
-                            >
-                              Claim Id
-                            </th>
-                            <th
                               className="sorting"
                               tabIndex={0}
                               aria-controls="basic-1"
@@ -325,7 +233,7 @@ const ClaimBack = () => {
                               aria-label="Product: activate to sort column ascending"
                               style={{ width: 160 }}
                             >
-                              Picture
+                              First Name
                             </th>
                             <th
                               className="sorting"
@@ -336,7 +244,7 @@ const ClaimBack = () => {
                               aria-label="Payment Status: activate to sort column ascending"
                               style={{ width: 215 }}
                             >
-                              Claim Status
+                              Last Name
                             </th>
                             <th
                               className="sorting"
@@ -347,7 +255,7 @@ const ClaimBack = () => {
                               aria-label="Payment Method: activate to sort column ascending"
                               style={{ width: 178 }}
                             >
-                              Claimer Name
+                              Phone
                             </th>
                             <th
                               className="sorting"
@@ -358,7 +266,7 @@ const ClaimBack = () => {
                               aria-label="Order Status: activate to sort column ascending"
                               style={{ width: 138 }}
                             >
-                              Claim type
+                              Email
                             </th>
                             <th
                               className="sorting"
@@ -399,64 +307,12 @@ const ClaimBack = () => {
                         <tbody>
                           {items.map((data, index) => (
                             <tr key={index} role="row" className="odd">
-                              <td className="sorting_1">{data._id}</td>
-                              <td>
-                                <div className="d-flex">
-                                  <img
-                                    src={data.image_url}
-                                    alt="img"
-                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                {(() => {
-                                  if (data.state === 1) {
-                                    return (
-                                      <span className="badge badge-primary">
-                                        Not Treated Yet
-                                      </span>
-                                    );
-                                  } else if (data.state === 2) {
-                                    return (
-                                      <span className="badge badge-warning">
-                                        Processing
-                                      </span>
-                                    );
-                                  } else {
-                                    return (
-                                      <span className="badge badge-success">
-                                        Treated
-                                      </span>
-                                    );
-                                  }
-                                })()}
-                              </td>
-                              <td>{data.user_id}</td>
-                              <td>
-                                {(() => {
-                                  if (data.type === "post") {
-                                    return (
-                                      <span className="badge badge-primary">
-                                        Post Claim
-                                      </span>
-                                    );
-                                  } else if (data.type === "comment") {
-                                    return (
-                                      <span className="badge badge-danger">
-                                        Comment claim
-                                      </span>
-                                    );
-                                  } else {
-                                    return (
-                                      <span className="badge badge-secondary">
-                                        Product Claim
-                                      </span>
-                                    );
-                                  }
-                                })()}
-                              </td>
-                              <td>{formatDate(data.date_claim)}</td>
+                              <td>{data.firstName}</td>
+                              <td>{data.lastName}</td>
+                              <td>{data.Phone}</td>
+                              <td>{data.Email}</td>
+
+                              <td>{formatDate(data.date_contact)}</td>
                               <td>{data.description}</td>
                               <td
                                 className="jsgrid-cell jsgrid-align-center"
@@ -478,7 +334,7 @@ const ClaimBack = () => {
                                   data-bs-target="#exampleModal"
                                   onClick={() => FindOneClaimEvent(data)}
                                 >
-                                  <Icon.Edit3 />
+                                  <Icon.Send />
                                 </button>
                               </td>
                             </tr>
@@ -502,6 +358,19 @@ const ClaimBack = () => {
                       ></div>
                     </div>
                   </div>
+                  <div className="container mt-4 mb-4">
+                    <div className="row justify-content-md-center">
+                      <div className="col-md-12 col-lg-8">
+                        <label>Send Your Email</label>
+                        <div className="form-group">
+                          <textarea id="editor" defaultValue={""} />
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -512,4 +381,4 @@ const ClaimBack = () => {
     </>
   );
 };
-export default ClaimBack;
+export default Contacts;
