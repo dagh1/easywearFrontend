@@ -18,12 +18,20 @@ import {
   selectClaims,
 } from "../../redux/slices/claimSlice";
 import { UserContext } from "../../contexts/userContext";
+import jwtDecode from "jwt-decode";
 
 const Posts = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const [claims, err] = useSelector(selectClaims);
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
 
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState({ visible: false, message: "" });
@@ -77,7 +85,6 @@ const Posts = (props) => {
       }
     }
   };
-  const [user, setUser] = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {},

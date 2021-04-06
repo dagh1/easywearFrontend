@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import * as Icon from "react-feather";
 import { fetchClaims, selectClaims } from "../../redux/slices/claimSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers, selectUsers } from "../../redux/slices/userSlice";
 const SideBar = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
+    dispatch(fetchUsers());
   }, [dispatch]);
   const [claims, error] = useSelector(selectClaims);
+  const [users, usersError] = useSelector(selectUsers);
   return (
     <>
       {/* page-wrapper Start*/}
@@ -70,7 +72,7 @@ const SideBar = () => {
                     <li>
                       <a className="sidebar-header" href="#">
                         <Icon.Users />
-                        <span>Users</span>
+                        <span>Users ({users.length})</span>
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>

@@ -20,19 +20,28 @@ import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
-
+import jwtDecode from "jwt-decode";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
+  //const jwtToken = localStorage.getItem("jwt");
+  //console.log(jwtToken);
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      // Set auth token header auth
+      setConnectedUser(jwtDecode(localStorage.getItem("jwt"))); // Decode token and get user info and exp
+    }
+  }, []);
   function handleLoggedIn(user) {
     console.log("handlelogin");
     console.log(user);
     setConnectedUser(user);
   }
-
+  console.log(connectedUser);
   return (
     <>
       {(() => {
