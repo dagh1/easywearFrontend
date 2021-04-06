@@ -24,13 +24,7 @@ const ProductList = (props) => (
                  <div className="container-fluid">
             <div className="row products-admin ratio_asos">
               
-              <input type="text" onChange=  {  (event) => {
-                if (event.target.value) {
-                   props.Prods.filter(product=>product.productName.includes(event.target.value)).map(Prodsf => <Productcard key={Prodsf.id} {...Prodsf} />)
-                } else
-                  { props.Prods.map(Prods => <Productcard key={Prods.id} {...Prods} />)}
-              }}
-              ></input>
+           
              { props.Prods.map(Prods => <Productcard key={Prods.id} {...Prods} />)}
            
               </div></div></div></div></div>

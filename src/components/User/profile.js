@@ -12,8 +12,6 @@ import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 
 import { selectClaims } from "../../redux/slices/claimSlice";
-const Profile = () => {
-  const [user, setUser] = useContext(UserContext);
 
 
 const Profile = () => {
