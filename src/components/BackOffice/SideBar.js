@@ -4,14 +4,17 @@ import * as Icon from "react-feather";
 import { fetchClaims, selectClaims } from "../../redux/slices/claimSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts, selectContacts } from "../../redux/slices/contactSlice";
+import { fetchUsers, selectUsers } from "../../redux/slices/userSlice";
 const SideBar = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
     dispatch(fetchContacts());
+    dispatch(fetchUsers());
   }, [dispatch]);
   const [claims, error] = useSelector(selectClaims);
   const [contacts, err] = useSelector(selectContacts);
+  const [users, userErrors] = useSelector(selectUsers);
   return (
     <>
       {/* page-wrapper Start*/}
