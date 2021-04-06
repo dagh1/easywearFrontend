@@ -39,7 +39,7 @@ class Productcard extends React.Component {
     const product = this.props;
     return (
       <div className="col-xl-3 col-sm-6">
-        <div className="card" style={{ height: '500px'}}><div className="products-admin">
+        <div className="card" style={{ height: '500px',width:'370px'}}><div className="products-admin">
         <div className="card-body product-box">
           <div className="img-wrapper">
             <div className="lable-block">
