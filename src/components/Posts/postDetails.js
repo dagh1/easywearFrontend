@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectSelectedPosts } from "./../../redux/slices/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSelectedPosts, setErrors } from "./../../redux/slices/postSlice";
 import { formatDate } from "../../helpers/dateConvert";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
+import CommentForm from "../Comment/commentForm";
+import {
+  fetchPostComments,
+  selectComments,
+} from "../../redux/slices/commentSlice";
+import PostComments from "../Comment/PostComments";
+import { ReactionBarSelector } from "@charkour/react-reactions";
+import {
+  addReaction,
+  fetchPostReaction,
+  selectReactions,
+} from "../../redux/slices/reactionSlice";
+import Reactions from "../Reactions/reactions";
 
 const PostDetails = (props) => {
   const selectedPost = useSelector(selectSelectedPosts);
   const [post, setPost] = useState({});
+  const [comments, err] = useSelector(selectComments);
+  const [reactions, errors] = useSelector(selectReactions);
+
+  const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
     async function fetchPost() {
@@ -18,8 +35,30 @@ const PostDetails = (props) => {
       );
       setPost(res);
     }
+
     fetchPost();
-  });
+    dispatch(fetchPostComments(props.match.params.id));
+    dispatch(fetchPostReaction(props.match.params.id));
+  }, [dispatch]);
+
+  const handleEmojiClick = async (label) => {
+    console.log(label);
+    const values = {
+      reactiontype: label,
+      user_id: "7041f2fe9dbc16c1758d7a9a",
+      post_id: post._id,
+    };
+    const [res, err] = await queryApi("reaction", values, "POST");
+    if (err) {
+      setErrors({
+        visible: true,
+        message: JSON.stringify(err.errors, null, 2),
+      });
+    } else {
+      dispatch(addReaction(res));
+    }
+  };
+
   return (
     <>
       <div className='breadcrumb-section'>
@@ -52,10 +91,10 @@ const PostDetails = (props) => {
                 <li>{formatDate(post.date_creation)}</li>
                 <li>Posted By : Admin Admin</li>
                 <li>
-                  <i className='fa fa-heart' /> 5 Hits
+                  <i className='fa fa-heart' /> {reactions.length} Hits
                 </li>
                 <li>
-                  <i className='fa fa-comments' /> 10 Comment
+                  <i className='fa fa-comments' /> {comments.length} Comment
                 </li>
               </ul>
               <p>{post.description}</p>
@@ -79,77 +118,52 @@ const PostDetails = (props) => {
                 />
               </div>
             </div>
+            <div
+              className='col-lg-6'
+              style={{
+                display: "flex",
+                alignContent: "end",
+                "flex-direction": "column",
+              }}
+            >
+              <p>
+                {post.description} Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Fermentum leo vel orci porta non pulvinar.
+                Viverra adipiscing at in tellus. Lobortis mattis aliquam
+                faucibus purus in massa tempor nec feugiat. Ultricies mi eget
+                mauris pharetra et ultrices neque. Vel elit scelerisque mauris
+                pellentesque pulvinar pellentesque habitant. Sit amet cursus sit
+                amet dictum sit amet. Sit amet nisl suscipit adipiscing
+                bibendum. At volutpat diam ut venenatis tellus in metus
+                vulputate eu. Id volutpat lacus laoreet non. Tortor condimentum
+                lacinia quis vel eros. Facilisi nullam vehicula ipsum a arcu
+                cursus. Risus ultricies tristique nulla aliquet enim tortor at
+                auctor. Eget magna fermentum iaculis eu non diam. Sit amet
+                dictum sit amet. Elit pellentesque habitant morbi tristique
+                senectus. Molestie a iaculis at erat pellentesque adipiscing
+                commodo elit. Magna etiam tempor orci eu lobortis elementum
+                nibh.
+              </p>
+              <Reactions />
+            </div>
+            <ReactionBarSelector
+              iconSize={20}
+              onSelect={(label) => handleEmojiClick(label)}
+            />
           </div>
+
           <div className='row section-b-space'>
             <div className='col-sm-12'>
-              <ul className='comment-section'>
-                <li>
-                  <div className='media'>
-                    <img src={post.image_url} alt='Generic placeholder image' />
-                    <div className='media-body'>
-                      <h6>
-                        Mark Jecno <span>( 12 Jannuary 2018 at 1:30AM )</span>
-                      </h6>
-                      <p>
-                        Donec rhoncus massa quis nibh imperdiet dictum.
-                        Vestibulum id est sit amet felis fringilla bibendum at
-                        at leo. Proin molestie ac nisi eu laoreet. Integer
-                        faucibus enim nec ullamcorper tempor. Aenean nec felis
-                        dui. Integer tristique odio mi, in volutpat metus
-                        posuere eu. Aenean suscipit ipsum nunc, id volutpat
-                        lorem hendrerit ac. Sed id elit quam. In ac mauris arcu.
-                        Praesent eget lectus sit amet diam vestibulum varius.
-                        Suspendisse dignissim mattis leo, nec facilisis erat
-                        tempor quis. Vestibulum eu vestibulum ex.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+              {comments?.map((item) => {
+                return <PostComments comment={item} key={item._id} />;
+              })}
             </div>
           </div>
           <div className='row blog-contact'>
             <div className='col-sm-12'>
               <h2>Leave Your Comment</h2>
-              <form className='theme-form'>
-                <div className='form-row'>
-                  <div className='col-md-12'>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      id='name'
-                      placeholder='Enter Your name'
-                      required
-                    />
-                  </div>
-                  <div className='col-md-12'>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      id='email'
-                      placeholder='Email'
-                      required
-                    />
-                  </div>
-                  <div className='col-md-12'>
-                    <label htmlFor='exampleFormControlTextarea1'>Comment</label>
-                    <textarea
-                      className='form-control'
-                      placeholder='Write Your Comment'
-                      id='exampleFormControlTextarea1'
-                      rows={6}
-                      defaultValue={""}
-                    />
-                  </div>
-                  <div className='col-md-12'>
-                    <button className='btn btn-solid' type='submit'>
-                      Post Comment
-                    </button>
-                  </div>
-                </div>
-              </form>
+              <CommentForm postId={post._id} />
             </div>
           </div>
         </div>

@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import * as Icon from "react-feather";
 import { fetchClaims, selectClaims } from "../../redux/slices/claimSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, selectUsers } from "../../redux/slices/userSlice";
+import { fetchContacts, selectContacts } from "../../redux/slices/contactSlice";
 const SideBar = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
-    dispatch(fetchUsers());
+    dispatch(fetchContacts());
   }, [dispatch]);
   const [claims, error] = useSelector(selectClaims);
-  const [users, usersError] = useSelector(selectUsers);
+  const [contacts, err] = useSelector(selectContacts);
   return (
     <>
       {/* page-wrapper Start*/}
@@ -28,8 +28,7 @@ const SideBar = () => {
                 <a href="index.html">
                   <img
                     className="blur-up lazyloaded"
-                    src="/assetsBack/images/mark.jpg"
-                    style={{ width: 200 }}
+                    src="/assetsBack/images/dashboard/multikart-logo.png"
                     alt="img"
                   />
                 </a>
@@ -41,7 +40,7 @@ const SideBar = () => {
                     <div>
                       <img
                         className="img-60 rounded-circle lazyloaded blur-up"
-                        src="/assetsBack/images/dashboard/man.png"
+                        src="/assets/images/rana.jpg"
                         alt="#"
                       />
                     </div>
@@ -94,6 +93,18 @@ const SideBar = () => {
                       <a className="sidebar-header">
                         <Icon.BarChart />
                         {<Link to="/ClaimsBack">Claims ({claims.length})</Link>}
+                        <i className="fa fa-angle-right pull-right" />
+                      </a>
+                    </li>
+
+                    <li>
+                      <a className="sidebar-header" href="#">
+                        <Icon.MessageSquare />
+                        {
+                          <Link to="/Contacts">
+                            Messages ({contacts.length})
+                          </Link>
+                        }
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>

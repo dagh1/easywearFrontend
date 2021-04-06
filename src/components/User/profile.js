@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import UserPosts from "./userPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
-import { UserContext } from "../../contexts/userContext";
 import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";

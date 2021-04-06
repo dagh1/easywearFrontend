@@ -15,6 +15,7 @@ import DashBoard from "./components/BackOffice/DashBoard";
 import SideBar from "./components/BackOffice/SideBar";
 import ClaimBack from "./components/BackOffice/ClaimsBack";
 import Products from "./components/BackOffice/Products";
+import Contacts from "./components/BackOffice/Messages";
 import Events from "./components/BackOffice/Events";
 import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
@@ -53,8 +54,9 @@ function App() {
                 <SideBar></SideBar>
                 <Switch>
                   <Route path="/ClaimsBack" component={ClaimBack} />
-                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/Products" component={Products} />
                   <Route path="/Events" component={Events} />
+                  <Route path="/Contacts" component={Contacts} />
                   <Route exact to="/" component={DashBoard} />
                 </Switch>
                 <FooterBack></FooterBack>
@@ -81,13 +83,12 @@ function App() {
                     path="/user/editprofile/:id"
                     component={EditProfileForm}
                   />
-                  <Route path="/Products" component={ProductLists} />
-
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path="/products" component={ProductLists} />
 
                   <Route
                     path="/event/updatePost/:id"

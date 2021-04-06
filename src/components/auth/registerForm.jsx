@@ -81,6 +81,7 @@ const RegisterForm = () => {
     console.log(info.data);
     const userData = info.data;
     const [res, err] = await queryApi("user/addUser", userData, "POST");
+    console.log(res)
     if (res.hasOwnProperty("error")) {
       console.log("errrrror");
       setError({
