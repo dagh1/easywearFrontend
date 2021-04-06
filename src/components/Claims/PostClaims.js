@@ -122,7 +122,7 @@ const PostClaims = () => {
           <Form onSubmit={formik.handleSubmit}>
             <Container>
               <Row>
-                <Image src="https://picsum.photos/200" fluid />
+                <Image src={selectedClaim?.image_url} fluid />
               </Row>
             </Container>
 

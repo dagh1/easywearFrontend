@@ -32,7 +32,6 @@ const Contact = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [error, setError] = useState({ visible: false, message: "" });
-  const [user, setUser] = useContext(UserContext);
 
   const formik = useFormik({
     initialValues: {},
@@ -50,7 +49,7 @@ const Contact = () => {
         });
       } else {
         dispatch(addContact(res));
-        alert("Contact added with success ..");
+        alert("Your Message has been sent to the adminstrator with success ..");
         history.push("/");
       }
     },

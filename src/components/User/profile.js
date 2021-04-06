@@ -48,11 +48,8 @@ const Profile = () => {
           }}
         >
           <img
-
             src="/assets/images/vendor/profile.jpg"
             className="bg-img lazyload blur-up"
-
-
             style={{ display: "none" }}
           />
         </div>
@@ -64,20 +61,17 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
-                    <img
+                    <img src={user.image_url} className="rounded-circle" />
 
-                      src="/assets/images/rana.jpg"
-                      className="rounded-circle"
-                    />
-
-                    <h3>{user?.username}</h3>
+                    <h3>
+                      {user?.first_name}_{user?.last_name}
+                    </h3>
                     <div className="rating">
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
-
                     </div>
                     <h6>750M followers | 10M review</h6>
                   </div>
@@ -109,12 +103,8 @@ const Profile = () => {
                     <div className="footer-social">
                       <ul>
                         <li>
-
-
-                          <a href='#'>
-                            <i className='fa fa-facebook' aria-hidden='true' />
-
-
+                          <a href="#">
+                            <i className="fa fa-facebook" aria-hidden="true" />
                           </a>
                         </li>
                         <li>
@@ -183,11 +173,7 @@ const Profile = () => {
                       <NavLink
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
-
-
-                        to='/user/profile/claims'
-
-
+                        to="/user/profile/claims"
                         or
                       >
                         My Claims ({claims.length})
@@ -200,10 +186,9 @@ const Profile = () => {
                       <a href="#">My Settings</a>
                     </li>
 
-
-                    <li className='last'>
+                    <li className="last">
                       <a
-                        href='#'
+                        href="#"
                         onClick={() => {
                           localStorage.removeItem("jwt");
                           window.location = "/auth/login";
@@ -211,10 +196,7 @@ const Profile = () => {
                       >
                         Log Out
                       </a>
-
-
                     </li>
-
                   </ul>
                 </div>
               </div>
@@ -222,10 +204,8 @@ const Profile = () => {
               <div className="collection-sidebar-banner">
                 <a href="#">
                   <img
-
-                    src='/assets/images/side-banner.png'
-                    className='img-fluid blur-up lazyloaded'
-
+                    src="/assets/images/side-banner.png"
+                    className="img-fluid blur-up lazyloaded"
                   />
                 </a>
               </div>
@@ -239,9 +219,7 @@ const Profile = () => {
                   component={userProfileDetails}
                 />
                 <Route
-
-                  path='/user/profile/claims'
-
+                  path="/user/profile/claims"
                   or
                   component={UserClaims}
                 ></Route>
