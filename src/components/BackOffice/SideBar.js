@@ -5,6 +5,7 @@ import { fetchClaims, selectClaims } from "../../redux/slices/claimSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts, selectContacts } from "../../redux/slices/contactSlice";
 const SideBar = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
