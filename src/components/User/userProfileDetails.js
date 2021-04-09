@@ -31,22 +31,23 @@ const userProfileDetails = () => {
     // Set auth token header auth
     user = jwtDecode(jwtToken); // Decode token and get user info and exp
   }
+
   return (
     <>
-      <div className='col-lg-9'>
+      <div className="col-lg-9">
         <Helmet>
-          <meta charSet='utf-8' />
+          <meta charSet="utf-8" />
           <title>User Profile</title>
         </Helmet>
-        <div className='dashboard-right'>
-          <div className='dashboard'>
+        <div className="dashboard-right">
+          <div className="dashboard">
             <UserImageWrapper>
               <UserImage src={user.image_url}></UserImage>
             </UserImageWrapper>
-            <div className='page-title'>
+            <div className="page-title">
               <h2>My Dashboard</h2>
             </div>
-            <div className='welcome-msg'>
+            <div className="welcome-msg">
               <p>
                 Hello, {user.first_name} {user.last_name} !
               </p>
@@ -56,18 +57,18 @@ const userProfileDetails = () => {
                 information. Select a link below to view or edit information.
               </p>
             </div>
-            <div className='box-account box-info'>
-              <div className='box-head'>
+            <div className="box-account box-info">
+              <div className="box-head">
                 <h2>Account Information</h2>
               </div>
-              <div className='row'>
-                <div className='col-sm-6'>
-                  <div className='box'>
-                    <div className='box-title'>
+              <div className="row">
+                <div className="col-sm-6">
+                  <div className="box">
+                    <div className="box-title">
                       <h3>Contact Information</h3>
                       {/*  <a href="#">Edit</a> */}
                     </div>
-                    <div className='box-content'>
+                    <div className="box-content">
                       <h6>
                         {user.first_name} {user.last_name}
                       </h6>
@@ -76,26 +77,26 @@ const userProfileDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className='col-sm-6'>
-                  <div className='box'>
-                    <div className='box-title'>
+                <div className="col-sm-6">
+                  <div className="box">
+                    <div className="box-title">
                       <h3>Allergies</h3>
                       <Link to={`/user/editprofile/${user._id}`}>Edit</Link>
                     </div>
-                    <div className='box-content'>
+                    <div className="box-content">
                       <p>{user.alergie}.</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <div className='box'>
-                  <div className='box-title'>
+                <div className="box">
+                  <div className="box-title">
                     <h3>User information</h3>
                     {/*  <a href="#">Manage Addresses</a> */}
                   </div>
-                  <div className='row'>
-                    <div className='col-sm-6'>
+                  <div className="row">
+                    <div className="col-sm-6">
                       <h6>Height: {user.height}</h6>
                       <h6>
                         Favorite Color: {user.fav_color}
@@ -104,7 +105,7 @@ const userProfileDetails = () => {
                       </h6>
                       <h6>Gender: {user.gender}</h6>
                     </div>
-                    <div className='col-sm-6'>
+                    <div className="col-sm-6">
                       <h6>Weight: {user.weight}</h6>
                       <h6>
                         Phone Number: {user.numero_tel}

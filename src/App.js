@@ -26,6 +26,10 @@ import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
+import UserBack from "./components/BackOffice/UsersBack";
+import EditUserForm from "./components/BackOffice/EditUserForm";
+import AddUserForm from "./components/BackOffice/AddUserForm";
+import Load from "./components/load";
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   //const jwtToken = localStorage.getItem("jwt");
@@ -54,6 +58,9 @@ function App() {
                 <SideBar></SideBar>
                 <Switch>
                   <Route path="/ClaimsBack" component={ClaimBack} />
+                  <Route path="/UsersBack" component={UserBack} />
+                  <Route path="/editUserBack" component={EditUserForm} />
+                  <Route path="/addUserBack" component={AddUserForm} />
                   <Route path="/Products" component={Products} />
                   <Route path="/Events" component={Events} />
                   <Route path="/Contacts" component={Contacts} />
@@ -84,6 +91,7 @@ function App() {
                     component={EditProfileForm}
                   />
                   <Route path="/about" component={About} />
+                  <Route path="/load" component={Load} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
                   <Route path="/event/addPost" component={AddPostForm} />

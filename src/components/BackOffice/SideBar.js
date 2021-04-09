@@ -1,16 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Icon from "react-feather";
 import { fetchClaims, selectClaims } from "../../redux/slices/claimSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts, selectContacts } from "../../redux/slices/contactSlice";
 import { fetchUsers, selectUsers } from "../../redux/slices/userSlice";
+import jwtDecode from "jwt-decode";
+
 const SideBar = () => {
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  const [userr, setUserr] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+
+    date_naissance: "",
+    numero_tel: "",
+    alergie: "",
+    fav_color: "",
+    height: "",
+    weight: "",
+    gender: "",
+    image_url: "/assetsBack/images/dashboard/multikart-logo.png",
+    role: "",
+  });
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchClaims());
     dispatch(fetchContacts());
     dispatch(fetchUsers());
+    console.log("############");
+    /* const jj = localStorage.getItem("jwt"); */
+    setUserr(user);
+    //console.log(jwtDecode(jj).image_url);
   }, [dispatch]);
   const [claims, error] = useSelector(selectClaims);
   const [contacts, err] = useSelector(selectContacts);
@@ -41,14 +69,20 @@ const SideBar = () => {
                 <div className="sidebar custom-scrollbar">
                   <div className="sidebar-user text-center">
                     <div>
-                      <img
-                        className="img-60 rounded-circle lazyloaded blur-up"
-                        src="/assets/images/rana.jpg"
-                        alt="#"
-                      />
+                      {userr && (
+                        <img
+                          className="img-60 rounded-circle lazyloaded blur-up"
+                          src={userr.image_url}
+                          alt="#"
+                        />
+                      )}
                     </div>
-                    <h3>Rana</h3>
-                    <p>general manager.</p>
+                    {userr && (
+                      <h3>
+                        {userr.first_name} {userr.last_name}
+                      </h3>
+                    )}
+                    {userr && <p>{userr.role}</p>}
                   </div>
                   <ul className="sidebar-menu">
                     <li>
@@ -74,7 +108,7 @@ const SideBar = () => {
                     <li>
                       <a className="sidebar-header" href="#">
                         <Icon.Users />
-                        <span>Users ({users.length})</span>
+                        {<Link to="/UsersBack">Users ({users.length})</Link>}
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>

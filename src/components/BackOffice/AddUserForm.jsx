@@ -1,5 +1,5 @@
 import Joi from "joi-browser";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
 import { useDispatch } from "react-redux";
@@ -8,12 +8,25 @@ import { addUser } from "../../redux/slices/userSlice";
 import { UserContext } from "../../contexts/userContext";
 import { Helmet } from "react-helmet";
 
-const RegisterForm = () => {
+const AddUserForm = (props) => {
   const [error, setError] = useState({ visible: false, message: "" });
-  const history = useHistory();
   const dispatch = useDispatch();
   const currentUser = useContext(UserContext);
   const [previewSource, setPreviewSource] = useState("");
+  let i = 0;
+  const [user, setUser] = useState({});
+  const history = useHistory();
+
+  /*  useEffect(() => {
+    async function fetchUser() {
+      const [res, err] = await queryApi("user/profile", {}, "GET");
+      setUser(res);
+    }
+
+    fetchUser();
+    console.log(user);
+  }, []);
+  console.log(user.first_name); */
 
   const [info, setInfo] = useState({
     data: {
@@ -46,7 +59,7 @@ const RegisterForm = () => {
     weight: Joi.number().min(1).max(300).allow("").label("Weight"),
     gender: Joi.string().required().label("Gender"),
     image_url: Joi.string().required().label("Image"),
-    role: Joi.string().allow("").label("Role"),
+    role: Joi.string().label("Role"),
   };
 
   function validate() {
@@ -76,11 +89,11 @@ const RegisterForm = () => {
       setInfo({ data, errors });
     }
     // setInfo({ errors: errors || {} });
-    info.data.role = "user";
+    //info.data.role = "user";
     info.data.image_url = previewSource;
     console.log(info.data);
     const userData = info.data;
-    const [res, err] = await queryApi("user/addUser", userData, "POST");
+    const [res, err] = await queryApi("user/addUserAdmin", userData, "POST");
     console.log(res);
     if (res.hasOwnProperty("error")) {
       console.log("errrrror");
@@ -89,10 +102,8 @@ const RegisterForm = () => {
         message: res["error"],
       });
     } else {
-      currentUser.onLoggedIn(jwtDecode(res));
-      localStorage.setItem("jwt", res);
-      dispatch(addUser(jwtDecode(res)));
-      window.location = "/user/profile";
+      dispatch(addUser(res));
+      props.history.push("/UsersBack");
     }
   }
   function handleChange(e) {
@@ -122,7 +133,7 @@ const RegisterForm = () => {
     <React.Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Register</title>
+        <title>Create account</title>
       </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
@@ -135,12 +146,12 @@ const RegisterForm = () => {
             <div className="col-sm-6">
               <nav aria-label="breadcrumb" className="theme-breadcrumb">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                  {/* <li className="breadcrumb-item">
+                    <a>Home</a>
                   </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    create account
-                  </li>
+                  <li className="breadcrumb-item" aria-current="page">
+                    edit account
+                  </li> */}
                 </ol>
               </nav>
             </div>
@@ -148,7 +159,14 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <section className="register-page section-b-space">
+      <section
+        className="register-page section-b-space card"
+        style={{
+          paddingLeft: "0%",
+          width: "85%",
+          marginLeft: " 14%",
+        }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -330,7 +348,7 @@ const RegisterForm = () => {
                     </div>
                     <div className="col-md-6">
                       <label htmlFor="last_name">Gender:*</label>
-                      <input
+                      {/*  <input
                         type="text"
                         name="gender"
                         onChange={handleChange}
@@ -338,7 +356,24 @@ const RegisterForm = () => {
                         id="gender"
                         placeholder="Gender"
                         required=""
-                      />
+                      /> */}
+                      <select
+                        id="gender"
+                        name="gender"
+                        onChange={handleChange}
+                        required=""
+                        class="form-select"
+                        aria-label="Default select example"
+                        style={{
+                          height: "50%",
+                          marginTop: "1px",
+                          borderColor: "#eaeaea",
+                        }}
+                      >
+                        <option selected>Choose your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                       {info.errors["gender"] && (
                         <div className="alert alert-danger">
                           <strong>{info.errors["gender"]}</strong>
@@ -362,6 +397,35 @@ const RegisterForm = () => {
                         </div>
                       )}
                     </div>
+                    <div className="form-check col-12">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="role"
+                          onChange={handleChange}
+                          id="inlineRadio1"
+                          value="admin"
+                        />
+                        <label class="form-check-label" for="inlineRadio1">
+                          Admin
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="role"
+                          onChange={handleChange}
+                          id="inlineRadio2"
+                          value="user"
+                        />
+                        <label class="form-check-label" for="inlineRadio2">
+                          User
+                        </label>
+                      </div>
+                    </div>
+
                     {error.visible && (
                       <div className="alert alert-danger col-12">
                         <strong>{error.message}</strong>
@@ -370,9 +434,9 @@ const RegisterForm = () => {
                     <button
                       type="submit"
                       disabled={validate()}
-                      className="btn btn-solid"
+                      className="btn btn-solid col-2 offset-5"
                     >
-                      Register
+                      Create
                     </button>
                   </div>
                 </form>
@@ -385,4 +449,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default AddUserForm;

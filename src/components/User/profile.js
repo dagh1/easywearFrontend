@@ -193,7 +193,7 @@ const Profile = () => {
                           window.location = "/auth/login";
                         }}
                       >
-                        Log Out
+                        Logout
                       </a>
                     </li>
                   </ul>
