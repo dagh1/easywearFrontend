@@ -3,98 +3,123 @@ import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 
-function BodyDetection  ()  {
- const webcamRef = useRef(null);
-    const canvasRef = useRef(null);
-    
-   const runBodysegment = async () => {
-     const net = await bodyPix.load();
-     console.log("BodyPix model loaded.");
-     //  Loop and detect hands
-     setInterval(() => {
-       detect(net);
-     }, 100);
-   };
-const detect = async (net) => {
-  // Check data is available
-  if (
-    typeof webcamRef.current !== "undefined" &&
-    webcamRef.current !== null &&
-    webcamRef.current.video.readyState === 4
-  ) {
-    // Get Video Properties
-    const video = webcamRef.current.video;
-    const videoWidth = webcamRef.current.video.videoWidth;
-    const videoHeight = webcamRef.current.video.videoHeight;
+function BodyDetection() {
+  // const canvas = document.querySelector("canvas");
+  const webcamRef = useRef(null);
+  const canvasRef = useRef(null);
+  // const ctx = canvas?.getContext("2d");
 
-    // Set video width
-    webcamRef.current.video.width = videoWidth;
-    webcamRef.current.video.height = videoHeight;
+  const runBodysegment = async () => {
+    const net = await bodyPix.load();
+    console.log("BodyPix model loaded.");
+    //  Loop and detect hands
+    setInterval(() => {
+      detect(net);
+    }, 1);
+  };
+  const detect = async (net) => {
+    // Check data is available
+    console.log(webcamRef);
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
+    ) {
+      // Get Video Properties
+      const video = webcamRef.current.video;
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
 
-    // Set canvas height and width
-    canvasRef.current.width = videoWidth;
-    canvasRef.current.height = videoHeight;
+      // Set video width
+      webcamRef.current.video.width = videoWidth;
+      webcamRef.current.video.height = videoHeight;
 
-    // Make Detections
-    // * One of (see documentation below):
-    // *   - net.segmentPerson
-    // *   - net.segmentPersonParts
-    // *   - net.segmentMultiPerson
-    // *   - net.segmentMultiPersonParts
-    // const person = await net.segmentPerson(video);
-    const person = await net.segmentPersonParts(video);
-    
+      // Set canvas height and width
+      canvasRef.current.width = videoWidth;
+      canvasRef.current.height = videoHeight;
 
-    // const coloredPartImage = bodyPix.toMask(person);
-    const coloredPartImage = bodyPix.toColoredPartMask(person);
-    const opacity = 0.7;
-    const flipHorizontal = false;
-    const maskBlurAmount = 0;
-    const canvas = canvasRef.current;
+      // Make Detections
+      // * One of (see documentation below):
+      // *   - net.segmentPerson
+      // *   - net.segmentPersonParts
+      // *   - net.segmentMultiPerson
+      // *   - net.segmentMultiPersonParts
+      // const person = await net.segmentPerson(video);
+      const person = await net.segmentPersonParts(video);
+      console.log(person);
+      const opacity = 0.7;
+      const flipHorizontal = false;
+      const maskBlurAmount = 0;
+      const canvas = canvasRef.current;
 
-    bodyPix.drawMask(
-      canvas,
-      video,
-      coloredPartImage,
-      opacity,
-      maskBlurAmount,
-      flipHorizontal
-    );
+      const ctx = canvas?.getContext("2d");
+      var image = new Image();
+      requestCORSIfNotSameOrigin(
+        image,
+        "https://webglfundamentals.org/webgl/resources/keyboard.jpg"
+      );
+      var imagedata = null;
+      image.src = "https://webglfundamentals.org/webgl/resources/keyboard.jpg";
+      image.onload = () => {
+        ctx?.drawImage(image, 0, 0);
+        imagedata = ctx?.getImageData(0, 0, 300, 311);
+        console.log(imagedata);
+      };
+      const coloredPartImage = bodyPix.toColoredPartMask(person);
+
+      //image.addEventListener('load', function() {
+      // Now that the image has loaded make copy it to the texture.
+      // const coloredPartImage = bodyPix.toMask(person);
+      if (person)
+        bodyPix.drawMask(
+          canvas,
+          video,
+          coloredPartImage,
+          opacity,
+          maskBlurAmount,
+          flipHorizontal
+        );
+    }
+  };
+
+  runBodysegment();
+
+  function requestCORSIfNotSameOrigin(img, url) {
+    if (new URL(url, window.location.href).origin !== window.location.origin) {
+      img.crossOrigin = "";
+    }
   }
-};
 
-runBodysegment();
+  return (
+    <>
+      <Webcam
+        ref={webcamRef}
+        style={{
+          marginLeft: "0",
+          marginRight: "auto",
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          zindex: 9,
+          width: 640,
+          height: 480,
+        }}
+      />
 
-
-  	return (<>
- <Webcam
-          ref={webcamRef}
-          style={{
-           
-            marginLeft: "0",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        />
-
-        <canvas
-          ref={canvasRef}
-          style={{
-            
-            marginLeft: "0",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }} /></>
-            );
-  }
+      <canvas
+        ref={canvasRef}
+        style={{
+          marginLeft: "0",
+          marginRight: "auto",
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          zindex: 9,
+          width: 640,
+          height: 480,
+        }}
+      />
+    </>
+  );
+}
 export default BodyDetection;
