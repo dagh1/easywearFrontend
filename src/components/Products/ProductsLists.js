@@ -30,32 +30,45 @@ class Productcard extends React.Component {
 
 
 class Form extends React.Component {
-	state = { userName: '' };
+
 	handleSubmit = (event) => {
   	
     this.props.onSubmit(event.target.value);
     
   };
+
 	render() {
   	return (
-    
-    <div className="container">
-            <section className="search-block">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 offset-lg-3">
-                            <form className="form-header" >
-                                <div className="input-group">
-                        <input onChange={this.handleSubmit} type="text" className="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Search Products......" />
-                                
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    
+      <div className="container">
+        <section className="search-block">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 offset-lg-3">
+                <form className="form-header">
+                  <div className="input-group">
+                    <input
+                      onChange={this.handleSubmit}
+                      type="text"
+                      className="form-control"
+                      aria-label="Amount (to the nearest dollar)"
+                      placeholder="Search Products......"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="col-lg-2">
+                <button
+                  type="button"
+                  style={{lineHeight: "2.2"}}
+                  className="fas fa-arrow-circle-down add-button btn-block"
+                >
+                  Price
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }
@@ -71,7 +84,7 @@ class ProductLists extends React.Component {
     
     if (products.length === 0) {
       
-      actions.loadProducts(0).catch(error => {
+      actions.loadProducts(0,-1).catch(error => {
         alert("Loading products failed" + error);
       });
     }
@@ -119,41 +132,74 @@ const {  actions } = this.props;
 
 render(){
   return (
+    <div className="page-wrapper">
+      <div className="page-body-wrapper">
+        <div className="page-body">
+          <div className="container-fluid">
+            <div className="page-header">
+              <div className="row">
+                <div className="col-lg-6">
+                  <div className="page-header-left">
+                    <h3>
+                      Product List<small></small>
+                    </h3>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <ol className="breadcrumb pull-right">
+                    <li className="breadcrumb-item">
+                      <a href="/multikart-admin/products/physical/mutikart-admin/dashboard">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          setrokeLinejoin="round"
+                        >
+                          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                      </a>
+                    </li>
+                    <li className="breadcrumb-item">Product</li>
+                    <li className="breadcrumb-item active">Product List</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div className="page-wrapper">
-    <div className="page-body-wrapper">
-   <div className="page-body">
-     <div className="container-fluid">
-       <div className="page-header">
-         <div className="row">
-           <div className="col-lg-6">
-             <div className="page-header-left">
-               <h3>Product List<small></small></h3>
-               </div></div>
-               <div className="col-lg-6">
-                 <ol className="breadcrumb pull-right"><li className="breadcrumb-item"><a href="/multikart-admin/products/physical/mutikart-admin/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" setrokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li><li className="breadcrumb-item">Product</li><li className="breadcrumb-item active">Product List</li>
-                 </ol>
-                </div></div></div></div>
-          
+          <ListPagination
+            articlesCount={this.props.products.totalItems}
+            currentPage={this.props.products.currentPage}
+            onSetPage={this.loadSelectedPage}
+          />
+          <Form onSubmit={this.loadbyName} />
 
-
-  <Form onSubmit={this.loadbyName} />
-
-
-                 <div style={{ padding: '20px' }} className="container-fluid">
+          <div style={{ padding: "20px" }} className="container-fluid">
             <div className="row products-admin ratio_asos">
+              {this.props.products.products ? (
+                this.props.products.products.map((Prods) => (
+                  <Productcard key={Prods.id} {...Prods} />
+                ))
+              ) : (
+                <div>Loading...</div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
 
-           {this.props.products.products? this.props.products.products.map(Prods => <Productcard key={Prods.id} {...Prods} />):<div>Loading...</div>}
-            </div></div></div></div>
-    
       <ListPagination
         articlesCount={this.props.products.totalItems}
         currentPage={this.props.products.currentPage}
         onSetPage={this.loadSelectedPage}
-        />
-  
+      />
     </div>
-
   );
 }
 }

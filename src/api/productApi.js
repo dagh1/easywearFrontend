@@ -1,7 +1,7 @@
 import { handleResponse, handleError } from "./apiUtils";
 
-export function getProducts(page) {
-  const baseUrl = `http://localhost:3100/api/product?page=${page}&size=10`;
+export function getProducts(page,pricrSort) {
+  const baseUrl = `http://localhost:3100/api/product?page=${page}&size=10&pricrSort=${pricrSort}`;
    
   
 
