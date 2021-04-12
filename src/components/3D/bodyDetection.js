@@ -7,10 +7,16 @@ function BodyDetection() {
   // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const imageRef = useRef(null);
+
   // const ctx = canvas?.getContext("2d");
 
   const runBodysegment = async () => {
-    const net = await bodyPix.load();
+    const net = await bodyPix.load({
+      architecture: "ResNet50",
+      outputStride: 32,
+      quantBytes: 2,
+    });
     console.log("BodyPix model loaded.");
     //  Loop and detect hands
     setInterval(() => {
@@ -19,7 +25,7 @@ function BodyDetection() {
   };
   const detect = async (net) => {
     // Check data is available
-    console.log(webcamRef);
+    //  console.log(webcamRef);
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
@@ -46,12 +52,12 @@ function BodyDetection() {
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
-      console.log(person);
+      //    console.log(person);
       const opacity = 0.7;
       const flipHorizontal = false;
       const maskBlurAmount = 0;
       const canvas = canvasRef.current;
-
+      //  console.log(canvasRef);
       const ctx = canvas?.getContext("2d");
       var image = new Image();
       requestCORSIfNotSameOrigin(
@@ -60,17 +66,27 @@ function BodyDetection() {
       );
       var imagedata = null;
       image.src = "https://webglfundamentals.org/webgl/resources/keyboard.jpg";
-      image.onload = () => {
-        ctx?.drawImage(image, 0, 0);
-        imagedata = ctx?.getImageData(0, 0, 300, 311);
-        console.log(imagedata);
-      };
+
       const coloredPartImage = bodyPix.toColoredPartMask(person);
 
       //image.addEventListener('load', function() {
       // Now that the image has loaded make copy it to the texture.
       // const coloredPartImage = bodyPix.toMask(person);
-      if (person)
+      if (person) {
+        const x = person?.allPoses[0]?.keypoints[5]["position"]["x"];
+        const y = person?.allPoses[0]?.keypoints[5]["position"]["y"];
+
+        const widthx = Math.abs(person?.allPoses[0]?.keypoints[6]["position"]["x"] - x);
+        const widthy = Math.abs(
+          person?.allPoses[0]?.keypoints[6]["position"]["y"] - y
+        );
+        console.log(person?.allPoses[0]);
+        image = imageRef.current;
+        image.style.top = y + "px";
+        image.style.left = x + "px";
+        image.style.width = widthx + "px";
+        
+        // console.log(image.style.top);
         bodyPix.drawMask(
           canvas,
           video,
@@ -79,6 +95,7 @@ function BodyDetection() {
           maskBlurAmount,
           flipHorizontal
         );
+      }
     }
   };
 
@@ -105,7 +122,6 @@ function BodyDetection() {
           height: 480,
         }}
       />
-
       <canvas
         ref={canvasRef}
         style={{
@@ -117,6 +133,16 @@ function BodyDetection() {
           zindex: 9,
           width: 640,
           height: 480,
+        }}
+      />
+      <img
+        ref={imageRef}
+        src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"
+        style={{
+          position: "absolute",
+
+          width: 50,
+          height: 40,
         }}
       />
     </>
