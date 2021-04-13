@@ -26,6 +26,7 @@ import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
+import BodyDetection from "./components/3D/bodyDetection";
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   let test = true;
@@ -78,9 +79,12 @@ function App() {
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
+
+                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
-                  <Route path="/products" component={ProductLists} />
+
 
                   <Route
                     path="/event/updatePost/:id"

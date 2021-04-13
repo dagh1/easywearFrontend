@@ -4,11 +4,25 @@ import * as productApi from '../../api/productApi'
   return { type: "LOAD_PRODUCTS_SUCCESS", products };
 }
 
-export const loadProducts=()=> {
+
+export const loadProducts=(page)=> {
     
   return function(dispatch) {
     return productApi
-        .getProducts()
+        .getProducts(page)
+        .then(products => {
+        dispatch(loadProductSuccess(products));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+export const loadProductsbyName=(name)=> {
+    
+  return function(dispatch) {
+    return productApi
+        .getProductsbyname(name)
         .then(products => {
         dispatch(loadProductSuccess(products));
       })
