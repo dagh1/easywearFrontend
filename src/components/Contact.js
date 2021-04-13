@@ -48,9 +48,13 @@ const Contact = () => {
           message: JSON.stringify(err.errors, null, 2),
         });
       } else {
-        dispatch(addContact(res));
-        alert("Your Message has been sent to the adminstrator with success ..");
-        history.push("/");
+        if (window.confirm("Are you sure of Your Message ?") === true) {
+          dispatch(addContact(res));
+          alert(
+            "Your Message has been sent to the adminstrator with success .."
+          );
+          history.push("/");
+        }
       }
     },
   });

@@ -159,11 +159,6 @@ const NavbarBack = () => {
                 </li>
                 <li className="onhover-dropdown">
                   <div className="media align-items-center">
-                    <img
-                      className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
-                      src="/assets/images/rana.jpg"
-                      alt="header-user"
-                    />
                     <div className="dotted-animation">
                       <span className="animate-circle" />
                       <span className="main-circle" />

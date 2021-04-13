@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       {(() => {
-        if (!test) {
+        if (test) {
           return (
             <>
               <UserContext.Provider value={[connectedUser, setConnectedUser]}>
