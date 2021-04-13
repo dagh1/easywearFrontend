@@ -15,6 +15,7 @@ import DashBoard from "./components/BackOffice/DashBoard";
 import SideBar from "./components/BackOffice/SideBar";
 import ClaimBack from "./components/BackOffice/ClaimsBack";
 import Products from "./components/BackOffice/Products";
+import Contacts from "./components/BackOffice/Messages";
 import Events from "./components/BackOffice/Events";
 import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
@@ -27,6 +28,7 @@ import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
 import BodyDetection from "./components/3D/bodyDetection";
 function App() {
+
   const [connectedUser, setConnectedUser] = useState(null);
   function handleLoggedIn(user) {
     console.log("handlelogin");
@@ -40,20 +42,20 @@ function App() {
         if (connectedUser && connectedUser.role === "admin") {
           return (
             <>
-
-
               <UserContext.Provider value={[connectedUser, setConnectedUser]}>
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
+
                   <Route path="/ClaimsBack" component={ClaimBack} />
-                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/Products" component={Products} />
                   <Route path="/Events" component={Events} />
+                  <Route path="/Contacts" component={Contacts} />
                   <Route exact to="/" component={DashBoard} />
+
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
-
             </>
           );
         } else {
@@ -70,10 +72,11 @@ function App() {
               >
                 <Navbar></Navbar>
                 <Switch>
-                  <Route path="/auth/login" component={LoginForm} />
-                  <Route path="/auth/register" component={RegisterForm} />
+
+                  <Route path='/auth/login' component={LoginForm} />
+                  <Route path='/auth/register' component={RegisterForm} />
                   <Route
-                    path="/user/editprofile/:id"
+                    path='/user/editprofile/:id'
                     component={EditProfileForm}
                   />
                   <Route path="/about" component={About} />
@@ -89,7 +92,8 @@ function App() {
                     component={UpdatePostForm}
                   />
 
-                  <Route exact to="/" component={Home} />
+                  <Route exact to='/' component={Home} />
+
                 </Switch>
                 <Footer />
               </UserContext.Provider>

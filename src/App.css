@@ -85,3 +85,15 @@ textarea.form-control {
   color: rgb(198, 197, 202);
   border: 1px solid rgb(198, 197, 202);
 }
+
+.Reactions {
+  display: flex;
+  flex-direction: row;
+  margin: 19px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.blog-advance > :nth-child(3) {
+  margin-left: 16%;
+}

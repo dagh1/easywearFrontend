@@ -34,37 +34,38 @@ const UserPosts = () => {
     <>
       <input
         style={{ width: 400, height: 40 }}
-        type='text'
-        placeholder='Search..'
+        type="text"
+        placeholder="Search.."
         onChange={(e) => searchSpace(e)}
-        className='form-control'
+        className="form-control"
       />
-      <div className='collection-wrapper'>
-        <div className='collection-content ratio_asos'>
-          <div className='page-main-content'>
-            <div className='row'>
-              <div className='col-xl-12'>
-                <div className='filter-main-btn'>
-                  <span className='filter-btn btn btn-theme'>
-                    <i className='fa fa-filter' aria-hidden='true' /> Filter
+      <div className="collection-wrapper">
+        <div className="collection-content ratio_asos">
+          <div className="page-main-content">
+            <div className="row">
+              <div className="col-xl-12">
+                <div className="filter-main-btn">
+                  <span className="filter-btn btn btn-theme">
+                    <i className="fa fa-filter" aria-hidden="true" /> Filter
                   </span>
                 </div>
               </div>
             </div>
-            <div className='collection-product-wrapper'>
-              <div className='product-wrapper-grid'>
-                <div className='row'>
+            <div className="collection-product-wrapper">
+              <div className="product-wrapper-grid">
+                <div className="row">
                   {/* HERE POSTS*/}
 
                   {posts.length === 0 && (
-                    <span className='alert alert-danger'>
+                    <span className="alert alert-danger">
                       No posts to display
                     </span>
                   )}
                   {items?.map((post, index) => {
                     return <Posts post={post} key={index} />;
                   })}
-
+                </div>
+                {pageCount > 1 ? (
                   <ReactPaginate
                     previousLabel={"Previous"}
                     nextLabel={"next"}
@@ -76,7 +77,9 @@ const UserPosts = () => {
                     disabledClassName={"pagination__link--disabled"}
                     activeClassName={"pagination__link--active"}
                   ></ReactPaginate>
-                </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@charkour/react-reactions": "^0.5.0",
     "@reduxjs/toolkit": "^1.5.0",
     "@tensorflow-models/body-pix": "^2.1.0",
     "@tensorflow/tfjs": "^3.3.0",
@@ -36,8 +37,14 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+
+
+
     "source-map-explorer": "^2.5.2",
     "styled-components": "^5.2.2",
+
+
+
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
@@ -67,6 +74,7 @@
     ]
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0"
+    "@svgr/webpack": "^5.5.0",
+    "emailjs-com": "^2.6.4"
   }
 }
