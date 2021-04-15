@@ -2,25 +2,19 @@ import React, { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
-import { useParams } from "react-router-dom";
+
 function BodyDetection() {
-  const { imgurl } = useParams();
-  
-
-  
-  // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
-
-  const imageRef = useRef(null);
-
-  // const ctx = canvas?.getContext("2d");
-
+  const canvasRef = useRef(null);
+async function getVideoInputs() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+    console.log("enumerateDevices() not supported.");
+    return [];
+  }
+  alert(navigator.mediaDevices.enumerateDevices);
+}
   const runBodysegment = async () => {
-    const net = await bodyPix.load({
-      architecture: "ResNet50",
-      outputStride: 32,
-      quantBytes: 2,
-    });
+    const net = await bodyPix.load();
     console.log("BodyPix model loaded.");
     //  Loop and detect hands
     setInterval(() => {
@@ -29,7 +23,6 @@ function BodyDetection() {
   };
   const detect = async (net) => {
     // Check data is available
-    //  console.log(webcamRef);
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
@@ -37,9 +30,17 @@ function BodyDetection() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-    
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
 
-  
+      // Set video width
+      webcamRef.current.video.width = videoWidth;
+      webcamRef.current.video.height = videoHeight;
+
+      // Set canvas height and width
+      canvasRef.current.width = videoWidth;
+      canvasRef.current.height = videoHeight;
+
       // Make Detections
       // * One of (see documentation below):
       // *   - net.segmentPerson
@@ -48,35 +49,26 @@ function BodyDetection() {
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
-      //    console.log(person);
-      
-      //  console.log(canvasRef);
-     
 
-      //image.addEventListener('load', function() {
-      // Now that the image has loaded make copy it to the texture.
       // const coloredPartImage = bodyPix.toMask(person);
-      if (person) {
-        const x = person?.allPoses[0]?.keypoints[6]["position"]["x"];
-        const y = person?.allPoses[0]?.keypoints[6]["position"]["y"];
-        console.log(person);
-        const widthx = Math.abs(person?.allPoses[0]?.keypoints[5]["position"]["x"] - x);
-    
-       
-        const image = imageRef.current;
-        image.style.top = (y+120) + "px";
-        image.style.left = x + "px";
-        image.style.width = widthx + "px";
-        
-        // console.log(image.style.top);
-      
-      }
+      const coloredPartImage = bodyPix.toColoredPartMask(person);
+      const opacity = 0.7;
+      const flipHorizontal = false;
+      const maskBlurAmount = 0;
+      const canvas = canvasRef.current;
+
+      bodyPix.drawMask(
+        canvas,
+        video,
+        coloredPartImage,
+        opacity,
+        maskBlurAmount,
+        flipHorizontal
+      );
     }
   };
 
   runBodysegment();
-
-  
 
   return (
     <>
@@ -93,14 +85,19 @@ function BodyDetection() {
           height: 480,
         }}
       />
-      <img
-        ref={imageRef}
-        src={imgurl}
+
+      <canvas
+        ref={canvasRef}
         style={{
-          position: "absolute",
-          zindex: 10,
-          width: 50,
-          height: 40,
+          position:"absolute",
+          marginLeft: "0",
+          marginRight: "auto",
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          zindex: 9,
+          width: 640,
+          height: 480,
         }}
       />
     </>

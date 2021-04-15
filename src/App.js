@@ -72,11 +72,10 @@ function App() {
               >
                 <Navbar></Navbar>
                 <Switch>
-
-                  <Route path='/auth/login' component={LoginForm} />
-                  <Route path='/auth/register' component={RegisterForm} />
+                  <Route path="/auth/login" component={LoginForm} />
+                  <Route path="/auth/register" component={RegisterForm} />
                   <Route
-                    path='/user/editprofile/:id'
+                    path="/user/editprofile/:id"
                     component={EditProfileForm}
                   />
                   <Route path="/about" component={About} />
@@ -86,14 +85,14 @@ function App() {
                   <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path="/3D/:imgurl" component={BodyDetection} />
 
                   <Route
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
 
-                  <Route exact to='/' component={Home} />
-
+                  <Route exact to="/" component={Home} />
                 </Switch>
                 <Footer />
               </UserContext.Provider>
