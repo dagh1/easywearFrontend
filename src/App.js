@@ -30,6 +30,8 @@ import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
+import BodyDetection from "./components/3D/bodyDetection";
+
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   //const jwtToken = localStorage.getItem("jwt");
@@ -91,12 +93,12 @@ function App() {
                     component={EditProfileForm}
                   />
                   <Route path="/about" component={About} />
-                  <Route path="/load" component={Load} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
+                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
-                  <Route path="/products" component={ProductLists} />
 
                   <Route
                     path="/event/updatePost/:id"
