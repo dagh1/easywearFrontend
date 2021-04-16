@@ -2,24 +2,27 @@ import React, { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
-
+import Stats from "stats.js";
 function BodyDetection() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+    const stats = new Stats();
 async function getVideoInputs() {
   if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     console.log("enumerateDevices() not supported.");
     return [];
   }
-  alert(navigator.mediaDevices.enumerateDevices);
+
 }
   const runBodysegment = async () => {
     const net = await bodyPix.load();
     console.log("BodyPix model loaded.");
     //  Loop and detect hands
-    setInterval(() => {
+      stats.begin();
+
       detect(net);
-    }, 100);
+    stats.end();
+      requestAnimationFrame(runBodysegment);
   };
   const detect = async (net) => {
     // Check data is available
@@ -48,8 +51,17 @@ async function getVideoInputs() {
       // *   - net.segmentMultiPerson
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
-      const person = await net.segmentPersonParts(video);
-
+  //    const person = await net.segmentPersonParts(video);
+const person = await net.segmentMultiPerson(webcamRef.current.video, {
+  flipHorizontal: false,
+  internalResolution: "medium",
+  segmentationThreshold: 0.7,
+  maxDetections: 3,
+  scoreThreshold: 0.2,
+  nmsRadius: 20,
+  minKeypointScore: 0.3,
+  refineSteps: 10,
+});
       // const coloredPartImage = bodyPix.toMask(person);
       const coloredPartImage = bodyPix.toColoredPartMask(person);
       const opacity = 0.7;
