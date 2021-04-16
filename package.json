@@ -43,6 +43,7 @@
     "stats.js": "^0.17.0",
     "styled-components": "^5.2.2",
     "web-vitals": "^1.0.1",
+    "yarn": "^1.22.10",
     "yup": "^0.32.9"
   },
   "scripts": {
