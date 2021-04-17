@@ -25,7 +25,7 @@ const AddClaim = () => {
   const [user, setUser] = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
-      type: "",
+      type: "comment",
       description: "",
 
       state: 1,

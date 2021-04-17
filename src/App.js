@@ -15,6 +15,7 @@ import DashBoard from "./components/BackOffice/DashBoard";
 import SideBar from "./components/BackOffice/SideBar";
 import ClaimBack from "./components/BackOffice/ClaimsBack";
 import Products from "./components/BackOffice/Products";
+import Contacts from "./components/BackOffice/Messages";
 import Events from "./components/BackOffice/Events";
 import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
@@ -27,8 +28,10 @@ import ProductLists from "./components/Products/ProductsLists";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-
+import ProductLists from "./components/Products/ProductsLists";
+import BodyDetection from "./components/3D/bodyDetection";
 function App() {
+
   const [connectedUser, setConnectedUser] = useState(null);
   function handleLoggedIn(user) {
     console.log("handlelogin");
@@ -46,10 +49,13 @@ function App() {
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
-                  <Route path='/ClaimsBack' component={ClaimBack} />
-                  <Route path='/Products' component={ProductLists} />
-                  <Route path='/Events' component={Events} />
-                  <Route exact to='/' component={DashBoard} />
+
+                  <Route path="/ClaimsBack" component={ClaimBack} />
+                  <Route path="/Products" component={Products} />
+                  <Route path="/Events" component={Events} />
+                  <Route path="/Contacts" component={Contacts} />
+                  <Route exact to="/" component={DashBoard} />
+
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
@@ -69,26 +75,29 @@ function App() {
               >
                 <Navbar></Navbar>
                 <Switch>
+
                   <Route path='/auth/login' component={LoginForm} />
                   <Route path='/auth/register' component={RegisterForm} />
                   <Route
                     path='/user/editprofile/:id'
                     component={EditProfileForm}
                   />
-                  <Route path='/about' component={About} />
-                  <Route path='/contact' component={Contact} />
-                  <Route path='/user/profile' component={Profile} />
-                  <Route path='/event/addPost' component={AddPostForm} />
-                  <Route path='/event/post/:id' component={PostDetails} />
-                  <Route path='/products' component={ProductLists} />
+                  <Route path="/about" component={About} />
+                  <Route path="/contact" component={Contact} />
+                  <Route path="/user/profile" component={Profile} />
+                  <Route path="/Products" component={ProductLists} />
+                  <Route path="/3D" component={BodyDetection} />
+                  <Route path="/event/addPost" component={AddPostForm} />
+                  <Route path="/event/post/:id" component={PostDetails} />
 
                   <Route
-                    path='/event/updatePost/:id'
+                    path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
                   <Route path='/event' component={HomeEvent}/>
                   <Route path='/eventDetails/:eventId' component={eventWithId} />
                   <Route exact to='/' component={Home} />
+
                 </Switch>
                 <Footer />
               </UserContext.Provider>
