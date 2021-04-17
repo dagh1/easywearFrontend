@@ -21,12 +21,13 @@ import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
 import HomeEvent from "./components/Events/homeEvent";
+import eventWithId from "./components/Events/eventWithId";
 import ProductLists from "./components/Products/ProductsLists";
 
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-import ProductLists from "./components/Products/ProductsLists";
+
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   function handleLoggedIn(user) {
@@ -86,6 +87,7 @@ function App() {
                     component={UpdatePostForm}
                   />
                   <Route path='/event' component={HomeEvent}/>
+                  <Route path='/eventDetails/:eventId' component={eventWithId} />
                   <Route exact to='/' component={Home} />
                 </Switch>
                 <Footer />

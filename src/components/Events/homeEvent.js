@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import {Card , CardImg, CardImgOverlay, CardTitle , Breadcrumb , BreadcrumbItem} from 'reactstrap';
+import { Breadcrumb , BreadcrumbItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { fetchEvents , fetchRecentEvents } from '../../redux/slices/eventSlice';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import RenderEventDetails from './RenderEventDetails';
 
 
 
 const mapStateToProps = state => ({
     events: state.eventSlice.events,
-    recent_events: state.eventSlice.recentEvents
+    recent_events: state.eventSlice.recentEvents,
 });
 
 const mapDispatchToProps = dispatch => ({
 
     fetchEvents: () => dispatch(fetchEvents()),
-    fetchRecentEvents: () => dispatch(fetchRecentEvents())
+    fetchRecentEvents: () => dispatch(fetchRecentEvents()),
 });
 
 
@@ -30,43 +31,11 @@ class HomeEvent extends Component {
     componentDidMount(){
         this.props.fetchEvents();
         this.props.fetchRecentEvents();
+        
     }
     
 
     render(){
-
-        const RenderEventDetails = ({ event }) => {
-            return (
-                
-                <div class="row blog-media">
-                    <div class="col-xl-6">
-                        <div class="blog-left">
-                            <a href="#"><img src="../assets/images/blog/1.jpg"
-                                              class="img-fluid blur-up lazyload bg-img" 
-                                              alt=""/>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="blog-right">
-                            <div>
-                                <h6> opening date : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(event.date_debut)))}</h6>
-                                    <a href="#">
-                                        <h4>{event.eventName}</h4>
-                                    </a>
-                                <ul class="post-social">
-                                    <li>Posted By : {event.user_id}</li>
-                                    <li><i class="fa fa-comments"></i> 10 Posts</li>
-                                </ul>
-                                <p>{event.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-
 
             const list_recent_events = this.props.recent_events.map( (event) => {
                 return (

@@ -5,6 +5,8 @@ import { queryApi } from "../../utils/queryApi";
 let initialState = {
     events:[],
     recentEvents:[],
+    eventPosts: [],
+    postCount: [],
     selectedEvent:{},
     errors: ""
 };
@@ -18,6 +20,12 @@ const eventSlice = createSlice({
         },
         listRecentEvents(state,action){
             state.recentEvents = action.payload;
+        },
+        listPostsByEvents(state,action){
+            state.eventPosts = action.payload;
+        },
+        countPosts(state,action){
+            state.postCount = action.payload;
         },
         addEvent: (state , action) => {
             const payload = action.payload;
@@ -42,7 +50,6 @@ export const fetchEvents = () => async (dispatch)  => {
         dispatch(setErrors(error));
     } else{
         dispatch(listEvents(res));
-        console.log("im here");
     }
 }
 
@@ -53,11 +60,40 @@ export const fetchRecentEvents = () => async (dispatch)  => {
         dispatch(setErrors(error));
     } else{
         dispatch(listRecentEvents(res));
+        
+    }
+}
+
+export const fetchPostsCount = (eventId) => async (dispatch)  => {
+    const [res, error] = await queryApi("post/get/countPosts/" + eventId);
+
+    if(error){
+        dispatch(setErrors(error));
+    } else{
+        dispatch(countPosts(res));
         console.log("im here");
     }
 }
 
+export const fetchPostsEvent = (eventId) => async (dispatch) => {
+    const [res, error] = await queryApi("post/getEventPosts/" + eventId);
 
-export const { listEvents, listRecentEvents, addEvent , updateEvent , deleteEvent , setErrors } = eventSlice.actions;
+    if(error){
+        dispatch(setErrors(error));
+    } else {
+        dispatch(listPostsByEvents(res));
+    }
+}
+
+export const countPos = (state) => {
+    return state.eventSlice.postCount ;
+};
+
+export const listPosts = ( state) => {
+    return state.eventSlice.eventPosts;
+}
+
+
+export const { listEvents, listRecentEvents, listPostsByEvents , countPosts , addEvent , updateEvent , deleteEvent , setErrors } = eventSlice.actions;
 
 export default eventSlice.reducer;
