@@ -21,6 +21,9 @@ import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
+import HomeEvent from "./components/Events/homeEvent";
+import eventWithId from "./components/Events/eventWithId";
+import ProductLists from "./components/Products/ProductsLists";
 
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
@@ -91,7 +94,8 @@ function App() {
                     path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
-
+                  <Route path='/event' component={HomeEvent}/>
+                  <Route path='/eventDetails/:eventId' component={eventWithId} />
                   <Route exact to='/' component={Home} />
                 </Switch>
                 <Footer />
