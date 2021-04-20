@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 
@@ -9,44 +9,53 @@ import jwtDecode from "jwt-decode";
   function CalculateSize (props)  {
   
     let user; 
-   const [size,setsize]=useState();
+   const [Size,setSize]=useState();
    const jwtToken = localStorage.getItem("jwt");
    if (jwtToken) {
      // Set auth token header auth
      user = jwtDecode(jwtToken); // Decode token and get user info and exp
      
    }
-   if(user.height) {
-   const top= props.person.keypoints[1].position.y 
-   const tall= props.person.keypoints[17].position.y- top; 
-   const ratio=user.height/tall;
+  // if(user?.height) {
+   const top = props.person?.allPoses[0].keypoints[1].position.y; 
+   const tall = props.person?.allPoses[0].keypoints[14].position.y - top; 
+   const ratio=1.8/tall;
    const widthx = Math.abs(
-    props.person.keypoints[5]["position"]["x"] - props.person.keypoints[6]["position"]["x"]
-  );
+     props.person?.allPoses[0].keypoints[5]["position"]["x"] -
+       props.person?.allPoses[0].keypoints[6]["position"]["x"]
+    );
+  
 if (widthx*ratio > 0.889 && widthx*ratio <0.9398) {
-setsize("S");
+
+setSize("S");
 }
 else if
 (widthx*ratio > 0.9398 && widthx*ratio < 1.016 ){
-  setsize("M");
+    
+setSize("M");
 }
    else if
 (widthx*ratio > 1.016 && widthx*ratio < 1.0922 ){
-  setsize("L");
+    
+setSize("L");
 }
 else if
 (widthx*ratio > 1.0922 && widthx*ratio <1.1684 ){
-  setsize("XL");
+  
+setSize("XL");
 }
 else if
 (widthx*ratio > 1.1684 && widthx*ratio < 1.2446 ){
-  setsize("XXL");
-}
-   }
+    
+setSize("XXL");
+    }
+    
+   //}
    
+
    return (
      <>
-     <h3>{size}</h3>
+     <h3>{Size}</h3>
      </>);
 }
 function PutClothes (props){
@@ -61,17 +70,19 @@ const personDetail = props.person;
   );
 
   const image = imageRef.current;
-  image.style.top = y + 120 + "px";
-  image.style.left = x + "px";
-  image.style.width = widthx + "px";
-
+  if (image) {
+    image.style.top = y  + "px";
+    image.style.left = x + "px";
+    image.style.width = widthx + "px";
+  }
 
 
   return (
     <>
-    <img
+      <img
         ref={imageRef}
-   alt=""
+        src="https://www.torontotees.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/0/500_32.png"
+        alt=""
         style={{
           position: "absolute",
           zindex: 10,
@@ -79,13 +90,14 @@ const personDetail = props.person;
           height: 40,
         }}
       />
-    </>);
+    </>
+  );
 }
  
 
 
 function BodyDetection() {
-
+/*
   const isAndroid = () => {
     return /Android/i.test(navigator.userAgent);
   };
@@ -104,12 +116,12 @@ function BodyDetection() {
     }
     : {};
 
-  
+  */
   const stats = new Stats();
   // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
   const [net, setNet] = useState();
- 
+ const [activeRole, setactiveRole] = useState("clothes");
  const [person, setperson] = useState();
   // const ctx = canvas?.getContext("2d");
   const getnet = async () => {
@@ -121,6 +133,7 @@ function BodyDetection() {
       });
     setNet(lnet);
   }
+
  
 
   const runBodysegment = () => {
@@ -130,10 +143,10 @@ function BodyDetection() {
       webcamRef.current.video.readyState === 4
     ) {
       //  Loop and detect hands
-      stats.begin();
-
-      detect();
-      stats.end();
+      //stats.begin();
+      setInterval(detect(), 1000);
+     
+      //stats.end();
 
       requestAnimationFrame(runBodysegment);
     }
@@ -155,20 +168,29 @@ function BodyDetection() {
       });
 
     if (personDetail) {
+      console.log(personDetail);
       setperson(personDetail);
        
       }
     
   };
   getnet();
-    
+  const handleclick = () => {
+    if (activeRole == "size")setactiveRole("clothes");
+    else if (activeRole == "clothes") setactiveRole("size");
+  }   
   runBodysegment();
   //bindPage();
   
 
   return (
     <>
-      
+      <button
+   onClick={handleclick}
+      >
+        {activeRole != "size" ? "try on" : "size"}
+      </button>
+
       <Webcam
         ref={webcamRef}
         style={{
@@ -180,13 +202,15 @@ function BodyDetection() {
           zindex: 9,
           width: 640,
           height: 480,
-          videoConstraints:{videoConstraints}
+          //  videoConstraints:{videoConstraints}
         }}
       />
-     
-    
-      <PutClothes person={person.allPoses[0]} />
-      <CalculateSize person={person.allPoses[0]} />
+
+      {activeRole == "size" ? (
+        <CalculateSize person={person} />
+      ) : (
+        <PutClothes person={person} />
+      )}
     </>
   );
 }

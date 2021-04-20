@@ -25,7 +25,7 @@ import { UserContext } from "./contexts/userContext";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-import ProductLists from "./components/Products/ProductsLists";
+import ProductLists from "./components/Products/ProductsLists1";
 import BodyDetection from "./components/3D/bodyDetection";
 function App() {
 

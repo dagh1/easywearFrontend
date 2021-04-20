@@ -77,8 +77,122 @@ class Productcard extends React.Component {
     );
   }
 }
+const ProductCategory =props=>  {
+
+  var Brands = [];
+ const onlyUnique=( value, index, self )=> {
+    return self.indexOf(value) === index;
+  }
+  console.log(props.product);
+  if (typeof props.product !=="undefined" && props.product.length !== 0)
+    
+    Brands = props.product.map((cat) => cat.productBrand).filter(onlyUnique)
+    
+   
+    
+  return (
+    <>{Brands ? Brands.map((b) => <li>{b}</li>) : <div> Loading...</div>}</>
+  );
+ }
 
 
+const SidebarProduct = props => {
+  return (
+    <>
+    
+    <div className="collection-filter-block">
+                            
+                            <div className="collection-mobile-back"><span className="filter-back"><i className="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
+                            <div className="collection-collapse-block open">
+                                <h3 className="collapse-block-title">brand</h3>
+                                <div className="collection-collapse-block-content" >
+                                    <div className="collection-brand-filter">
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="zara"/>
+                                            <label className="custom-control-label" for="zara">zara</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="vera-moda"/>
+                                            <label className="custom-control-label" for="vera-moda">vera-moda</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="forever-21"/>
+                                            <label className="custom-control-label" for="forever-21">forever-21</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="roadster"/>
+                                            <label className="custom-control-label" for="roadster">roadster</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="only"/>
+                                            <label className="custom-control-label" for="only">only</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                  
+
+                            <div className="collection-collapse-block">
+                                <h3 className="collapse-block-title">colors</h3>
+                                <div className="collection-collapse-block-content" style={{display: "none"}}>
+                                    <div className="color-selector">
+                                        <ul>
+                                            <li className="color-1 active"></li>
+                                            <li className="color-2"></li>
+                                            <li className="color-3"></li>
+                                            <li className="color-4"></li>
+                                            <li className="color-5"></li>
+                                            <li className="color-6"></li>
+                                            <li className="color-7"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                  
+
+                            <div className="collection-collapse-block border-0">
+                                <h3 className="collapse-block-title">size</h3>
+                                <div className="collection-collapse-block-content" style={{display: "none"}}>
+                                    <div className="collection-brand-filter">
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="hundred"/>
+                                            <label className="custom-control-label" for="hundred">s</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="twohundred"/>
+                                            <label className="custom-control-label" for="twohundred">m</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="threehundred"/>
+                                            <label className="custom-control-label" for="threehundred">l</label>
+                                        </div>
+                                        <div className="custom-control custom-checkbox collection-filter-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="fourhundred"/>
+                                            <label className="custom-control-label" for="fourhundred">xl</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div className="collection-collapse-block border-0">
+                                <h3 className="collapse-block-title">price</h3>
+                                <div className="collection-collapse-block-content" style={{display: "none"}}>
+                                    <div className="wrapper mt-3">
+                                        <div className="range-slider">
+                                            <span className="irs js-irs-0"><span className="irs"><span className="irs-line" tabindex="-1"><span className="irs-line-left"></span><span className="irs-line-mid"></span><span className="irs-line-right"></span></span><span className="irs-min" style={{visibility: "hidden"}}>$0</span><span className="irs-max" style={{visibility: "hidden"}}>$1.500</span><span className="irs-from" style={{visibility:" visible", left:" 0%"}}>$0</span><span className="irs-to" style={{visibility: "visible", left: "83.1395%"}}>$1.500</span><span className="irs-single" style={{visibility: "hidden", left: "36.3639%"}}>$0 - $1.500</span></span><span className="irs-grid"></span><span className="irs-bar" style={{left: "1.55039%", width: "96.8992%"}}></span><span className="irs-shadow shadow-from" style={{display:" none"}}></span><span className="irs-shadow shadow-to" style={{display:" none"}}></span><span className="irs-slider from" style={{left: "0%"}}></span><span className="irs-slider to" style={{left: "96.8992%"}}></span></span><input type="text" className="js-range-slider irs-hidden-input" value="" readonly=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+    </>
+   )
+ }
+ 
+                
 
 class Form extends React.Component {
 
@@ -107,15 +221,7 @@ class Form extends React.Component {
                   </div>
                 </form>
               </div>
-              <div className="col-lg-2">
-                <button
-                  type="button"
-                  style={{lineHeight: "2.2"}}
-                  className="fas fa-arrow-circle-down add-button btn-block"
-                >
-                  Price
-                </button>
-              </div>
+              
             </div>
           </div>
         </section>
@@ -136,7 +242,7 @@ class ProductLists extends React.Component {
     if (products.length === 0) {
       
       actions.loadProducts(0,-1).catch(error => {
-        alert("Loading products failed" + error);
+    
       });
     }
 
@@ -151,7 +257,7 @@ const { products, actions } = this.props;
     if (products.currentPage !== page) {
       
       actions.loadProducts(page).catch(error => {
-        alert("Loading products failed" + error);
+     
       });
     }
 
@@ -189,6 +295,7 @@ render(){
           <div className="container-fluid">
             <div className="page-header">
               <div className="row">
+                <SidebarProduct />
                 <div className="col-lg-6">
                   <div className="page-header-left">
                     <h3>
@@ -223,14 +330,13 @@ render(){
               </div>
             </div>
           </div>
-
+          <ProductCategory product={this.props.products.products} />
           <ListPagination
             articlesCount={this.props.products.totalItems}
             currentPage={this.props.products.currentPage}
             onSetPage={this.loadSelectedPage}
           />
           <Form onSubmit={this.loadbyName} />
-
           <div style={{ padding: "20px" }} className="container-fluid">
             <div className="row products-admin ratio_asos">
               {this.props.products.products ? (
