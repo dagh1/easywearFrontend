@@ -18,7 +18,6 @@ const reducers = combineReducers({
   commentSlice,
   ReactionSlice,
   userSlice,
-
 });
 
 export default reducers;

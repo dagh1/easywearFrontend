@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
+import Test from "./test";
 
 function BodyDetection() {
   // const canvas = document.querySelector("canvas");
@@ -33,9 +34,7 @@ function BodyDetection() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-    
 
-  
       // Make Detections
       // * One of (see documentation below):
       // *   - net.segmentPerson
@@ -45,9 +44,8 @@ function BodyDetection() {
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
       //    console.log(person);
-      
+
       //  console.log(canvasRef);
-     
 
       //image.addEventListener('load', function() {
       // Now that the image has loaded make copy it to the texture.
@@ -56,26 +54,37 @@ function BodyDetection() {
         const x = person?.allPoses[0]?.keypoints[5]["position"]["x"];
         const y = person?.allPoses[0]?.keypoints[5]["position"]["y"];
 
-        const widthx = Math.abs(person?.allPoses[0]?.keypoints[6]["position"]["x"] - x);
-    
-       
+        const widthx = Math.abs(
+          person?.allPoses[0]?.keypoints[6]["position"]["x"] - x
+        );
+
         const image = imageRef.current;
         image.style.top = y + "px";
         image.style.left = x + "px";
         image.style.width = widthx + "px";
-        
+
         // console.log(image.style.top);
-      
       }
     }
   };
 
   runBodysegment();
 
-  
-
   return (
     <>
+      <div
+        id="cu"
+        ref={imageRef}
+        style={{
+          position: "absolute",
+
+          width: 50,
+          height: 40,
+        }}
+      >
+        aa
+        <Test />
+      </div>
       <Webcam
         ref={webcamRef}
         style={{
@@ -89,8 +98,8 @@ function BodyDetection() {
           height: 480,
         }}
       />
-    
-      <img
+
+      {/*   <img
         ref={imageRef}
         src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"
         style={{
@@ -99,7 +108,7 @@ function BodyDetection() {
           width: 50,
           height: 40,
         }}
-      />
+      /> */}
     </>
   );
 }
