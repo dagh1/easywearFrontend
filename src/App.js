@@ -28,7 +28,7 @@ import ProductLists from "./components/Products/ProductsLists";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-import ProductLists from "./components/Products/ProductsLists";
+//import ProductLists from "./components/Products/ProductsLists";
 import BodyDetection from "./components/3D/bodyDetection";
 import ProductDetails from "./components/Products/ProductDetails";
 
@@ -94,8 +94,11 @@ function App() {
                     path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
-                  <Route path='/event' component={HomeEvent}/>
-                  <Route path='/eventDetails/:eventId' component={eventWithId} />
+                  <Route path='/event' component={HomeEvent} />
+                  <Route
+                    path='/eventDetails/:eventId'
+                    component={eventWithId}
+                  />
                   <Route exact to='/' component={Home} />
                 </Switch>
                 <Footer />

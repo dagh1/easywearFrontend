@@ -3,18 +3,108 @@ import * as productsActions from "../../redux/actions/ProductsActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { loadProducts } from "./../../redux/actions/ProductsActions";
+import { queryApi } from "../../utils/queryApi";
+import jwtDecode from "jwt-decode";
+import { query } from "express";
 
 class ProductDetails extends Component {
+  jwtToken = localStorage.getItem("jwt");
+
+  componentDidMount() {
+    if (this.jwtToken) {
+      this.setState({ connectedUser: jwtDecode(this.jwtToken) });
+    }
+    this.loadRateByUserId();
+  }
   constructor(props) {
     super(props);
     const { products, actions } = props;
+
     actions.loadProducts();
     const prodDetail = props["products"].products.find(
       (p) => p.id === props.match.params.id
     );
-    this.state = { prodDetail: prodDetail };
-    console.log(props);
+    const user = jwtDecode(this.jwtToken);
+    this.state = {
+      prodDetail: prodDetail,
+      connectedUser: user,
+      currentRate: {},
+      isLikedDisabled: false,
+      isDislikeDisabled: false,
+    };
   }
+  loadRateByUserId = async () => {
+    const [res, err] = await queryApi(
+      "recommendation/findRate/" +
+        this.state.connectedUser._id +
+        "/" +
+        this.state.prodDetail.id,
+      {},
+      "GET"
+    );
+    this.setState({ currentRate: res });
+    if (res === {}) {
+      this.setState({ isLikedDisabled: false });
+      this.setState({ isDislikeDisabled: false });
+    }
+    if (res.rate_type === "like") {
+      this.setState({ isLikedDisabled: true });
+      this.setState({ isDislikeDisabled: false });
+    }
+    if (res.rate_type === "dislike") {
+      this.setState({ isDislikeDisabled: true });
+      this.setState({ isLikedDisabled: false });
+    }
+  };
+  handleLikeClick = async () => {
+    if (this.state.currentRate) {
+      await queryApi(
+        "recommendation/delete/" + this.state.prodDetail.id,
+        {},
+        "DELETE"
+      );
+    }
+    const [res, err] = await queryApi(
+      "recommendation/rateItem",
+      {
+        rate_type: "like",
+        user_id: this.state.connectedUser._id,
+        product_id: this.state.prodDetail.id,
+      },
+      "POST"
+    );
+    if (res) {
+      this.setState({ isLikedDisabled: true });
+      this.setState({ isDislikeDisabled: false });
+    } else {
+      alert("Error Reviewing ");
+    }
+  };
+
+  handleDisLikeClick = async () => {
+    if (this.state.currentRate) {
+      await queryApi(
+        "recommendation/delete/" + this.state.prodDetail.id,
+        {},
+        "DELETE"
+      );
+    }
+    const [res, err] = await queryApi(
+      "recommendation/rateItem",
+      {
+        rate_type: "dislike",
+        user_id: this.state.connectedUser._id,
+        product_id: this.state.prodDetail.id,
+      },
+      "POST"
+    );
+    if (res) {
+      this.setState({ isLikedDisabled: false });
+      this.setState({ isDislikeDisabled: true });
+    } else {
+      alert("Error Reviewing ");
+    }
+  };
 
   render() {
     return (
@@ -279,20 +369,25 @@ class ProductDetails extends Component {
                             </div>
                           </div>
                           <div className='product-buttons'>
-                            <a
-                              href='#'
+                            <button
+                              disabled={this.state.isLikedDisabled}
                               data-toggle='modal'
                               data-target='#addtocart'
                               className='btn btn-solid'
+                              onClick={this.handleLikeClick}
                             >
                               <i class='fa fa-thumbs-up' aria-hidden='true'></i>
-                            </a>
-                            <a href='#' className='btn btn-solid'>
+                            </button>
+                            <button
+                              disabled={this.state.isDislikeDisabled}
+                              className='btn btn-solid'
+                              onClick={this.handleDisLikeClick}
+                            >
                               <i
                                 class='fa fa-thumbs-down'
                                 aria-hidden='true'
                               ></i>
-                            </a>
+                            </button>
                           </div>
                           <div className='border-product'>
                             <h6 className='product-title'>product details</h6>
