@@ -431,35 +431,40 @@ const EditUserForm = (props) => {
                         </div>
                       )}
                     </div>
-                    <div className="form-check col-6">
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="role"
-                          onChange={handleChange}
-                          id="inlineRadio1"
-                          value="admin"
-                          checked={user.role === "admin"}
-                        />
-                        <label class="form-check-label" htmlFor="inlineRadio1">
-                          Admin
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="role"
-                          onChange={handleChange}
-                          id="inlineRadio2"
-                          value="user"
-                          checked={user.role === "user"}
-                        />
-                        <label class="form-check-label" htmlFor="inlineRadio2">
-                          User
-                        </label>
-                      </div>
+                    <div className="col-md-6">
+                      <label htmlFor="last_name">Role:*</label>
+                      {/*  <input
+                        type="text"
+                        name="gender"
+                        onChange={handleChange}
+                        className="form-control"
+                        id="gender"
+                        placeholder="Gender"
+                        required=""
+                      /> */}
+                      <select
+                        id="role"
+                        name="role"
+                        onChange={handleChange}
+                        required=""
+                        class="form-select"
+                        aria-label="Default select example"
+                        style={{
+                          height: "50%",
+                          marginTop: "1px",
+                          borderColor: "#eaeaea",
+                        }}
+                        defaultValue={user.role}
+                      >
+                        {/*   <option>Choose your gender</option> */}
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                      </select>
+                      {info.errors["role"] && (
+                        <div className="alert alert-danger">
+                          <strong>{info.errors["role"]}</strong>
+                        </div>
+                      )}
                     </div>
 
                     {error.visible && (

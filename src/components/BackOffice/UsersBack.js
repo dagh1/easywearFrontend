@@ -75,6 +75,8 @@ const UserBack = () => {
   };
   const openConfirmation = async (user) => {
     if (window.confirm("are you sure you want to delete?") === true) {
+      console.log("delete");
+      console.log(user);
       deleteUserEvent(user._id);
     }
   };

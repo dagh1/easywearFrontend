@@ -299,6 +299,7 @@ const RegisterForm = () => {
                       <input
                         type="number"
                         name="height"
+                        step="0.01"
                         onChange={handleChange}
                         className="form-control"
                         id="height"
@@ -329,16 +330,24 @@ const RegisterForm = () => {
                       )}
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="last_name">Gender:*</label>
-                      <input
-                        type="text"
+                      <label htmlFor="gender">Gender:*</label>
+                      <select
+                        id="gender"
                         name="gender"
                         onChange={handleChange}
-                        className="form-control"
-                        id="gender"
-                        placeholder="Gender"
                         required=""
-                      />
+                        className="form-select col"
+                        aria-label="Default select example"
+                        style={{
+                          height: "50%",
+                          marginTop: "1px",
+                          borderColor: "#eaeaea",
+                        }}
+                      >
+                        <option selected>Choose your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                       {info.errors["gender"] && (
                         <div className="alert alert-danger">
                           <strong>{info.errors["gender"]}</strong>

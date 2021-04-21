@@ -317,6 +317,7 @@ const AddUserForm = (props) => {
                       <input
                         type="number"
                         name="height"
+                        step="0.01"
                         onChange={handleChange}
                         className="form-control"
                         id="height"
@@ -347,7 +348,7 @@ const AddUserForm = (props) => {
                       )}
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="last_name">Gender:*</label>
+                      <label htmlFor="gender">Gender:*</label>
                       {/*  <input
                         type="text"
                         name="gender"
@@ -362,7 +363,7 @@ const AddUserForm = (props) => {
                         name="gender"
                         onChange={handleChange}
                         required=""
-                        class="form-select"
+                        className="form-select"
                         aria-label="Default select example"
                         style={{
                           height: "50%",
