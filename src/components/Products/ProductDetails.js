@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loadProducts } from "./../../redux/actions/ProductsActions";
 import { queryApi } from "../../utils/queryApi";
 import jwtDecode from "jwt-decode";
-import { query } from "express";
+import ProductView from "./productView";
 
 class ProductDetails extends Component {
   jwtToken = localStorage.getItem("jwt");
@@ -15,6 +15,7 @@ class ProductDetails extends Component {
       this.setState({ connectedUser: jwtDecode(this.jwtToken) });
     }
     this.loadRateByUserId();
+    this.loadSimilarProducts();
   }
   constructor(props) {
     super(props);
@@ -28,11 +29,23 @@ class ProductDetails extends Component {
     this.state = {
       prodDetail: prodDetail,
       connectedUser: user,
+      similarProducts: [],
       currentRate: {},
       isLikedDisabled: false,
       isDislikeDisabled: false,
     };
   }
+
+  loadSimilarProducts = async () => {
+    const [res, err] = await queryApi(
+      "product/getSimilarProducts/" + this.state.prodDetail.id,
+      {},
+      "GET"
+    );
+    console.log(res);
+    if (res) this.setState({ similarProducts: res });
+  };
+
   loadRateByUserId = async () => {
     const [res, err] = await queryApi(
       "recommendation/findRate/" +
@@ -405,256 +418,22 @@ class ProductDetails extends Component {
                       </div>
                     </div>
                   </div>
-                  <section className='tab-product m-0'>
-                    <div className='row'>
-                      <div className='col-sm-12 col-lg-12'>
-                        <ul
-                          className='nav nav-tabs nav-material'
-                          id='top-tab'
-                          role='tablist'
-                        >
-                          <li className='nav-item'>
-                            <a
-                              className='nav-link active'
-                              id='top-home-tab'
-                              data-toggle='tab'
-                              href='#top-home'
-                              role='tab'
-                              aria-selected='true'
-                            >
-                              <i className='icofont icofont-ui-home' />
-                              Description
-                            </a>
-                            <div className='material-border' />
-                          </li>
-                          <li className='nav-item'>
-                            <a
-                              className='nav-link'
-                              id='profile-top-tab'
-                              data-toggle='tab'
-                              href='#top-profile'
-                              role='tab'
-                              aria-selected='false'
-                            >
-                              <i className='icofont icofont-man-in-glasses' />
-                              Details
-                            </a>
-                            <div className='material-border' />
-                          </li>
-                          <li className='nav-item'>
-                            <a
-                              className='nav-link'
-                              id='contact-top-tab'
-                              data-toggle='tab'
-                              href='#top-contact'
-                              role='tab'
-                              aria-selected='false'
-                            >
-                              <i className='icofont icofont-contacts' />
-                              Video
-                            </a>
-                            <div className='material-border' />
-                          </li>
-                          <li className='nav-item'>
-                            <a
-                              className='nav-link'
-                              id='review-top-tab'
-                              data-toggle='tab'
-                              href='#top-review'
-                              role='tab'
-                              aria-selected='false'
-                            >
-                              <i className='icofont icofont-contacts' />
-                              Write Review
-                            </a>
-                            <div className='material-border' />
-                          </li>
-                        </ul>
-                        <div
-                          className='tab-content nav-material'
-                          id='top-tabContent'
-                        >
-                          <div
-                            className='tab-pane fade show active'
-                            id='top-home'
-                            role='tabpanel'
-                            aria-labelledby='top-home-tab'
-                          >
-                            <p>
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries, but
-                              also the leap into electronic typesetting,
-                              remaining essentially unchanged. It was
-                              popularised in the 1960s with the release of
-                              Letraset sheets containing Lorem Ipsum passages,
-                              and more recently with desktop publishing software
-                              like Aldus PageMaker including versions of Lorem
-                              Ipsum. Lorem Ipsum is simply dummy text of the
-                              printing and typesetting industry. Lorem Ipsum has
-                              been the industry's standard dummy text ever since
-                              the 1500s, when an unknown printer took a galley
-                              of type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries, but
-                              also the leap into electronic typesetting,
-                              remaining essentially unchanged. It was
-                              popularised in the 1960s with the release of
-                              Letraset sheets containing Lorem Ipsum passages,
-                              and more recently with desktop publishing software
-                              like Aldus PageMaker including versions of Lorem
-                              Ipsum.
-                            </p>
-                          </div>
-                          <div
-                            className='tab-pane fade'
-                            id='top-profile'
-                            role='tabpanel'
-                            aria-labelledby='profile-top-tab'
-                          >
-                            <p>
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown printer took a galley of
-                              type and scrambled it to make a type specimen
-                              book. It has survived not only five centuries, but
-                              also the leap into electronic typesetting,
-                              remaining essentially unchanged. It was
-                              popularised in the 1960s with the release of
-                              Letraset sheets containing Lorem Ipsum passages,
-                              and more recently with desktop publishing software
-                              like Aldus PageMaker including versions of Lorem
-                              Ipsum.
-                            </p>
-                            <div className='single-product-tables'>
-                              <table>
-                                <tbody>
-                                  <tr>
-                                    <td>Febric</td>
-                                    <td>Chiffon</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Color</td>
-                                    <td>Red</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Material</td>
-                                    <td>Crepe printed</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <table>
-                                <tbody>
-                                  <tr>
-                                    <td>Length</td>
-                                    <td>50 Inches</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Size</td>
-                                    <td>S, M, L .XXL</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div
-                            className='tab-pane fade'
-                            id='top-contact'
-                            role='tabpanel'
-                            aria-labelledby='contact-top-tab'
-                          >
-                            <div className='mt-3 text-center'>
-                              <iframe
-                                width={560}
-                                height={315}
-                                src='https://www.youtube.com/embed/BUWzX78Ye_8'
-                                allow='autoplay; encrypted-media'
-                                allowFullScreen
-                              />
-                            </div>
-                          </div>
-                          <div
-                            className='tab-pane fade'
-                            id='top-review'
-                            role='tabpanel'
-                            aria-labelledby='review-top-tab'
-                          >
-                            <form className='theme-form'>
-                              <div className='form-row'>
-                                <div className='col-md-12'>
-                                  <div className='media'>
-                                    <label>Rating</label>
-                                    <div className='media-body ml-3'>
-                                      <div className='rating three-star'>
-                                        <i className='fa fa-star' />
-                                        <i className='fa fa-star' />
-                                        <i className='fa fa-star' />
-                                        <i className='fa fa-star' />
-                                        <i className='fa fa-star' />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className='col-md-6'>
-                                  <label htmlFor='name'>Name</label>
-                                  <input
-                                    type='text'
-                                    className='form-control'
-                                    id='name'
-                                    placeholder='Enter Your name'
-                                    required
-                                  />
-                                </div>
-                                <div className='col-md-6'>
-                                  <label htmlFor='email'>Email</label>
-                                  <input
-                                    type='text'
-                                    className='form-control'
-                                    id='email'
-                                    placeholder='Email'
-                                    required
-                                  />
-                                </div>
-                                <div className='col-md-12'>
-                                  <label htmlFor='review'>Review Title</label>
-                                  <input
-                                    type='text'
-                                    className='form-control'
-                                    id='review'
-                                    placeholder='Enter your Review Subjects'
-                                    required
-                                  />
-                                </div>
-                                <div className='col-md-12'>
-                                  <label htmlFor='review'>Review Title</label>
-                                  <textarea
-                                    className='form-control'
-                                    placeholder='Wrire Your Testimonial Here'
-                                    id='exampleFormControlTextarea1'
-                                    rows={6}
-                                    defaultValue={""}
-                                  />
-                                </div>
-                                <div className='col-md-12'>
-                                  <button
-                                    className='btn btn-solid'
-                                    type='submit'
-                                  >
-                                    Submit YOur Review
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className='section-b-space pt-0 ratio_asos'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-12 product-related'>
+                <h2>similar products to {this.state.prodDetail.productName}</h2>
+              </div>
+            </div>
+            <div className='row search-product'>
+              {this.state.similarProducts.map((p) => {
+                return <ProductView key={p.id} product={p} />;
+              })}
             </div>
           </div>
         </section>
