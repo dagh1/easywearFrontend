@@ -432,7 +432,13 @@ class ProductDetails extends Component {
             </div>
             <div className='row search-product'>
               {this.state.similarProducts.map((p) => {
-                return <ProductView key={p.id} product={p} />;
+                return (
+                  <ProductView
+                    key={p.id}
+                    product={p}
+                    priceCompare={this.state.prodDetail.productPrice}
+                  />
+                );
               })}
             </div>
           </div>

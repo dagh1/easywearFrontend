@@ -57,7 +57,14 @@ const ProductView = (props) => {
             <a href='product-page(no-sidebar).html'>
               <h6>{props.product.productName}</h6>
             </a>
-            <h4>{props.product.productPrice}</h4>
+            <h4>
+              {props.product.productPrice}{" "}
+              {props.product.productPrice < props.priceCompare ? (
+                <p style={{ textShadow: "0 0 10px #fff700" }}>Better Deal</p>
+              ) : (
+                ""
+              )}
+            </h4>
             <ul className='color-variant'>
               <li className='bg-light0' />
               <li className='bg-light1' />
