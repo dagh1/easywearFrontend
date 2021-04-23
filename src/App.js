@@ -23,13 +23,11 @@ import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
 import HomeEvent from "./components/Events/homeEvent";
 import eventWithId from "./components/Events/eventWithId";
-import ProductLists from "./components/Products/ProductsLists";
-
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
-import BodyDetection from "./components/3D/bodyDetection";
+import BodyDetection from "./components/3D/bodyDetection";  
 function App() {
 
   const [connectedUser, setConnectedUser] = useState(null);
