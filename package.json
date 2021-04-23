@@ -41,10 +41,7 @@
     "slick-carousel": "^1.8.1",
     "source-map-explorer": "^2.5.2",
     "styled-components": "^5.2.2",
-<<<<<<< HEAD
-=======
     "three": "^0.127.0",
->>>>>>> main
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
