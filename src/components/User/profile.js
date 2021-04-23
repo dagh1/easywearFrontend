@@ -11,6 +11,7 @@ import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 
 import { selectClaims } from "../../redux/slices/claimSlice";
+import FindArticle from "./findarticle";
 
 const Profile = () => {
   /*  const user = useContext(UserContext);
@@ -180,6 +181,16 @@ const Profile = () => {
                       </NavLink>
                     </li>
                     <li>
+                      <NavLink
+                        className="active"
+                        activeStyle={{ color: "#ff4c3b" }}
+                        to="/user/profile/suggestions"
+                        or
+                      >
+                        Suggestions
+                      </NavLink>
+                    </li>
+                    <li>
                       <a href="#">My Events</a>
                     </li>
                     <li>
@@ -226,6 +237,11 @@ const Profile = () => {
                 <Route
                   path="/user/profile/posts"
                   render={(props) => <UserPosts {...props} />}
+                />
+                <Route
+                  path="/user/profile/suggestions"
+                  or
+                  component={FindArticle}
                 />
               </Switch>
             </div>

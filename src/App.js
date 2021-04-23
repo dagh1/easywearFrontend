@@ -39,7 +39,7 @@ function App() {
   return (
     <>
       {(() => {
-        if (test) {
+        if (!test) {
           return (
             <>
               <UserContext.Provider value={[connectedUser, setConnectedUser]}>
@@ -84,7 +84,6 @@ function App() {
                   <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
-
 
                   <Route
                     path="/event/updatePost/:id"

@@ -24,7 +24,7 @@ const UserClaims = () => {
     user = jwtDecode(jwtToken); // Decode token and get user info and exp
   }
 
-  console.log(user);
+  //console.log(user);
   const dispatch = useDispatch();
   const showClaims = async (type) => {
     dispatch(fetchClaimByType(type, user._id));

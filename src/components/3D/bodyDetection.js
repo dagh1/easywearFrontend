@@ -33,9 +33,7 @@ function BodyDetection() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-    
 
-  
       // Make Detections
       // * One of (see documentation below):
       // *   - net.segmentPerson
@@ -44,42 +42,44 @@ function BodyDetection() {
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
-      //    console.log(person);
-      
+      // console.log(person);
+
       //  console.log(canvasRef);
-     
 
       //image.addEventListener('load', function() {
       // Now that the image has loaded make copy it to the texture.
       // const coloredPartImage = bodyPix.toMask(person);
       if (person) {
-        const x = person?.allPoses[0]?.keypoints[5]["position"]["x"];
-        const y = person?.allPoses[0]?.keypoints[5]["position"]["y"];
+        const x = person?.allPoses[0]?.keypoints[8]["position"]["x"];
+        const y = person?.allPoses[0]?.keypoints[8]["position"]["y"];
+        const z = person?.allPoses[0]?.keypoints[13]["position"]["y"];
 
-        const widthx = Math.abs(person?.allPoses[0]?.keypoints[6]["position"]["x"] - x);
-    
-       
+        const widthx = Math.abs(
+          person?.allPoses[0]?.keypoints[7]["position"]["x"] - x
+        );
+        const highx = Math.abs(
+          person?.allPoses[0]?.keypoints[7]["position"]["y"] - z
+        );
+
         const image = imageRef.current;
         image.style.top = y + "px";
         image.style.left = x + "px";
         image.style.width = widthx + "px";
-        
+        image.style.height = highx + "px";
+
         // console.log(image.style.top);
-      
       }
     }
   };
 
   runBodysegment();
 
-  
-
   return (
     <>
       <Webcam
         ref={webcamRef}
         style={{
-          marginLeft: "0",
+          marginLeft: "auto",
           marginRight: "auto",
           left: 0,
           right: 0,
@@ -89,15 +89,12 @@ function BodyDetection() {
           height: 480,
         }}
       />
-    
+
       <img
         ref={imageRef}
-        src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"
+        src="https://pngimg.com/uploads/tshirt/tshirt_PNG5449.png?fbclid=IwAR04eCnCELAwcuYHLsmerHz4aC1F9_QgB02yMuVO1IgL5Lh80FkZmxay8aM"
         style={{
           position: "absolute",
-
-          width: 50,
-          height: 40,
         }}
       />
     </>
