@@ -9,49 +9,56 @@ import jwtDecode from "jwt-decode";
   function CalculateSize (props)  {
   
     let user; 
-   const [Size,setSize]=useState();
+    const [Size, setSize] = useState();
+     
    const jwtToken = localStorage.getItem("jwt");
    if (jwtToken) {
      // Set auth token header auth
      user = jwtDecode(jwtToken); // Decode token and get user info and exp
      
    }
-  // if(user?.height) {
-   const top = props.person?.allPoses[0].keypoints[1].position.y; 
-   const tall = props.person?.allPoses[0].keypoints[14].position.y - top; 
-   const ratio=1.8/tall;
-   const widthx = Math.abs(
-     props.person?.allPoses[0].keypoints[5]["position"]["x"] -
-       props.person?.allPoses[0].keypoints[6]["position"]["x"]
-    );
-  
-if (widthx*ratio > 0.889 && widthx*ratio <0.9398) {
-
-setSize("S");
-}
-else if
-(widthx*ratio > 0.9398 && widthx*ratio < 1.016 ){
-    
-setSize("M");
-}
-   else if
-(widthx*ratio > 1.016 && widthx*ratio < 1.0922 ){
-    
-setSize("L");
-}
-else if
-(widthx*ratio > 1.0922 && widthx*ratio <1.1684 ){
-  
-setSize("XL");
-}
-else if
-(widthx*ratio > 1.1684 && widthx*ratio < 1.2446 ){
-    
-setSize("XXL");
-    }
-    
-   //}
+  // if(user?.height) { 
    
+    console.log(props.person?.allPoses[0]);
+    if (typeof props.person?.allPoses[0].keypoints[16] !== "undefined") {
+      
+      const top = props.person?.allPoses[0].keypoints[1].position.y;
+      const tall = props.person?.allPoses[0].keypoints[16]?.position.y - top;
+      const ratio = 1.8 / tall;
+      const widthx = Math.abs(
+        props.person?.allPoses[0].keypoints[5]["position"]["x"] -
+        props.person?.allPoses[0].keypoints[6]["position"]["x"]
+     
+    
+      );
+      console.log(widthx * ratio);
+      if (widthx * ratio > 0.889 && widthx * ratio < 0.9398) {
+
+        setSize("S");
+      }
+      else if
+        (widthx * ratio > 0.9398 && widthx * ratio < 1.016) {
+    
+        setSize("M");
+      }
+      else if
+        (widthx * ratio > 1.016 && widthx * ratio < 1.0922) {
+    
+        setSize("L");
+      }
+      else if
+        (widthx * ratio > 1.0922 && widthx * ratio < 1.1684) {
+  
+        setSize("XL");
+      }
+      else if
+        (widthx * ratio > 1.1684 && widthx * ratio < 1.2446) {
+    
+        setSize("XXL");
+      }
+    }
+   //}
+ 
 
    return (
      <>
@@ -125,12 +132,12 @@ function BodyDetection() {
  const [person, setperson] = useState();
   // const ctx = canvas?.getContext("2d");
   const getnet = async () => {
-    const lnet =
-      await bodyPix.load({
-        architecture: "ResNet50",
-        outputStride: 32,
-        quantBytes: 2,
-      });
+    const lnet = await bodyPix.load({
+      architecture: "MobileNetV1",
+      outputStride: 16,
+      multiplier: 0.75,
+      quantBytes: 2,
+    });
     setNet(lnet);
   }
 
@@ -143,10 +150,10 @@ function BodyDetection() {
       webcamRef.current.video.readyState === 4
     ) {
       //  Loop and detect hands
-      //stats.begin();
-      setInterval(detect(), 1000);
+      stats.begin();
+      detect()
      
-      //stats.end();
+      stats.end();
 
       requestAnimationFrame(runBodysegment);
     }
@@ -168,7 +175,7 @@ function BodyDetection() {
       });
 
     if (personDetail) {
-      console.log(personDetail);
+      
       setperson(personDetail);
        
       }
@@ -185,11 +192,7 @@ function BodyDetection() {
 
   return (
     <>
-      <button
-   onClick={handleclick}
-      >
-        {activeRole != "size" ? "try on" : "size"}
-      </button>
+    
 
       <Webcam
         ref={webcamRef}
@@ -206,12 +209,21 @@ function BodyDetection() {
         }}
       />
 
-      {activeRole == "size" ? (
+     
         <CalculateSize person={person} />
-      ) : (
-        <PutClothes person={person} />
-      )}
+     
+        
+    
     </>
   );
 }
 export default BodyDetection;
+/* 
+{
+   activeRole == "size" ? (
+     <CalculateSize person={person} />
+   ) : (
+     <PutClothes person={person} />
+   );
+ }
+ */

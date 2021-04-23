@@ -9,18 +9,18 @@ import ReactionSlice from "./slices/reactionSlice";
 import userSlice from "./slices/userSlice";
 import products from "./reducers/productsReducer";
 
+import productfilters from './reducers/ProductfiltersReducer';
 const reducers = combineReducers({
   products,
+  productfilters,
   postSlice,
   claimSlice,
 
   contactSlice,
 
-
   commentSlice,
   ReactionSlice,
   userSlice,
-
 });
 
 export default reducers;
