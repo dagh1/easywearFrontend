@@ -1,8 +1,17 @@
 import React from "react";
 
 import * as Icon from "react-feather";
+import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const NavbarBack = () => {
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
   return (
     <>
       {/* page-wrapper Start*/}
@@ -159,11 +168,13 @@ const NavbarBack = () => {
                 </li>
                 <li className="onhover-dropdown">
                   <div className="media align-items-center">
-                    <img
-                      className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
-                      src="/assets/images/rana.jpg"
-                      alt="header-user"
-                    />
+                    {user && (
+                      <img
+                        className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
+                        src={user.image_url}
+                        alt="header-user"
+                      />
+                    )}
                     <div className="dotted-animation">
                       <span className="animate-circle" />
                       <span className="main-circle" />
@@ -171,10 +182,17 @@ const NavbarBack = () => {
                   </div>
                   <ul className="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
                     <li>
-                      <a href="#">
-                        <i data-feather="user" />
-                        Edit Profile
-                      </a>
+                      {user && (
+                        <Link
+                          to={{
+                            pathname: "/editUserBack",
+                            id: user._id,
+                          }}
+                        >
+                          <i data-feather="user" />
+                          Edit Profile
+                        </Link>
+                      )}
                     </li>
                     <li>
                       <a href="#">
@@ -195,8 +213,13 @@ const NavbarBack = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <i data-feather="log-out" />
+                      <a
+                        href="#"
+                        onClick={() => {
+                          localStorage.removeItem("jwt");
+                          window.location = "/auth/login";
+                        }}
+                      >
                         Logout
                       </a>
                     </li>

@@ -45,8 +45,8 @@ const userSlice = createSlice({
   },
 });
 
-export const fetchUsers = (userid) => async (dispatch) => {
-  const [res, error] = await queryApi("user/" + userid, {}, "GET");
+export const fetchUsers = () => async (dispatch) => {
+  const [res, error] = await queryApi("user/getAll");
 
   if (error) {
     dispatch(setErrors(error));

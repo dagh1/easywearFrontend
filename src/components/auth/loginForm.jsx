@@ -75,7 +75,11 @@ const LoginForm = () => {
       currentUser.onLoggedIn(jwtDecode(res));
       localStorage.setItem("jwt", res);
       dispatch(addUser(jwtDecode(res)));
-      window.location = "/user/profile";
+      if (jwtDecode(res).role === "user") {
+        window.location = "/user/profile";
+      } else {
+        window.location = "/UsersBack";
+      }
     }
   }
   function handleChange(e) {
