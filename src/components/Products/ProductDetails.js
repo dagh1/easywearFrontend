@@ -57,10 +57,14 @@ class ProductDetails extends Component {
 
   loadRateByUserId = async () => {
     const [res, err] = await queryApi(
-      "recommendation/findRate/" + this.state.connectedUser._id,
+      "recommendation/findRate/" +
+        this.state.connectedUser._id +
+        "/" +
+        this.state.prodDetail.id,
       {},
       "GET"
     );
+    console.log(res);
     if (res) {
       this.setState({ currentRate: res });
       if (res === {}) {
