@@ -2,38 +2,34 @@ import React, { useRef, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
+import Test from "./test";
 
-import Stats from 'stats.js';
+import Stats from "stats.js";
 import jwtDecode from "jwt-decode";
 
 function CalculateSize(props) {
-  
-  let user=null;
+  let user = null;
   const [Size, setSize] = useState();
-     
+
   const jwtToken = localStorage.getItem("jwt");
   if (jwtToken) {
     // Set auth token header auth
     user = jwtDecode(jwtToken); // Decode token and get user info and exp
-     
   }
- 
-  // if(user?.height) { 
-  
-    
-  
+
+  // if(user?.height) {
+
   if (typeof props.person?.allPoses[0]?.keypoints[16] !== "undefined") {
-      
     const top = props.person?.allPoses[0].keypoints[1].position.y;
-    const tall = Math.abs(props.person?.allPoses[0].keypoints[16]?.position.y - top);
+    const tall = Math.abs(
+      props.person?.allPoses[0].keypoints[16]?.position.y - top
+    );
     const ratio = user?.height / tall;
     const widthx = Math.abs(
       props.person?.allPoses[0].keypoints[5]["position"]["x"] -
-      props.person?.allPoses[0].keypoints[6]["position"]["x"]
-     
-    
+        props.person?.allPoses[0].keypoints[6]["position"]["x"]
     );
-      
+
     const entourage = widthx * ratio * 2 + 0.2;
     if (user?.gender === "male") {
       if (entourage <= 0.889) setSize("XS");
@@ -63,11 +59,7 @@ function CalculateSize(props) {
         }
       }
     }
-     
   }
-  //}
- 
-
   return (
     <>
       <div style={{ position: "relative" }} className="col">
@@ -80,8 +72,7 @@ function CalculateSize(props) {
             />
           </a>
           <div className="top-banner-content small-section">
-            <h4>Welcome! EASYWEAR
-               </h4>
+            <h4>Welcome! EASYWEAR</h4>
             <h5></h5>
           </div>
         </div>
@@ -101,46 +92,9 @@ function CalculateSize(props) {
     </>
   );
 }
-function PutClothes (props){
-
-  const imageRef = useRef(null);
-const personDetail = props.person;
-  const x = personDetail?.allPoses[0]?.keypoints[6]["position"]["x"];
-  const y = personDetail?.allPoses[0]?.keypoints[6]["position"]["y"];
-  // console.log(person);
-  const widthx = Math.abs(
-    personDetail?.allPoses[0]?.keypoints[5]["position"]["x"] - personDetail?.allPoses[0]?.keypoints[6]["position"]["x"]
-  );
-
-  const image = imageRef.current;
-  if (image) {
-    image.style.top = y  + "px";
-    image.style.left = x + "px";
-    image.style.width = widthx + "px";
-  }
-
-
-  return (
-    <>
-      <img
-        ref={imageRef}
-        src="https://www.torontotees.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/0/500_32.png"
-        alt=""
-        style={{
-          position: "absolute",
-          zindex: 10,
-          width: 50,
-          height: 40,
-        }}
-      />
-    </>
-  );
-}
- 
-
 
 function BodyDetection() {
-/*
+  /*
   const isAndroid = () => {
     return /Android/i.test(navigator.userAgent);
   };
@@ -164,8 +118,8 @@ function BodyDetection() {
   // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
   const [net, setNet] = useState();
- const [activeRole, setactiveRole] = useState("clothes");
- const [person, setperson] = useState();
+  const [activeRole, setactiveRole] = useState("clothes");
+  const [person, setperson] = useState();
   // const ctx = canvas?.getContext("2d");
   const getnet = async () => {
     const lnet = await bodyPix.load({
@@ -175,11 +129,9 @@ function BodyDetection() {
       quantBytes: 2,
     });
     setNet(lnet);
-  }
+  };
 
- 
-
-  const runBodysegment = (continueDetection=true) => {
+  const runBodysegment = (continueDetection = true) => {
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
@@ -199,38 +151,46 @@ function BodyDetection() {
   const detect = async () => {
     // Check data is available
     //  console.log(webcamRef);
-   
-    
-  
-      const personDetail = await net.segmentPersonParts(webcamRef.current.video, {
-        flipHorizontal: false,
-        internalResolution: "medium",
-        segmentationThreshold: 0.7,
-        scoreThreshold: 0.2,
-        nmsRadius: 20,
-        minKeypointScore: 0.3,
-        refineSteps: 10,
-      });
+
+    const personDetail = await net.segmentPersonParts(webcamRef.current.video, {
+      flipHorizontal: false,
+      internalResolution: "medium",
+      segmentationThreshold: 0.7,
+      scoreThreshold: 0.2,
+      nmsRadius: 20,
+      minKeypointScore: 0.3,
+      refineSteps: 10,
+    });
 
     if (personDetail) {
-      
       setperson(personDetail);
-       
-      }
-    
+    }
   };
   getnet();
   const handleclick = () => {
-    if (activeRole == "size")setactiveRole("clothes");
+    if (activeRole == "size") setactiveRole("clothes");
     else if (activeRole == "clothes") setactiveRole("size");
-  }   
+  };
   //runBodysegment();
   //bindPage();
-  
 
   return (
     <>
       <div className="row">
+        <div
+          id="cu"
+          ref={imageRef}
+          style={{
+            position: "absolute",
+
+            width: 50,
+            height: 40,
+          }}
+        >
+          aa
+          <Test />
+        </div>
+
         <Webcam
           ref={webcamRef}
           style={{
@@ -251,6 +211,7 @@ function BodyDetection() {
     </>
   );
 }
+
 export default BodyDetection;
 /* 
 {

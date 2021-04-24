@@ -21,21 +21,37 @@ import AddPostForm from "./components/Posts/addPostForm";
 import UpdatePostForm from "./components/Posts/updatePostForm";
 import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
+import HomeEvent from "./components/Events/homeEvent";
+import eventWithId from "./components/Events/eventWithId";
+import jwtDecode from "jwt-decode";
 
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists1";
+import UserBack from "./components/BackOffice/UsersBack";
+import EditUserForm from "./components/BackOffice/EditUserForm";
+import AddUserForm from "./components/BackOffice/AddUserForm";
+import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
-function App() {
 
+function App() {
   const [connectedUser, setConnectedUser] = useState(null);
+  //const jwtToken = localStorage.getItem("jwt");
+  //console.log(jwtToken);
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      // Set auth token header auth
+      setConnectedUser(jwtDecode(localStorage.getItem("jwt"))); // Decode token and get user info and exp
+    }
+  }, []);
   function handleLoggedIn(user) {
     console.log("handlelogin");
     console.log(user);
     setConnectedUser(user);
   }
-
+  console.log(connectedUser);
   return (
     <>
       {(() => {
@@ -46,13 +62,14 @@ function App() {
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
-
                   <Route path="/ClaimsBack" component={ClaimBack} />
+                  <Route path="/UsersBack" component={UserBack} />
+                  <Route path="/editUserBack" component={EditUserForm} />
+                  <Route path="/addUserBack" component={AddUserForm} />
                   <Route path="/Products" component={Products} />
                   <Route path="/Events" component={Events} />
                   <Route path="/Contacts" component={Contacts} />
                   <Route exact to="/" component={DashBoard} />
-
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
@@ -91,7 +108,11 @@ function App() {
                     path="/event/updatePost/:id"
                     component={UpdatePostForm}
                   />
-
+                  <Route path="/event" component={HomeEvent} />
+                  <Route
+                    path="/eventDetails/:eventId"
+                    component={eventWithId}
+                  />
                   <Route exact to="/" component={Home} />
                 </Switch>
                 <Footer />
