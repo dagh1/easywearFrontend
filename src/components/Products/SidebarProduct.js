@@ -1,27 +1,30 @@
 import "./price-range.css";
 import * as productfiltersActions from "../../redux/actions/ProductFiltersActions";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 import Slider from '@material-ui/core/Slider';
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value} euro`;
 }
 
 
  function RangeSlider(props) {
   
-  const [value, setValue] = React.useState([0, 100]);
-
+   const [value, setValue] = React.useState([0,100]);
+   
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    props.loadPrice(newValue);
   };
 
-  return (
-    <Slider
-      value={value}
-      onChange={handleChange}
+   return (
+     <Slider
+       value={value}
+       onChange={handleChange}
+       min={props.filters ?  parseFloat(props.filters?.minPrice) : 100}
+      max={props.filters ? parseFloat(props.filters?.maxPrice) : 10}
       valueLabelDisplay="auto"
       aria-labelledby="range-slider"
       getAriaValueText={valuetext}
@@ -38,7 +41,7 @@ class SidebarProduct extends React.Component {
     if (productfilters.length === 0) {
       actions.loadfilters().catch((error) => {});
     }
-     console.log(this.props);
+  
   }
    
 
@@ -92,7 +95,10 @@ class SidebarProduct extends React.Component {
             <h3 className="collapse-block-title">price</h3>
             <div className="collection-collapse-block-content">
               <div className="wrapper mt-3">
-                <RangeSlider  />
+                <RangeSlider
+                  loadPrice={this.props.priceload}
+                  filters={this.props.productfilters}
+                />
               </div>
             </div>
           </div>

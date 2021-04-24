@@ -102,15 +102,14 @@ class ProductLists extends React.Component {
   state = {
     layout: "col-lg-2",
     brandfilter: [],
-    name:""
+    name: "",
   };
   componentDidMount() {
     const { products, actions } = this.props;
-    
+
     if (products.length === 0) {
       actions.loadProducts(0, -1).catch((error) => {});
     }
-  
   }
 
   loadSelectedPage = (page) => {
@@ -124,32 +123,42 @@ class ProductLists extends React.Component {
   };
 
   loadbyName = (names) => {
-    console.log(names)
+    console.log(names);
     this.setState({ name: names });
- 
+
     if (this.props) {
       const { actions } = this.props;
 
-      
-        actions.loadProductsbybrands(this.state.brandfilter,names).catch((error) => {
+      actions
+        .loadProductsbybrands(this.state.brandfilter, names)
+        .catch((error) => {
           alert("Loading products failed" + error);
-      
-      })
+        });
+    }
+  };
+  loadbyPrice = (price) => {
+   
+   
+    if (this.props) {
+      const { actions } = this.props;
+
+      actions
+        .loadProductsbybrands(this.state.brandfilter, this.state.name, price)
+        .catch((error) => {
+          alert("Loading products failed" + error);
+        });
     }
   };
 
   loadbybrandsfilter = (brand) => {
     this.setState({ brandfilter: brand });
- console.log(brand);
+    console.log(brand);
     if (this.props) {
       const { actions } = this.props;
 
-   
-        
-        actions.loadProductsbybrands(brand,this.state.name).catch((error) => {
-          alert("Loading products failed" + error);
-       
-      })
+      actions.loadProductsbybrands(brand, this.state.name).catch((error) => {
+        alert("Loading products failed" + error);
+      });
     }
   };
 
@@ -187,7 +196,7 @@ class ProductLists extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-sm-3 collection-filter">
-                  <SidebarProduct brandload={this.loadbybrandsfilter} />
+                  <SidebarProduct brandload={this.loadbybrandsfilter} priceload={this.loadbyPrice }/>
                 </div>
                 <div className="collection-content col">
                   <div className="page-main-content">
@@ -217,9 +226,13 @@ class ProductLists extends React.Component {
                                       {this.props.products.totalItems} Result
                                     </h5>
                                   </div>
-                                  <div className="product-page-per-view" style={{
-                                    width: "40%",
-    padding: "20px"}}>
+                                  <div
+                                    className="product-page-per-view"
+                                    style={{
+                                      width: "40%",
+                                      padding: "20px",
+                                    }}
+                                  >
                                     <Form onSubmit={this.loadbyName} />
                                   </div>
                                   <div
