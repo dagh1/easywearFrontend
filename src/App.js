@@ -28,7 +28,7 @@ import jwtDecode from "jwt-decode";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-import ProductLists from "./components/Products/ProductsLists";
+import ProductLists from "./components/Products/ProductsLists1";
 import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
@@ -102,6 +102,7 @@ function App() {
                   <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path="/3D/:imgurl" component={BodyDetection} />
 
                   <Route
                     path="/event/updatePost/:id"
