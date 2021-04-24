@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import * as productsActions from "../../redux/actions/ProductsActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { loadProducts } from "./../../redux/actions/ProductsActions";
+import {
+  loadProducts,
+  loadAllProducts,
+} from "./../../redux/actions/ProductsActions";
 import { queryApi } from "../../utils/queryApi";
 import jwtDecode from "jwt-decode";
 import ProductView from "./productView";
@@ -10,18 +13,19 @@ import ProductView from "./productView";
 class ProductDetails extends Component {
   jwtToken = localStorage.getItem("jwt");
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.jwtToken) {
       this.setState({ connectedUser: jwtDecode(this.jwtToken) });
     }
-    this.loadRateByUserId();
-    this.loadSimilarProducts();
+    await this.loadRateByUserId();
+    await this.loadSimilarProducts();
   }
   constructor(props) {
     super(props);
     const { products, actions } = props;
 
     actions.loadProducts();
+
     const prodDetail = props["products"].products.find(
       (p) => p.id === props.match.params.id
     );
@@ -31,10 +35,16 @@ class ProductDetails extends Component {
       connectedUser: user,
       similarProducts: [],
       currentRate: {},
+      // products: [],
       isLikedDisabled: false,
       isDislikeDisabled: false,
     };
   }
+
+  loadProducts = async () => {
+    const [res, err] = await queryApi("product/getAllProducts", {}, "GET");
+    return res;
+  };
 
   loadSimilarProducts = async () => {
     const [res, err] = await queryApi(
@@ -42,41 +52,43 @@ class ProductDetails extends Component {
       {},
       "GET"
     );
-    console.log(res);
     if (res) this.setState({ similarProducts: res });
   };
 
   loadRateByUserId = async () => {
     const [res, err] = await queryApi(
-      "recommendation/findRate/" +
-        this.state.connectedUser._id +
-        "/" +
-        this.state.prodDetail.id,
+      "recommendation/findRate/" + this.state.connectedUser._id,
       {},
       "GET"
     );
-    this.setState({ currentRate: res });
-    if (res === {}) {
-      this.setState({ isLikedDisabled: false });
-      this.setState({ isDislikeDisabled: false });
-    }
-    if (res.rate_type === "like") {
-      this.setState({ isLikedDisabled: true });
-      this.setState({ isDislikeDisabled: false });
-    }
-    if (res.rate_type === "dislike") {
-      this.setState({ isDislikeDisabled: true });
-      this.setState({ isLikedDisabled: false });
+    if (res) {
+      this.setState({ currentRate: res });
+      if (res === {}) {
+        this.setState({ isLikedDisabled: false });
+        this.setState({ isDislikeDisabled: false });
+      }
+      if (res.rate_type === "like") {
+        this.setState({ isLikedDisabled: true });
+        this.setState({ isDislikeDisabled: false });
+      }
+      if (res.rate_type === "dislike") {
+        this.setState({ isDislikeDisabled: true });
+        this.setState({ isLikedDisabled: false });
+      }
     }
   };
   handleLikeClick = async () => {
     if (this.state.currentRate) {
       await queryApi(
-        "recommendation/delete/" + this.state.prodDetail.id,
+        "recommendation/delete/" +
+          this.state.connectedUser._id +
+          "/" +
+          this.state.prodDetail.id,
         {},
         "DELETE"
       );
     }
+
     const [res, err] = await queryApi(
       "recommendation/rateItem",
       {
@@ -96,8 +108,13 @@ class ProductDetails extends Component {
 
   handleDisLikeClick = async () => {
     if (this.state.currentRate) {
+      console.log("exist");
+
       await queryApi(
-        "recommendation/delete/" + this.state.prodDetail.id,
+        "recommendation/delete/" +
+          this.state.connectedUser._id +
+          "/" +
+          this.state.prodDetail.id,
         {},
         "DELETE"
       );
