@@ -114,6 +114,7 @@ function BodyDetection() {
     : {};
 
   */
+  const imageRef = useRef(null);
   const stats = new Stats();
   // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
