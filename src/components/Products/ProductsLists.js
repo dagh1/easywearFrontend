@@ -65,6 +65,7 @@ class Productcard extends React.Component {
                   </h6>
                 </a>
                 <h4>{product.productPrice} </h4>
+
                 <a type='button' href={product.url} target='_blank'>
                   visit website
                 </a>

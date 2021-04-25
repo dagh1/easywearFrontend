@@ -34,6 +34,7 @@ import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
+import ProductDetails from "./components/Products/ProductDetails";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -97,6 +98,11 @@ function App() {
                   <Route path='/contact' component={Contact} />
                   <Route path='/user/profile' component={Profile} />
                   <Route path='/Products' component={ProductLists} />
+                  <Route
+                    path='/ProductDetails/:id'
+                    component={ProductDetails}
+                  />
+
                   <Route path='/3D' component={BodyDetection} />
                   <Route path='/event/addPost' component={AddPostForm} />
                   <Route path='/event/post/:id' component={PostDetails} />
