@@ -58,7 +58,9 @@ const UserProfileDetails = () => {
         <div className="dashboard-right">
           <div className="dashboard">
             <UserImageWrapper>
-              <UserImage src={user.image_url}></UserImage>
+              {currentUser && (
+                <UserImage src={currentUser.image_url}></UserImage>
+              )}
             </UserImageWrapper>
             <div className="page-title">
               <h2>My Dashboard</h2>

@@ -72,23 +72,11 @@ function BodyDetection() {
 
   return (
     <>
-      <div
-        id="cu"
-        ref={imageRef}
-        style={{
-          position: "absolute",
-
-          width: 50,
-          height: 40,
-        }}
-      >
-        aa
-        <Test />
-      </div>
-      <Webcam
-        ref={webcamRef}
-        style={{
-          marginLeft: "0",
+      <div className="container">
+        <Webcam
+          ref={webcamRef}
+          /* style={{
+          marginLeft: "33%",
           marginRight: "auto",
           left: 0,
           right: 0,
@@ -96,9 +84,22 @@ function BodyDetection() {
           zindex: 9,
           width: 640,
           height: 480,
-        }}
-      />
+        }} */
+        />
+        <div
+          id="cu"
+          ref={imageRef}
+          style={{
+            position: "absolute",
 
+            width: 50,
+            height: 40,
+          }}
+        >
+          aa
+          <Test />
+        </div>
+      </div>
       {/*   <img
         ref={imageRef}
         src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"

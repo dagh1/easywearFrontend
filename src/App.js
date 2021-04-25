@@ -34,6 +34,8 @@ import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
+import CheckEmail from "./components/auth/checkEmail";
+import EmailVerified from "./components/auth/emailVerified";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -95,6 +97,8 @@ function App() {
                     path="/user/editprofile/:id"
                     component={EditProfileForm}
                   />
+                  <Route path="/checkEmail" component={CheckEmail} />
+                  <Route path="/emailVerified" component={EmailVerified} />
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />

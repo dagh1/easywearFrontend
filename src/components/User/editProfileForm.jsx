@@ -55,8 +55,8 @@ const EditProfileForm = (props) => {
     numero_tel: Joi.number().min(8).allow("").label("Phone Number"),
     alergie: Joi.string().allow("").label("Allergy"),
     fav_color: Joi.string().allow("").label("Favorite Color"),
-    height: Joi.number().min(2).allow("").label("Height"),
-    weight: Joi.number().min(2).allow("").label("Weight"),
+    height: Joi.number().min(1).max(3).allow("").label("Height"),
+    weight: Joi.number().min(1).max(300).allow("").label("Weight"),
     gender: Joi.string().allow("").label("Gender"),
     image_url: Joi.string().allow("").label("Image"),
     role: Joi.string().allow("").label("Role"),
@@ -333,6 +333,7 @@ const EditProfileForm = (props) => {
                       <input
                         type="number"
                         name="height"
+                        step="0.01"
                         onChange={handleChange}
                         className="form-control"
                         id="height"
