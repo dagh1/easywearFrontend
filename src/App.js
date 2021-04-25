@@ -87,7 +87,7 @@ function App() {
                     component={ProductDetails}
                   />
                   <Route path='/3D' component={BodyDetection} />
-                  <Route path='/event/addPost' component={AddPostForm} />
+                  <Route path='/event/addPost/:id' component={AddPostForm} />
                   <Route path='/event/post/:id' component={PostDetails} />
 
                   <Route

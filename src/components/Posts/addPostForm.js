@@ -5,12 +5,24 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
+import { fetchEvents } from "../../redux/slices/eventSlice";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { addPost } from "../../redux/slices/postSlice";
 import { UserContext } from "../../contexts/userContext";
 import jwtDecode from "jwt-decode";
 
-const AddPostForm = () => {
+const mapStateToProps = (state) => ({
+  events: state.eventSlice.events,
+  recent_events: state.eventSlice.recentEvents,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchEvents: () => dispatch(fetchEvents()),
+});
+
+const AddPostForm = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [error, setError] = useState({ visible: false, message: "" });
@@ -18,6 +30,7 @@ const AddPostForm = () => {
   const [loader, setLoader] = useState(false);
   const [connectedUSer, setConnectedUser] = useState();
   const jwtToken = localStorage.getItem("jwt");
+  const [event, setEvent] = useState(null);
 
   const yupObject = Yup.object().shape({
     title: Yup.string().required().max(30),
@@ -28,6 +41,11 @@ const AddPostForm = () => {
     if (jwtToken) {
       // Set auth token header auth
       setConnectedUser(jwtDecode(jwtToken)); // Decode token and get user info and exp
+      props.fetchEvents();
+      const event = props.events.find(
+        (event) => event._id === props.match.params.id
+      );
+      setEvent(event);
     }
   }, []);
 
@@ -40,10 +58,9 @@ const AddPostForm = () => {
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {
-      console.log(connectedUSer);
       values.image_url = previewSource;
       values.user_id = connectedUSer._id;
-      values.event_id = "6041f2fe9dbc16c1758d7a9b";
+      values.event_id = event._id;
       setLoader(true);
       const [res, err] = await queryApi("post", values, "POST");
       setLoader(false);
@@ -70,7 +87,7 @@ const AddPostForm = () => {
     <>
       <div className='AddPostForm login-page section-b-space mt-5'>
         <div className='col-lg-6'>
-          <h3>Share a new Post to (event)</h3>
+          <h3>Share a new Post to {event?.eventName}</h3>
           <div className='theme-card'>
             <form className='theme-form' onSubmit={formik.handleSubmit}>
               <div className='form-group'>
@@ -144,4 +161,7 @@ const AddPostForm = () => {
   );
 };
 
-export default AddPostForm;
+//export default AddPostForm;
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(AddPostForm)
+);
