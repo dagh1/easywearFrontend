@@ -42,3 +42,15 @@ export const loadProductsbyName = (name) => {
       });
   };
 };
+export const loadProductsbybrands = (brands, name) => {
+  return function (dispatch) {
+    return productApi
+      .getProductsbybrands(brands, name)
+      .then((products) => {
+        dispatch(loadProductSuccess(products));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+};

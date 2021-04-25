@@ -19,7 +19,6 @@ import {
   fetchClaimByClaimUrl,
   selectClaims,
 } from "../../redux/slices/claimSlice";
-
 import jwtDecode from "jwt-decode";
 
 const Posts = (props) => {

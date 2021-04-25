@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
-import { addUser } from "../../redux/slices/userSlice";
+import { updateUser } from "../../redux/slices/userSlice";
 import { UserContext } from "../../contexts/userContext";
 import { Helmet } from "react-helmet";
 
@@ -31,7 +31,7 @@ const EditProfileForm = (props) => {
       first_name: "",
       last_name: "",
       email: "",
-      password: "",
+      /* password: "", */
       date_naissance: "",
       numero_tel: "",
       alergie: "",
@@ -48,7 +48,7 @@ const EditProfileForm = (props) => {
     first_name: Joi.string().allow("").label("First Name"),
     last_name: Joi.string().allow("").label("Last Name"),
     email: Joi.string().email().allow("").label("Email"),
-    password: Joi.string().min(8).allow("").label("Password"),
+    /* password: Joi.string().min(8).allow("").label("Password"), */
     date_naissance: Joi.date().allow("").label("Birthday"),
     numero_tel: Joi.number().min(8).allow("").label("Phone Number"),
     alergie: Joi.string().allow("").label("Allergy"),
@@ -89,9 +89,23 @@ const EditProfileForm = (props) => {
     // setInfo({ errors: errors || {} });
     info.data.role = "user";
     info.data.image_url = previewSource;
+    console.log(Object.keys(info.data));
+    if (info.data.image_url === "") {
+      console.log("image empty");
+      delete info.data["image_url"];
+    }
+    for (let key of Object.keys(info.data)) {
+      if (info.data[key] === "") {
+        delete info.data[key];
+      }
+    }
     console.log(info.data);
     const userData = info.data;
-    const [res, err] = await queryApi("user/update", userData, "PUT");
+    const [res, err] = await queryApi(
+      "user/update/" + user._id,
+      userData,
+      "PUT"
+    );
     if (res.hasOwnProperty("error")) {
       console.log("errrrror");
       setError({
@@ -99,12 +113,10 @@ const EditProfileForm = (props) => {
         message: res["error"],
       });
     } else {
-      /* currentUser.onLoggedIn(jwtDecode(res));
-      localStorage.setItem("jwt", res);
-      dispatch(addUser(jwtDecode(res))); */
+      dispatch(updateUser(res));
       console.log("user updated");
-      /*       window.location = "/user/profile";
-       */
+      props.history.push("/user/profile");
+      // window.location = "/user/profile";
     }
   }
   function handleChange(e) {
@@ -134,14 +146,14 @@ const EditProfileForm = (props) => {
     <React.Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Edit</title>
+        <title>Edit profile</title>
       </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
           <div className="row">
             <div className="col-sm-6">
               <div className="page-title">
-                <h2>create account</h2>
+                <h2>edit profile</h2>
               </div>
             </div>
             <div className="col-sm-6">
@@ -151,7 +163,7 @@ const EditProfileForm = (props) => {
                     <a href="index.html">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
-                    create account
+                    edit profile
                   </li>
                 </ol>
               </nav>
@@ -164,12 +176,12 @@ const EditProfileForm = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>create account</h3>
+              <h3>edit profile</h3>
               <div className="theme-card">
                 <form onSubmit={handleSubmit} className="theme-form">
                   <div className="form-row">
                     <div className="col-md-6">
-                      <label htmlFor="first_name">First Name</label>
+                      <label htmlFor="first_name">First Name:*</label>
                       <input
                         type="text"
                         name="first_name"
@@ -178,6 +190,7 @@ const EditProfileForm = (props) => {
                         id="first_name"
                         placeholder="First Name"
                         required=""
+                        defaultValue={user.first_name}
                       />
                       {info.errors["first_name"] && (
                         <div className="alert alert-danger">
@@ -186,7 +199,7 @@ const EditProfileForm = (props) => {
                       )}
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="last_name">Last Name</label>
+                      <label htmlFor="last_name">Last Name:*</label>
                       <input
                         type="text"
                         name="last_name"
@@ -195,6 +208,7 @@ const EditProfileForm = (props) => {
                         id="last_name"
                         placeholder="Last Name"
                         required=""
+                        defaultValue={user.last_name}
                       />
                       {info.errors["last_name"] && (
                         <div className="alert alert-danger">
@@ -205,7 +219,7 @@ const EditProfileForm = (props) => {
                   </div>
                   <div className="form-row">
                     <div className="col-md-6">
-                      <label htmlFor="email">email</label>
+                      <label htmlFor="email">email:*</label>
                       <input
                         type="email"
                         name="email"
@@ -214,6 +228,7 @@ const EditProfileForm = (props) => {
                         id="email"
                         placeholder="Email"
                         required=""
+                        defaultValue={user.email}
                       />
                       {info.errors["email"] && (
                         <div className="alert alert-danger">
@@ -221,7 +236,7 @@ const EditProfileForm = (props) => {
                         </div>
                       )}
                     </div>
-                    <div className="col-md-6">
+                    {/*  <div className="col-md-6">
                       <label htmlFor="password">Password</label>
                       <input
                         type="password"
@@ -231,15 +246,16 @@ const EditProfileForm = (props) => {
                         id="password"
                         placeholder="Enter your password"
                         required=""
+                        defaultValue={user.password}
                       />
                       {info.errors["password"] && (
                         <div className="alert alert-danger">
                           <strong>{info.errors["password"]}</strong>
                         </div>
                       )}
-                    </div>
+                    </div> */}
                     <div className="col-md-6">
-                      <label htmlFor="date_naissance">Birthday</label>
+                      <label htmlFor="date_naissance">Birthday:*</label>
                       <input
                         type="date"
                         name="date_naissance"
@@ -248,6 +264,7 @@ const EditProfileForm = (props) => {
                         id="date_naissance"
                         placeholder="Enter your birthday"
                         required=""
+                        defaultValue={user.date_naissance}
                       />
                       {info.errors["date_naissance"] && (
                         <div className="alert alert-danger">
@@ -256,7 +273,7 @@ const EditProfileForm = (props) => {
                       )}
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="numero_tel">Phone Number</label>
+                      <label htmlFor="numero_tel">Phone Number:*</label>
                       <input
                         type="number"
                         name="numero_tel"
@@ -265,6 +282,7 @@ const EditProfileForm = (props) => {
                         id="numero_tel"
                         placeholder="Enter your Phone Number"
                         required=""
+                        defaultValue={user.numero_tel}
                       />
                       {info.errors["numero_tel"] && (
                         <div className="alert alert-danger">
@@ -282,6 +300,7 @@ const EditProfileForm = (props) => {
                         id="alergie"
                         placeholder="Enter your Allergy"
                         required=""
+                        defaultValue={user.alergie}
                       />
                       {info.errors["alergie"] && (
                         <div className="alert alert-danger">
@@ -299,6 +318,7 @@ const EditProfileForm = (props) => {
                         id="fav_color"
                         placeholder="Favorite Color"
                         required=""
+                        defaultValue={user.fav_color}
                       />
                       {info.errors["fav_color"] && (
                         <div className="alert alert-danger">
@@ -316,6 +336,7 @@ const EditProfileForm = (props) => {
                         id="height"
                         placeholder="Height"
                         required=""
+                        defaultValue={user.height}
                       />
                       {info.errors["height"] && (
                         <div className="alert alert-danger">
@@ -333,6 +354,7 @@ const EditProfileForm = (props) => {
                         id="weight"
                         placeholder="Weight"
                         required=""
+                        defaultValue={user.weight}
                       />
                       {info.errors["weight"] && (
                         <div className="alert alert-danger">
@@ -341,24 +363,33 @@ const EditProfileForm = (props) => {
                       )}
                     </div>
                     <div className="col-md-6">
-                      <label htmlFor="last_name">Gender</label>
-                      <input
-                        type="text"
+                      <label htmlFor="last_name">Gender:*</label>
+                      <select
+                        id="gender"
                         name="gender"
                         onChange={handleChange}
-                        className="form-control"
-                        id="gender"
-                        placeholder="Gender"
                         required=""
-                      />
+                        class="form-select col"
+                        aria-label="Default select example"
+                        style={{
+                          height: "50%",
+                          marginTop: "1px",
+                          borderColor: "#eaeaea",
+                        }}
+                        defaultValue={user.gender}
+                      >
+                        {/*   <option>Choose your gender</option> */}
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                       {info.errors["gender"] && (
                         <div className="alert alert-danger">
                           <strong>{info.errors["gender"]}</strong>
                         </div>
                       )}
                     </div>
-                    <div className="col-md-6">
-                      <label htmlFor="image_url">Image</label>
+                    <div className="col-md-12">
+                      <label htmlFor="image_url">Image:*</label>
                       <input
                         type="file"
                         name="image_url"

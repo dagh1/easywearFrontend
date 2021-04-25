@@ -1,9 +1,9 @@
 export default function productsReducer(state = [], action) {
-    switch (action.type)
-    {
-        case "LOAD_PRODUCTS_SUCCESS":
+    switch (action.type) {
+      case "LOAD_PRODUCTS_SUCCESS":
         return action.products;
-    default : 
+      
+      default:
         return state;
     }
 }

@@ -34,12 +34,16 @@ const Navbar = () => {
                     My Account
                     <ul className='onhover-show-div'>
                       <li>
-                        <a href='fakeNav' data-lng='en'>
-                          Login
-                        </a>
+                        <Link to='auth/login'>Login</Link>
                       </li>
                       <li>
-                        <a href='fakeNav' data-lng='es'>
+                        <a
+                          href='#'
+                          onClick={() => {
+                            localStorage.removeItem("jwt");
+                            window.location = "/auth/login";
+                          }}
+                        >
                           Logout
                         </a>
                       </li>
