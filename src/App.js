@@ -28,7 +28,7 @@ import jwtDecode from "jwt-decode";
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
-import ProductLists from "./components/Products/ProductsLists";
+import ProductLists from "./components/Products/ProductsLists1";
 import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
@@ -36,6 +36,7 @@ import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
 import CheckEmail from "./components/auth/checkEmail";
 import EmailVerified from "./components/auth/emailVerified";
+import ProductDetails from "./components/Products/ProductDetails";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -49,8 +50,6 @@ function App() {
     }
   }, []);
   function handleLoggedIn(user) {
-    console.log("handlelogin");
-    console.log(user);
     setConnectedUser(user);
   }
   console.log(connectedUser);
@@ -103,9 +102,15 @@ function App() {
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
                   <Route path="/Products" component={ProductLists} />
+                  <Route
+                    path="/ProductDetails/:id"
+                    component={ProductDetails}
+                  />
+
                   <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path="/3D/:imgurl" component={BodyDetection} />
 
                   <Route
                     path="/event/updatePost/:id"
