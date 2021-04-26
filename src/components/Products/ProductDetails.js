@@ -9,6 +9,7 @@ import {
 import { queryApi } from "../../utils/queryApi";
 import jwtDecode from "jwt-decode";
 import ProductView from "./productView";
+import { Link } from "react-router-dom";
 
 class ProductDetails extends Component {
   jwtToken = localStorage.getItem("jwt");
@@ -140,24 +141,42 @@ class ProductDetails extends Component {
     }
   };
 
+  handlePayment = async () => {
+    const [res, err] = await queryApi(
+      "payment/payment",
+      {
+        price: this.state.prodDetail.productPrice,
+      },
+      "POST"
+    );
+    if (res) {
+      console.log("success");
+      console.log(this.state.prodDetail.productPrice);
+      console.log(res.forwardLink);
+      window.location = res.forwardLink;
+    } else {
+      alert("Error Reviewing ");
+    }
+  };
+
   render() {
     return (
       <>
-        <div className='breadcrumb-section'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-sm-6'>
-                <div className='page-title'>
+        <div className="breadcrumb-section">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-6">
+                <div className="page-title">
                   <h2>product Detail</h2>
                 </div>
               </div>
-              <div className='col-sm-6'>
-                <nav aria-label='breadcrumb' className='theme-breadcrumb'>
-                  <ol className='breadcrumb'>
-                    <li className='breadcrumb-item'>
-                      <a href='index.html'>Home</a>
+              <div className="col-sm-6">
+                <nav aria-label="breadcrumb" className="theme-breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <a href="index.html">Home</a>
                     </li>
-                    <li className='breadcrumb-item active' aria-current='page'>
+                    <li className="breadcrumb-item active" aria-current="page">
                       product
                     </li>
                   </ol>
@@ -167,42 +186,42 @@ class ProductDetails extends Component {
           </div>
         </div>
 
-        <section classname='section-b-space'>
-          <div classname='collection-wrapper'>
-            <div classname='container'>
-              <div classname='row'>
-                <div className='col-lg-9 col-sm-12 col-xs-12'>
-                  <div className='container-fluid'>
-                    <div className='row'>
-                      <div className='col-xl-12'>
-                        <div className='filter-main-btn mb-2'>
-                          <span className='filter-btn'>
-                            <i className='fa fa-filter' aria-hidden='true' />
+        <section classname="section-b-space">
+          <div classname="collection-wrapper">
+            <div classname="container">
+              <div classname="row">
+                <div className="col-lg-9 col-sm-12 col-xs-12">
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div className="col-xl-12">
+                        <div className="filter-main-btn mb-2">
+                          <span className="filter-btn">
+                            <i className="fa fa-filter" aria-hidden="true" />
                             filter
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div className='row'>
-                      <div className='col-lg-6'>
-                        <div className='product-slick slick-initialized slick-slider'>
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <div className="product-slick slick-initialized slick-slider">
                           <button
-                            className='slick-prev slick-arrow'
-                            aria-label='Previous'
-                            type='button'
+                            className="slick-prev slick-arrow"
+                            aria-label="Previous"
+                            type="button"
                             style={{}}
                           >
                             Previous
                           </button>
-                          <div className='slick-list draggable'>
+                          <div className="slick-list draggable">
                             <div
-                              className='slick-track'
+                              className="slick-track"
                               style={{ opacity: 1, width: 1532 }}
                             >
                               <div
-                                className='slick-slide slick-current slick-active'
+                                className="slick-slide slick-current slick-active"
                                 data-slick-index={0}
-                                aria-hidden='false'
+                                aria-hidden="false"
                                 style={{
                                   width: 383,
                                   position: "relative",
@@ -223,15 +242,15 @@ class ProductDetails extends Component {
                                     <img
                                       src={this.state.prodDetail.image_url}
                                       alt
-                                      className='img-fluid blur-up image_zoom_cls-0 lazyloaded'
+                                      className="img-fluid blur-up image_zoom_cls-0 lazyloaded"
                                     />
                                   </div>
                                 </div>
                               </div>
                               <div
-                                className='slick-slide'
+                                className="slick-slide"
                                 data-slick-index={1}
-                                aria-hidden='true'
+                                aria-hidden="true"
                                 tabIndex={-1}
                                 style={{
                                   width: 383,
@@ -250,17 +269,17 @@ class ProductDetails extends Component {
                                     }}
                                   >
                                     <img
-                                      src='../assets/images/pro3/2.jpg'
+                                      src="../assets/images/pro3/2.jpg"
                                       alt
-                                      className='img-fluid blur-up image_zoom_cls-1 lazyloaded'
+                                      className="img-fluid blur-up image_zoom_cls-1 lazyloaded"
                                     />
                                   </div>
                                 </div>
                               </div>
                               <div
-                                className='slick-slide'
+                                className="slick-slide"
                                 data-slick-index={2}
-                                aria-hidden='true'
+                                aria-hidden="true"
                                 tabIndex={-1}
                                 style={{
                                   width: 383,
@@ -279,17 +298,17 @@ class ProductDetails extends Component {
                                     }}
                                   >
                                     <img
-                                      src='../assets/images/pro3/27.jpg'
+                                      src="../assets/images/pro3/27.jpg"
                                       alt
-                                      className='img-fluid blur-up image_zoom_cls-2 lazyloaded'
+                                      className="img-fluid blur-up image_zoom_cls-2 lazyloaded"
                                     />
                                   </div>
                                 </div>
                               </div>
                               <div
-                                className='slick-slide'
+                                className="slick-slide"
                                 data-slick-index={3}
-                                aria-hidden='true'
+                                aria-hidden="true"
                                 tabIndex={-1}
                                 style={{
                                   width: 383,
@@ -308,9 +327,9 @@ class ProductDetails extends Component {
                                     }}
                                   >
                                     <img
-                                      src='../assets/images/pro3/27.jpg'
+                                      src="../assets/images/pro3/27.jpg"
                                       alt
-                                      className='img-fluid blur-up image_zoom_cls-3 lazyloaded'
+                                      className="img-fluid blur-up image_zoom_cls-3 lazyloaded"
                                     />
                                   </div>
                                 </div>
@@ -318,113 +337,114 @@ class ProductDetails extends Component {
                             </div>
                           </div>
                           <button
-                            className='slick-next slick-arrow'
-                            aria-label='Next'
-                            type='button'
+                            className="slick-next slick-arrow"
+                            aria-label="Next"
+                            type="button"
                             style={{}}
                           >
                             Next
                           </button>
                         </div>
                       </div>
-                      <div className='col-lg-6 rtl-text'>
-                        <div className='product-right'>
+                      <div className="col-lg-6 rtl-text">
+                        <div className="product-right">
                           <h2>{this.state.prodDetail.productName}</h2>
 
                           <h3>{this.state.prodDetail.productPrice}</h3>
 
-                          <div className='product-description border-product'>
-                            <h6 className='product-title size-text'>
+                          <div className="product-description border-product">
+                            <h6 className="product-title size-text">
                               select size
                               <span>
                                 <a
-                                  href='#'
-                                  data-toggle='modal'
-                                  data-target='#sizemodal'
+                                  href="#"
+                                  data-toggle="modal"
+                                  data-target="#sizemodal"
                                 >
                                   size chart
                                 </a>
                               </span>
                             </h6>
                             <div
-                              className='modal fade'
-                              id='sizemodal'
+                              className="modal fade"
+                              id="sizemodal"
                               tabIndex={-1}
-                              role='dialog'
-                              aria-labelledby='exampleModalLabel'
-                              aria-hidden='true'
+                              role="dialog"
+                              aria-labelledby="exampleModalLabel"
+                              aria-hidden="true"
                             >
                               <div
-                                className='modal-dialog modal-dialog-centered'
-                                role='document'
+                                className="modal-dialog modal-dialog-centered"
+                                role="document"
                               >
-                                <div className='modal-content'>
-                                  <div className='modal-header'>
+                                <div className="modal-content">
+                                  <div className="modal-header">
                                     <h5
-                                      className='modal-title'
-                                      id='exampleModalLabel'
+                                      className="modal-title"
+                                      id="exampleModalLabel"
                                     >
                                       Sheer Straight Kurta
                                     </h5>
                                     <button
-                                      type='button'
-                                      className='close'
-                                      data-dismiss='modal'
-                                      aria-label='Close'
+                                      type="button"
+                                      className="close"
+                                      data-dismiss="modal"
+                                      aria-label="Close"
                                     >
-                                      <span aria-hidden='true'>×</span>
+                                      <span aria-hidden="true">×</span>
                                     </button>
                                   </div>
-                                  <div className='modal-body'>
+                                  <div className="modal-body">
                                     <img
-                                      src='../assets/images/size-chart.jpg'
+                                      src="../assets/images/size-chart.jpg"
                                       alt
-                                      className='img-fluid blur-up lazyload'
+                                      className="img-fluid blur-up lazyload"
                                     />
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div className='size-box'>
+                            <div className="size-box">
                               <ul>
-                                <li className='active'>
-                                  <a href='#'>s</a>
+                                <li className="active">
+                                  <a href="#">s</a>
                                 </li>
                                 <li>
-                                  <a href='#'>m</a>
+                                  <a href="#">m</a>
                                 </li>
                                 <li>
-                                  <a href='#'>l</a>
+                                  <a href="#">l</a>
                                 </li>
                                 <li>
-                                  <a href='#'>xl</a>
+                                  <a href="#">xl</a>
                                 </li>
                               </ul>
                             </div>
                           </div>
-                          <div className='product-buttons'>
+
+                          <div className="product-buttons">
                             <button
                               disabled={this.state.isLikedDisabled}
-                              data-toggle='modal'
-                              data-target='#addtocart'
-                              className='btn btn-solid'
+                              data-toggle="modal"
+                              data-target="#addtocart"
+                              className="btn btn-solid"
                               onClick={this.handleLikeClick}
                             >
-                              <i class='fa fa-thumbs-up' aria-hidden='true'></i>
+                              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                             </button>
                             <button
                               disabled={this.state.isDislikeDisabled}
-                              className='btn btn-solid'
+                              className="btn btn-solid"
                               onClick={this.handleDisLikeClick}
                             >
                               <i
-                                class='fa fa-thumbs-down'
-                                aria-hidden='true'
+                                class="fa fa-thumbs-down"
+                                aria-hidden="true"
                               ></i>
                             </button>
                           </div>
-                          <div className='border-product'>
-                            <h6 className='product-title'>product details</h6>
+                          <div className="border-product">
+                            <h6 className="product-title">product details</h6>
                             <p>
                               You can Purchase this product from{" "}
                               <a href={this.state.prodDetail.url}>
@@ -432,8 +452,44 @@ class ProductDetails extends Component {
                               </a>
                             </p>
                           </div>
-                          <div className='border-product'>
-                            <div className='product-icon'></div>
+                          {/* <div className="border-product">
+                            <div className="product-icon"></div>
+                          </div> */}
+                          <div className="border-product">
+                            <h6 className="product-title">Payment</h6>
+                            <p>
+                              This product is available in our stock{" "}
+                              <button
+                                type="button"
+                                className="btn btn-secondary p-2"
+                                style={{
+                                  marginLeft: "53%",
+                                }}
+                                onClick={this.handlePayment}
+                              >
+                                Buy it
+                              </button>
+                            </p>
+                          </div>
+
+                          <div className="border-product">
+                            <h6 className="product-title">3D Fitting Room</h6>
+                            <p>
+                              You can try this product via camera{" "}
+                              <Link
+                                type="button"
+                                className="btn btn-secondary p-2"
+                                style={{
+                                  marginLeft: "55%",
+                                }}
+                                to={{
+                                  pathname: "/3D",
+                                  imagelink: this.state.prodDetail.image_url,
+                                }}
+                              >
+                                Try it
+                              </Link>
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -444,14 +500,14 @@ class ProductDetails extends Component {
             </div>
           </div>
         </section>
-        <section className='section-b-space pt-0 ratio_asos'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-12 product-related'>
+        <section className="section-b-space pt-0 ratio_asos">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 product-related">
                 <h2>similar products to {this.state.prodDetail.productName}</h2>
               </div>
             </div>
-            <div className='row search-product'>
+            <div className="row search-product">
               {this.state.similarProducts.map((p) => {
                 return (
                   <ProductView
