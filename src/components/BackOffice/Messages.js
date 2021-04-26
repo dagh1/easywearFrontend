@@ -104,7 +104,7 @@ const Contacts = () => {
       "contact/sendMail/",
       {
         Email: contact.Email,
-        Subject: "Good Morning Sir/Madam" + contact.firstName,
+        Subject: "Good Morning Sir/Madam : " + contact.firstName,
         Text: contactContent,
       },
       "POST"

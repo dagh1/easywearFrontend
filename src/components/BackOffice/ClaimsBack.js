@@ -228,8 +228,9 @@ const ClaimBack = () => {
         </Modal.Footer>
       </Modal>
 
-      <div style={{ marginLeft: 250 }} className="page-wrapper">
-        <div className="page-body-wrapper">
+      <div style={{ marginLeft: 250 }} className='page-wrapper'>
+        <div className='page-body-wrapper'>
+
 
           {/* Container-fluid starts*/}
           <div className='container-fluid'>

@@ -57,7 +57,7 @@ function BodyDetection(props) {
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
-      //    console.log(person);
+
 
       //  console.log(canvasRef);
 
@@ -65,8 +65,17 @@ function BodyDetection(props) {
       // Now that the image has loaded make copy it to the texture.
       // const coloredPartImage = bodyPix.toMask(person);
       if (person) {
-        const x = person?.allPoses[0]?.keypoints[5]["position"]["x"];
-        const y = person?.allPoses[0]?.keypoints[5]["position"]["y"];
+        const x = person?.allPoses[0]?.keypoints[8]["position"]["x"];
+        const y = person?.allPoses[0]?.keypoints[8]["position"]["y"];
+        const z = person?.allPoses[0]?.keypoints[13]["position"]["y"];
+
+        const widthx = Math.abs(
+          person?.allPoses[0]?.keypoints[7]["position"]["x"] - x
+        );
+        const highx = Math.abs(
+          person?.allPoses[0]?.keypoints[7]["position"]["y"] - z
+        );
+
 
         const widthx = Math.abs(
           person?.allPoses[0]?.keypoints[6]["position"]["x"] - x
@@ -88,11 +97,13 @@ function BodyDetection(props) {
 
   return (
     <>
+
       <div className="container">
         <Webcam
           ref={webcamRef}
           /* style={{
           marginLeft: "33%",
+
           marginRight: "auto",
           left: 0,
           right: 0,
@@ -100,6 +111,7 @@ function BodyDetection(props) {
           zindex: 9,
           width: 640,
           height: 480,
+
         }} */
         />
         <div
@@ -117,13 +129,11 @@ function BodyDetection(props) {
         </div>
       </div>
       {/*   <img
+
         ref={imageRef}
-        src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"
+        src="https://pngimg.com/uploads/tshirt/tshirt_PNG5449.png?fbclid=IwAR04eCnCELAwcuYHLsmerHz4aC1F9_QgB02yMuVO1IgL5Lh80FkZmxay8aM"
         style={{
           position: "absolute",
-
-          width: 50,
-          height: 40,
         }}
       /> */}
     </>
