@@ -9,27 +9,7 @@ import jwtDecode from "jwt-decode";
 class SuggestedProduct extends Component {
   jwtToken = localStorage.getItem("jwt");
 
-  componentDidMount() {
-    /*queryApi(
-      "recommendation/getSuggestions/" + this.state.connectedUser._id,
-      {},
-      "GET"
-    ).then((res) => {
-      //console.log(res[0].suggestion);
-      const { products, actions } = this.props;
-
-      actions.loadProducts();
-      let test = [];
-      // console.log(this.props["products"].products[0].id);
-      res[0].suggestion.forEach((element) => {
-        test.push(
-          this.props["products"].products.find(
-            (prod) => prod?.id === element?.product_id
-          )
-        );
-      });
-    });*/
-  }
+  componentDidMount() {}
 
   constructor(props) {
     super(props);
@@ -42,6 +22,7 @@ class SuggestedProduct extends Component {
   }
 
   render() {
+    const { product } = this.props;
     return (
       <>
         <section className="section-b-space p-t-0 ratio_asos">
@@ -49,21 +30,13 @@ class SuggestedProduct extends Component {
             <div className="row">
               <div className="col">
                 <div className="product-4 product-m no-arrow slick-initialized slick-slider">
-                  <button
-                    className="slick-prev "
-                    aria-label="Previous"
-                    type="button"
-                    style={{ display: "inline-block" }}
-                  >
-                    Previous
-                  </button>
                   <div className="slick-list draggable">
                     <div
                       className="slick-slide slick-cloned"
                       data-slick-index={-4}
                       aria-hidden="true"
                       tabIndex={-1}
-                      style={{ width: 350 }}
+                      style={{ width: 150 }}
                     >
                       <div>
                         <div
@@ -80,8 +53,7 @@ class SuggestedProduct extends Component {
                                 href="product-page(no-sidebar).html"
                                 className="bg-size blur-up lazyload"
                                 style={{
-                                  backgroundImage:
-                                    'url("/assets/images/pro3/1.jpg")',
+                                  backgroundImage: `url(${product?.image_url})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center center",
                                   display: "block",
@@ -89,7 +61,7 @@ class SuggestedProduct extends Component {
                                 tabIndex={-1}
                               >
                                 <img
-                                  src="/assets/images/pro3/1.jpg"
+                                  src={product?.image_url}
                                   className="img-fluid blur-up lazyload bg-img"
                                   alt="true"
                                   style={{ display: "none" }}
@@ -143,29 +115,17 @@ class SuggestedProduct extends Component {
                               href="product-page(no-sidebar).html"
                               tabIndex={-1}
                             >
-                              <h6>Slim Fit Cotton Shirt</h6>
+                              <h6>{product?.productName}</h6>
                             </a>
                             <h4>
-                              $500.00 <del>$600.00</del>
+                              {product?.productPrice}{" "}
+                              <del> {product?.productPrice}</del>
                             </h4>
-                            <ul className="color-variant">
-                              <li className="bg-light0" />
-                              <li className="bg-light1" />
-                              <li className="bg-light2" />
-                            </ul>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <button
-                    className="slick-next "
-                    aria-label="Next"
-                    type="button"
-                    style={{ display: "inline-block" }}
-                  >
-                    Next
-                  </button>
                 </div>
               </div>
             </div>
