@@ -11,6 +11,7 @@ import {
   Tab,
   Modal,
 } from "react-bootstrap";
+import * as Icon from "react-feather";
 import { FaCamera, FaChevronDown, FaChevronRight } from "react-icons/fa";
 import { openDB } from "idb";
 import Cropper from "react-cropper";
@@ -27,6 +28,7 @@ import { queryApi } from "../../utils/queryApi";
 import SuggestedProducts from "../Products/SuggestedProducts";
 import { map } from "jquery";
 import "../../components/classification/ColorPalette.css";
+import { Link } from "react-router-dom";
 const MODEL_PATH = "../../../public/model/model.json";
 
 const IMAGE_SIZE = 224;
@@ -589,6 +591,13 @@ export default class Classify extends Component {
                 ></SuggestedProducts>
               ))}
             </div>
+            <div style={{ marginLeft: 920 }}>
+              {
+                <Link to="/">
+                  See More <Icon.ChevronDown />
+                </Link>
+              }
+            </div>
           </Fragment>
         )}
 
@@ -600,10 +609,11 @@ export default class Classify extends Component {
           <Modal.Header closeButton>
             <Modal.Title>No Similar articles</Modal.Title>
           </Modal.Header>
+          <Modal.Body>Please Try Again !!</Modal.Body>
 
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
-              Try Again
+              close
             </Button>
           </Modal.Footer>
         </Modal>
