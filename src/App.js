@@ -34,6 +34,7 @@ import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
+import GetSize from "./components/3D/size";
 import ProductDetails from "./components/Products/ProductDetails";
 
 function App() {
@@ -102,7 +103,7 @@ function App() {
                     path='/ProductDetails/:id'
                     component={ProductDetails}
                   />
-
+ <Route path="/GetSize" component={GetSize} />
                   <Route path='/3D' component={BodyDetection} />
                   <Route path='/event/addPost' component={AddPostForm} />
                   <Route path='/event/post/:id' component={PostDetails} />
