@@ -348,6 +348,7 @@ const EditUserForm = (props) => {
                       <input
                         type="number"
                         name="height"
+                        step="0.01"
                         onChange={handleChange}
                         className="form-control"
                         id="height"
