@@ -19,7 +19,6 @@ import {
   fetchClaimByClaimUrl,
   selectClaims,
 } from "../../redux/slices/claimSlice";
-
 import jwtDecode from "jwt-decode";
 
 const Posts = (props) => {
@@ -135,36 +134,38 @@ const Posts = (props) => {
               </Row>
             </Container>
 
-            <Form.Group controlId="formGriddescription">
+            <Form.Group controlId='formGriddescription'>
               <Form.Label>Mention a reason :</Form.Label>
               <Form.Control
-                type="text"
-                name="description"
-                id="description"
-                minLength="5"
+                type='text'
+                name='description'
+                id='description'
+                minLength='5'
                 DefaultValue="I didn't Like this post !!"
                 onChange={formik.handleChange}
               />
             </Form.Group>
 
             <Button
-              variant="primary"
+              variant='primary'
               disabled={formik.isSubmitting}
-              type="submit"
+              type='submit'
             >
               Add Claim !
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
 
-      <div className="col-xl-3 col-md-6 col-grid-box">
-        <div className="product-box">
+
+      <div className='col-xl-3 col-md-6 col-grid-box'>
+        <div className='product-box'>
+
           <form onSubmit={formik.handleSubmit}>
             <div className="img-wrapper">
               <div className="front">
@@ -197,7 +198,19 @@ const Posts = (props) => {
                   title="Delete Post From event"
                   onClick={() => deletePostEvent(props.post._id)}
                 >
-                  <i className="fa fa-trash" aria-hidden="true" />
+
+                  {!loader ? (
+                    <i className='fa fa-trash' aria-hidden='true' />
+                  ) : (
+                    <div>
+                      <span
+                        className='spinner-border spinner-border-sm'
+                        role='status'
+                        aria-hidden='true'
+                      />
+                    </div>
+                  )}
+
                 </a>
                 <a
                   title="Update Post From event"

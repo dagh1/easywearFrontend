@@ -1,8 +1,12 @@
 import Slider from "react-slick";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
 import SuggestedProducts from "./Products/SuggestedProducts";
+
+import RecommendedProductsList from "./Products/RecommendedProductsList";
+
 
 const Home = () => {
   const settings = {
@@ -290,22 +294,32 @@ const Home = () => {
         </div>
       </section>
       <div>
-        <div className="title1 section-t-space">
-          <h4>special offer</h4>
-          <h2 className="title-inner1">top recommandation</h2>
+
+        <div className='title1 section-t-space'>
+          <h4>Recommended for you</h4>
+          <h2 className='title-inner1'>Most Liked</h2>
         </div>
       </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 offset-lg-3">
-            <div className="product-para">
-              <p className="text-center"></p>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-6 offset-lg-3'>
+            <div className='product-para'>
+              <p className='text-center'>
+                These outfits has been liked by other users similar to those you
+                also liked
+              </p>
+
             </div>
           </div>
         </div>
       </div>
-      <SuggestedProducts></SuggestedProducts>
-      <section className="p-0">
+
+
+
+      <RecommendedProductsList />
+
+      <section className='p-0'>
+
         <div
           className="full-banner parallax text-center p-left bg-size blur-up lazyloaded"
           style={{

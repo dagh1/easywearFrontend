@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@charkour/react-reactions": "^0.5.0",
+    "@material-ui/core": "^4.11.3",
     "@reduxjs/toolkit": "^1.5.0",
     "@tensorflow-models/body-pix": "^2.1.0",
+    "@tensorflow-models/posenet": "^2.2.2",
     "@tensorflow/tfjs": "^3.3.0",
     "@tensorflow/tfjs-backend-webgl": "^3.3.0",
     "@tensorflow/tfjs-converter": "^3.3.0",
@@ -15,10 +17,15 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "dat.gui": "^0.7.7",
     "file-loader": "^6.2.0",
     "formik": "^2.2.6",
+
     "idb": "^4.0.3",
     "image-palette-core": "^0.2.2",
+
+    "fs": "^0.0.1-security",
+
     "joi-browser": "^13.4.0",
     "jquery": "^3.6.0",
     "jwt-decode": "^2.2.0",
@@ -33,20 +40,36 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^3.7.0",
     "react-paginate": "^7.1.2",
+
     "react-palette": "^0.1.3",
+
+    "react-popper": "^2.2.5",
+
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "react-webcam": "^5.2.3",
+    "reactstrap": "^8.9.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.3.0",
+
     "rgb-to-hex": "^0.0.0",
+
+    "request": "^2.88.2",
+
     "slick-carousel": "^1.8.1",
     "source-map-explorer": "^2.5.2",
+    "stats.js": "^0.17.0",
     "styled-components": "^5.2.2",
+
     "virtualenv": "^0.3.1",
+
+    "three": "^0.127.0",
+
     "web-vitals": "^1.0.1",
+    "write-json-file": "^4.3.0",
+    "yarn": "^1.22.10",
     "yup": "^0.32.9"
   },
   "scripts": {

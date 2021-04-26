@@ -6,10 +6,8 @@ import UserPosts from "./userPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectPosts } from "../../redux/slices/postSlice";
 import UserClaims from "./userClaims";
-
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
-
 import { selectClaims } from "../../redux/slices/claimSlice";
 import FindArticle from "./findarticle";
 
@@ -62,11 +60,13 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
+
                     <img src={user.image_url} className="rounded-circle" />
 
                     <h3>
                       {user?.first_name}_{user?.last_name}
                     </h3>
+
                     <div className="rating">
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
@@ -205,7 +205,7 @@ const Profile = () => {
                           window.location = "/auth/login";
                         }}
                       >
-                        Log Out
+                        Logout
                       </a>
                     </li>
                   </ul>

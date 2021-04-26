@@ -2,9 +2,18 @@ import React, { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
+import Test from "./test";
 
-function BodyDetection() {
+function BodyDetection(props) {
   // const canvas = document.querySelector("canvas");
+  var img;
+  if (!props.location.imagelink) {
+    console.log("img not defined");
+    img =
+      "https://e7.pngegg.com/pngimages/616/117/png-clipart-t-shirt-yellow-clothing-fruit-of-the-loom-color-t-shirt-tshirt-angle.png";
+  } else {
+    img = props.location.imagelink;
+  }
   const webcamRef = useRef(null);
 
   const imageRef = useRef(null);
@@ -12,6 +21,12 @@ function BodyDetection() {
   // const ctx = canvas?.getContext("2d");
 
   const runBodysegment = async () => {
+    /*  console.log("bodydetect");
+    if (!props.location.imagelink) {
+      console.log("not defined");
+    }
+    console.log(props.location.imagelink);
+    console.log("fin img"); */
     const net = await bodyPix.load({
       architecture: "ResNet50",
       outputStride: 32,
@@ -42,7 +57,7 @@ function BodyDetection() {
       // *   - net.segmentMultiPersonParts
       // const person = await net.segmentPerson(video);
       const person = await net.segmentPersonParts(video);
-      // console.log(person);
+
 
       //  console.log(canvasRef);
 
@@ -61,11 +76,17 @@ function BodyDetection() {
           person?.allPoses[0]?.keypoints[7]["position"]["y"] - z
         );
 
+
+        const widthx = Math.abs(
+          person?.allPoses[0]?.keypoints[6]["position"]["x"] - x
+        );
+
         const image = imageRef.current;
-        image.style.top = y + "px";
-        image.style.left = x + "px";
-        image.style.width = widthx + "px";
-        image.style.height = highx + "px";
+        if (image) {
+          image.style.top = y + "px";
+          image.style.left = x + "px";
+          image.style.width = widthx + "px";
+        }
 
         // console.log(image.style.top);
       }
@@ -76,10 +97,13 @@ function BodyDetection() {
 
   return (
     <>
-      <Webcam
-        ref={webcamRef}
-        style={{
-          marginLeft: "auto",
+
+      <div className="container">
+        <Webcam
+          ref={webcamRef}
+          /* style={{
+          marginLeft: "33%",
+
           marginRight: "auto",
           left: 0,
           right: 0,
@@ -87,16 +111,31 @@ function BodyDetection() {
           zindex: 9,
           width: 640,
           height: 480,
-        }}
-      />
 
-      <img
+        }} */
+        />
+        <div
+          id="cu"
+          ref={imageRef}
+          style={{
+            position: "absolute",
+
+            width: 50,
+            height: 40,
+          }}
+        >
+          aa
+          <Test imglink={img} />
+        </div>
+      </div>
+      {/*   <img
+
         ref={imageRef}
         src="https://pngimg.com/uploads/tshirt/tshirt_PNG5449.png?fbclid=IwAR04eCnCELAwcuYHLsmerHz4aC1F9_QgB02yMuVO1IgL5Lh80FkZmxay8aM"
         style={{
           position: "absolute",
         }}
-      />
+      /> */}
     </>
   );
 }
