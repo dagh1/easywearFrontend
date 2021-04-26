@@ -24,7 +24,6 @@ const UpdatePostForm = () => {
     initialValues: {
       title: selectedPost.title,
       description: selectedPost.description,
-      image_url: selectedPost.image_url,
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {

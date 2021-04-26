@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectPost,
-  selectPosts,
-  selectSelectedPosts,
-  setErrors,
-} from "./../../redux/slices/postSlice";
+import { selectSelectedPosts, setErrors } from "./../../redux/slices/postSlice";
 import { formatDate } from "../../helpers/dateConvert";
 import { useHistory } from "react-router";
 import { queryApi } from "../../utils/queryApi";
@@ -22,24 +17,16 @@ import {
   selectReactions,
 } from "../../redux/slices/reactionSlice";
 import Reactions from "../Reactions/reactions";
-import jwtDecode from "jwt-decode";
-import UserToReact from "../Reactions/userToReact";
 
 const PostDetails = (props) => {
+  const selectedPost = useSelector(selectSelectedPosts);
   const [post, setPost] = useState({});
-  const [author, setAuthor] = useState({});
   const [comments, err] = useSelector(selectComments);
   const [reactions, errors] = useSelector(selectReactions);
-  const [connectedUSer, setConnectedUser] = useState();
-  const jwtToken = localStorage.getItem("jwt");
-  const posts = useSelector(selectSelectedPosts);
+
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    if (jwtToken) {
-      // Set auth token header auth
-      setConnectedUser(jwtDecode(jwtToken)); // Decode token and get user info and exp
-    }
     async function fetchPost() {
       const [res, err] = await queryApi(
         "post/" + props.match.params.id,
@@ -52,17 +39,28 @@ const PostDetails = (props) => {
     fetchPost();
     dispatch(fetchPostComments(props.match.params.id));
     dispatch(fetchPostReaction(props.match.params.id));
-    //fetchUser(posttest.user_id);
   }, [dispatch]);
 
-  async function fetchUser(userId) {
-    const [res, err] = await queryApi("user/getById/" + userId, {}, "GET");
-    console.log(res);
-  }
+  const handleEmojiClick = async (label) => {
+    console.log(label);
+    const values = {
+      reactiontype: label,
+      user_id: "7041f2fe9dbc16c1758d7a9a",
+      post_id: post._id,
+    };
+    const [res, err] = await queryApi("reaction", values, "POST");
+    if (err) {
+      setErrors({
+        visible: true,
+        message: JSON.stringify(err.errors, null, 2),
+      });
+    } else {
+      dispatch(addReaction(res));
+    }
+  };
 
   return (
     <>
-      <button>test</button>
       <div className='breadcrumb-section'>
         <div className='container'>
           <div className='row'>
@@ -83,6 +81,7 @@ const PostDetails = (props) => {
           </div>
         </div>
       </div>
+
       <section className='blog-detail-page section-b-space ratio2_3'>
         <div className='container'>
           <div className='row'>
@@ -90,9 +89,7 @@ const PostDetails = (props) => {
               <h3>{post.title}</h3>
               <ul className='post-social'>
                 <li>{formatDate(post.date_creation)}</li>
-                <li>
-                  Posted By : {author?.first_name} {author?.last_name}
-                </li>
+                <li>Posted By : Admin Admin</li>
                 <li>
                   <i className='fa fa-heart' /> {reactions.length} Hits
                 </li>
@@ -100,6 +97,7 @@ const PostDetails = (props) => {
                   <i className='fa fa-comments' /> {comments.length} Comment
                 </li>
               </ul>
+              <p>{post.description}</p>
             </div>
           </div>
           <div className='row section-b-space blog-advance'>
@@ -149,7 +147,10 @@ const PostDetails = (props) => {
               </p>
               <Reactions />
             </div>
-            <UserToReact post={post} />
+            <ReactionBarSelector
+              iconSize={20}
+              onSelect={(label) => handleEmojiClick(label)}
+            />
           </div>
 
           <div className='row section-b-space'>

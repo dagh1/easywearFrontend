@@ -24,7 +24,9 @@ const EditProfileForm = (props) => {
     }
 
     fetchUser();
+    console.log(user);
   }, []);
+  console.log(user.first_name);
 
   const [info, setInfo] = useState({
     data: {
