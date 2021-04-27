@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { fetchPostsEvent, listPosts } from "../../redux/slices/eventSlice";
 import { queryApi } from "../../utils/queryApi";
 import RenderPosts from "./RenderPosts";
@@ -8,6 +8,7 @@ import RenderPosts from "./RenderPosts";
 const EventWithId = (props) => {
   const dispatch = useDispatch();
   const listPos = useSelector(listPosts);
+  const history = useHistory();
 
   const ListePosts = listPos.map((post) => {
     console.log(post);

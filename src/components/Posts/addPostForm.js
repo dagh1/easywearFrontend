@@ -58,6 +58,7 @@ const AddPostForm = (props) => {
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {
+      console.log("Clicked");
       values.image_url = previewSource;
       values.user_id = connectedUSer._id;
       values.event_id = event._id;
