@@ -60,7 +60,6 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
-
                     <img src={user.image_url} className="rounded-circle" />
 
                     <h3>
@@ -222,7 +221,7 @@ const Profile = () => {
               </div>
               {/* silde-bar colleps block end here */}
             </div>
-            <div className="col">
+            <div style={{ width: 200 }} className="col">
               <Switch>
                 <Route
                   exact
