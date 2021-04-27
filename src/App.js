@@ -35,6 +35,7 @@ import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
 import ProductDetails from "./components/Products/ProductDetails";
+import GetSize from "./components/3D/size";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -61,14 +62,14 @@ function App() {
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
-                  <Route path="/ClaimsBack" component={ClaimBack} />
-                  <Route path="/UsersBack" component={UserBack} />
-                  <Route path="/editUserBack" component={EditUserForm} />
-                  <Route path="/addUserBack" component={AddUserForm} />
-                  <Route path="/Products" component={Products} />
-                  <Route path="/Events" component={Events} />
-                  <Route path="/Contacts" component={Contacts} />
-                  <Route exact to="/" component={DashBoard} />
+                  <Route path='/ClaimsBack' component={ClaimBack} />
+                  <Route path='/UsersBack' component={UserBack} />
+                  <Route path='/editUserBack' component={EditUserForm} />
+                  <Route path='/addUserBack' component={AddUserForm} />
+                  <Route path='/Products' component={Products} />
+                  <Route path='/Events' component={Events} />
+                  <Route path='/Contacts' component={Contacts} />
+                  <Route exact to='/' component={DashBoard} />
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
@@ -88,36 +89,44 @@ function App() {
               >
                 <Navbar></Navbar>
                 <Switch>
-                  <Route path="/auth/login" component={LoginForm} />
-                  <Route path="/auth/register" component={RegisterForm} />
+                  <Route path='/auth/login' component={LoginForm} />
+                  <Route path='/auth/register' component={RegisterForm} />
                   <Route
-                    path="/user/editprofile/:id"
+                    path='/user/editprofile/:id'
                     component={EditProfileForm}
                   />
-                  <Route path="/about" component={About} />
-                  <Route path="/contact" component={Contact} />
-                  <Route path="/user/profile" component={Profile} />
-                  <Route path="/Products" component={ProductLists} />
+
+                  <Route path='/about' component={About} />
+                  <Route path='/contact' component={Contact} />
+                  <Route path='/user/profile' component={Profile} />
+                  <Route path='/Products' component={ProductLists} />
+
                   <Route
-                    path="/ProductDetails/:id"
+                    path='/ProductDetails/:id'
                     component={ProductDetails}
                   />
 
-                  <Route path="/3D" component={BodyDetection} />
-                  <Route path="/event/addPost/:id" component={AddPostForm} />
-                  <Route path="/event/post/:id" component={PostDetails} />
-                  <Route path="/3D/:imgurl" component={BodyDetection} />
+                  <Route path='/GetSize' component={GetSize} />
+                  <Route path='/3D' component={BodyDetection} />
+                  <Route path='/event/addPost/:id' component={AddPostForm} />
+                  <Route path='/event/post/:id' component={PostDetails} />
+                  <Route path='/3D/:imgurl' component={BodyDetection} />
+
 
                   <Route
-                    path="/event/updatePost/:id"
+                    path='/event/updatePost/:id'
                     component={UpdatePostForm}
                   />
-                  <Route path="/event" component={HomeEvent} />
+
+                  <Route path='/event' component={HomeEvent} />
+
                   <Route
-                    path="/eventDetails/:eventId"
+                    path='/eventDetails/:eventId'
                     component={eventWithId}
                   />
-                  <Route exact to="/" component={Home} />
+
+                  <Route exact to='/' component={Home} />
+
                 </Switch>
                 <Footer />
               </UserContext.Provider>

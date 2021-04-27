@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const RecommendedProductView = (props) => {
   return (
@@ -57,33 +58,12 @@ const RecommendedProductView = (props) => {
                 </a>
               </div>
               <div className='cart-info cart-wrap'>
-                <button
-                  data-toggle='modal'
-                  data-target='#addtocart'
-                  title='Add to cart'
+                <NavLink
+                  to={"/productDetails/" + props.product.id}
+                  title='Compare'
                   tabIndex={-1}
-                >
-                  <i className='ti-shopping-cart' />
-                </button>{" "}
-                <a
-                  href='javascript:void(0)'
-                  title='Add to Wishlist'
-                  tabIndex={-1}
-                >
-                  <i className='ti-heart' aria-hidden='true' />
-                </a>{" "}
-                <a
-                  href='#'
-                  data-toggle='modal'
-                  data-target='#quick-view'
-                  title='Quick View'
-                  tabIndex={-1}
-                >
-                  <i className='ti-search' aria-hidden='true' />
-                </a>{" "}
-                <a href='compare.html' title='Compare' tabIndex={-1}>
-                  <i className='ti-reload' aria-hidden='true' />
-                </a>
+                  className='fa fa-eye'
+                ></NavLink>
               </div>
             </div>
             <div className='product-detail'>

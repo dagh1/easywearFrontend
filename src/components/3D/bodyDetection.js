@@ -62,16 +62,18 @@ function CalculateSize(props) {
   }
   return (
     <>
-      <div style={{ position: "relative" }} className="col">
-        <div className="top-banner-wrapper">
-          <a href="#">
+
+      <div style={{ position: "relative" }} className='col'>
+        <div className='top-banner-wrapper'>
+          <a href='#'>
             <img
-              src="../assets/images/coming-soon.jpg"
-              className="img-fluid blur-up lazyloaded"
-              alt=""
+              src='../assets/images/coming-soon.jpg'
+              className='img-fluid blur-up lazyloaded'
+              alt=''
             />
           </a>
-          <div className="top-banner-content small-section">
+          <div className='top-banner-content small-section'>
+
             <h4>Welcome! EASYWEAR</h4>
             <h5></h5>
           </div>
@@ -177,9 +179,11 @@ function BodyDetection() {
 
   return (
     <>
-      <div className="row">
+
+      <div className='row'>
+
         <div
-          id="cu"
+          id='cu'
           ref={imageRef}
           style={{
             position: "absolute",
