@@ -62,8 +62,10 @@ export const fetchClaims = () => async (dispatch) => {
   }
 };
 
-export const fetchClaimByType = (type) => async (dispatch) => {
-  const [res, error] = await queryApi("claim/findAllByType?type=" + type);
+export const fetchClaimByType = (type, id) => async (dispatch) => {
+  const [res, error] = await queryApi(
+    "claim/findAllByType/" + id + "?type=" + type
+  );
 
   if (error) {
     dispatch(setErrors(error));

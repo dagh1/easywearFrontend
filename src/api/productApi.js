@@ -1,6 +1,7 @@
 import { handleResponse, handleError } from "./apiUtils";
 
 export function getProducts(page, pricrSort) {
+
   const baseUrl = `http://localhost:3100/api/product?page=${page}&size=10&pricrSort=${pricrSort}`;
 
   return fetch(baseUrl).then(handleResponse).catch(handleError);
@@ -31,5 +32,6 @@ export function getProductsbybrands(brands, name, price) {
   else if (brands)
     baseUrl = `http://localhost:3100/api/product?page=0&size=24&brands=${brands}`;
   if (price) baseUrl = baseUrl + `&pricemin=${price[0]}&pricemax=${price[1]}`;
+
   return fetch(baseUrl).then(handleResponse).catch(handleError);
 }

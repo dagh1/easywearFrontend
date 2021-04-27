@@ -162,14 +162,16 @@ const Posts = (props) => {
         </Modal.Footer>
       </Modal>
 
+
       <div className='col-xl-3 col-md-6 col-grid-box'>
         <div className='product-box'>
+
           <form onSubmit={formik.handleSubmit}>
-            <div className='img-wrapper'>
-              <div className='front'>
+            <div className="img-wrapper">
+              <div className="front">
                 <a
-                  href='fake'
-                  className='bg-size blur-up lazyloaded'
+                  href="fake"
+                  className="bg-size blur-up lazyloaded"
                   style={{
                     backgroundImage: `url(${props.post.image_url})`,
                     backgroundSize: "cover",
@@ -179,23 +181,24 @@ const Posts = (props) => {
                 >
                   <img
                     src={props.post.image_url}
-                    className='img-fluid blur-up lazyload bg-img'
-                    alt='imgha'
+                    className="img-fluid blur-up lazyload bg-img"
+                    alt="imgha"
                     style={{ display: "none" }}
                   />
                 </a>
               </div>
-              <div className='cart-info cart-wrap'>
+              <div className="cart-info cart-wrap">
                 <a
-                  title='See more info'
+                  title="See more info"
                   onClick={() => getPostEvent(props.post)}
                 >
-                  <i className='fa fa-info' aria-hidden='true' />
+                  <i className="fa fa-info" aria-hidden="true" />
                 </a>
                 <a
-                  title='Delete Post From event'
+                  title="Delete Post From event"
                   onClick={() => deletePostEvent(props.post._id)}
                 >
+
                   {!loader ? (
                     <i className='fa fa-trash' aria-hidden='true' />
                   ) : (
@@ -207,29 +210,30 @@ const Posts = (props) => {
                       />
                     </div>
                   )}
+
                 </a>
                 <a
-                  title='Update Post From event'
+                  title="Update Post From event"
                   onClick={() => updatePost(props.post)}
                 >
-                  <i className='fa fa-edit' aria-hidden='true' />
+                  <i className="fa fa-edit" aria-hidden="true" />
                 </a>
 
                 <a
-                  title='Claim about a Post'
+                  title="Claim about a Post"
                   onClick={() => {
                     openConfirmation(props.post);
                   }}
                 >
-                  <i className='fa fa-cog fa-fw' aria-hidden='true' />
+                  <i className="fa fa-cog fa-fw" aria-hidden="true" />
                 </a>
               </div>
             </div>
-            <div className='product-detail'>
+            <div className="product-detail">
               <div>
                 <small>comments ({props.commentCount})</small>
 
-                <a href='product-page(no-sidebar).html'>
+                <a href="product-page(no-sidebar).html">
                   <h6>Posted in {props.post.event_id}</h6>
                   <small>{formatDate(props.post.date_creation)}</small>
                 </a>
