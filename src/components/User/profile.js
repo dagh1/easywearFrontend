@@ -154,7 +154,7 @@ const Profile = () => {
                       <NavLink
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
-                        to="/user/profile/ProfileDetails"
+                        to="/user/userProfile"
                       >
                         My Account
                       </NavLink>

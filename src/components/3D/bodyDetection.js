@@ -74,8 +74,8 @@ function BodyDetection(props) {
 
         const image = imageRef.current;
         if (image) {
-          image.style.top = y + "px";
-          image.style.left = x + "px";
+          image.style.top = y - 70 + "px";
+          image.style.left = x - 220 + "px";
           image.style.width = widthx + "px";
         }
 

@@ -4,11 +4,11 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { loadProducts } from "./../../redux/actions/ProductsActions";
 import { queryApi } from "../../utils/queryApi";
-import jwtDecode from "jwt-decode";
+//import jwtDecode from "jwt-decode";
 import RecommendedProductView from "./RecommendedProductView";
 
 class RecommendedProductsList extends Component {
-  jwtToken = localStorage.getItem("jwt");
+  //jwtToken = localStorage.getItem("jwt");
 
   componentDidMount() {
     /*queryApi(
@@ -36,7 +36,7 @@ class RecommendedProductsList extends Component {
 
   constructor(props) {
     super(props);
-    const user = jwtDecode(this.jwtToken);
+    const user = null; // jwtDecode(this.jwtToken);
 
     this.state = {
       suggestedproducts: [],

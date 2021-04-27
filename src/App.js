@@ -37,6 +37,7 @@ import BodyDetection from "./components/3D/bodyDetection";
 import CheckEmail from "./components/auth/checkEmail";
 import EmailVerified from "./components/auth/emailVerified";
 import ProductDetails from "./components/Products/ProductDetails";
+import UserProfile from "./components/User/userprofile";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -92,6 +93,7 @@ function App() {
                 <Switch>
                   <Route path="/auth/login" component={LoginForm} />
                   <Route path="/auth/register" component={RegisterForm} />
+                  <Route path="/user/userProfile" component={UserProfile} />
                   <Route
                     path="/user/editprofile/:id"
                     component={EditProfileForm}
