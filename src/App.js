@@ -34,8 +34,11 @@ import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
+
 import CheckEmail from "./components/auth/checkEmail";
 import EmailVerified from "./components/auth/emailVerified";
+import GetSize from "./components/3D/size";
+
 import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
 
@@ -109,6 +112,7 @@ function App() {
                     component={ProductDetails}
                   />
 
+                  <Route path="/GetSize" component={GetSize} />
                   <Route path="/3D" component={BodyDetection} />
                   <Route path="/event/addPost" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />

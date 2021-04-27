@@ -397,6 +397,7 @@ const Navbar = () => {
                         <li>{<Link to="/3D">3D</Link>}</li>
 
                         <li>{<Link to="/event">Events</Link>}</li>
+                        <li>{<Link to="/getSize">Size</Link>}</li>
                       </ul>
                     </nav>
                   </div>
