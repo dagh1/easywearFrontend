@@ -62,7 +62,6 @@ const PostDetails = (props) => {
 
   return (
     <>
-      <button>test</button>
       <div className='breadcrumb-section'>
         <div className='container'>
           <div className='row'>
