@@ -31,7 +31,7 @@ class RecommendedProductsList extends Component {
       });
     });*/
     this.loadProducts();
-    //    this.loadRecommendedProducts();
+    this.loadRecommendedProducts();
   }
 
   constructor(props) {
@@ -50,7 +50,7 @@ class RecommendedProductsList extends Component {
     this.setState({ products: res });
   };
 
-  /*  loadRecommendedProducts = async () => {
+  loadRecommendedProducts = async () => {
     const [res, err] = await queryApi(
       "recommendation/getSuggestions/" + this.state.connectedUser._id,
       {},
@@ -71,25 +71,25 @@ class RecommendedProductsList extends Component {
     if (err) {
       this.setState({ suggestedproducts: [] });
     }
-  }; */
+  };
 
   render() {
     return (
       <>
-        <section className="section-b-space p-t-0 ratio_asos">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div className="product-4 product-m no-arrow slick-initialized slick-slider">
+        <section className='section-b-space p-t-0 ratio_asos'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col'>
+                <div className='product-4 product-m no-arrow slick-initialized slick-slider'>
                   <button
-                    className="slick-prev "
-                    aria-label="Previous"
-                    type="button"
+                    className='slick-prev '
+                    aria-label='Previous'
+                    type='button'
                     style={{ display: "inline-block" }}
                   >
                     Previous
                   </button>
-                  <div className="slick-list draggable">
+                  <div className='slick-list draggable'>
                     {
                       /* Loop will be here */
                       console.log(this.state.suggestedproducts)
@@ -100,9 +100,9 @@ class RecommendedProductsList extends Component {
                     })}
                   </div>
                   <button
-                    className="slick-next "
-                    aria-label="Next"
-                    type="button"
+                    className='slick-next '
+                    aria-label='Next'
+                    type='button'
                     style={{ display: "inline-block" }}
                   >
                     Next
