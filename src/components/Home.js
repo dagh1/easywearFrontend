@@ -1,6 +1,5 @@
 import React from "react";
 import Slider from "react-slick";
-import RecommendedProductsList from "./Products/RecommendedProductsList";
 
 const Home = () => {
   const settings = {
@@ -281,8 +280,8 @@ const Home = () => {
       </section>
       <div>
         <div className='title1 section-t-space'>
-          <h4>Recommended for you</h4>
-          <h2 className='title-inner1'>Most Liked</h2>
+          <h4>special offer</h4>
+          <h2 className='title-inner1'>top collection</h2>
         </div>
       </div>
       <div className='container'>
@@ -290,16 +289,1674 @@ const Home = () => {
           <div className='col-lg-6 offset-lg-3'>
             <div className='product-para'>
               <p className='text-center'>
-                These outfits has been liked by other users similar to those you
-                also liked
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <RecommendedProductsList />
-
+      <section className='section-b-space p-t-0 ratio_asos'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              <div className='product-4 product-m no-arrow slick-initialized slick-slider'>
+                <button
+                  className='slick-prev '
+                  aria-label='Previous'
+                  type='button'
+                  style={{ display: "inline-block" }}
+                >
+                  Previous
+                </button>
+                <div className='slick-list draggable'>
+                  <div
+                    className='slick-track'
+                    style={{
+                      opacity: 1,
+                      width: 4900,
+                      transform: "translate3d(-1750px, 0px, 0px)",
+                    }}
+                  >
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={-4}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyload'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/1.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/1.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyload'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/2.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/2.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>
+                              $500.00 <del>$600.00</del>
+                            </h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={-3}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyload'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyload'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={-2}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/35.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/35.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyload'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/36.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/36.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={-1}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide'
+                      data-slick-index={0}
+                      aria-hidden='true'
+                      style={{ width: 350 }}
+                      tabIndex={-1}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/27.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/27.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/28.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/28.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-active'
+                      data-slick-index={1}
+                      aria-hidden='false'
+                      style={{ width: 350 }}
+                      tabIndex={-1}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/1.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/1.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/2.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/2.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={0}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={0}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={0}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={0}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={0}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>
+                              $500.00 <del>$600.00</del>
+                            </h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-active'
+                      data-slick-index={2}
+                      aria-hidden='false'
+                      style={{ width: 350 }}
+                      tabIndex={-1}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={0}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={0}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={0}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={0}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={0}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-active'
+                      data-slick-index={3}
+                      aria-hidden='false'
+                      style={{ width: 350 }}
+                      tabIndex={-1}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/35.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/35.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/36.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/36.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={0}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={0}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={0}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={0}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={0}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-current slick-active'
+                      data-slick-index={4}
+                      aria-hidden='false'
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={0}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={0}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={0}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={0}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={0}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={0}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={5}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/27.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/27.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/28.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/28.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={6}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/1.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/1.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/2.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/2.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>
+                              $500.00 <del>$600.00</del>
+                            </h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={7}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={8}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/35.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/35.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/36.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/36.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className='slick-slide slick-cloned'
+                      data-slick-index={9}
+                      aria-hidden='true'
+                      tabIndex={-1}
+                      style={{ width: 350 }}
+                    >
+                      <div>
+                        <div
+                          className='product-box'
+                          style={{ width: "100%", display: "inline-block" }}
+                        >
+                          <div className='img-wrapper'>
+                            <div className='lable-block'>
+                              <span className='lable3'>new</span>
+                              <span className='lable4'>on sale</span>
+                            </div>
+                            <div className='front'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/33.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/33.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='back'>
+                              <a
+                                href='product-page(no-sidebar).html'
+                                className='bg-size blur-up lazyloaded'
+                                style={{
+                                  backgroundImage:
+                                    'url("/assets/images/pro3/34.jpg")',
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center center",
+                                  display: "block",
+                                }}
+                                tabIndex={-1}
+                              >
+                                <img
+                                  src='/assets/images/pro3/34.jpg'
+                                  className='img-fluid blur-up lazyload bg-img'
+                                  alt='true'
+                                  style={{ display: "none" }}
+                                />
+                              </a>
+                            </div>
+                            <div className='cart-info cart-wrap'>
+                              <button
+                                data-toggle='modal'
+                                data-target='#addtocart'
+                                title='Add to cart'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-shopping-cart' />
+                              </button>
+                              <a
+                                href='fake'
+                                title='Add to Wishlist'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-heart' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='fake'
+                                data-toggle='modal'
+                                data-target='#quick-view'
+                                title='Quick View'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-search' aria-hidden='true' />
+                              </a>
+                              <a
+                                href='compare.html'
+                                title='Compare'
+                                tabIndex={-1}
+                              >
+                                <i className='ti-reload' aria-hidden='true' />
+                              </a>
+                            </div>
+                          </div>
+                          <div className='product-detail'>
+                            <div className='rating'>
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                              <i className='fa fa-star' />
+                            </div>
+                            <a
+                              href='product-page(no-sidebar).html'
+                              tabIndex={-1}
+                            >
+                              <h6>Slim Fit Cotton Shirt</h6>
+                            </a>
+                            <h4>$500.00</h4>
+                            <ul className='color-variant'>
+                              <li className='bg-light0' />
+                              <li className='bg-light1' />
+                              <li className='bg-light2' />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className='slick-next '
+                  aria-label='Next'
+                  type='button'
+                  style={{ display: "inline-block" }}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className='p-0'>
         <div
           className='full-banner parallax text-center p-left bg-size blur-up lazyloaded'
