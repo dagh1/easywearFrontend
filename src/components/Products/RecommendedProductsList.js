@@ -4,11 +4,11 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { loadProducts } from "./../../redux/actions/ProductsActions";
 import { queryApi } from "../../utils/queryApi";
-import jwtDecode from "jwt-decode";
+//import jwtDecode from "jwt-decode";
 import RecommendedProductView from "./RecommendedProductView";
 
 class RecommendedProductsList extends Component {
-  jwtToken = localStorage.getItem("jwt");
+  //jwtToken = localStorage.getItem("jwt");
 
   componentDidMount() {
     /*queryApi(
@@ -36,7 +36,7 @@ class RecommendedProductsList extends Component {
 
   constructor(props) {
     super(props);
-    const user = jwtDecode(this.jwtToken);
+    const user = null; // jwtDecode(this.jwtToken);
 
     this.state = {
       suggestedproducts: [],
@@ -51,24 +51,28 @@ class RecommendedProductsList extends Component {
   };
 
   loadRecommendedProducts = async () => {
-    const [res, err] = await queryApi(
-      "recommendation/getSuggestions/" + this.state.connectedUser._id,
-      {},
-      "GET"
-    );
-    const { products, actions } = this.props;
-
-    //actions.loadProducts();
-
-    let recommendedResponse = [];
-    // console.log(this.state.products[0].id);
-    res.suggestion?.forEach((element) => {
-      recommendedResponse.push(
-        this.state.products.find((prod) => prod?.id === element?.product_id)
+    if (this.state.connectedUser) {
+      const [res, err] = await queryApi(
+        "recommendation/getSuggestions/" + this.state.connectedUser._id,
+        {},
+        "GET"
       );
-    });
-    this.setState({ suggestedproducts: recommendedResponse });
-    if (err) {
+      const { products, actions } = this.props;
+
+      //actions.loadProducts();
+
+      let recommendedResponse = [];
+      // console.log(this.state.products[0].id);
+      res.suggestion?.forEach((element) => {
+        recommendedResponse.push(
+          this.state.products.find((prod) => prod?.id === element?.product_id)
+        );
+      });
+      this.setState({ suggestedproducts: recommendedResponse });
+      if (err) {
+        this.setState({ suggestedproducts: [] });
+      }
+    } else {
       this.setState({ suggestedproducts: [] });
     }
   };
@@ -76,20 +80,20 @@ class RecommendedProductsList extends Component {
   render() {
     return (
       <>
-        <section className='section-b-space p-t-0 ratio_asos'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col'>
-                <div className='product-4 product-m no-arrow slick-initialized slick-slider'>
+        <section className="section-b-space p-t-0 ratio_asos">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <div className="product-4 product-m no-arrow slick-initialized slick-slider">
                   <button
-                    className='slick-prev '
-                    aria-label='Previous'
-                    type='button'
+                    className="slick-prev "
+                    aria-label="Previous"
+                    type="button"
                     style={{ display: "inline-block" }}
                   >
                     Previous
                   </button>
-                  <div className='slick-list draggable'>
+                  <div className="slick-list draggable">
                     {
                       /* Loop will be here */
                       console.log(this.state.suggestedproducts)
@@ -100,9 +104,9 @@ class RecommendedProductsList extends Component {
                     })}
                   </div>
                   <button
-                    className='slick-next '
-                    aria-label='Next'
-                    type='button'
+                    className="slick-next "
+                    aria-label="Next"
+                    type="button"
                     style={{ display: "inline-block" }}
                   >
                     Next
