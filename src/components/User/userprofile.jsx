@@ -42,7 +42,7 @@ const UserProfile = (props) => {
         );
         console.log("#### res ####");
         console.log(res);
-        console.log("##########");
+        console.log("############");
         user = res;
         setCurrentUser(res);
       } else {
