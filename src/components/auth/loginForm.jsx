@@ -62,6 +62,7 @@ const LoginForm = () => {
       setInfo({ data, errors });
     }
     // setInfo({ errors: errors || {} });
+    console.log(info);
     console.log(info.data);
     const userData = info.data;
     const [res, err] = await queryApi("user/login", userData, "POST");
