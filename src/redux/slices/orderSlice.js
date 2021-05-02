@@ -3,7 +3,7 @@ import { queryApi } from "../../utils/queryApi";
 
 let initialState = {
   orders: [],
-  selectedorders: {},
+  selectedOrders: {},
   errors: "",
 };
 
@@ -11,28 +11,28 @@ const orderSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    populateorder(state, action) {
+    populateOrder(state, action) {
       state.orders = action.payload;
     },
-    selectorder(state, action) {
-      state.selectedorders = action.payload;
+    selectOrder(state, action) {
+      state.selectedOrders = action.payload;
     },
-    unselectorder(state) {
-      state.selectedorders = null;
+    unselectOrder(state) {
+      state.selectedOrders = null;
     },
 
-    updateorder: (state, action) => {
+    updateOrder: (state, action) => {
       const payload = action.payload;
       const index = state.orders.findIndex((item) => item._id === payload._id);
       if (index !== -1) {
         state.orders[index] = payload;
       }
     },
-    addorder: (state, action) => {
+    addOrder: (state, action) => {
       const payload = action.payload;
       state.orders.push(payload);
     },
-    deleteorder: (state, action) => {
+    deleteOrder: (state, action) => {
       const payload = action.payload;
       const index = state.orders.findIndex((item) => item._id === payload);
       if (index !== -1) {
@@ -45,30 +45,30 @@ const orderSlice = createSlice({
   },
 });
 
-export const fetchorders = () => async (dispatch) => {
+export const fetchOrders = () => async (dispatch) => {
   const [res, error] = await queryApi("order/getOrders");
 
   if (error) {
     dispatch(setErrors(error));
   } else {
-    dispatch(populateorder(res));
+    dispatch(populateOrder(res));
   }
 };
 
-export const selectorders = (state) => {
+export const selectOrders = (state) => {
   return [state.orderSlice.orders, state.orderSlice.errors];
 };
 
-export const selectSelectedorders = (state) => {
-  return state.orderSlice.selectedorders;
+export const selectSelectedOrders = (state) => {
+  return state.orderSlice.selectedOrders;
 };
 export const {
-  populateorder,
-  addorder,
-  deleteorder,
-  selectorder,
-  updateorder,
-  unselectorder,
+  populateOrder,
+  addOrder,
+  deleteOrder,
+  selectOrder,
+  updateOrder,
+  unselectOrder,
   setErrors,
 } = orderSlice.actions;
 

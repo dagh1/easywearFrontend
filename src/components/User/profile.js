@@ -9,6 +9,7 @@ import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
+import { selectOrders } from "../../redux/slices/orderSlice";
 import FindArticle from "./findarticle";
 
 const Profile = (props) => {
@@ -35,6 +36,7 @@ const Profile = (props) => {
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
   const [claims, error] = useSelector(selectClaims);
+  const [orders, errors] = useSelector(selectOrders);
 
   return (
     <>
@@ -181,6 +183,16 @@ const Profile = (props) => {
                         or
                       >
                         My Claims ({claims.length})
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className="active"
+                        activeStyle={{ color: "#ff4c3b" }}
+                        to="/user/orders"
+                        or
+                      >
+                        My Orders ({orders.length})
                       </NavLink>
                     </li>
                     <li>
