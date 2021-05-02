@@ -38,6 +38,7 @@ const Navbar = () => {
                   </li>
                   <li className="onhover-dropdown mobile-account">
                     <i className="fa fa-user" aria-hidden="true" />
+                    {/* user */}
                     My Account
                     <ul className="onhover-show-div">
                       {!user && (
