@@ -2,41 +2,41 @@ import { createSlice } from "@reduxjs/toolkit";
 import { queryApi } from "../../utils/queryApi";
 
 let initialState = {
-  users: [],
-  selectedUsers: {},
+  orders: [],
+  selectedorders: {},
   errors: "",
 };
 
-const userSlice = createSlice({
-  name: "users",
+const orderSlice = createSlice({
+  name: "orders",
   initialState,
   reducers: {
-    populateUser(state, action) {
-      state.users = action.payload;
+    populateorder(state, action) {
+      state.orders = action.payload;
     },
-    selectUser(state, action) {
-      state.selectedUsers = action.payload;
+    selectorder(state, action) {
+      state.selectedorders = action.payload;
     },
-    unselectUser(state) {
-      state.selectedUsers = null;
+    unselectorder(state) {
+      state.selectedorders = null;
     },
 
-    updateUser: (state, action) => {
+    updateorder: (state, action) => {
       const payload = action.payload;
-      const index = state.users.findIndex((item) => item._id === payload._id);
+      const index = state.orders.findIndex((item) => item._id === payload._id);
       if (index !== -1) {
-        state.users[index] = payload;
+        state.orders[index] = payload;
       }
     },
-    addUser: (state, action) => {
+    addorder: (state, action) => {
       const payload = action.payload;
-      state.users.push(payload);
+      state.orders.push(payload);
     },
-    deleteUser: (state, action) => {
+    deleteorder: (state, action) => {
       const payload = action.payload;
-      const index = state.users.findIndex((item) => item._id === payload);
+      const index = state.orders.findIndex((item) => item._id === payload);
       if (index !== -1) {
-        state.users.splice(index, 1);
+        state.orders.splice(index, 1);
       }
     },
     setErrors(state, action) {
@@ -45,31 +45,31 @@ const userSlice = createSlice({
   },
 });
 
-export const fetchUsers = () => async (dispatch) => {
-  const [res, error] = await queryApi("user/getAll");
+export const fetchorders = () => async (dispatch) => {
+  const [res, error] = await queryApi("order/getOrders");
 
   if (error) {
     dispatch(setErrors(error));
   } else {
-    dispatch(populateUser(res));
+    dispatch(populateorder(res));
   }
 };
 
-export const selectUsers = (state) => {
-  return [state.userSlice.users, state.userSlice.errors];
+export const selectorders = (state) => {
+  return [state.orderSlice.orders, state.orderSlice.errors];
 };
 
-export const selectSelectedUsers = (state) => {
-  return state.userSlice.selectedUsers;
+export const selectSelectedorders = (state) => {
+  return state.orderSlice.selectedorders;
 };
 export const {
-  populateUser,
-  addUser,
-  deleteUser,
-  selectUser,
-  updateUser,
-  unselectUser,
+  populateorder,
+  addorder,
+  deleteorder,
+  selectorder,
+  updateorder,
+  unselectorder,
   setErrors,
-} = userSlice.actions;
+} = orderSlice.actions;
 
-export default userSlice.reducer;
+export default orderSlice.reducer;
