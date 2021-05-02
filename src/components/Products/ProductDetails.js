@@ -148,6 +148,8 @@ class ProductDetails extends Component {
       "payment/payment",
       {
         price: this.state.prodDetail.productPrice,
+        user_id: this.us._id,
+        product_id: this.props.match.params.id,
       },
       "POST"
     );
