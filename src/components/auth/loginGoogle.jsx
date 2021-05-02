@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 const LoginGoogle = (props) => {
   const dispatch = useDispatch();
 
-  console.log("hi login google");
+  console.log("hi login google auth");
   console.log(props.match.params.token);
   if (props.match.params.token) {
     localStorage.setItem("jwt", props.match.params.token);
