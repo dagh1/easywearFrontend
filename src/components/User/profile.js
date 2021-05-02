@@ -11,7 +11,7 @@ import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
 import FindArticle from "./findarticle";
 
-const Profile = () => {
+const Profile = (props) => {
   /*  const user = useContext(UserContext);
    */
   const dispatch = useDispatch();
@@ -29,6 +29,8 @@ const Profile = () => {
     if (user) {
       dispatch(addUser(user));
       dispatch(fetchPosts(user._id));
+    } else {
+      props.history.push("/auth/login");
     }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
@@ -60,8 +62,9 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
-
-                    <img src={user.image_url} className="rounded-circle" />
+                    {user && (
+                      <img src={user.image_url} className="rounded-circle" />
+                    )}
 
                     <h3>
                       {user?.first_name}_{user?.last_name}

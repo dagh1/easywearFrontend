@@ -92,6 +92,24 @@ const LoginForm = () => {
     data[e.currentTarget.name] = e.currentTarget.value;
     setInfo({ data, errors });
   }
+  async function handleSignIn() {
+    console.log("sign in");
+    const [res, err] = await queryApi("user/auth/google/url", {}, "GET");
+    if (res.hasOwnProperty("error")) {
+      console.log("errrrror");
+      setError({
+        visible: true,
+        message: res["error"],
+      });
+    } else {
+      console.log("url res");
+      console.log(res);
+      window.location = res;
+    }
+  }
+  function handleSignup() {
+    console.log("sign up");
+  }
 
   return (
     <React.Fragment>
@@ -168,13 +186,26 @@ const LoginForm = () => {
                       <strong>{error.message}</strong>
                     </div>
                   )}
-                  <button
-                    type="submit"
-                    disabled={validate()}
-                    className="btn btn-solid"
-                  >
-                    Login
-                  </button>
+                  <div>
+                    {" "}
+                    <button
+                      type="submit"
+                      disabled={validate()}
+                      className="btn btn-solid col-3"
+                    >
+                      Login
+                    </button>
+                    <a
+                      className="btn  btn-outline offset-3"
+                      style={{
+                        boxShadow: " 0 1px 2px 1px #ddd",
+                      }}
+                      onClick={handleSignIn}
+                    >
+                      <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
+                      Sign in Using Google
+                    </a>
+                  </div>
                 </form>
               </div>
             </div>
@@ -187,13 +218,30 @@ const LoginForm = () => {
                   and easy. It allows you to be able to order from our shop. To
                   start shopping click register.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => history.push("/auth/register")}
-                  className="btn btn-solid"
-                >
-                  Create an Account
-                </button>
+                <div>
+                  <button
+                    type="button"
+                    style={{
+                      width: "250px",
+                    }}
+                    onClick={() => history.push("/auth/register")}
+                    className="btn btn-solid offset-3"
+                  >
+                    Create an Account
+                  </button>
+                  <p className="text-center">OR</p>
+                  <a
+                    className="btn  btn-outline offset-3"
+                    style={{
+                      boxShadow: " 0 1px 2px 1px #ddd",
+                      width: "250px",
+                    }}
+                    onClick={handleSignup}
+                  >
+                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
+                    Signup Using Google
+                  </a>
+                </div>
               </div>
             </div>
           </div>

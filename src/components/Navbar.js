@@ -42,17 +42,17 @@ const Navbar = () => {
                     <ul className="onhover-show-div">
                       {!user && (
                         <li>
-                          <Link to="auth/login">Login</Link>
+                          <Link to="/auth/login">Login</Link>
                         </li>
                       )}{" "}
                       {!user && (
                         <li>
-                          <Link to="auth/register">Register</Link>
+                          <Link to="/auth/register">Register</Link>
                         </li>
                       )}
                       {user && (
                         <li>
-                          <Link to="user/userProfile">Profile</Link>
+                          <Link to="/user/userProfile">Profile</Link>
                         </li>
                       )}
                       {user && (

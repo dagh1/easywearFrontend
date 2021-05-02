@@ -1,20 +1,35 @@
 import React, { Component } from "react";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../redux/slices/userSlice";
 import { Helmet } from "react-helmet";
-import { NavLink, Link } from "react-router-dom";
 
-const EmailVerified = () => {
+const RegisterGoogle = (props) => {
+  const dispatch = useDispatch();
+
+  console.log("hi sign up google");
+  console.log(props.match.params.token);
+  if (props.match.params.token) {
+    localStorage.setItem("jwt", props.match.params.token);
+    dispatch(addUser(jwtDecode(props.match.params.token)));
+    if (jwtDecode(props.match.params.token).role === "user") {
+      window.location = "/user/profile";
+    } else {
+      window.location = "/UsersBack";
+    }
+  }
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Email Verified</title>
+        <title>Creating new account</title>
       </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
           <div className="row">
             <div className="col-sm-6">
               <div className="page-title">
-                <h2>Email verified</h2>
+                <h2>Sign Up</h2>
               </div>
             </div>
             <div className="col-sm-6">
@@ -24,7 +39,7 @@ const EmailVerified = () => {
                     <a href="index.html">Home</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
-                    Email verified
+                    Creating a new account
                   </li>
                 </ol>
               </nav>
@@ -46,13 +61,7 @@ const EmailVerified = () => {
             </div>
             <div className="col-sm-12">
               <br></br>
-              <h4>
-                Email verified and account is activated you can now{" "}
-                <Link className="navbar-brand" to="/auth/login">
-                  login
-                </Link>
-                .
-              </h4>
+              <h4 className="text-center">Creating a new account</h4>
             </div>
           </div>
         </div>
@@ -61,4 +70,4 @@ const EmailVerified = () => {
   );
 };
 
-export default EmailVerified;
+export default RegisterGoogle;
