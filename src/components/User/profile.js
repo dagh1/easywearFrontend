@@ -9,6 +9,7 @@ import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
+import FindArticle from "./findarticle";
 
 const Profile = () => {
   /*  const user = useContext(UserContext);
@@ -59,12 +60,13 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
-                    <img
-                      src="/assets/images/logos/17.png"
-                      className="img-fluid"
-                    />
 
-                    {/* <h3>{user?.username}</h3> */}
+                    <img src={user.image_url} className="rounded-circle" />
+
+                    <h3>
+                      {user?.first_name}_{user?.last_name}
+                    </h3>
+
                     <div className="rating">
                       <i className="fa fa-star" />
                       <i className="fa fa-star" />
@@ -154,7 +156,7 @@ const Profile = () => {
                       <NavLink
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
-                        to="/user/profile/ProfileDetails"
+                        to="/user/userProfile"
                       >
                         My Account
                       </NavLink>
@@ -176,6 +178,16 @@ const Profile = () => {
                         or
                       >
                         My Claims ({claims.length})
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className="active"
+                        activeStyle={{ color: "#ff4c3b" }}
+                        to="/user/profile/suggestions"
+                        or
+                      >
+                        Suggestions
                       </NavLink>
                     </li>
                     <li>
@@ -225,6 +237,11 @@ const Profile = () => {
                 <Route
                   path="/user/profile/posts"
                   render={(props) => <UserPosts {...props} />}
+                />
+                <Route
+                  path="/user/profile/suggestions"
+                  or
+                  component={FindArticle}
                 />
               </Switch>
             </div>

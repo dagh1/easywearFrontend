@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addComment } from "../../redux/slices/commentSlice";
 import { setErrors } from "../../redux/slices/postSlice";
 import { queryApi } from "../../utils/queryApi";
 import { useHistory } from "react-router";
+import jwtDecode from "jwt-decode";
 
 const CommentForm = ({ postId }) => {
   const dispatch = useDispatch();
+  const [userWhoPosted, setUserWhoPosted] = useState(null);
+  const [connectedUSer, setConnectedUser] = useState();
+  const jwtToken = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    if (jwtToken) {
+      // Set auth token header auth
+      setConnectedUser(jwtDecode(jwtToken)); // Decode token and get user info and exp
+    }
+  }, []);
   const [formContent, setFormContent] = useState({
     description: "",
   });
@@ -14,7 +25,7 @@ const CommentForm = ({ postId }) => {
     setFormContent({
       description: content,
       post_id: postId,
-      user_id: "7041f2fe9dbc16c1758d7a9a",
+      user_id: connectedUSer._id,
     });
   };
   const handleSubmit = async (event) => {

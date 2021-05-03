@@ -10,7 +10,16 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { UserContext } from "../../contexts/userContext";
+import jwtDecode from "jwt-decode";
+
 const AddClaim = () => {
+  let user;
+  const jwtToken = localStorage.getItem("jwt");
+  console.log(jwtToken);
+  if (jwtToken) {
+    // Set auth token header auth
+    user = jwtDecode(jwtToken); // Decode token and get user info and exp
+  }
   const yupSchema = Yup.object({
     description: Yup.string()
       .min(3, "Minimum 3 caractéres")
@@ -22,7 +31,7 @@ const AddClaim = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [error, setError] = useState({ visible: false, message: "" });
-  const [user, setUser] = useContext(UserContext);
+  // const [user, setUser] = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
       type: "comment",

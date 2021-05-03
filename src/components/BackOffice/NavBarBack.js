@@ -168,6 +168,7 @@ const NavbarBack = () => {
                 </li>
                 <li className="onhover-dropdown">
                   <div className="media align-items-center">
+
                     {user && (
                       <img
                         className="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded"
@@ -175,6 +176,7 @@ const NavbarBack = () => {
                         alt="header-user"
                       />
                     )}
+
                     <div className="dotted-animation">
                       <span className="animate-circle" />
                       <span className="main-circle" />

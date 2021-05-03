@@ -31,10 +31,14 @@ import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
 import BodyDetection from "./components/3D/bodyDetection";  
 
+import ProductLists from "./components/Products/ProductsLists1";
 import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
+import ProductDetails from "./components/Products/ProductDetails";
+import UserProfile from "./components/User/userprofile";
+import GetSize from "./components/3D/size";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -48,8 +52,6 @@ function App() {
     }
   }, []);
   function handleLoggedIn(user) {
-    console.log("handlelogin");
-    console.log(user);
     setConnectedUser(user);
   }
   console.log(connectedUser);
@@ -92,6 +94,7 @@ function App() {
                 <Switch>
                   <Route path="/auth/login" component={LoginForm} />
                   <Route path="/auth/register" component={RegisterForm} />
+                  <Route path="/user/userProfile" component={UserProfile} />
                   <Route
                     path="/user/editprofile/:id"
                     component={EditProfileForm}
@@ -100,9 +103,15 @@ function App() {
                   <Route path="/contact" component={Contact} />
                   <Route path="/user/profile" component={Profile} />
                   <Route path="/Products" component={ProductLists} />
+                  <Route
+                    path="/ProductDetails/:id"
+                    component={ProductDetails}
+                  />
+                  <Route path="/GetSize" component={GetSize} />
                   <Route path="/3D" component={BodyDetection} />
-                  <Route path="/event/addPost" component={AddPostForm} />
+                  <Route path="/event/addPost/:id" component={AddPostForm} />
                   <Route path="/event/post/:id" component={PostDetails} />
+                  <Route path="/3D/:imgurl" component={BodyDetection} />
 
                   <Route
                     path="/event/updatePost/:id"

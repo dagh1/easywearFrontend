@@ -1,5 +1,4 @@
 import React, { Component, useRef, useEffect } from "react";
-
 import * as tf from "@tensorflow/tfjs";
 import * as THREE from "three";
 import * as bodyPix from "@tensorflow-models/body-pix";
@@ -8,13 +7,22 @@ import { ObjectLoader } from "three";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-
 /* var objj = require("./common/BaggyT.obj");
 var mtll = require("./common/BaggyT.mtl"); */
-const Test = () => {
+const Test = (props) => {
   var camera;
   var renderer;
   var scene;
+  var rotat = Math.PI;
+  var img;
+  if (!props.imglink) {
+    console.log("img not defined");
+    img =
+      "https://e7.pngegg.com/pngimages/616/117/png-clipart-t-shirt-yellow-clothing-fruit-of-the-loom-color-t-shirt-tshirt-angle.png";
+  } else {
+    img = props.imglink;
+  }
+  //
   const cubeRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +34,7 @@ const Test = () => {
   }, []);
 
   var width = 1000;
-  var height = 700;
+  var height = 1000;
   camera = new THREE.PerspectiveCamera(60, width / height, 1, 2100);
   camera.position.z = 115;
 
@@ -76,39 +84,65 @@ const Test = () => {
   manager.onError = function (url) {
     console.log("There was an error loading " + url);
   };
+
+  var textureLoader = new THREE.TextureLoader(manager);
+  var map = textureLoader.load(img);
+  var material = new THREE.MeshPhongMaterial({ map: map });
   var mtlLoader = new MTLLoader(manager);
   mtlLoader.load(
     "https://raw.githubusercontent.com/AlouiOmar/movie/master/static/assets/BaggyT.mtl",
     (materials) => {
       materials.preload();
-
       var objLoader = new OBJLoader(manager);
       objLoader.setMaterials(materials);
       objLoader.load(
         "https://raw.githubusercontent.com/AlouiOmar/movie/master/static/assets/BaggyT.obj",
         (object) => {
+          object.traverse(function (node) {
+            if (node.isMesh) node.material = material;
+          });
           group = object.clone();
+          group.traverse(function (node) {
+            if (node.isMesh) node.material = material;
+          });
           var box = new THREE.Box3().setFromObject(group);
           var center = new THREE.Vector3();
           box.getCenter(center);
           group.name = "Baggy T";
           group.position.sub(center); // center the model
-          group.rotation.y = Math.PI; // rotate the model
+          group.rotation.y = rotat; // rotate the model
+          // group.rotation.x = Math.PI;
           //image
           //var group = scene.getObjectByName("Baggy T");
-          new THREE.TextureLoader(manager).load(
-            "https://static.zara.net/photos///2021/V/0/2/p/4566/403/500/2/w/356/4566403500_6_1_1.jpg?ts=1613408239921",
+          /*  console.log("obj material");
+          console.log(group.name);
+          console.log(group);
+          new THREE.TextureLoader().load(
+            "https://gmedia.playstation.com/is/image/SIEPDC/red-dead-redemptipn-2-red-section-background-desktop-01-en-28jul20?$native$",
             function onLoad(texture) {
               var material = new THREE.MeshBasicMaterial({
                 map: texture,
                 side: THREE.DoubleSide,
               });
               group.material = material;
+              scene.add(group);
             }
+          ); */
+          /*  var texture = new THREE.TextureLoader().load(
+            "https://gmedia.playstation.com/is/image/SIEPDC/red-dead-redemptipn-2-red-section-background-desktop-01-en-28jul20?$native$"
           );
 
-          //fin image
+          group.traverse(function (child) {
+            // aka setTexture
+            if (child instanceof THREE.Mesh) {
+              console.log("child##");
+              child.material.map = texture;
+            }
+          }); */
           scene.add(group);
+
+          //fin image
+
           //this.setUpLines();
           animate();
         }
@@ -130,7 +164,96 @@ const Test = () => {
     renderer.clearDepth();
   };
   animate();
-  return <div ref={cubeRef} />;
+
+  function handleClick(im) {
+    console.log("hi");
+    console.log(props.imglink);
+    if (!props.imglink) {
+      console.log("img not defined");
+    }
+    rotat += 2;
+    console.log(rotat);
+    scene.remove.apply(scene, scene.children);
+    var textureLoader = new THREE.TextureLoader(manager);
+    var map = textureLoader.load(im);
+    var material = new THREE.MeshPhongMaterial({ map: map });
+    var mtlLoader = new MTLLoader(manager);
+    mtlLoader.load(
+      "https://raw.githubusercontent.com/AlouiOmar/movie/master/static/assets/BaggyT.mtl",
+      (materials) => {
+        materials.preload();
+        var objLoader = new OBJLoader(manager);
+        objLoader.setMaterials(materials);
+        objLoader.load(
+          "https://raw.githubusercontent.com/AlouiOmar/movie/master/static/assets/BaggyT.obj",
+          (object) => {
+            object.traverse(function (node) {
+              if (node.isMesh) node.material = material;
+            });
+            group = object.clone();
+            group.traverse(function (node) {
+              if (node.isMesh) node.material = material;
+            });
+            var box = new THREE.Box3().setFromObject(group);
+            var center = new THREE.Vector3();
+            box.getCenter(center);
+            group.name = "Baggy T";
+            group.position.sub(center); // center the model
+            group.rotation.y = rotat; // rotate the model
+            // group.rotation.x = Math.PI;
+            //image
+            //var group = scene.getObjectByName("Baggy T");
+            /*  console.log("obj material");
+          console.log(group.name);
+          console.log(group);
+          new THREE.TextureLoader().load(
+            "https://gmedia.playstation.com/is/image/SIEPDC/red-dead-redemptipn-2-red-section-background-desktop-01-en-28jul20?$native$",
+            function onLoad(texture) {
+              var material = new THREE.MeshBasicMaterial({
+                map: texture,
+                side: THREE.DoubleSide,
+              });
+              group.material = material;
+              scene.add(group);
+            }
+          ); */
+            /*  var texture = new THREE.TextureLoader().load(
+            "https://gmedia.playstation.com/is/image/SIEPDC/red-dead-redemptipn-2-red-section-background-desktop-01-en-28jul20?$native$"
+          );
+
+          group.traverse(function (child) {
+            // aka setTexture
+            if (child instanceof THREE.Mesh) {
+              console.log("child##");
+              child.material.map = texture;
+            }
+          }); */
+            scene.add(group);
+
+            //fin image
+
+            //this.setUpLines();
+            animate();
+          }
+        );
+      }
+    );
+  }
+  return (
+    <>
+      <div ref={cubeRef} />
+      <input type="text"></input>
+      <button
+        onClick={() =>
+          handleClick(
+            "https://gmedia.playstation.com/is/image/SIEPDC/red-dead-redemptipn-2-red-section-background-desktop-01-en-28jul20?$native$"
+          )
+        }
+      >
+        click
+      </button>
+    </>
+  );
 };
 
 export default Test;

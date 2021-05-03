@@ -8,7 +8,7 @@ import { addUser } from "../../redux/slices/userSlice";
 import { UserContext } from "../../contexts/userContext";
 import { Helmet } from "react-helmet";
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const [error, setError] = useState({ visible: false, message: "" });
   const history = useHistory();
   const dispatch = useDispatch();
@@ -40,8 +40,8 @@ const RegisterForm = () => {
     password: Joi.string().min(8).required().label("Password"),
     date_naissance: Joi.date().required().label("Birthday"),
     numero_tel: Joi.string().min(8).max(8).allow("").label("Phone Number"),
-    alergie: Joi.string().required().label("Allergy"),
-    fav_color: Joi.string().required().label("Favorite Color"),
+    alergie: Joi.string().allow("").label("Allergy"),
+    fav_color: Joi.string().allow("").label("Favorite Color"),
     height: Joi.number().min(1).max(3).allow("").label("Height"),
     weight: Joi.number().min(1).max(300).allow("").label("Weight"),
     gender: Joi.string().required().label("Gender"),
@@ -89,10 +89,11 @@ const RegisterForm = () => {
         message: res["error"],
       });
     } else {
-      currentUser.onLoggedIn(jwtDecode(res));
+      /*  currentUser.onLoggedIn(jwtDecode(res));
       localStorage.setItem("jwt", res);
-      dispatch(addUser(jwtDecode(res)));
-      window.location = "/user/profile";
+      dispatch(addUser(jwtDecode(res))); */
+      //window.location = "/user/profile";
+      props.history.push("/checkEmail");
     }
   }
   function handleChange(e) {

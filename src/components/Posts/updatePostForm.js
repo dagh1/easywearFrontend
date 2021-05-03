@@ -24,6 +24,7 @@ const UpdatePostForm = () => {
     initialValues: {
       title: selectedPost.title,
       description: selectedPost.description,
+      image_url: selectedPost.image_url,
     },
     validationSchema: yupObject,
     onSubmit: async (values) => {
@@ -56,19 +57,19 @@ const UpdatePostForm = () => {
   };
   return (
     <>
-      <div className='AddPostForm login-page section-b-space mt-5'>
-        <div className='col-lg-6'>
+      <div className="AddPostForm login-page section-b-space mt-5">
+        <div className="col-lg-6">
           <h3>Share a new Post to (event)</h3>
-          <div className='theme-card'>
-            <form className='theme-form' onSubmit={formik.handleSubmit}>
-              <div className='form-group'>
-                <label htmlFor='title'>Title</label>
+          <div className="theme-card">
+            <form className="theme-form" onSubmit={formik.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="title">Title</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  name='title'
-                  id='title'
-                  placeholder='Title'
+                  type="text"
+                  className="form-control"
+                  name="title"
+                  id="title"
+                  placeholder="Title"
                   onChange={formik.handleChange}
                   value={formik.values.title}
                 />
@@ -77,14 +78,14 @@ const UpdatePostForm = () => {
                 )}
               </div>
 
-              <div className='form-group'>
-                <label htmlFor='description'>description</label>
+              <div className="form-group">
+                <label htmlFor="description">description</label>
                 <textarea
-                  type='text'
-                  className='form-control'
-                  id='description'
-                  name='description'
-                  placeholder='description'
+                  type="text"
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  placeholder="description"
                   onChange={formik.handleChange}
                   value={formik.values.description}
                 />
@@ -92,14 +93,14 @@ const UpdatePostForm = () => {
                   <span>{formik.errors.description}</span>
                 )}
               </div>
-              <div className='form-group'>
-                <label htmlFor='image'>image</label>
+              <div className="form-group">
+                <label htmlFor="image">image</label>
                 <input
-                  type='file'
-                  className='form-control'
-                  name='image_url'
-                  id='image_url'
-                  placeholder='Image'
+                  type="file"
+                  className="form-control"
+                  name="image_url"
+                  id="image_url"
+                  placeholder="Image"
                   onChange={(event) => {
                     formik.setFieldValue("image_url", event.target.files[0]);
                     previewFile(event.target.files[0]);
@@ -107,24 +108,24 @@ const UpdatePostForm = () => {
                 />
                 <img
                   src={previewSource}
-                  width='150'
-                  height='150'
+                  width="150"
+                  height="150"
                   style={{ "border-radius": "50%" }}
                 />
               </div>
 
               <button
                 disabled={formik.isSubmitting}
-                type='submit'
-                className='btn btn-solid'
+                type="submit"
+                className="btn btn-solid"
               >
                 {!loader ? (
                   "Update"
                 ) : (
                   <span
-                    className='spinner-border spinner-border-sm'
-                    role='status'
-                    aria-hidden='true'
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
                   />
                 )}
               </button>

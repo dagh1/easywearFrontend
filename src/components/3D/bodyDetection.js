@@ -4,8 +4,16 @@ import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 import Test from "./test";
 
-function BodyDetection() {
+function BodyDetection(props) {
   // const canvas = document.querySelector("canvas");
+  var img;
+  if (!props.location.imagelink) {
+    console.log("img not defined");
+    img =
+      "https://e7.pngegg.com/pngimages/616/117/png-clipart-t-shirt-yellow-clothing-fruit-of-the-loom-color-t-shirt-tshirt-angle.png";
+  } else {
+    img = props.location.imagelink;
+  }
   const webcamRef = useRef(null);
 
   const imageRef = useRef(null);
@@ -13,6 +21,12 @@ function BodyDetection() {
   // const ctx = canvas?.getContext("2d");
 
   const runBodysegment = async () => {
+    /*  console.log("bodydetect");
+    if (!props.location.imagelink) {
+      console.log("not defined");
+    }
+    console.log(props.location.imagelink);
+    console.log("fin img"); */
     const net = await bodyPix.load({
       architecture: "ResNet50",
       outputStride: 32,
@@ -59,9 +73,11 @@ function BodyDetection() {
         );
 
         const image = imageRef.current;
-        image.style.top = y + "px";
-        image.style.left = x + "px";
-        image.style.width = widthx + "px";
+        if (image) {
+          image.style.top = y - 70 + "px";
+          image.style.left = x - 220 + "px";
+          image.style.width = widthx + "px";
+        }
 
         // console.log(image.style.top);
       }
@@ -72,23 +88,11 @@ function BodyDetection() {
 
   return (
     <>
-      <div
-        id="cu"
-        ref={imageRef}
-        style={{
-          position: "absolute",
-
-          width: 50,
-          height: 40,
-        }}
-      >
-        aa
-        <Test />
-      </div>
-      <Webcam
-        ref={webcamRef}
-        style={{
-          marginLeft: "0",
+      <div className="container">
+        <Webcam
+          ref={webcamRef}
+          /* style={{
+          marginLeft: "33%",
           marginRight: "auto",
           left: 0,
           right: 0,
@@ -96,9 +100,22 @@ function BodyDetection() {
           zindex: 9,
           width: 640,
           height: 480,
-        }}
-      />
+        }} */
+        />
+        <div
+          id="cu"
+          ref={imageRef}
+          style={{
+            position: "absolute",
 
+            width: 50,
+            height: 40,
+          }}
+        >
+          aa
+          <Test imglink={img} />
+        </div>
+      </div>
       {/*   <img
         ref={imageRef}
         src="https://webglfundamentals.org/webgl/resources/keyboard.jpg"
