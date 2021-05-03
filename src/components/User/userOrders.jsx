@@ -1,114 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import * as Icon from "react-feather";
-import { formatDate } from "../../helpers/dateConvert";
-import Modal from "react-bootstrap/Modal";
-import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
+import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
-import {
-  selectOrders,
-  addOrder,
-  deleteOrder,
-  setErrors,
-  selectOrder,
-  fetchOrders,
-  selectSelectedOrders,
-  updateOrder,
-  unselectOrder,
-} from "../../redux/slices/orderSlice";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { queryApi } from "../../utils/queryApi";
-import { useDispatch } from "react-redux";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import styled from "styled-components";
-import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
+import { selectPosts } from "../../redux/slices/postSlice";
+import Posts from "../Posts/posts";
 
 const UserOrders = () => {
-  const { id } = useParams();
-  const history = useHistory();
-  const [show, setShow] = useState(false);
-
-  const selectedOrder = useSelector(selectSelectedOrders);
-
-  const [posts, err] = useSelector(selectOrders);
-
-  const dispatch = useDispatch();
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    dispatch(fetchOrders());
-  }, []);
-  const deleteOrderEvent = async (id) => {
-    const [res, err] = await queryApi("order/delete/" + id, {}, "DELETE");
-    if (err) {
-      dispatch(setErrors(err));
-      console.log(err);
-    } else {
-      dispatch(deleteOrder(id));
-      dispatch(fetchOrders());
-    }
-  };
-
-  const FindOneOrderEvent = async (prod) => {
-    handleShow();
-    dispatch(selectOrder(prod));
-  };
-  const [orderState, setorderState] = useState(selectedOrder);
-
-  const handleSubmit1 = async (evt) => {
-    evt.preventDefault();
-
-    const [res, err] = await queryApi(
-      "order/validateOrder/" + selectedOrder._id,
-      { state: Number(orderState) },
-      "PUT"
-    );
-    if (err) {
-      dispatch(setErrors(err));
-      console.log(err);
-    } else {
-      dispatch(updateOrder(res));
-      dispatch(unselectOrder());
-
-      dispatch(fetchOrders());
-      handleClose();
-    }
-  };
-  const openConfirmation = async (order) => {
-    if (window.confirm("are you sure you want to delete?") === true) {
-      console.log("delete");
-      console.log(order);
-      deleteOrderEvent(order._id);
-    }
-  };
+  const [posts, err] = useSelector(selectPosts);
   //pagination variables
   const [pageNumber, setPageNumber] = useState(0);
-  const ordersperPage = 4;
-  const pageVisited = pageNumber * ordersperPage;
-  const displayedOrders = posts.slice(pageVisited, pageVisited + ordersperPage);
-  const pageCount = Math.ceil(posts.length / ordersperPage);
-
+  const postsPerPage = 8;
+  const pageVisited = pageNumber * postsPerPage;
+  const displayedPosts = posts.slice(pageVisited, pageVisited + postsPerPage);
+  const pageCount = Math.ceil(posts.length / postsPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
+  //Search
   const [search, setsearch] = useState(null);
 
   const searchSpace = async (event) => {
     let keyword = event.target.value;
     setsearch(keyword);
   };
-  const items = displayedOrders.filter((data) => {
-    if (search == null) return data;
-    else if (
-      data.first_name.toLowerCase().includes(search.toLowerCase()) ||
-      data.last_name.toLowerCase().includes(search.toLowerCase()) ||
-      data.email.toLowerCase().includes(search.toLowerCase()) ||
-      data.role.toLowerCase().includes(search.toLowerCase())
-    ) {
+  const items = displayedPosts.filter((data) => {
+    if (search === null) return data;
+    else if (data.title.toLowerCase().includes(search.toLowerCase())) {
       return data;
     }
   });
@@ -138,7 +55,15 @@ const UserOrders = () => {
               <div className="product-wrapper-grid">
                 <div className="row">
                   {/* HERE POSTS*/}
-                  hahah
+
+                  {posts.length === 0 && (
+                    <span className="alert alert-danger">
+                      No posts to display
+                    </span>
+                  )}
+                  {items?.map((post, index) => {
+                    return <Posts post={post} key={index} />;
+                  })}
                 </div>
                 {pageCount > 1 ? (
                   <ReactPaginate
@@ -163,4 +88,5 @@ const UserOrders = () => {
     </>
   );
 };
+
 export default UserOrders;

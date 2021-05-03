@@ -36,7 +36,6 @@ import Load from "./components/load";
 import BodyDetection from "./components/3D/bodyDetection";
 import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
-import UserOrders from "./components/User/userOrders";
 import GetSize from "./components/3D/size";
 import LoginGoogle from "./components/auth/loginGoogle";
 import RegisterGoogle from "./components/auth/registerGoogle";
@@ -104,7 +103,6 @@ function App() {
                   />
                   <Route path="/auth/register" component={RegisterForm} />
                   <Route path="/user/userProfile" component={UserProfile} />
-                  <Route path="/user/orders" component={UserOrders} />
                   <Route
                     path="/user/editprofile/:id"
                     component={EditProfileForm}

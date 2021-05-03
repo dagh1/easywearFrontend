@@ -11,6 +11,7 @@ import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
 import { selectOrders } from "../../redux/slices/orderSlice";
 import FindArticle from "./findarticle";
+import UserOrders from "./userOrders";
 
 const Profile = (props) => {
   /*  const user = useContext(UserContext);
@@ -189,7 +190,7 @@ const Profile = (props) => {
                       <NavLink
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
-                        to="/user/orders"
+                        to="/user/profile/orders"
                         or
                       >
                         My Orders ({orders.length})
@@ -258,6 +259,7 @@ const Profile = (props) => {
                   or
                   component={FindArticle}
                 />
+                <Route path="/user/profile/orders" or component={UserOrders} />
               </Switch>
             </div>
           </div>
