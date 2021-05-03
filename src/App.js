@@ -31,7 +31,7 @@ import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
 import BodyDetection from "./components/3D/bodyDetection";  
 
-import ProductLists from "./components/Products/ProductsLists1";
+//import ProductLists from "./components/Products/ProductsLists1";
 import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
@@ -39,6 +39,7 @@ import Load from "./components/load";
 import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
 import GetSize from "./components/3D/size";
+import chatBot from "./components/Chatbot/chatBot";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -122,6 +123,7 @@ function App() {
                     path="/eventDetails/:eventId"
                     component={eventWithId}
                   />
+                  <Route path="/chatbot" component={chatBot} />
                   <Route exact to="/" component={Home} />
                 </Switch>
                 <Footer />
