@@ -23,25 +23,18 @@ import PostDetails from "./components/Posts/postDetails";
 import { UserContext } from "./contexts/userContext";
 import HomeEvent from "./components/Events/homeEvent";
 import eventWithId from "./components/Events/eventWithId";
-<<<<<<< HEAD
-=======
 import jwtDecode from "jwt-decode";
 
->>>>>>> main
 import LoginForm from "./components/auth/loginForm";
 import RegisterForm from "./components/auth/registerForm";
 import EditProfileForm from "./components/User/editProfileForm";
 import ProductLists from "./components/Products/ProductsLists";
-<<<<<<< HEAD
 import BodyDetection from "./components/3D/bodyDetection";  
-function App() {
-=======
+
 import UserBack from "./components/BackOffice/UsersBack";
 import EditUserForm from "./components/BackOffice/EditUserForm";
 import AddUserForm from "./components/BackOffice/AddUserForm";
 import Load from "./components/load";
-import BodyDetection from "./components/3D/bodyDetection";
->>>>>>> main
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
