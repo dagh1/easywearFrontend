@@ -78,11 +78,10 @@ const Events = () => {
             <br/>
             </div>
             
-            <div style={{ marginTop: '10px'}}>
+            <div style={{ marginTop: '10px' , marginLeft: '15px' }} >
             <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Picture</th>
                             <th scope="col">Event Name</th>
                             <th scope="col">Date Debut</th>
@@ -92,11 +91,18 @@ const Events = () => {
                           </tr>
                         </thead>
                         <tbody>
-                        { events.map((event) => 
+                        { events.map((event, index) => 
                            (
-                          <tr>
-                            <th scope="row">{event.id}</th>
-                            <td>{event.image_url}</td>
+                          <tr key={index}>
+                            <td>
+                              <div className="d-flex">
+                                  <img
+                                    src={event.image_url}
+                                    alt="img"
+                                    className="img-fluid img-30 me-2 blur-up lazyloaded"
+                                  />
+                                </div>
+                            </td>
                             <td>{event.eventName}</td>
                             <td>{new Intl.DateTimeFormat("en-US", {
                                     year: "numeric",

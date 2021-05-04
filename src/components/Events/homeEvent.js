@@ -74,9 +74,6 @@ class HomeEvent extends Component {
                     <h4>Recent Events</h4>
                     {list_recent_events}
                   </div>
-                  <div class='theme-card'>
-                    <h4>Popular Events</h4>
-                  </div>
                 </div>
               </div>
               <div class='col-xl-9 col-lg-8 col-md-7 order-sec'>
