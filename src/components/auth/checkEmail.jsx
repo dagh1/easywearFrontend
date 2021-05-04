@@ -2,6 +2,10 @@ import React, { Component } from "react";
 const CheckEmail = () => {
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Check Email</title>
+      </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
           <div className="row">

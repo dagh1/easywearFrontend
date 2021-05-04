@@ -34,12 +34,20 @@ const UserProfile = (props) => {
   }
   useEffect(() => {
     async function fetchUser() {
-      const [res, err] = await queryApi("user/getUser/" + user._id, {}, "GET");
-      console.log("#### res ####");
-      console.log(res);
-      console.log("##########");
-      user = res;
-      setCurrentUser(res);
+      if (user) {
+        const [res, err] = await queryApi(
+          "user/getUser/" + user._id,
+          {},
+          "GET"
+        );
+        console.log("#### res ####");
+        console.log(res);
+        console.log("############");
+        user = res;
+        setCurrentUser(res);
+      } else {
+        props.history.push("/auth/login");
+      }
     }
 
     fetchUser();
@@ -51,7 +59,7 @@ const UserProfile = (props) => {
     <React.Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>USer profile</title>
+        <title>User profile</title>
       </Helmet>
       <div className="breadcrumb-section">
         <div className="container">
@@ -118,56 +126,71 @@ const UserProfile = (props) => {
                       {currentUser && (
                         <p className="mb-3">{currentUser.last_name}</p>
                       )}
-                      <hr />
-                      <h5 className="mb-3">Birthday</h5>
 
-                      {currentUser && (
-                        <p className="mb-3">
-                          {formatDate(currentUser.date_naissance)}
-                        </p>
-                      )}
-                      <hr />
-                      <h5 className="mb-3">Phone Number</h5>
-
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.numero_tel}</p>
-                      )}
-                      <hr />
-                      <h5 className="mb-3">Email</h5>
-
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.email}</p>
-                      )}
-                      <hr />
-                      <h5 className="mb-3">Allergies</h5>
-
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.alergie}</p>
-                      )}
-                      <hr />
-                      <h5 className="mb-3">Height</h5>
-
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.height}</p>
+                      {currentUser && currentUser.date_naissance && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Birthday</h5>
+                          <p className="mb-3">
+                            {formatDate(currentUser.date_naissance)}
+                          </p>
+                        </>
                       )}
 
-                      <hr />
-                      <h5 className="mb-3">Weight</h5>
-
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.weight}</p>
+                      {currentUser && currentUser.numero_tel && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Phone Number</h5>
+                          <p className="mb-3">{currentUser.numero_tel}</p>
+                        </>
                       )}
-                      <hr />
-                      <h5 className="mb-3">Favorite Color</h5>
 
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.fav_color}</p>
+                      {currentUser && currentUser.email && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Email</h5>
+                          <p className="mb-3">{currentUser.email}</p>
+                        </>
                       )}
-                      <hr />
-                      <h5 className="mb-3">Gender</h5>
 
-                      {currentUser && (
-                        <p className="mb-3">{currentUser.gender}</p>
+                      {currentUser && currentUser.alergie && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Allergies</h5>
+                          <p className="mb-3">{currentUser.alergie}</p>
+                        </>
+                      )}
+
+                      {currentUser && currentUser.height && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Height</h5>
+                          <p className="mb-3">{currentUser.height}</p>
+                        </>
+                      )}
+
+                      {currentUser && currentUser.weight && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Weight</h5>
+                          <p className="mb-3">{currentUser.weight}</p>
+                        </>
+                      )}
+
+                      {currentUser && currentUser.fav_color && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Favorite Color</h5>
+                          <p className="mb-3">{currentUser.fav_color}</p>
+                        </>
+                      )}
+
+                      {currentUser && currentUser.gender && (
+                        <>
+                          <hr />
+                          <h5 className="mb-3">Gender</h5>
+                          <p className="mb-3">{currentUser.gender}</p>
+                        </>
                       )}
                       <hr />
                     </div>
@@ -181,6 +204,16 @@ const UserProfile = (props) => {
                     In this tab you can{" "}
                     <strong>modify your profile information</strong>.
                   </div>
+                  {currentUser && !currentUser.date_naissance && (
+                    <div className="alert alert-warning alert-dismissable">
+                      <a className="panel-close close" data-dismiss="alert">
+                        ×
+                      </a>{" "}
+                      There are some missing information to compelete your
+                      profile,{" "}
+                      <strong>Please fill the missing information</strong>.
+                    </div>
+                  )}
                   <table className="table table-hover table-striped">
                     <tbody>
                       <tr>
@@ -195,12 +228,14 @@ const UserProfile = (props) => {
                       <tr>
                         <td>
                           <span className="float-right font-weight-bold"></span>{" "}
-                          <Link
-                            className="btn btn-primary"
-                            to={`/user/editprofile/${user._id}`}
-                          >
-                            Edit Profile
-                          </Link>
+                          {user && (
+                            <Link
+                              className="btn btn-primary"
+                              to={`/user/editprofile/${user._id}`}
+                            >
+                              Edit Profile
+                            </Link>
+                          )}
                         </td>
                       </tr>
                     </tbody>

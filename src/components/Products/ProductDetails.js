@@ -24,7 +24,9 @@ class ProductDetails extends Component {
   constructor(props) {
     super(props);
     const { products, actions } = props;
-
+    if (localStorage.getItem("jwt")) {
+      this.us = jwtDecode(localStorage.getItem("jwt"));
+    }
     actions.loadProducts();
 
     const prodDetail = props["products"].products.find(
@@ -146,6 +148,8 @@ class ProductDetails extends Component {
       "payment/payment",
       {
         price: this.state.prodDetail.productPrice,
+        user_id: this.us._id,
+        product_id: this.props.match.params.id,
       },
       "POST"
     );
@@ -455,22 +459,24 @@ class ProductDetails extends Component {
                           {/* <div className="border-product">
                             <div className="product-icon"></div>
                           </div> */}
-                          <div className="border-product">
-                            <h6 className="product-title">Payment</h6>
-                            <p>
-                              This product is available in our stock{" "}
-                              <button
-                                type="button"
-                                className="btn btn-secondary p-2"
-                                style={{
-                                  marginLeft: "53%",
-                                }}
-                                onClick={this.handlePayment}
-                              >
-                                Buy it
-                              </button>
-                            </p>
-                          </div>
+                          {this.us && (
+                            <div className="border-product">
+                              <h6 className="product-title">Payment</h6>
+                              <p>
+                                This product is available in our stock{" "}
+                                <button
+                                  type="button"
+                                  className="btn btn-secondary p-2"
+                                  style={{
+                                    marginLeft: "53%",
+                                  }}
+                                  onClick={this.handlePayment}
+                                >
+                                  Buy it
+                                </button>
+                              </p>
+                            </div>
+                          )}
 
                           <div className="border-product">
                             <h6 className="product-title">3D Fitting Room</h6>
