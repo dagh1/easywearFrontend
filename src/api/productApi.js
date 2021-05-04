@@ -34,3 +34,24 @@ export function getProductsbybrands(brands, name, price) {
 
   return fetch(baseUrl).then(handleResponse).catch(handleError);
 }
+
+
+
+export function SCRAPPINGProducts() {
+  const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/getUrl`;
+  return fetch(baseUrl , { method: "POST" })
+    .then(handleResponse)
+    .catch(handleError);
+}
+export function deleteProduct(courseId) {
+  const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/product/${courseId}`;
+  return fetch(baseUrl , { method: "DELETE" })
+    .then(handleResponse)
+    .catch(handleError);
+}
+export function deleteAllProduct(courseId) {
+  const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/product`;
+  return fetch(baseUrl , { method: "DELETE" })
+    .then(handleResponse)
+    .catch(handleError);
+}

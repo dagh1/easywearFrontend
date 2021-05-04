@@ -8,6 +8,7 @@ import SidebarProduct from "./SidebarProduct";
 //import "bootstrap/dist/css/bootstrap.css";
 import { ReactDOM } from "react-dom";
 import ListPagination from "./ListPagination";
+import { deleteProduct } from './../../api/productApi';
 
 class Productcard extends React.Component {
   render() {
@@ -15,32 +16,32 @@ class Productcard extends React.Component {
 
     return (
       <div className={this.props.layout}>
-        <div className=' product-box'>
-          <div className='img-wrapper' style={{ height: "320px" }}>
-            <div className='lable-block'></div>
-            <div className='front'>
+        <div className=" product-box">
+          <div className="img-wrapper" style={{ height: "320px" }}>
+            <div className="lable-block"></div>
+            <div className="front">
               <img
-                className='img-fluid blur-up bg-img lazyloaded'
+                className="img-fluid blur-up bg-img lazyloaded"
                 src={product.image_url}
               />
-              <div className='product-hover'>
+              <div className="product-hover">
                 <ul>
                   <li>
                     <Link to={`/3D/${product.image_url}`}>
-                      <button className='btn' type='button'></button>
+                      <button className="btn" type="button"></button>
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div className='product-detail'>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
+          <div className="product-detail">
+            <div className="rating">
+              <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
+              <i className="fa fa-star"></i>
             </div>
             <a>
               {" "}
@@ -51,8 +52,11 @@ class Productcard extends React.Component {
             </a>
             <h4>{product.productPrice} </h4>
             <Link to={"/productDetails/" + product.id}>Details</Link>
-
-            <a type='button' href={product.url} target='_blank'>
+            
+            <a type="button" onClick={this.props.onDeleteproduct(product.id)}>
+              deleteProduct
+            </a>
+            <a type="button" href={product.url} target="_blank">
               visit website
             </a>
           </div>
@@ -84,7 +88,7 @@ class Form extends React.Component {
   }
 }
 
-class ProductsBack extends React.Component {
+class ProductLists extends React.Component {
   state = {
     layout: "col-lg-2",
     brandfilter: [],
@@ -134,6 +138,14 @@ class ProductsBack extends React.Component {
     }
   };
 
+  handleDeleteProduct = async (product) => {
+   
+    try {
+      await this.props.actions.deleteProduct(product);
+    } catch (error) {
+       }
+  };
+
   loadbybrandsfilter = (brand) => {
     this.setState({ brandfilter: brand });
     console.log(brand);
@@ -149,7 +161,7 @@ class ProductsBack extends React.Component {
   render() {
     return (
       <>
-        <div className="breadcrumb-section">
+        <div className="breadcrumb-section" style={{ marginLeft: "250px" }}>
           <div className="container">
             <div className="row">
               <div className="col-sm-6">
@@ -179,12 +191,7 @@ class ProductsBack extends React.Component {
           <div className="collection-wrapper">
             <div className="container">
               <div className="row">
-                <div className="col-sm-3 collection-filter">
-                  <SidebarProduct
-                    brandload={this.loadbybrandsfilter}
-                    priceload={this.loadbyPrice}
-                  />
-                </div>
+                <div className="col-sm-2 collection-filter"></div>
                 <div className="collection-content col">
                   <div className="page-main-content">
                     <div className="row">
@@ -192,6 +199,14 @@ class ProductsBack extends React.Component {
                         <div className="collection-product-wrapper">
                           <div className="product-top-filter">
                             <div className="row">
+                              <button className="btn btn-success"
+                                onClick={async () =>
+                                  await this.props.actions.SCRAPPINGProducts()
+                                }
+                              >
+                                scrapping
+                              </button>
+                              
                               <div className="col-xl-12">
                                 <div className="filter-main-btn">
                                   <span className="filter-btn btn btn-theme">
@@ -288,6 +303,9 @@ class ProductsBack extends React.Component {
                               {this.props.products.products ? (
                                 this.props.products.products.map((Prods) => (
                                   <Productcard
+                                    onDeleteproduct={
+                                      this.handleDeleteProduct
+                                    }
                                     layout={this.state.layout}
                                     key={Prods.id}
                                     {...Prods}
@@ -350,4 +368,4 @@ function mapStateToProps(state) {
     products: state.products,
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsBack);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductLists);

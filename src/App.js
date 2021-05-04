@@ -37,6 +37,7 @@ import BodyDetection from "./components/3D/bodyDetection";
 import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
 import GetSize from "./components/3D/size";
+import ProductsBack from "./components/Products/ProductsBack";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -67,7 +68,7 @@ function App() {
                   <Route path="/UsersBack" component={UserBack} />
                   <Route path="/editUserBack" component={EditUserForm} />
                   <Route path="/addUserBack" component={AddUserForm} />
-                  <Route path="/Products" component={Products} />
+                  <Route path="/Products" component={ProductsBack} />
                   <Route path="/Events" component={Events} />
                   <Route path="/Contacts" component={Contacts} />
                   <Route exact to="/" component={DashBoard} />
@@ -76,7 +77,7 @@ function App() {
               </UserContext.Provider>
             </>
           );
-        } else {
+           } else {
           return (
             <>
               <UserContext.Provider
@@ -127,6 +128,7 @@ function App() {
             </>
           );
         }
+    
       })()}
     </>
   );
