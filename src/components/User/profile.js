@@ -9,9 +9,10 @@ import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
+import { selectOrders, fetchOrders } from "../../redux/slices/orderSlice";
 import FindArticle from "./findarticle";
-
-const Profile = () => {
+import UserOrders from "./userOrders";
+const Profile = (props) => {
   /*  const user = useContext(UserContext);
    */
   const dispatch = useDispatch();
@@ -29,10 +30,14 @@ const Profile = () => {
     if (user) {
       dispatch(addUser(user));
       dispatch(fetchPosts(user._id));
+      dispatch(fetchOrders());
+    } else {
+      props.history.push("/auth/login");
     }
   }, [dispatch]);
   const [posts, err] = useSelector(selectPosts);
   const [claims, error] = useSelector(selectClaims);
+  const [orders, errors] = useSelector(selectOrders);
 
   return (
     <>
@@ -60,8 +65,9 @@ const Profile = () => {
               <div className="profile-left">
                 <div className="profile-image">
                   <div>
-
-                    <img src={user.image_url} className="rounded-circle" />
+                    {user && (
+                      <img src={user.image_url} className="rounded-circle" />
+                    )}
 
                     <h3>
                       {user?.first_name}_{user?.last_name}
@@ -184,6 +190,16 @@ const Profile = () => {
                       <NavLink
                         className="active"
                         activeStyle={{ color: "#ff4c3b" }}
+                        to="/user/profile/orders"
+                        or
+                      >
+                        My Orders ({orders.length})
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className="active"
+                        activeStyle={{ color: "#ff4c3b" }}
                         to="/user/profile/suggestions"
                         or
                       >
@@ -243,6 +259,7 @@ const Profile = () => {
                   or
                   component={FindArticle}
                 />
+                <Route path="/user/profile/orders" or component={UserOrders} />
               </Switch>
             </div>
           </div>

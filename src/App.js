@@ -38,6 +38,8 @@ import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
 import GetSize from "./components/3D/size";
 import ProductsBack from "./components/Products/ProductsBack";
+import LoginGoogle from "./components/auth/loginGoogle";
+import RegisterGoogle from "./components/auth/registerGoogle";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -92,6 +94,14 @@ function App() {
                 <Navbar></Navbar>
                 <Switch>
                   <Route path="/auth/login" component={LoginForm} />
+                  <Route
+                    path="/auth/loginGoogle/:token"
+                    component={LoginGoogle}
+                  />
+                  <Route
+                    path="/auth/registerGoogle/:token"
+                    component={RegisterGoogle}
+                  />
                   <Route path="/auth/register" component={RegisterForm} />
                   <Route path="/user/userProfile" component={UserProfile} />
                   <Route

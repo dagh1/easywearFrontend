@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 const UserBack = () => {
   const { id } = useParams();
@@ -111,6 +112,10 @@ const UserBack = () => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Manage Users</title>
+      </Helmet>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Modify User..</Modal.Title>

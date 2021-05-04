@@ -3,6 +3,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 import Test from "./test";
+import { Helmet } from "react-helmet";
 
 function BodyDetection(props) {
   // const canvas = document.querySelector("canvas");
@@ -88,6 +89,10 @@ function BodyDetection(props) {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>3D Fitting Room</title>
+      </Helmet>
       <div className="container">
         <Webcam
           ref={webcamRef}

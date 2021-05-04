@@ -7,6 +7,7 @@ import contactSlice from "./slices/contactSlice";
 import commentSlice from "./slices/commentSlice";
 import ReactionSlice from "./slices/reactionSlice";
 import userSlice from "./slices/userSlice";
+import orderSlice from "./slices/orderSlice";
 import products from "./reducers/productsReducer";
 
 import productfilters from "./reducers/ProductfiltersReducer";
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   commentSlice,
   ReactionSlice,
   userSlice,
+  orderSlice,
 });
 
 export default reducers;
