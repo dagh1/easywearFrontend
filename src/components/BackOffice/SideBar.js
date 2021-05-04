@@ -99,7 +99,7 @@ const SideBar = () => {
                     </li>
 
                     <li>
-                      <a className="sidebar-header" href="#">
+                      <a className="sidebar-header">
                         <Icon.Activity />
                         {<Link to="/Events">Events</Link>}
                         <i className="fa fa-angle-right pull-right" />

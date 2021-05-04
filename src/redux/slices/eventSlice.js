@@ -93,6 +93,10 @@ export const listPosts = ( state) => {
     return state.eventSlice.eventPosts;
 }
 
+export const ListEvents = ( state) => {
+    return state.eventSlice.events;
+}
+
 
 export const { listEvents, listRecentEvents, listPostsByEvents , countPosts , addEvent , updateEvent , deleteEvent , setErrors } = eventSlice.actions;
 

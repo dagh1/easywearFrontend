@@ -1,10 +1,27 @@
-import React from "react";
+import React , { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEvents, ListEvents } from '../../redux/slices/eventSlice';
+
+
+
+
 const Events = () => {
+
+  const dispatch = useDispatch();
+  const events = useSelector(ListEvents);
+
+    useEffect(()=>{
+        dispatch(fetchEvents());
+    }, []);
+    
+
+
+
   return (
     <>
       <div style={{ marginLeft: 250 }} className="page-wrapper">
         <div class="page-body-wrapper">
-          <div className="page-body"></div>
+          <div className="page-body">
           <div className="container-fluid">
             <div className="page-header">
               <div className="row">
@@ -12,7 +29,7 @@ const Events = () => {
                   <div className="page-header-left">
                     <h3>
                       Events
-                      <small>Multikart Admin panel</small>
+                      <small>Event Manage</small>
                     </h3>
                   </div>
                 </div>
@@ -22,8 +39,8 @@ const Events = () => {
                       <a href="index.html">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width={24}
-                          height={24}
+                          width={5}
+                          height={5}
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -41,12 +58,66 @@ const Events = () => {
                     <li className="breadcrumb-item active">Events</li>
                   </ol>
                 </div>
+                
               </div>
             </div>
+            <div>
+            <a className="btn btn-success" style={{ marginLeft:'1010px', paddingLeft:'25px',paddingRight:'25px'}} href="#">
+                    <i className="fas fa-edit"></i>&nbsp;Add Event
+                </a>
+                <br/>
+            </div>
+            <div style={{ marginTop: '10px'}}>
+            <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Picture</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Date Debut</th>
+                            <th scope="col">Date Fin</th>
+                            <th scope="col">Description</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        { events.map((event) => 
+                           (
+                          <tr>
+                            <th scope="row">{event.id}</th>
+                            <td>{event.image_url}</td>
+                            <td>{event.eventName}</td>
+                            <td>{new Intl.DateTimeFormat("en-US", {
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "2-digit",
+                                  }).format(new Date(Date.parse(event.date_debut)))}
+                            </td>
+                            <td>{new Intl.DateTimeFormat("en-US", {
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "2-digit",
+                                   }).format(new Date(Date.parse(event.date_fin)))}
+                            </td>
+                            <td>{event.description}</td>
+                            <td>
+                              <a className="btn btn-warning" href="#">
+                                <i className="fas fa-edit"></i>&nbsp;Edit
+                              </a>
+                              &nbsp;
+                              <a className="btn btn-primary" href="#">
+                                <i className="far fa-trash-alt"></i>&nbsp;Delete
+                              </a>
+                            </td>
+                            </tr> )
+                          )}
+                        </tbody>
+              </table>
+              </div>
 
-            {/* write ur code here guys*/}
           </div>
         </div>
+      </div>
       </div>
     </>
   );
