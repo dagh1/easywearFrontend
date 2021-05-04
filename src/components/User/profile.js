@@ -9,10 +9,9 @@ import UserClaims from "./userClaims";
 import { addUser } from "../../redux/slices/userSlice";
 import jwtDecode from "jwt-decode";
 import { selectClaims } from "../../redux/slices/claimSlice";
-import { selectOrders } from "../../redux/slices/orderSlice";
+import { selectOrders, fetchOrders } from "../../redux/slices/orderSlice";
 import FindArticle from "./findarticle";
 import UserOrders from "./userOrders";
-
 const Profile = (props) => {
   /*  const user = useContext(UserContext);
    */
@@ -31,6 +30,7 @@ const Profile = (props) => {
     if (user) {
       dispatch(addUser(user));
       dispatch(fetchPosts(user._id));
+      dispatch(fetchOrders());
     } else {
       props.history.push("/auth/login");
     }

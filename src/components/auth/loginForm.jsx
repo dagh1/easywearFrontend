@@ -237,7 +237,7 @@ const LoginForm = () => {
                       boxShadow: " 0 1px 2px 1px #ddd",
                       width: "250px",
                     }}
-                    onClick={handleSignup}
+                    onClick={handleSignIn}
                   >
                     <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
                     Signup Using Google
