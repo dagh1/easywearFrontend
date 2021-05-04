@@ -40,6 +40,7 @@ import ProductDetails from "./components/Products/ProductDetails";
 import UserProfile from "./components/User/userprofile";
 import GetSize from "./components/3D/size";
 import chatBot from "./components/Chatbot/chatBot";
+import addEventForm from "./components/BackOffice/addEventForm";
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -72,6 +73,7 @@ function App() {
                   <Route path="/addUserBack" component={AddUserForm} />
                   <Route path="/Products" component={Products} />
                   <Route path="/Events" component={Events} />
+                  <Route path="/addEvent" component={addEventForm} />
                   <Route path="/Contacts" component={Contacts} />
                   <Route exact to="/" component={DashBoard} />
                 </Switch>

@@ -1,5 +1,7 @@
+import axios from "axios";
 import React , { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { fetchEvents, ListEvents } from '../../redux/slices/eventSlice';
 
 
@@ -15,7 +17,12 @@ const Events = () => {
     }, []);
     
 
-
+  function onDelete (id){
+    alert(id);
+    axios.delete(`http://localhost:3100/api/event/deleteEvent/${id}`).then((res) => {
+      alert("deleted succ");
+    });
+  }
 
   return (
     <>
@@ -61,12 +68,16 @@ const Events = () => {
                 
               </div>
             </div>
+
             <div>
-            <a className="btn btn-success" style={{ marginLeft:'1010px', paddingLeft:'25px',paddingRight:'25px'}} href="#">
-                    <i className="fas fa-edit"></i>&nbsp;Add Event
+            {<Link to="/addEvent">
+                <a className="btn btn-success" style={{ marginLeft:'1010px', paddingLeft:'25px',paddingRight:'25px'}} href="#">
+                      <i className="fas fa-edit"></i>Add Event
                 </a>
-                <br/>
+            </Link>}
+            <br/>
             </div>
+            
             <div style={{ marginTop: '10px'}}>
             <table class="table">
                         <thead>
@@ -105,7 +116,7 @@ const Events = () => {
                                 <i className="fas fa-edit"></i>&nbsp;Edit
                               </a>
                               &nbsp;
-                              <a className="btn btn-primary" href="#">
+                              <a className="btn btn-primary" href="#" onClick={() => onDelete(event._id)}>
                                 <i className="far fa-trash-alt"></i>&nbsp;Delete
                               </a>
                             </td>
