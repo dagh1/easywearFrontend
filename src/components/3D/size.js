@@ -16,28 +16,28 @@ function CalculateSize(props) {
     // Set auth token header auth
     user = jwtDecode(jwtToken); // Decode token and get user info and exp
   }
-  if (typeof Size === "undefined" || Size === "") {
-    props.detect(true);
-  }
+ // if (typeof Size === "undefined" || Size === "") {
+  //  props.detect(true);
+ // }
   // if(user?.height) {
   else
-  {
-    props.detect(false);
-  }
+ // {
+ //   props.detect(false);
+ // }
   
     if (typeof props.person?.allPoses[0]?.keypoints[16] !== "undefined") {
     const top = props.person?.allPoses[0].keypoints[1].position.y;
     const tall = Math.abs(
       props.person?.allPoses[0].keypoints[16]?.position.y - top
     );
-    const ratio = user?.height / tall;
+    const ratio = 1.8 / tall;
     const widthx = Math.abs(
       props.person?.allPoses[0].keypoints[5]["position"]["x"] -
         props.person?.allPoses[0].keypoints[6]["position"]["x"]
     );
 
     const entourage = widthx * ratio * 2 + 0.2;
-    if (user?.gender === "male") {
+   // if (user?.gender === "male") {
       if (entourage <= 0.889) setSize("XS");
       if (entourage > 0.889 && entourage < 0.9398) {
         setSize("S");
@@ -49,7 +49,7 @@ function CalculateSize(props) {
         setSize("XL");
       } else if (entourage > 1.1684 && entourage < 1.2446) {
         setSize("XXL");
-      } else if (user?.gender === "female") {
+      /*  } else if (user?.gender === "female") {
         if (entourage > 0.8128 && entourage < 0.8509) {
           setSize("XS");
         } else if (entourage > 0.8509 && entourage < 0.889) {
@@ -64,7 +64,9 @@ function CalculateSize(props) {
           setSize("XXL");
         }
       }
-    }
+    */
+      }
+      console.log(Size);
   }
   return (
     <>
@@ -83,9 +85,7 @@ function CalculateSize(props) {
           </div>
         </div>
 
-        {user == null ? (
-          <h3>Log in to get your size</h3>
-        ) : typeof Size == "undefined" ? (
+       { typeof Size == "undefined" ? (
           <h3>
             {" "}
             Hello!, to get your Size stay in front of cam in way thats your head
@@ -146,12 +146,15 @@ function GetSize() {
     ) {
       //  Loop and detect hands
       if (continueDetection) {
-        stats.begin();
-        detect();
+     //   stats.begin();
+        setInterval(() => {
+           detect();
+        }, 1000);
+       
 
-        stats.end();
+      //  stats.end();
 
-        requestAnimationFrame(runBodysegment);
+        //requestAnimationFrame(runBodysegment);
       }
     }
   };
@@ -178,7 +181,7 @@ function GetSize() {
     if (activeRole == "size") setactiveRole("clothes");
     else if (activeRole == "clothes") setactiveRole("size");
   };
-  //runBodysegment();
+  runBodysegment();
   //bindPage();
 
   return (
