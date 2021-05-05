@@ -18,18 +18,25 @@ const Navbar = () => {
         <div className="top-header">
           <div className="container">
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-lg-8">
                 <div className="header-contact">
                   <ul>
-                    <li>Welcome to Our store Multikart</li>
-                    <li>
+                    <li >Welcome to Our store Multikart</li>
+                    <li >
                       <i className="fa fa-phone" aria-hidden="true" />
                       Call Us: 123 - 456 - 7890
+                    </li>
+                    <li >
+                    {<Link to="/chatbot">
+                        <a className="btn btn-danger" style={{ paddingTop:'2px', paddingBottom:"2px" , paddingLeft:'5px',paddingRight:'5px'}} href="#">
+                            our Chatbot
+                        </a>
+                    </Link>}
                     </li>
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-6 text-right">
+              <div className="col-lg-4 text-right">
                 <ul className="header-dropdown">
                   <li className="mobile-wishlist">
                     <a href="fakeNav">

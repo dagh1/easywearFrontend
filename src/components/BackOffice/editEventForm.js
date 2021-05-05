@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import jwtDecode from "jwt-decode";
 
 
-class addEventForm extends Component {
+class editEventForm extends Component {
     constructor(props){
         super(props);
         const jwtToken = localStorage.getItem("jwt");
@@ -18,14 +18,27 @@ class addEventForm extends Component {
         }
 
     }
-    
-        previewFile (file){
+
+    previewFile (file){
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
           this.setState({ previewSource: reader.result});
         };
       };
+
+    componentDidMount(){
+        const id = this.props.match.params.id;
+        axios.get(`http://localhost:3100/api/event/getEventById/${id}`).then((res) => {
+            console.log(res);
+            this.setState({
+                eventName: res.data.eventName,
+                date_debut: res.data.date_debut,
+                date_fin: res.data.date_fin,
+                description: res.data.description,
+            });
+        });
+    }
     
 
     handleInputChange = (e) => {
@@ -39,10 +52,9 @@ class addEventForm extends Component {
         });
     };
 
-    
-
     onSubmit = (e) => {
         e.preventDefault();
+        const id = this.props.match.params.id;
         const { eventName ,date_debut , date_fin , description, previewSource , user_id } = this.state;
         const data = {
             eventName: eventName,
@@ -53,7 +65,7 @@ class addEventForm extends Component {
             user_id: user_id
         }
         console.log(data);
-        axios.post("http://localhost:3100/api/event/addEvent", data).then((res) => {
+        axios.put(`http://localhost:3100/api/event/updateEvent/${id}`, data).then((res) => {
             if(res){
                 //alert("added");
                 this.setState({
@@ -79,7 +91,7 @@ class addEventForm extends Component {
                     <div class="page-body-wrapper">
                         <div className="page-body">
                             <div className="container-fluid">
-                                <h1>Create new event</h1>
+                                <h1>Edit Event</h1>
                                 <form style={{ marginTop: '40px'}} className="needs-validation" noValidate>
                                     <div className="form-group">
                                         <label>Event Name</label>
@@ -131,10 +143,9 @@ class addEventForm extends Component {
                                     </div>
                                     <button type="submit" className="btn btn-success" onClick={this.onSubmit} > 
                                         <i className="far fa-check-square"></i>
-                                        &nbsp;Create
+                                        &nbsp;Edit
                                     </button>
                                 </form>
-                                
                             </div>
                         </div>
                     </div>
@@ -144,4 +155,4 @@ class addEventForm extends Component {
     }
 }
 
-export default addEventForm;
+export default editEventForm;

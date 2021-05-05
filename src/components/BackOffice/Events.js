@@ -1,5 +1,5 @@
 import axios from "axios";
-import React , { useEffect } from "react";
+import React , { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { fetchEvents, ListEvents } from '../../redux/slices/eventSlice';
@@ -10,10 +10,15 @@ import { fetchEvents, ListEvents } from '../../redux/slices/eventSlice';
 const Events = () => {
 
   const dispatch = useDispatch();
-  const events = useSelector(ListEvents);
+  const [events , setEvents] = useState([]);
+  //const events = useSelector(ListEvents);
 
     useEffect(()=>{
-        dispatch(fetchEvents());
+        //dispatch(fetchEvents());
+        axios.get("http://localhost:3100/api/event/getAllEvents").then((res) => {
+        console.log(res);  
+        setEvents(res.data);
+        });
     }, []);
     
 
@@ -22,6 +27,21 @@ const Events = () => {
     axios.delete(`http://localhost:3100/api/event/deleteEvent/${id}`).then((res) => {
       alert("deleted succ");
     });
+  }
+
+  function filterContent(eventss , serchTerm){
+      const result = eventss.filter((event) => 
+            event.eventName.toLowerCase().includes(serchTerm) || 
+            event.description.toLowerCase().includes(serchTerm)
+      );
+      setEvents(result);
+  }
+
+  function handleTextSearch(e) {
+     const searchTerm = e.currentTarget.value;
+     axios.get("http://localhost:3100/api/event/getAllEvents").then((res) => {
+          filterContent(res.data, searchTerm);
+     });
   }
 
   return (
@@ -69,14 +89,24 @@ const Events = () => {
               </div>
             </div>
 
-            <div>
+          <div className="row">
+            <div className="col col-md-6" style={{  paddingLeft:'25px',paddingRight:'25px'}} >
+              <input className="form-control"
+                      type="search"
+                      placeholder="Search"
+                      name="serchTerm"
+                      onChange={(e) => handleTextSearch(e)}
+                      />
+            </div>
+
+            <div className="col col-md-6">
             {<Link to="/addEvent">
-                <a className="btn btn-success" style={{ marginLeft:'1010px', paddingLeft:'25px',paddingRight:'25px'}} href="#">
+                <a className="btn btn-success" style={{ marginLeft:'400px', paddingLeft:'25px',paddingRight:'25px'}} href="#">
                       <i className="fas fa-edit"></i>Add Event
                 </a>
             </Link>}
-            <br/>
             </div>
+          </div>
             
             <div style={{ marginTop: '10px' , marginLeft: '15px' }} >
             <table class="table">
@@ -118,9 +148,11 @@ const Events = () => {
                             </td>
                             <td>{event.description}</td>
                             <td>
-                              <a className="btn btn-warning" href="#">
-                                <i className="fas fa-edit"></i>&nbsp;Edit
-                              </a>
+                              {<Link to={`/editEvent/${event._id}`}>
+                                      <a className="btn btn-warning" href="#">
+                                        <i className="fas fa-edit"></i>&nbsp;Edit
+                                      </a>
+                              </Link>}
                               &nbsp;
                               <a className="btn btn-primary" href="#" onClick={() => onDelete(event._id)}>
                                 <i className="far fa-trash-alt"></i>&nbsp;Delete

@@ -33,9 +33,9 @@ class HomeEvent extends Component {
           <li>
             <div class='media'>
               <img
-                class='img-fluid blur-up lazyload'
-                src='../assets/images/blog/1.jpg'
-                alt='Generic placeholder image'
+                src={event.image_url}
+                alt="img"
+                className="img-fluid img-30 me-2 blur-up lazyloaded"
               />
               <div class='media-body align-self-center'>
                 <h6>

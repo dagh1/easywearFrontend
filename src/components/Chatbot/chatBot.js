@@ -59,7 +59,7 @@ class chatBot extends Component {
                         onChange={(e) => this.handleChange(e)} 
                         value={this.state.msg}
                         style={{marginLeft:'100px',width:'70%',float:'left' ,marginRight:'20px' }} />
-                    <button onClick={() => this.handleSend()} class="btn btn-primary" style={{paddingLeft:'25px',paddingRight:'25px'}}>Send</button>
+                    <button onClick={() => this.handleSend()} class="btn btn-danger" style={{paddingLeft:'25px',paddingRight:'25px'}}>Send</button>
                 </div>
                 
             </div>

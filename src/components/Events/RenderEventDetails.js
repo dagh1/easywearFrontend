@@ -17,11 +17,11 @@ const RenderEventDetails = ({ event }) => {
       <div class='col-xl-6'>
         <div class='blog-left'>
           <Link to={`eventDetails/${event._id}`}>
-            <img
-              src='../assets/images/blog/1.jpg'
-              class='img-fluid blur-up lazyload bg-img'
-              alt=''
-            />
+          <img
+            src={event.image_url}
+            alt="img"
+            className="img-fluid img-30 me-2 blur-up lazyloaded"
+          />
           </Link>
         </div>
       </div>
@@ -41,7 +41,6 @@ const RenderEventDetails = ({ event }) => {
               <h4>{event.eventName}</h4>
             </Link>
             <ul class='post-social'>
-              <li>Posted By : {event.user_id}</li>
               <li>
                 <i class='fa fa-comments'></i> {count}
               </li>
