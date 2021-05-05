@@ -35,21 +35,37 @@ export function getProductsbybrands(brands, name, price) {
   return fetch(baseUrl).then(handleResponse).catch(handleError);
 }
 
+function SCRAPPINGProductsAmazone() {
+const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/product/scrapping`;
+return fetch(baseUrl, { method: "POST" })
+  .then(handleResponse)
+  .catch(handleError);
+  
+}
 
 
-export function SCRAPPINGProducts() {
-  const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/getUrl`;
+
+export function SCRAPPINGProductsZARA() {
+  var baseUrl = `https://secure-ocean-54413.herokuapp.com/api/getUrl`;
   return fetch(baseUrl , { method: "POST" })
     .then(handleResponse)
     .catch(handleError);
+  
+}
+export function SCRAPPINGProducts() {
+  const baseUrl = "https://secure-ocean-54413.herokuapp.com/api/product/scrapping";
+   return fetch(baseUrl, { method: "POST" })
+     .then(handleResponse)
+     .catch(handleError);
 }
 export function deleteProduct(courseId) {
+  console.log("api");
   const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/product/${courseId}`;
   return fetch(baseUrl , { method: "DELETE" })
     .then(handleResponse)
     .catch(handleError);
 }
-export function deleteAllProduct(courseId) {
+export function deleteAllProduct() {
   const baseUrl = `https://secure-ocean-54413.herokuapp.com/api/product`;
   return fetch(baseUrl , { method: "DELETE" })
     .then(handleResponse)

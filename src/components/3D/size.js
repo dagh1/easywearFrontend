@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
-import Test from "./test";
+
 
 import Stats from "stats.js";
 import jwtDecode from "jwt-decode";
@@ -63,6 +63,10 @@ function CalculateSize(props) {
         } else if (entourage > 1.0541) {
           setSize("XXL");
         }
+        if (typeof Size !== "undefined")
+        {
+          
+          }
       }
     }
   }
@@ -70,6 +74,21 @@ function CalculateSize(props) {
     <>
       <div style={{ position: "relative" }} className="col">
         <div className="top-banner-wrapper">
+          <div className="top-banner-content small-section">
+            <h4>Welcome! EASYWEAR</h4>
+            
+          </div>
+          {user == null ? (
+            <h3>Log in to get your size</h3>
+          ) : typeof Size == "undefined" ? (
+            <h3>
+              {" "}
+              Hello!, to get your Size stay in front of cam in way thats your
+              head and your feet appear in screen{" "}
+            </h3>
+          ) : (
+            <h3>Good job You size is {Size}</h3>
+          )}
           <a href="#">
             <img
               src="../assets/images/coming-soon.jpg"
@@ -77,23 +96,7 @@ function CalculateSize(props) {
               alt=""
             />
           </a>
-          <div className="top-banner-content small-section">
-            <h4>Welcome! EASYWEAR</h4>
-            <h5></h5>
-          </div>
         </div>
-
-        {user == null ? (
-          <h3>Log in to get your size</h3>
-        ) : typeof Size == "undefined" ? (
-          <h3>
-            {" "}
-            Hello!, to get your Size stay in front of cam in way thats your head
-            and your feet appear in screen{" "}
-          </h3>
-        ) : (
-          <h3>Good job You size is {Size}</h3>
-        )}
       </div>
     </>
   );
@@ -146,12 +149,12 @@ function GetSize() {
     ) {
       //  Loop and detect hands
       if (continueDetection) {
-        stats.begin();
+      //  stats.begin();
         detect();
 
-        stats.end();
+       // stats.end();
 
-        requestAnimationFrame(runBodysegment);
+      //  requestAnimationFrame(runBodysegment);
       }
     }
   };
@@ -178,7 +181,7 @@ function GetSize() {
     if (activeRole == "size") setactiveRole("clothes");
     else if (activeRole == "clothes") setactiveRole("size");
   };
-  //runBodysegment();
+  runBodysegment(true);
   //bindPage();
 
   return (

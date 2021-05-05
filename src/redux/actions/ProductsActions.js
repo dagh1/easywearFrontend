@@ -15,8 +15,11 @@ export function deleteproducts(products) {
   return function (dispatch) {
     // Doing optimistic delete, so not dispatching begin/end api call
     // actions, or apiCallError action since we're not showing the loading status for this.
-    dispatch(deleteproductsOPTIMISTIC(products));
-    return productApi.deleteProduct(products.id);
+    
+    console.log("action")
+    return productApi.deleteProduct(products.id).then((products) => {
+      dispatch(deleteproductsOPTIMISTIC(products)
+    )});
   };
 }
 

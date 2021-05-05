@@ -11,6 +11,13 @@ import ListPagination from "./ListPagination";
 import { deleteProduct } from './../../api/productApi';
 
 class Productcard extends React.Component {
+  DeleteProduct = (product) => {
+    if (window.confirm("Are you sure you want to delete this Product?")) {
+      this.props.onDeleteproduct(product);
+     
+    }
+  }
+
   render() {
     const product = this.props;
 
@@ -51,14 +58,17 @@ class Productcard extends React.Component {
               </h6>
             </a>
             <h4>{product.productPrice} </h4>
-            <Link to={"/productDetails/" + product.id}>Details</Link>
-            
-            <a type="button" onClick={this.props.onDeleteproduct(product.id)}>
-              deleteProduct
-            </a>
-            <a type="button" href={product.url} target="_blank">
-              visit website
-            </a>
+
+            <button
+              className="btn btn-warning"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.DeleteProduct(product);
+              }}
+            >
+              delete
+            </button>
           </div>
         </div>
       </div>
@@ -140,10 +150,10 @@ class ProductLists extends React.Component {
 
   handleDeleteProduct = async (product) => {
    
-    try {
-      await this.props.actions.deleteProduct(product);
-    } catch (error) {
-       }
+    console.log("ui");
+    await this.props.actions.deleteproducts(product);
+     console.log("after ui");
+    
   };
 
   loadbybrandsfilter = (brand) => {
@@ -200,9 +210,12 @@ class ProductLists extends React.Component {
                           <div className="product-top-filter">
                             <div className="row">
                               <button className="btn btn-success"
-                                onClick={async () =>
-                                  await this.props.actions.SCRAPPINGProducts()
-                                }
+                                onClick={async () => {
+                                  await this.props.actions.SCRAPPINGProducts();
+                                  this.props.actions
+                                    .loadProducts(0)
+                                    .catch((error) => {});
+                                }}
                               >
                                 scrapping
                               </button>

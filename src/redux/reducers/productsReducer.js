@@ -5,8 +5,8 @@ export default function productsReducer(state = [], action) {
       case "SCRAPING_PRODUCTS_SUCCESS":
         return action.products;
       case "DELETE_products_OPTIMISTIC":
-        return state.filter(
-          (products) => products.products.id !== action.course.id
+        return state?.products.filter(
+          (products) => products.id !== action.product.id
         );
       default:
         return state;
