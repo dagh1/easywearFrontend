@@ -7,7 +7,6 @@ import SuggestedProducts from "./Products/SuggestedProducts";
 
 import RecommendedProductsList from "./Products/RecommendedProductsList";
 
-
 const Home = () => {
   const settings = {
     dots: true,
@@ -51,7 +50,7 @@ const Home = () => {
                   >
                     <img
                       src="/assets/images/home-banner/1.jpg"
-                      alt
+                      alt="Men Fashion Discover now"
                       className="bg-img blur-up lazyload"
                       style={{ display: "none" }}
                     />
@@ -101,7 +100,7 @@ const Home = () => {
                   >
                     <img
                       src="/assets/images/home-banner/2.jpg"
-                      alt
+                      alt="Women Fashion Discover now"
                       className="bg-img blur-up lazyload"
                       style={{ display: "none" }}
                     />
@@ -151,7 +150,7 @@ const Home = () => {
                   >
                     <img
                       src="/assets/images/home-banner/3.jpg"
-                      alt
+                      alt="Men Fashion Discover Now"
                       className="bg-img blur-up lazyload"
                       style={{ display: "none" }}
                     />
@@ -201,7 +200,7 @@ const Home = () => {
                   >
                     <img
                       src="/assets/images/home-banner/6.jpg"
-                      alt
+                      alt="Women Fashion Discover now"
                       className="bg-img blur-up lazyload"
                       style={{ display: "none" }}
                     />
@@ -249,7 +248,7 @@ const Home = () => {
                     <img
                       src="/assets/images/sub-banner1.jpg"
                       className="img-fluid blur-up lazyload bg-img"
-                      alt="true"
+                      alt="discount 30%  Men Fashion "
                       style={{ display: "none" }}
                     />
                   </div>
@@ -277,7 +276,7 @@ const Home = () => {
                     <img
                       src="/assets/images/sub-banner2.jpg"
                       className="img-fluid blur-up lazyload bg-img"
-                      alt="true"
+                      alt="discount 60%  Women Fashion"
                       style={{ display: "none" }}
                     />
                   </div>
@@ -294,32 +293,27 @@ const Home = () => {
         </div>
       </section>
       <div>
-
-        <div className='title1 section-t-space'>
+        <div className="title1 section-t-space">
           <h4>Recommended for you</h4>
-          <h2 className='title-inner1'>Most Liked</h2>
+          <h2 className="title-inner1">Most Liked</h2>
         </div>
       </div>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6 offset-lg-3'>
-            <div className='product-para'>
-              <p className='text-center'>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 offset-lg-3">
+            <div className="product-para">
+              <p className="text-center">
                 These outfits has been liked by other users similar to those you
                 also liked
               </p>
-
             </div>
           </div>
         </div>
       </div>
 
-
-
       <RecommendedProductsList />
 
-      <section className='p-0'>
-
+      <section className="p-0">
         <div
           className="full-banner parallax text-center p-left bg-size blur-up lazyloaded"
           style={{
@@ -331,7 +325,7 @@ const Home = () => {
         >
           <img
             src="/assets/images/parallax/1.jpg"
-            alt="true"
+            alt="Fashion Trends With a speial offer 2021 "
             className="bg-img blur-up lazyload"
             style={{ display: "none" }}
           />
@@ -339,7 +333,7 @@ const Home = () => {
             <div className="row">
               <div className="col">
                 <div className="banner-contain">
-                  <h2>2018</h2>
+                  <h2>2021</h2>
                   <h3>fashion trends</h3>
                   <h4>special offer</h4>
                 </div>
@@ -394,7 +388,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Men Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -414,7 +408,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Men Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -483,7 +477,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Women Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -503,7 +497,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Men Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -568,7 +562,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Men Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -588,7 +582,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Clothes Men Discount"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -657,7 +651,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -677,7 +671,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -746,7 +740,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -766,7 +760,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -831,7 +825,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -851,7 +845,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -920,7 +914,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -940,7 +934,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1005,7 +999,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1025,7 +1019,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1098,7 +1092,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1118,7 +1112,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1183,7 +1177,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1203,7 +1197,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1272,7 +1266,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1292,7 +1286,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1357,7 +1351,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1377,7 +1371,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1442,7 +1436,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1462,7 +1456,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1531,7 +1525,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1551,7 +1545,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1616,7 +1610,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1636,7 +1630,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1705,7 +1699,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1725,7 +1719,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1798,7 +1792,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1818,7 +1812,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1883,7 +1877,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1903,7 +1897,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1968,7 +1962,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/33.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -1988,7 +1982,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/34.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2057,7 +2051,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2077,7 +2071,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2146,7 +2140,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2166,7 +2160,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2231,7 +2225,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/35.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2251,7 +2245,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/36.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2320,7 +2314,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/1.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2340,7 +2334,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/2.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2405,7 +2399,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/27.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2425,7 +2419,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/pro3/28.jpg"
                                 className="img-fluid blur-up lazyload bg-img"
-                                alt="true"
+                                alt="Slim Fit Cotton Shirt 500$"
                                 style={{ display: "none" }}
                               />
                             </a>
@@ -2644,7 +2638,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/3.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Slim Fit Cotton Shirt 500$"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2692,7 +2686,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/4.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Slim Fit Cotton Shirt 500$"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2740,7 +2734,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/5.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Slim Fit Cotton Shirt 500$"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2788,7 +2782,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/1.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Slim Fit Cotton Shirt 500$"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2835,7 +2829,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/2.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Image"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2882,7 +2876,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/3.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Shirt"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2929,7 +2923,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/4.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Shirt"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -2977,7 +2971,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/5.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Trouser"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3025,7 +3019,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/1.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog dress"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3073,7 +3067,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/2.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Shirt"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3121,7 +3115,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/3.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Dress"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3169,7 +3163,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/4.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Skirt"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3217,7 +3211,7 @@ const Home = () => {
                                 <img
                                   src="/assets/images/blog/5.jpg"
                                   className="img-fluid blur-up lazyload bg-img"
-                                  alt="true"
+                                  alt="Blog Shirt"
                                   style={{ display: "none" }}
                                 />
                               </div>
@@ -3299,7 +3293,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/4.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="image blog"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3336,7 +3330,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="image blog"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3373,7 +3367,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/6.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="image blog"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3410,7 +3404,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/7.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="image blog"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3447,7 +3441,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/8.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3484,7 +3478,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3521,7 +3515,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/2.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3557,7 +3551,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/2.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3593,7 +3587,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/3.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3629,7 +3623,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/4.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3665,7 +3659,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3701,7 +3695,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/6.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3737,7 +3731,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/7.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3773,7 +3767,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/8.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3810,7 +3804,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3847,7 +3841,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/2.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3884,7 +3878,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/2.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3921,7 +3915,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/3.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3958,7 +3952,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/4.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -3995,7 +3989,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4032,7 +4026,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/6.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4069,7 +4063,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/7.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4106,7 +4100,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/8.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4143,7 +4137,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/9.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4180,7 +4174,7 @@ const Home = () => {
                               <img
                                 src="/assets/images/slider/2.jpg"
                                 className="bg-img"
-                                alt="true"
+                                alt="instagram Image of fans"
                                 style={{ width: "100%", display: "none" }}
                               />
                               <div className="overlay">
@@ -4244,7 +4238,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/3.png"
-                                alt="true"
+                                alt="Brand Image  Zara"
                               />
                             </a>
                           </div>
@@ -4264,7 +4258,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/4.png"
-                                alt="true"
+                                alt="Brand Image  Pull and Bear"
                               />
                             </a>
                           </div>
@@ -4284,7 +4278,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/5.png"
-                                alt="true"
+                                alt="Brand Image  Zara"
                               />
                             </a>
                           </div>
@@ -4304,7 +4298,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/6.png"
-                                alt="true"
+                                alt="Brand Image  Adidas"
                               />
                             </a>
                           </div>
@@ -4324,7 +4318,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/7.png"
-                                alt="true"
+                                alt="Brand Image  Nike"
                               />
                             </a>
                           </div>
@@ -4344,7 +4338,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/8.png"
-                                alt="true"
+                                alt="Brand Image  Lacost"
                               />
                             </a>
                           </div>
@@ -4363,7 +4357,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/1.png"
-                                alt="true"
+                                alt="Brand Image HM"
                               />
                             </a>
                           </div>
@@ -4382,7 +4376,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/2.png"
-                                alt="true"
+                                alt="Brand Image Exist"
                               />
                             </a>
                           </div>
@@ -4401,7 +4395,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/3.png"
-                                alt="true"
+                                alt="Brand Image  Socky"
                               />
                             </a>
                           </div>
@@ -4420,7 +4414,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/4.png"
-                                alt="true"
+                                alt="Brand Image  Zara"
                               />
                             </a>
                           </div>
@@ -4439,7 +4433,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/5.png"
-                                alt="true"
+                                alt="Brand Image  Pull and Bear"
                               />
                             </a>
                           </div>
@@ -4458,7 +4452,7 @@ const Home = () => {
                             <a href="fake" tabIndex={0}>
                               <img
                                 src="/assets/images/logos/6.png"
-                                alt="true"
+                                alt="Brand Image  zara"
                               />
                             </a>
                           </div>
@@ -4478,7 +4472,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/7.png"
-                                alt="true"
+                                alt="Brand Image  Pull and Bear"
                               />
                             </a>
                           </div>
@@ -4498,7 +4492,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/8.png"
-                                alt="true"
+                                alt="Brand Image  gucci"
                               />
                             </a>
                           </div>
@@ -4518,7 +4512,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/1.png"
-                                alt="true"
+                                alt="Brand Image Icewatch  "
                               />
                             </a>
                           </div>
@@ -4538,7 +4532,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/2.png"
-                                alt="true"
+                                alt="Brand Image  cotton"
                               />
                             </a>
                           </div>
@@ -4558,7 +4552,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/3.png"
-                                alt="true"
+                                alt="Brand Image  bershka"
                               />
                             </a>
                           </div>
@@ -4578,7 +4572,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/4.png"
-                                alt="true"
+                                alt="Brand Image cotton"
                               />
                             </a>
                           </div>
@@ -4598,7 +4592,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/5.png"
-                                alt="true"
+                                alt="Brand Image  Zara"
                               />
                             </a>
                           </div>
@@ -4618,7 +4612,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/6.png"
-                                alt="true"
+                                alt="Brand Image gucci"
                               />
                             </a>
                           </div>
@@ -4638,7 +4632,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/7.png"
-                                alt="true"
+                                alt="Brand Image  gucci"
                               />
                             </a>
                           </div>
@@ -4658,7 +4652,7 @@ const Home = () => {
                             <a href="fake" tabIndex={-1}>
                               <img
                                 src="/assets/images/logos/8.png"
-                                alt="true"
+                                alt="Brand Image  gucci"
                               />
                             </a>
                           </div>
@@ -4706,7 +4700,7 @@ const Home = () => {
                   <div className="quick-view-img">
                     <img
                       src="/assets/images/pro3/1.jpg"
-                      alt
+                      alt="shirt"
                       className="img-fluid blur-up lazyload"
                     />
                   </div>

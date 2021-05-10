@@ -1,4 +1,4 @@
-import "./App.css";
+
 import { React, useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -40,6 +40,7 @@ import GetSize from "./components/3D/size";
 import ProductsBack from "./components/Products/ProductsBack";
 import LoginGoogle from "./components/auth/loginGoogle";
 import RegisterGoogle from "./components/auth/registerGoogle";
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -66,14 +67,15 @@ function App() {
                 <NavbarBack></NavbarBack>
                 <SideBar></SideBar>
                 <Switch>
-                  <Route path="/ClaimsBack" component={ClaimBack} />
-                  <Route path="/UsersBack" component={UserBack} />
-                  <Route path="/editUserBack" component={EditUserForm} />
-                  <Route path="/addUserBack" component={AddUserForm} />
-                  <Route path="/Products" component={ProductsBack} />
-                  <Route path="/Events" component={Events} />
-                  <Route path="/Contacts" component={Contacts} />
-                  <Route exact to="/" component={DashBoard} />
+                  <Route path="/Admin/ClaimsBack" component={ClaimBack} />
+                  <Route path="/Admin/UsersBack" component={UserBack} />
+                  <Route path="/Admin/editUserBack" component={EditUserForm} />
+                  <Route path="/Admin/addUserBack" component={AddUserForm} />
+                  <Route path="/Admin/Products" component={ProductsBack} />
+                  <Route path="/Admin/Events" component={Events} />
+                  <Route path="/Admin/Contacts" component={Contacts} />
+                  <Route exact to="/Admin" component={DashBoard} />
+                  <Route path="*" component={PageNotFound} />
                 </Switch>
                 <FooterBack></FooterBack>
               </UserContext.Provider>
@@ -132,6 +134,7 @@ function App() {
                     component={eventWithId}
                   />
                   <Route exact to="/" component={Home} />
+                  <Route path="*" component={PageNotFound} />
                 </Switch>
                 <Footer />
               </UserContext.Provider>

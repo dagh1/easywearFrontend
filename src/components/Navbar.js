@@ -32,7 +32,7 @@ const Navbar = () => {
               <div className="col-lg-6 text-right">
                 <ul className="header-dropdown">
                   <li className="mobile-wishlist">
-                    <a href="fakeNav">
+                    <a href="#">
                       <i className="fa fa-heart" aria-hidden="true" />
                     </a>
                   </li>
@@ -104,7 +104,7 @@ const Navbar = () => {
                         </div>
                         <ul id="sub-menu" className="sm pixelstrap sm-vertical">
                           <li>
-                            <a href="fakeNav">clothing</a>
+                            <a href="#">clothing</a>
                             <ul className="mega-menu clothing-menu">
                               <li>
                                 <div className="row m-0">
@@ -113,31 +113,31 @@ const Navbar = () => {
                                       <h5>women's fashion</h5>
                                       <ul>
                                         <li>
-                                          <a href="fakeNav">dresses</a>
+                                          <a href="#">dresses</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">skirts</a>
+                                          <a href="#">skirts</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">westarn wear</a>
+                                          <a href="#">westarn wear</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">ethic wear</a>
+                                          <a href="#">ethic wear</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">sport wear</a>
+                                          <a href="#">sport wear</a>
                                         </li>
                                       </ul>
                                       <h5>men's fashion</h5>
                                       <ul>
                                         <li>
-                                          <a href="fakeNav">sports wear</a>
+                                          <a href="#">sports wear</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">western wear</a>
+                                          <a href="#">western wear</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">ethic wear</a>
+                                          <a href="#">ethic wear</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -147,44 +147,37 @@ const Navbar = () => {
                                       <h5>accessories</h5>
                                       <ul>
                                         <li>
-                                          <a href="fakeNav">
-                                            fashion jewellery
-                                          </a>
+                                          <a href="#">fashion jewellery</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">caps and hats</a>
+                                          <a href="#">caps and hats</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">
-                                            precious jewellery
-                                          </a>
+                                          <a href="#">precious jewellery</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">necklaces</a>
+                                          <a href="#">necklaces</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">earrings</a>
+                                          <a href="#">earrings</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">wrist wear</a>
+                                          <a href="#">wrist wear</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">ties</a>
+                                          <a href="#">ties</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">cufflinks</a>
+                                          <a href="#">cufflinks</a>
                                         </li>
                                         <li>
-                                          <a href="fakeNav">pockets squares</a>
+                                          <a href="#">pockets squares</a>
                                         </li>
                                       </ul>
                                     </div>
                                   </div>
                                   <div className="col-xl-4">
-                                    <a
-                                      href="fakeNav"
-                                      className="mega-menu-banner"
-                                    >
+                                    <a href="#" className="mega-menu-banner">
                                       <img
                                         src="/assets/images/mega-menu/fashion.jpg"
                                         className="img-fluid blur-up lazyload"
@@ -197,164 +190,160 @@ const Navbar = () => {
                             </ul>
                           </li>
                           <li>
-                            <a href="fakeNav">bags</a>
+                            <a href="#">bags</a>
                             <ul>
                               <li>
-                                <a href="fakeNav">shopper bags</a>
+                                <a href="#">shopper bags</a>
                               </li>
                               <li>
-                                <a href="fakeNav">laptop bags</a>
+                                <a href="#">laptop bags</a>
                               </li>
                               <li>
-                                <a href="fakeNav">clutches</a>
+                                <a href="#">clutches</a>
                               </li>
                               <li>
-                                <a href="fakeNav">purses</a>
+                                <a href="#">purses</a>
                                 <ul>
                                   <li>
-                                    <a href="fakeNav">purses</a>
+                                    <a href="#">purses</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">wallets</a>
+                                    <a href="#">wallets</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">leathers</a>
+                                    <a href="#">leathers</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">satchels</a>
+                                    <a href="#">satchels</a>
                                   </li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <a href="fakeNav">footwear</a>
+                            <a href="#">footwear</a>
                             <ul>
                               <li>
-                                <a href="fakeNav">sport shoes</a>
+                                <a href="#">sport shoes</a>
                               </li>
                               <li>
-                                <a href="fakeNav">formal shoes</a>
+                                <a href="#">formal shoes</a>
                               </li>
                               <li>
-                                <a href="fakeNav">casual shoes</a>
+                                <a href="#">casual shoes</a>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <a href="fakeNav">watches</a>
+                            <a href="#">watches</a>
                           </li>
                           <li>
-                            <a href="fakeNav">Accessories</a>
+                            <a href="#">Accessories</a>
                             <ul>
                               <li>
-                                <a href="fakeNav">fashion jewellery</a>
+                                <a href="#">fashion jewellery</a>
                               </li>
                               <li>
-                                <a href="fakeNav">caps and hats</a>
+                                <a href="#">caps and hats</a>
                               </li>
                               <li>
-                                <a href="fakeNav">precious jewellery</a>
+                                <a href="#">precious jewellery</a>
                               </li>
                               <li>
-                                <a href="fakeNav">more..</a>
+                                <a href="#">more..</a>
                                 <ul>
                                   <li>
-                                    <a href="fakeNav">necklaces</a>
+                                    <a href="#">necklaces</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">earrings</a>
+                                    <a href="#">earrings</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">wrist wear</a>
+                                    <a href="#">wrist wear</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">accessories</a>
+                                    <a href="#">accessories</a>
                                     <ul>
                                       <li>
-                                        <a href="fakeNav">ties</a>
+                                        <a href="#">ties</a>
                                       </li>
                                       <li>
-                                        <a href="fakeNav">cufflinks</a>
+                                        <a href="#">cufflinks</a>
                                       </li>
                                       <li>
-                                        <a href="fakeNav">pockets squares</a>
+                                        <a href="#">pockets squares</a>
                                       </li>
                                       <li>
-                                        <a href="fakeNav">helmets</a>
+                                        <a href="#">helmets</a>
                                       </li>
                                       <li>
-                                        <a href="fakeNav">scarves</a>
+                                        <a href="#">scarves</a>
                                       </li>
                                       <li>
-                                        <a href="fakeNav">more...</a>
+                                        <a href="#">more...</a>
                                         <ul>
                                           <li>
-                                            <a href="fakeNav">
-                                              accessory gift sets
-                                            </a>
+                                            <a href="#">accessory gift sets</a>
                                           </li>
                                           <li>
-                                            <a href="fakeNav">
-                                              travel accessories
-                                            </a>
+                                            <a href="#">travel accessories</a>
                                           </li>
                                           <li>
-                                            <a href="fakeNav">phone cases</a>
+                                            <a href="#">phone cases</a>
                                           </li>
                                         </ul>
                                       </li>
                                     </ul>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">belts &amp; more</a>
+                                    <a href="#">belts &amp; more</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">wearable</a>
+                                    <a href="#">wearable</a>
                                   </li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <a href="fakeNav">house of design</a>
+                            <a href="#">house of design</a>
                           </li>
                           <li>
-                            <a href="fakeNav">beauty &amp; personal care</a>
+                            <a href="#">beauty &amp; personal care</a>
                             <ul>
                               <li>
-                                <a href="fakeNav">makeup</a>
+                                <a href="#">makeup</a>
                               </li>
                               <li>
-                                <a href="fakeNav">skincare</a>
+                                <a href="#">skincare</a>
                               </li>
                               <li>
-                                <a href="fakeNav">premium beaty</a>
+                                <a href="#">premium beaty</a>
                               </li>
                               <li>
-                                <a href="fakeNav">more</a>
+                                <a href="#">more</a>
                                 <ul>
                                   <li>
-                                    <a href="fakeNav">fragrances</a>
+                                    <a href="#">fragrances</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">luxury beauty</a>
+                                    <a href="#">luxury beauty</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">hair care</a>
+                                    <a href="#">hair care</a>
                                   </li>
                                   <li>
-                                    <a href="fakeNav">tools &amp; brushes</a>
+                                    <a href="#">tools &amp; brushes</a>
                                   </li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <a href="fakeNav">home &amp; decor</a>
+                            <a href="#">home &amp; decor</a>
                           </li>
                           <li>
-                            <a href="fakeNav">kitchen</a>
+                            <a href="#">kitchen</a>
                           </li>
                         </ul>
                       </nav>
@@ -409,6 +398,7 @@ const Navbar = () => {
                             <img
                               src="/assets/images/icon/search.png"
                               className="img-fluid blur-up lazyload"
+                              alt="Fashion"
                             />
                             <i className="ti-search" />
                           </div>
@@ -449,6 +439,7 @@ const Navbar = () => {
                             <img
                               src="/assets/images/icon/setting.png"
                               className="img-fluid blur-up lazyload"
+                              alt="Fashion"
                             />
                             <i className="ti-settings" />
                           </div>
@@ -459,7 +450,7 @@ const Navbar = () => {
                                 <Link to="/user/profile">Profile</Link>
                               </li>
                               <li>
-                                <a href="fakeNav">Settings</a>
+                                <a href="#">Settings</a>
                               </li>
                             </ul>
                           </div>
@@ -469,20 +460,22 @@ const Navbar = () => {
                             <img
                               src="/assets/images/icon/cart.png"
                               className="img-fluid blur-up lazyload"
+                              alt="Fashion"
                             />
                             <i className="ti-shopping-cart" />
                           </div>
                           <ul className="show-div shopping-cart">
                             <li>
                               <div className="media">
-                                <a href="fakeNav">
+                                <a href="#">
                                   <img
                                     className="mr-3"
                                     src="/assets/images/fashion/product/1.jpg"
+                                    alt="Fashion"
                                   />
                                 </a>
                                 <div className="media-body">
-                                  <a href="fakeNav">
+                                  <a href="#">
                                     <h4>item name</h4>
                                   </a>
                                   <h4>
@@ -491,7 +484,7 @@ const Navbar = () => {
                                 </div>
                               </div>
                               <div className="close-circle">
-                                <a href="fakeNav">
+                                <a href="#">
                                   <i
                                     className="fa fa-times"
                                     aria-hidden="true"
@@ -501,14 +494,15 @@ const Navbar = () => {
                             </li>
                             <li>
                               <div className="media">
-                                <a href="fakeNav">
+                                <a href="#">
                                   <img
                                     className="mr-3"
                                     src="/assets/images/fashion/product/2.jpg"
+                                    alt="Fashion"
                                   />
                                 </a>
                                 <div className="media-body">
-                                  <a href="fakeNav">
+                                  <a href="#">
                                     <h4>item name</h4>
                                   </a>
                                   <h4>
@@ -517,7 +511,7 @@ const Navbar = () => {
                                 </div>
                               </div>
                               <div className="close-circle">
-                                <a href="fakeNav">
+                                <a href="#">
                                   <i
                                     className="fa fa-times"
                                     aria-hidden="true"
@@ -537,7 +531,7 @@ const Navbar = () => {
                                 <a href="cart.html" className="view-cart">
                                   view cart
                                 </a>
-                                <a href="fakeNav" className="checkout">
+                                <a href="#" className="checkout">
                                   checkout
                                 </a>
                               </div>

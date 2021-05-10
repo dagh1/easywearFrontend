@@ -93,7 +93,8 @@ const SideBar = () => {
                     </li>
                     <li>
                       <a className="sidebar-header" href="#">
-                        <Icon.Box /> {<Link to="/Products">Products</Link>}
+                        <Icon.Box />{" "}
+                        {<Link to="/Admin/Products">Products</Link>}
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>
@@ -101,14 +102,18 @@ const SideBar = () => {
                     <li>
                       <a className="sidebar-header" href="#">
                         <Icon.Activity />
-                        {<Link to="/Events">Events</Link>}
+                        {<Link to="/Admin/Events">Events</Link>}
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>
                     <li>
                       <a className="sidebar-header" href="#">
                         <Icon.Users />
-                        {<Link to="/UsersBack">Users ({users.length})</Link>}
+                        {
+                          <Link to="/Admin/UsersBack">
+                            Users ({users.length})
+                          </Link>
+                        }
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>
@@ -129,7 +134,11 @@ const SideBar = () => {
                     <li>
                       <a className="sidebar-header">
                         <Icon.BarChart />
-                        {<Link to="/ClaimsBack">Claims ({claims.length})</Link>}
+                        {
+                          <Link to="/Admin/ClaimsBack">
+                            Claims ({claims.length})
+                          </Link>
+                        }
                         <i className="fa fa-angle-right pull-right" />
                       </a>
                     </li>
@@ -138,7 +147,7 @@ const SideBar = () => {
                       <a className="sidebar-header" href="#">
                         <Icon.MessageSquare />
                         {
-                          <Link to="/Contacts">
+                          <Link to="/Admin/Contacts">
                             Messages ({contacts.length})
                           </Link>
                         }

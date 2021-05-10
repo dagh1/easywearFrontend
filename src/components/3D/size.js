@@ -3,29 +3,17 @@ import * as tf from "@tensorflow/tfjs";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 
-
 import Stats from "stats.js";
 import jwtDecode from "jwt-decode";
 
 function CalculateSize(props) {
-  let user = null;
+  let user = { height: 1.8, gender: "male" };
   const [Size, setSize] = useState();
 
-  const jwtToken = localStorage.getItem("jwt");
-  if (jwtToken) {
-    // Set auth token header auth
-    user = jwtDecode(jwtToken); // Decode token and get user info and exp
-  }
-  if (typeof Size === "undefined" || Size === "") {
-    props.detect(true);
-  }
   // if(user?.height) {
-  else
-  {
-    props.detect(false);
-  }
-  
-    if (typeof props.person?.allPoses[0]?.keypoints[16] !== "undefined") {
+
+  if (typeof props.person?.allPoses[0]?.keypoints[16] !== "undefined") {
+    console.log(props.person?.allPoses[0]);
     const top = props.person?.allPoses[0].keypoints[1].position.y;
     const tall = Math.abs(
       props.person?.allPoses[0].keypoints[16]?.position.y - top
@@ -35,8 +23,9 @@ function CalculateSize(props) {
       props.person?.allPoses[0].keypoints[5]["position"]["x"] -
         props.person?.allPoses[0].keypoints[6]["position"]["x"]
     );
-if (typeof Size === "undefined" || Size === "") {
+
     const entourage = widthx * ratio * 2 + 0.2;
+
     if (user?.gender === "male") {
       if (entourage <= 0.889) setSize("XS");
       if (entourage > 0.889 && entourage < 0.9398) {
@@ -63,30 +52,16 @@ if (typeof Size === "undefined" || Size === "") {
         } else if (entourage > 1.0541) {
           setSize("XXL");
         }
-       
-          }
       }
+      if (typeof Size !== "undefined") alert(Size);
     }
   }
+  //}
+
   return (
     <>
       <div style={{ position: "relative" }} className="col">
         <div className="top-banner-wrapper">
-          <div className="top-banner-content small-section">
-            <h4>Welcome! EASYWEAR</h4>
-            
-          </div>
-          {user == null ? (
-            <h3>Log in to get your size</h3>
-          ) : typeof Size == "undefined" ? (
-            <h3>
-              {" "}
-              Hello!, to get your Size stay in front of cam in way thats your
-              head and your feet appear in screen{" "}
-            </h3>
-          ) : (
-            <h3>Good job You size is {Size}</h3>
-          )}
           <a href="#">
             <img
               src="../assets/images/coming-soon.jpg"
@@ -94,8 +69,58 @@ if (typeof Size === "undefined" || Size === "") {
               alt=""
             />
           </a>
+          <div className="top-banner-content small-section">
+            <h4>Welcome! EASYWEAR</h4>
+            <h5></h5>
+          </div>
         </div>
+
+        {user == null ? (
+          <h3>Log in to get your size</h3>
+        ) : typeof Size == "undefined" ? (
+          <h3>
+            {" "}
+            Hello!, to get your Size stay in front of cam in way thats your head
+            and your feet appear in screen{" "}
+          </h3>
+        ) : (
+          <h3>Good job You size is {Size}</h3>
+        )}
       </div>
+    </>
+  );
+}
+function PutClothes(props) {
+  const imageRef = useRef(null);
+  const personDetail = props.person;
+  const x = personDetail?.allPoses[0]?.keypoints[6]["position"]["x"];
+  const y = personDetail?.allPoses[0]?.keypoints[6]["position"]["y"];
+  // console.log(person);
+  const widthx = Math.abs(
+    personDetail?.allPoses[0]?.keypoints[5]["position"]["x"] -
+      personDetail?.allPoses[0]?.keypoints[6]["position"]["x"]
+  );
+
+  const image = imageRef.current;
+  if (image) {
+    image.style.top = y + "px";
+    image.style.left = x + "px";
+    image.style.width = widthx + "px";
+  }
+
+  return (
+    <>
+      <img
+        ref={imageRef}
+        src="https://www.torontotees.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/0/500_32.png"
+        alt=""
+        style={{
+          position: "absolute",
+          zindex: 10,
+          width: 50,
+          height: 40,
+        }}
+      />
     </>
   );
 }
@@ -105,23 +130,18 @@ function GetSize() {
   const isAndroid = () => {
     return /Android/i.test(navigator.userAgent);
   };
-
   const isiOS = () => {
     return /iPhone|iPad|iPod/i.test(navigator.userAgent);
   };
-
   const isMobile = () => {
     return isAndroid() || isiOS();
   };
-
   const videoConstraints = isMobile
     ? {
       facingMode: "user",
     }
     : {};
-
   */
-  const imageRef = useRef(null);
   const stats = new Stats();
   // const canvas = document.querySelector("canvas");
   const webcamRef = useRef(null);
@@ -139,21 +159,22 @@ function GetSize() {
     setNet(lnet);
   };
 
-  const runBodysegment = (continueDetection = true) => {
+  const runBodysegment = () => {
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
       //  Loop and detect hands
-      if (continueDetection) {
-      //  stats.begin();
+
+      // stats.begin();
+      setInterval(() => {
         detect();
+      }, 1000);
 
-       // stats.end();
+      // stats.end();
 
-      //  requestAnimationFrame(runBodysegment);
-      }
+      // requestAnimationFrame(runBodysegment);
     }
   };
   const detect = async () => {
@@ -171,6 +192,7 @@ function GetSize() {
     });
 
     if (personDetail) {
+      console.log("detection en cour");
       setperson(personDetail);
     }
   };
@@ -179,7 +201,7 @@ function GetSize() {
     if (activeRole == "size") setactiveRole("clothes");
     else if (activeRole == "clothes") setactiveRole("size");
   };
-  runBodysegment(true);
+  runBodysegment();
   //bindPage();
 
   return (
@@ -200,7 +222,7 @@ function GetSize() {
           }}
         />
 
-        <CalculateSize person={person} detect={runBodysegment} />
+        <CalculateSize person={person} />
       </div>
     </>
   );
